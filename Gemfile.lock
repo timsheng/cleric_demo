@@ -1,0 +1,40 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    diff-lcs (1.2.5)
+    httparty (0.14.0)
+      multi_xml (>= 0.5.2)
+    multi_xml (0.5.5)
+    mysql2 (0.4.4)
+    net-ssh (3.2.0)
+    net-ssh-gateway (1.2.0)
+      net-ssh (>= 2.6.5)
+    rake (11.2.2)
+    rspec (3.5.0)
+      rspec-core (~> 3.5.0)
+      rspec-expectations (~> 3.5.0)
+      rspec-mocks (~> 3.5.0)
+    rspec-core (3.5.2)
+      rspec-support (~> 3.5.0)
+    rspec-expectations (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-mocks (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-support (3.5.0)
+    sequel (4.37.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  httparty (= 0.14.0)
+  mysql2 (= 0.4.4)
+  net-ssh-gateway (= 1.2.0)
+  rake (= 11.2.2)
+  rspec (= 3.5.0)
+  sequel (= 4.37.0)
+
+BUNDLED WITH
+   1.12.5

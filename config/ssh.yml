@@ -1,0 +1,8 @@
+wechat_stage:
+  host: 54.222.195.145
+  user: admin
+  keys: ~/.ssh/infra_stage-id_rsa
+  database:
+    host: stage-mysql-27.cdendvrkytps.rds.cn-north-1.amazonaws.com.cn
+    remote_port: 3306
+    local_port: 3306
