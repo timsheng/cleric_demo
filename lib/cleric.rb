@@ -3,7 +3,7 @@ require 'db_helper'
 require 'yaml_helper'
 
 class Cleric
-  
+
   attr_accessor :ssh, :port, :db
 
   include Helper::SSH
