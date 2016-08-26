@@ -1,19 +1,24 @@
-require 'ssh_helper'
-require 'db_helper'
-require 'yaml_helper'
+require 'cleric/accessors'
+require 'cleric/ssh'
+require 'cleric/db'
+require 'cleric/yaml'
 
-class Cleric
+module Cleric
+
+  include SSH
+  include DB
+  include YAML
 
   attr_accessor :ssh, :port, :db
-
-  include Helper::SSH
-  include Helper::DB
-  include Helper::Yaml
 
   def initialize ssh_name, mysql_name
     @ssh = connect_remote_server ssh_name
     @port = forward_port ssh_name
     @db = connect_database mysql_name, @port
+  end
+
+  def self.included cls
+    cls.extend Cleric::Accessors
   end
 
 end

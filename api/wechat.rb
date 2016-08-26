@@ -1,13 +1,17 @@
 require 'httparty'
+require './lib/cleric'
 
 class Wechat
+
   include HTTParty
+  include Cleric
 
-  # format :xml
   base_uri 'https://wechat-stage.student.com/wechat'
-  # base_uri 'https://53498178.ngrok.io/app_dev.php/wechat'
 
-  def self.send_text_message(payload)
+  # just for example "how to use method in accessors"
+  count_table :lead
+
+  def self.send_text_message payload
     post('', :body => payload)
   end
 

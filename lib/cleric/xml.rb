@@ -1,5 +1,5 @@
 require 'builder'
-module Helper
+module Cleric
   module XML
     def to_xml
       key = self.instance_variables

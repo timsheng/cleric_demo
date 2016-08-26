@@ -1,7 +1,7 @@
 require 'mysql2'
 require 'sequel'
 
-module Helper
+module Cleric
   module DB
 
     DB_CONFIGURE_PATH = "config/database.yml"

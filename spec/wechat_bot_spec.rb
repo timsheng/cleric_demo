@@ -27,4 +27,11 @@ describe "Wechat" do
 
   end
 
+  # just for example "how to use accessors methods in spec file"
+  it "test accessor method" do
+    wechat = Wechat.new('wechat_stage','wechat_db')
+    # puts wechat.db['select id from lead'].count
+    wechat.lead
+  end
+
 end
