@@ -7,7 +7,6 @@ module Cleric
 
     # just for example "how to create method in accesors"
     def count_table name
-      puts self
       define_method("#{name}") do
         puts "generate #{name} method "
         db['select id from lead'].count
