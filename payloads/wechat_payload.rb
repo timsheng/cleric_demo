@@ -1,7 +1,7 @@
-require 'xml_helper'
+require 'cleric/xml'
 class WechatPayload
 
-  include Helper::XML
+  include Cleric::XML
 
   attr_accessor :toUserName, :fromUserName, :createTime, :msgType, :content, :msgId
 

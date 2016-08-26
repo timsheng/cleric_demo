@@ -1,6 +1,6 @@
 require 'net/ssh/gateway'
 
-module Helper
+module Cleric
   module SSH
 
     SSH_CONFIGURE_PATH = "config/ssh.yml"

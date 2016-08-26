@@ -1,7 +1,7 @@
 require 'psych'
 
-module Helper
-  module Yaml
+module Cleric
+  module YAML
 
     def load_yml path
       Psych.load_file(path)
