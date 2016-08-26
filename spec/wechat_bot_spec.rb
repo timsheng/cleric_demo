@@ -26,5 +26,5 @@ describe "Wechat" do
     expect(response.code).to be(200)
 
   end
-  
+
 end
