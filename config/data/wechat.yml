@@ -1,0 +1,7 @@
+Wechat1:
+  ToUserName: gh_0d6f2db688b4
+  FromUserName: oTEVLvyCMbI9hHLu1lpDFk4Y791s
+  CreateTime: <%= Time.now %>
+  MsgTpe: text
+  Content: 伦敦
+  MsgId: <%= rand(10000) %>
