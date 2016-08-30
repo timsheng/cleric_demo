@@ -2,12 +2,14 @@ require 'cleric/accessors'
 require 'cleric/ssh'
 require 'cleric/db'
 require 'cleric/yaml'
+require 'cleric/xml'
 
 module Cleric
 
   include SSH
   include DB
   include YAML
+  include XML
 
   attr_accessor :ssh, :port, :db
 
