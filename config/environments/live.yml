@@ -1,6 +1,0 @@
-Wechat_db:
-  adapter: mysql2
-  host: 127.0.0.1
-  user: root
-  password: tMq2OhtrF3afh1FL
-  database: wechat_db
