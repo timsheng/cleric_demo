@@ -11,7 +11,9 @@ module Cleric
 
   attr_accessor :ssh, :port, :db
 
-  def initialize ssh_name, mysql_name
+  def initialize
+    ssh_name = "#{self.class}_ssh"
+    mysql_name = "#{self.class}_db"
     @ssh = connect_remote_server ssh_name
     @port = forward_port ssh_name
     @db = connect_database mysql_name, @port
