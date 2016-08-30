@@ -33,7 +33,7 @@ describe "Wechat" do
     wechat.lead
   end
 
-  it "test example tag if can be fetched", :tag => 'wechat1' do |example|
+  it "test example tag if can be fetched", :tag => 'Wechat1' do |example|
     key = example.metadata[:tag]
     payload = WechatPayload.new(key)
     response = Wechat.send_text_message(payload.to_xml)
