@@ -1,4 +1,4 @@
-wechat_stage:
+Wechat_ssh:
   host: 54.222.195.145
   user: admin
   keys: ~/.ssh/infra_stage-id_rsa

@@ -1,4 +1,4 @@
-wechat_db:
+Wechat_db:
   adapter: mysql2
   host: 127.0.0.1
   user: root
