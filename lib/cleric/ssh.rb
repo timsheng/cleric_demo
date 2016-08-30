@@ -3,13 +3,6 @@ require 'net/ssh/gateway'
 module Cleric
   module SSH
 
-    SSH_CONFIGURE_PATH = "config/ssh.yml"
-
-    def fetch_corresponding_configure_value name
-      all_hash_values = load_yml(SSH_CONFIGURE_PATH)
-      conf_value = fetch_value_by_key all_hash_values, name
-    end
-
     def connect_remote_server name
       puts "start to connect #{name} remote_server"
       conf_value = fetch_corresponding_configure_value name
