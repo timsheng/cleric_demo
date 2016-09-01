@@ -6,7 +6,13 @@ class Wechat
   include HTTParty
   include Cleric
 
-  base_uri 'https://wechat-stage.student.com/wechat'
+  case ENV['PLATFORM']
+  when 'stage'
+    base_uri 'https://wechat-stage.student.com/wechat'
+  when 'live'
+    puts "this is in live env"
+  end
+
 
   # just for example "how to use method in accessors"
   count_table :lead
