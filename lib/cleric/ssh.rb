@@ -30,9 +30,9 @@ module Cleric
       conf_value = conf_value.delete(:database.to_s)
       conf_value = conf_value.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
       host = conf_value.delete(:host)
-      port = conf_value.delete(:remote_port)
+      remote_port = conf_value.delete(:remote_port)
       local_port = conf_value.delete(:local_port)
-      ssh.open(host, port, local_port)
+      ssh.open(host, remote_port, local_port)
     end
 
   end
