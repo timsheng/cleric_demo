@@ -26,5 +26,10 @@ module Cleric
       end
     end
 
+    def has_conf_key? key
+      all_hash_values = load_yml(CONFIGURE_PATH)
+      all_hash_values.keys.include? "#{key}_ssh" || "#{key}_db"
+    end
+
   end
 end
