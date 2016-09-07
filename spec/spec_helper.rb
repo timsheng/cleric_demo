@@ -14,9 +14,9 @@ class PreDB
     hash.each do |k,v|
       api = Object.const_get(k).new
       if api.respond_to?(v)
-        api.send v
+        puts api.send v
       else
-        api.db[v]
+        puts api.db[v].count
       end
       api.ssh.close(api.port)
     end

@@ -35,4 +35,13 @@ describe "Wechat" do
     end
   end
 
+  describe "booking api demo" do
+    it "call get student api successfully" do
+      booking = Booking.new
+      email = "tim.sheng+8@student.com"
+      response = booking.get_student(email)
+      expect(response.code).to be(200)
+    end
+  end
+
 end
