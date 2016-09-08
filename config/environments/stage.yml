@@ -32,11 +32,10 @@ Booking_db:
   database: wechat_db
 
 Booking_http:
-  base_uri: https://bookings.stage.overseasstudentliving.com/api/v3/student
+  base_uri: https://bookings.stage.overseasstudentliving.com
   basic_auth:
     user: oslqa
     password: m2WackNUHbAqHz51
   headers:
     Content-type: application/json
     X-OSL-PKEY: 32489878329jkkkjh3k4j2hjk324k
-    X-OSL-TOKEN: Aq5LNXQUTDUrpg0Tx6yPcpA57XE=
