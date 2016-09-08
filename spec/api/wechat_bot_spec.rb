@@ -40,6 +40,7 @@ describe "Wechat" do
       booking = Booking.new
       email = "tim.sheng+8@student.com"
       response = booking.get_student(email)
+      puts response
       expect(response.code).to be(200)
     end
   end

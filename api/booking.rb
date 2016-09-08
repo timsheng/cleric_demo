@@ -1,24 +1,35 @@
 require 'httparty'
 require './lib/cleric'
+require './lib/cleric/http'
+require 'base64'
+require 'openssl'
 
 class Booking
   include HTTParty
   include Cleric
+  extend YAML
 
-  base_uri 'https://bookings.stage.overseasstudentliving.com/api/v3/student'
+  debug_output $stdout
 
-  basic_auth 'oslqa', 'm2WackNUHbAqHz51'
+  http = http "#{self}_http"
 
-  headers_value = {
-    'Content-type' =>  "application/json",
-    'X-OSL-PKEY' => "32489878329jkkkjh3k4j2hjk324k",
-    'X-OSL-TOKEN'=> "Aq5LNXQUTDUrpg0Tx6yPcpA57XE="
-  }
+  base_uri http[:base_uri]
 
-  headers headers_value
-  
+  basic_auth http[:basic_auth]['user'], http[:basic_auth]['password']
+
+  headers http[:headers]
+
   def get_student email
-    self.class.get "/#{email}"
+    path = "/api/v3/student/#{email}"
+    self.class.headers generate_token(path)
+    self.class.get path
+  end
+
+  def generate_token(payload)
+    shared_secret = '234kjkj324kjh23jk4h234jkhk23j4'
+    token = Base64.encode64(OpenSSL::HMAC.digest('sha1', shared_secret, payload))
+    puts token
+    return {'X-OSL-TOKEN' => token}
   end
 
 end

@@ -28,8 +28,19 @@ module Cleric
 
     def has_conf_key? key
       all_hash_values = load_yml(CONFIGURE_PATH)
-      all_hash_values.keys.include? "#{key}_ssh" || "#{key}_db"
+      all_hash_values.keys.include? "#{key}_ssh" || "#{key}_db" || "#{key}_http"
     end
+
+    def fetch_http_config key
+      conf_value = fetch_corresponding_configure_value key
+      http = {}
+      http[:base_uri] = conf_value['base_uri'] if conf_value['base_uri']
+      http[:basic_auth] = conf_value['basic_auth'] if conf_value['basic_auth']
+      http[:headers] = conf_value['headers'] if conf_value['headers']
+      http
+    end
+
+    alias_method :http, :fetch_http_config
 
   end
 end

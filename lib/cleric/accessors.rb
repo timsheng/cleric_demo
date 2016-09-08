@@ -12,5 +12,6 @@ module Cleric
         db['select id from lead'].count
       end
     end
+
   end
 end
