@@ -1,3 +1,5 @@
+
+
 Wechat_ssh:
   host: 54.222.195.145
   user: admin
@@ -13,6 +15,9 @@ Wechat_db:
   user: root
   password: tMq2OhtrF3afh1FL
   database: wechat_db
+
+Wechat_http:
+  base_uri: https://wechat-stage.student.com/wechat
 
 
 Booking_ssh:
@@ -39,3 +44,4 @@ Booking_http:
   headers:
     Content-type: application/json
     X-OSL-PKEY: 32489878329jkkkjh3k4j2hjk324k
+  shared_secret: 234kjkj324kjh23jk4h234jkhk23j4

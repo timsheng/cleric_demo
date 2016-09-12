@@ -4,16 +4,20 @@ require 'sequel'
 module Cleric
   module DB
 
-    def connect_database name ,port
-      puts "connect #{name} database via #{port}"
-      conf_value = fetch_corresponding_configure_value name
-      conf_value = conf_value.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
-      conf_value = conf_value.merge(:port => port)
-      get_ready_for_database conf_value
+    def connect_database name ,port=false
+      db_conf = Cleric::YAML.fetch_corresponding_conf_by name
+      db_conf = db_conf.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
+      db_conf = db_conf.merge(:port => port) if port
+      puts "connect #{name} database"
+      get_ready_for_database db_conf
     end
 
     def get_ready_for_database conf
-      Sequel.connect(conf)
+      begin
+        Sequel.connect(conf)
+      rescue
+        fail "database configuration \n #{conf} \n is not correct, please double check"
+      end
     end
 
   end

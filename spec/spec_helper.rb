@@ -7,30 +7,53 @@ require 'data_magic'
 
 DataMagic.load 'wechat.yml'
 
-class PreDB
+class PreJob
+
   include DataMagic
-  def handle
-    hash =  data_for('Wechat1')['pre_condition']
-    hash.each do |k,v|
-      api = Object.const_get(k).new
-      if api.respond_to?(v)
-        puts api.send v
-      else
-        puts api.db[v].count
-      end
-      api.ssh.close(api.port)
-    end
+
+  def initialize name
+    value = data_for(name)
+    @actions =  value['pre_job']
   end
+
+  def handle
+    action_types =  @actions.keys
+    action_types.each do |type|
+      case type
+      when 'helper'
+        actions = @actions['helper']
+        actions.each do |k, v|
+          api = Object.const_get(k).new
+          puts "#{api} says #{v}"
+        end
+      when 'db'
+        actions = @actions['db']
+        actions.each do |k, v|
+          api = Object.const_get(k).new(:ssh => "#{k}_ssh", :db => "#{k}_db")
+          if api.respond_to?(v)
+            api.send v
+          else
+            api.db[v].count
+          end
+          api.close_ssh(api.port)
+        end
+      end
+    end
+
+  end
+
+
 end
 
 RSpec.configure do |c|
   c.around(:example) do |example|
-    puts "around example before"
-    if example.metadata.has_key?(:db)
-      pd = PreDB.new
-      pd.handle
+    puts "doing something in around before example"
+    if example.metadata.has_key?(:prejob)
+      prejob =  example.metadata[:prejob]
+      pj = PreJob.new(prejob)
+      pj.handle
     end
     example.run
-    puts "around example after"
+    puts "doing something in around after example"
   end
 end
