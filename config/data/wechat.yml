@@ -6,6 +6,10 @@ Wechat1:
     MsgTpe: text
     Content: 伦敦
     MsgId: <%= rand(10000) %>
-  pre_condition:
-    Wechat: lead
-    Booking: "select * from user"
+  pre_job:
+    helper:
+      Wechat: I am wechat helper
+      Booking: I am booking helper
+    db:
+      Wechat: lead
+      Booking: "select * from user"

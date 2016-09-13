@@ -1,24 +1,17 @@
-require 'httparty'
+require './api/api'
 require './lib/cleric'
 
-class Wechat
+class Wechat < API
 
-  include HTTParty
-  include Cleric
+  debug_output $stdout
 
-  case ENV['PLATFORM']
-  when 'stage'
-    base_uri 'https://wechat-stage.student.com/wechat'
-  when 'live'
-    puts "this is in live env"
-  end
-
+  base_uri http('base_uri')
 
   # just for example "how to use method in accessors"
   count_table :lead
 
-  def self.send_text_message payload
-    post('', :body => payload)
+  def send_text_message payload
+    self.class.post('', :body => payload)
   end
 
 end
