@@ -1,11 +1,11 @@
 require 'rspec'
 require './api/wechat'
 require './api/booking'
+require './api/frontend_facade/users'
 require './payloads/wechat/wechat_payload'
+require './payloads/frontend_facade/users_payload'
 require 'cleric'
 require 'data_magic'
-
-DataMagic.load 'wechat.yml'
 
 class PreJob
 
