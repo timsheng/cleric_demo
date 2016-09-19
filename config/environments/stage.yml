@@ -1,5 +1,3 @@
-
-
 Wechat_ssh:
   host: 54.222.195.145
   user: admin
@@ -45,3 +43,6 @@ Booking_http:
     Content-type: application/json
     X-OSL-PKEY: 32489878329jkkkjh3k4j2hjk324k
   shared_secret: 234kjkj324kjh23jk4h234jkhk23j4
+
+Users_http:
+  base_uri: http://10.20.0.147:9006

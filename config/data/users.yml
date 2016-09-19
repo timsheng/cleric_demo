@@ -1,0 +1,54 @@
+Users1:
+  payload:
+    email: tim.sheng+20160918a@student.com
+    password: abc20052614
+    email_verified: true
+    email_token: abc
+    newsletter_accepted: false
+    forgot_password_token: abc
+    forgot_password_token_issued_at: '2016-08-13 00:47:28'
+    password_set_by_user: true
+    create_password_token: abc
+    osl_password_key_pair: 5367c1b829ebf
+    student:
+      first_name: Tim
+      last_name: Sheng+20160918a
+      email: tim.sheng+20160918a@student.com
+      academic_year: '2'
+      study_abroad_date: '2017-03-01T00:00:00+0000'
+      study_major: Finance
+      study_current_uni: University of Beijing
+      study_destination_uni: Oxford University
+      other_preferences: 'no'
+      locale: zh_CN
+      address_line_1: 7 St Martin's Place
+      address_line_2: "``"
+      country: United Kingdom
+      city: London
+      state: "``"
+      zip_code: WC2N 4HA
+      date_of_birth: '1987-01-02'
+      gender: male
+      nationality: Chinese
+      how_did_you_hear_about_us: Friend recommended
+      contact_details:
+      - type: email
+        value: test@test.com
+      - type: source_phone
+        value: "+44092883444"
+      preferences:
+      - key: vegetarian
+        value: '1'
+      potential_guarantors:
+      - first_name: Mrs
+        last_name: Freshman
+        email: freshman@student.com
+        phone: '12345678'
+        relationship_with_student: parent
+        date_of_birth: '1970-01-02'
+        address_line_1: 7 St Martin's Place
+        address_line_2: "``"
+        country: United Kingdom
+        city: London
+        state: ''
+        zip_code: WC2N 4HA
