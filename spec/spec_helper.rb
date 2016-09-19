@@ -1,9 +1,9 @@
 require 'rspec'
 require './api/wechat'
 require './api/booking'
-require './api/frontend_facade/users'
+require './api/frontend_facade'
 require './payloads/wechat/wechat_payload'
-require './payloads/frontend_facade/users_payload'
+require './payloads/facade/frontend_facade_payload'
 require 'cleric'
 require 'data_magic'
 
