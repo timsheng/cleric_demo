@@ -1,9 +1,16 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    builder (3.2.2)
+    data_magic (0.22)
+      faker (>= 1.1.2)
+      yml_reader (>= 0.6)
     diff-lcs (1.2.5)
+    faker (1.6.6)
+      i18n (~> 0.5)
     httparty (0.14.0)
       multi_xml (>= 0.5.2)
+    i18n (0.7.0)
     multi_xml (0.5.5)
     mysql2 (0.4.4)
     net-ssh (3.2.0)
@@ -14,7 +21,7 @@ GEM
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
       rspec-mocks (~> 3.5.0)
-    rspec-core (3.5.2)
+    rspec-core (3.5.3)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -24,11 +31,14 @@ GEM
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
     sequel (4.37.0)
+    yml_reader (0.7)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  builder (= 3.2.2)
+  data_magic (= 0.22)
   httparty (= 0.14.0)
   mysql2 (= 0.4.4)
   net-ssh-gateway (= 1.2.0)

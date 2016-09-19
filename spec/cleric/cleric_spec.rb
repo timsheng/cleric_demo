@@ -24,15 +24,15 @@ describe Cleric do
       expect(cleric).to be_instance_of TestCleric
     end
 
-    it "should generate cleric instance with only ssh parameters" do
-      cleric = TestCleric.new(:ssh => 'Wechat_ssh')
-      expect(cleric).to be_instance_of TestCleric
-    end
-
-    it "should generate cleric instance with both db and ssh parameters" do
-      cleric = TestCleric.new(:ssh => 'Wechat_ssh',:db => 'Wechat_db')
-      expect(cleric).to be_instance_of TestCleric
-    end
+    # it "should generate cleric instance with only ssh parameters" do
+    #   cleric = TestCleric.new(:ssh => 'Wechat_ssh')
+    #   expect(cleric).to be_instance_of TestCleric
+    # end
+    #
+    # it "should generate cleric instance with both db and ssh parameters" do
+    #   cleric = TestCleric.new(:ssh => 'Wechat_ssh',:db => 'Wechat_db')
+    #   expect(cleric).to be_instance_of TestCleric
+    # end
 
   end
 
