@@ -1,4 +1,4 @@
 language: ruby
 rvm:
   - 2.3.0
-script: rake features:test --trace
+script: bundle exec rake features:test --trace
