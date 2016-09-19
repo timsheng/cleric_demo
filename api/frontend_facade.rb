@@ -1,7 +1,7 @@
 require './api/api'
 require './lib/cleric'
 
-class Users < API
+class FrontendFacade < API
 
   debug_output $stdout
 
