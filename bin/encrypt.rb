@@ -1,11 +1,10 @@
 require 'rbnacl'
 require 'base64'
+require '../lib/cleric/box'
 
-file = "../config/environments/stage.yml"
-file_enc = "../config/environments/stage.yml.enc"
-key_env = ENV['KEY_ENV']
-key = Base64.decode64(key_env)
-box = RbNaCl::SimpleBox.from_secret_key(key)
-plaintext = File.read(file)
+include Cleric
+
+box = get_box
+plaintext = File.read(get_file)
 ciphertext = box.encrypt(plaintext)
-File.write(file_enc, Base64.encode64(ciphertext))
+File.write(get_file_enc, Base64.encode64(ciphertext))
