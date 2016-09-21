@@ -1,0 +1,7 @@
+# Operating System Files
+# =========================
+
+# OSX
+# =========================
+
+config/environments/*.yml
