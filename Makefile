@@ -15,15 +15,15 @@ test-frontendfacade-contract-testing:
 run-test-container-booking:
 	docker run \
 		-it --rm \
-		-e KEY_ENV="${KEY_ENV}" \
-		-e STORMAPI_PRIVATEKEY="${STORMAPI_PRIVATEKEY}" \
+		-e CLERIC_ENCRYPT="${CLERIC_ENCRYPT}" \
+		-e CLERIC_PRIVATEKEY="${CLERIC_PRIVATEKEY}" \
 		${DOCKER_IMAGE_NAME} \
 		bash
 
 run-test-container-frontendfacade:
 	docker run \
 		-it --rm \
-		-e KEY_ENV="${KEY_ENV}" \
-        -e STORMAPI_PRIVATEKEY="${STORMAPI_PRIVATEKEY}" \
+		-e CLERIC_ENCRYPT="${CLERIC_ENCRYPT}" \
+		-e CLERIC_PRIVATEKEY="${CLERIC_PRIVATEKEY}" \
 		${DOCKER_IMAGE_NAME} \
 		bash -c "make test-frontendfacade-contract-testing"

@@ -23,7 +23,7 @@ RUN \
 
 	# Install confd
 	echo "Installing confd.." && \
-	curl -sSL https://github.com/kelseyhightower/confd/releases/download/v0.10.0/confd-0.10.0-linux-amd64 -o /usr/local/bin/confd && \
+	wget https://github.com/kelseyhightower/confd/releases/download/v0.10.0/confd-0.10.0-linux-amd64 -o /usr/local/bin/confd && \
 	chmod +x /usr/local/bin/confd
 
 # copy over the rest of the rails app files
