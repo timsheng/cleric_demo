@@ -10,7 +10,7 @@ test-booking-contract-testing:
 	mvn test -Denvironment=Stage -DxmlFileName=booking.xml
 
 test-frontendfacade-contract-testing:
-	mvn test -Denvironment=Stage -DxmlFileName=frontend_facade.xml
+	PLATFORM=stage rspec spec/api/frontend_facade_spec.rb
 
 run-test-container-booking:
 	docker run \
@@ -24,6 +24,6 @@ run-test-container-frontendfacade:
 	docker run \
 		-it --rm \
 		-e KEY_ENV="${KEY_ENV}" \
-        	-e STORMAPI_PRIVATEKEY="${STORMAPI_PRIVATEKEY}" \
+        -e STORMAPI_PRIVATEKEY="${STORMAPI_PRIVATEKEY}" \
 		${DOCKER_IMAGE_NAME} \
 		bash -c "make test-frontendfacade-contract-testing"
