@@ -21,3 +21,26 @@ class Payload
   end
 
 end
+
+
+module DataMagic
+  private
+  
+  def prep_data(data)
+    data.each do |key, value|
+      unless value.nil?
+        next if !value.respond_to?('[]') || value.is_a?(Numeric)
+        if value.is_a?(Hash)
+          prep_data(value)
+        elsif value.is_a?(Array)
+          value.each do |v|
+            prep_data(v)
+          end
+        else
+          data[key] = translate(value[1..-1]) if value[0,1] == "~"
+        end
+      end
+    end
+    data
+  end
+end
