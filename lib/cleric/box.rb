@@ -5,7 +5,7 @@ module Cleric
 	def get_box
 		file = "../config/environments/stage.yml"
 		file_enc = "../config/environments/stage.yml.enc"
-		key_env = ENV['KEY_ENV']
+		key_env = ENV['CLERIC_ENCRYPT']
 		key = Base64.decode64(key_env)
 		RbNaCl::SimpleBox.from_secret_key(key)
 	end
