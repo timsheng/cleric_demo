@@ -5,6 +5,7 @@ ENV ENV_CONFD_PREFIX=/
 
 RUN apt-get update -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    wget \
     libsodium-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -23,7 +24,7 @@ RUN \
 
 	# Install confd
 	echo "Installing confd.." && \
-	wget https://github.com/kelseyhightower/confd/releases/download/v0.10.0/confd-0.10.0-linux-amd64 -o /usr/local/bin/confd && \
+	wget -c -L -O /usr/local/bin/confd https://github.com/kelseyhightower/confd/releases/download/v0.10.0/confd-0.10.0-linux-amd64  && \
 	chmod +x /usr/local/bin/confd
 
 # copy over the rest of the rails app files
