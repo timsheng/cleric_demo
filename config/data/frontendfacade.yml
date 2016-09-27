@@ -52,3 +52,9 @@ Users1:
         city: ~city
         state: ~state
         zip_code: ~zip_code
+
+Users2:
+  response:
+    id: ^id
+    name: ^name
+    address: ^address
