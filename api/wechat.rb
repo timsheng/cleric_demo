@@ -1,9 +1,6 @@
 require './api/api'
-require './lib/cleric'
 
 class Wechat < API
-
-  debug_output $stdout
 
   base_uri http('base_uri')
 

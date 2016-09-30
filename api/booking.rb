@@ -1,9 +1,6 @@
 require './api/api'
-require './lib/cleric'
 
 class Booking < API
-
-  debug_output $stdout
 
   base_uri http('base_uri')
 
