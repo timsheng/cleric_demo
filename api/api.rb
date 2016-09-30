@@ -2,11 +2,13 @@ require './lib/cleric'
 require 'httparty'
 require 'base64'
 require 'openssl'
+require 'data_magic'
 
 
 class API
   include Cleric
   include HTTParty
+  include DataMagic
 
   def self.http key, subkey = false
     http_conf = Cleric::YAML.fetch_corresponding_conf_by "#{self}_http"

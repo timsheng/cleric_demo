@@ -13,5 +13,13 @@ module Cleric
       end
     end
 
+    def query name, identifier
+      define_method("#{name}") do
+        puts "generate #{name} method "
+        properties = db[identifier[:db].to_sym]
+        properties.filter(identifier.keys.last => identifier.values.last).map(name).first
+      end
+    end
+
   end
 end
