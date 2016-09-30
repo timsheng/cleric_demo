@@ -2,11 +2,13 @@ require './lib/cleric'
 require 'httparty'
 require 'base64'
 require 'openssl'
+require 'data_magic'
 
 
 class API
   include Cleric
   include HTTParty
+  include DataMagic
 
   # debug_output $stdout
 

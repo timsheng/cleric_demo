@@ -36,6 +36,15 @@ describe "Frontend Facade" do
         expect(response.code).to be(200)
         expect(result).to eq(expected)
       end
-    end
+
+    context "Get Property" do
+      it "dbfactory demo" ,:tag => 'Users2' do |example|
+        key = example.metadata[:tag]
+        frontend_facade = FrontendFacade.new(:ssh => 'Property_ssh', :db => 'Property_db')
+        # puts frontend_facade.id
+        # puts frontend_facade.name
+        # puts frontend_facade.address
+        puts frontend_facade.expect_result(key)
+      end
   end
 end

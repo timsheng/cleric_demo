@@ -17,7 +17,7 @@ class Payload
     current_class = self.class.to_s
     current_class.slice! "Payload"
     file_name = current_class.downcase!
-    return file_name + '.yml'
+    return file_name '.yml'
   end
 
 end
@@ -25,7 +25,7 @@ end
 
 module DataMagic
   private
-  
+
   def prep_data(data)
     data.each do |key, value|
       unless value.nil?
@@ -38,9 +38,15 @@ module DataMagic
           end
         else
           data[key] = translate(value[1..-1]) if value[0,1] == "~"
+          data[key] = transform(value[1..-1]) if value[0,1] == "^"
         end
       end
     end
     data
   end
+
+  def transform(value)
+    self.send :eval, value
+  end
+
 end

@@ -67,7 +67,7 @@ student_villiage_summary_en:
       <p>When it’s time to kick back, relax in the recreation zone or make some noise in the music room. If you’ve got some energy to burn off, head to the gym or half basketball court to work up a sweat, before having a refreshing dip in the heated swimming pool. You can rest easy knowing there’s 24/7 support available if you have any problems.</p>
     longitude: 144.961
     hero_image:
-      alt_text: 
+      alt_text:
       src: "/mstr/country/australia/city/melbourne/property/student-village/image-o6cpfy.jpeg"
     zip_code: '3053'
     currency: AUD
@@ -126,7 +126,7 @@ student_villiage_summary_en:
       src: "/mstr/country/australia/city/melbourne/property/student-village/gallery/image-7/image-nvukjy.jpeg"
     - alt_text: Student accommodation photo for Student Village in Melbourne City Centre, Melbourne
       src: "/mstr/country/australia/city/melbourne/property/student-village/gallery/image-8/image-nvukjx.jpeg"
-    meta_title: 
+    meta_title:
     city:
       name: Melbourne
       original_name: Melbourne
@@ -155,7 +155,7 @@ student_villiage_summary_cn:
       \ <li>水</li>\r\n  <li>电</li>\r\n  <li>燃气</li>\r\n</ul>"
     longitude: 144.961
     hero_image:
-      alt_text: 
+      alt_text:
       src: "/mstr/country/australia/city/melbourne/property/student-village/image-o6cpfy.jpeg"
     zip_code: '3053'
     currency: AUD
@@ -214,7 +214,7 @@ student_villiage_summary_cn:
       src: "/mstr/country/australia/city/melbourne/property/student-village/gallery/image-7/image-nvukjy.jpeg"
     - alt_text: Student Village的公寓照
       src: "/mstr/country/australia/city/melbourne/property/student-village/gallery/image-8/image-nvukjx.jpeg"
-    meta_title: 
+    meta_title:
     city:
       name: 墨尔本
       original_name: Melbourne
@@ -230,3 +230,8 @@ student_villiage_summary_cn:
     meta_description: 欢迎预订Student Village学生公寓。 我们致力于将海外订房变成一件轻松而快乐的事。 我们的咨询顾问会全力以赴为你找到海外最满意的寓所，热忱为你解决在订房过程中遇到的各种问题。
     slug: student-village
 
+Users2:
+  response:
+    id: ^id
+    name: ^name
+    address: ^address
