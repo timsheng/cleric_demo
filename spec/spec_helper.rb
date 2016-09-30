@@ -47,13 +47,13 @@ end
 
 RSpec.configure do |c|
   c.around(:example) do |example|
-    puts "doing something in around before example"
+    # puts "doing something in around before example"
     if example.metadata.has_key?(:prejob)
       prejob =  example.metadata[:prejob]
       pj = PreJob.new(prejob)
       pj.handle
     end
     example.run
-    puts "doing something in around after example"
+    # puts "doing something in around after example"
   end
 end

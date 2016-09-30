@@ -1,9 +1,6 @@
 require './api/api'
-require './lib/cleric'
 
 class FrontendFacade < API
-
-  debug_output $stdout
 
   base_uri http('base_uri')
 
@@ -15,12 +12,13 @@ class FrontendFacade < API
     self.class.post('/users', :body => payload.to_json)
   end
 
+  def get_summary_for_a_property property_slug,locale
+    self.class.headers({'Accept-Language' => locale})
+    self.class.get("/properties/#{property_slug}/summary")
+  end
+
   def expect_result key
     DataMagic.load 'frontendfacade.yml'
     data_for(key)['response']
   end
-
-
-
-
 end
