@@ -9,7 +9,7 @@ describe "Frontend Facade" do
   let(:frontend_facade) {FrontendFacade.new()}
 
   context "Users" do
-    it "should create user", :tag => 'User1' do |example|
+    it "should create user", :tag => 'Users1' do |example|
       key = example.metadata[:tag]
       frontend_facade_payload = FrontendFacadePayload.new(key)
       puts frontend_facade_payload.payload

@@ -12,7 +12,7 @@ class FrontendFacade < API
   end
 
   def get_summary_for_a_property property_slug,locale
-  	self.class.headers({'Accept-Language' => locale})
+	self.class.headers({'Accept-Language' => locale})
     self.class.get("/properties/#{property_slug}/summary")
   end
 end
