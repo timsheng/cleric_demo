@@ -17,7 +17,7 @@ class Payload
     current_class = self.class.to_s
     current_class.slice! "Payload"
     file_name = current_class.downcase!
-    return file_name '.yml'
+    return file_name + '.yml'
   end
 
 end
