@@ -24,7 +24,7 @@ describe "Frontend Facade" do
         response = frontend_facade.get_summary_for_a_property('student-village','en-gb')
         result = response.parsed_response
         expect(response.code).to be(200)
-        expect(result).to eql expected
+        expect(result).to be_deep_equal(expected)
       end
 
       it "get summary for a property for zh-cn", :tag => 'te_puni_village_summary_cn' do |example|
