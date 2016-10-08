@@ -81,25 +81,25 @@ student_villiage_summary_en:
       - active: true
         slug: wifi
       - active: true
-        slug: fan
-      - active: true
         slug: bbq
+      - active: true
+        slug: fan
       - active: true
         slug: cooking_facilities
       - active: true
-        slug: library_study_area
-      - active: true
         slug: basketball_court
       - active: true
-        slug: entertainment_area
+        slug: library_study_area
       - active: true
         slug: maintenance_team
       - active: true
+        slug: entertainment_area
+      - active: true
         slug: computer_lab
       - active: true
-        slug: swimming_pool
-      - active: true
         slug: heating
+      - active: true
+        slug: swimming_pool
     headline: Live a stone’s throw from The University of Melbourne, within reach of trendy craft markets, live music and buzzing bars
     id: 383
     latitude: -37.8014
