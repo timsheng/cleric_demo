@@ -1,4 +1,9 @@
 require './payloads/payload'
-class FrontendFacadePayload < Payload
 
+module FrontendFacadePayload
+  module Property
+    class Summary < Payload
+
+    end
+  end
 end

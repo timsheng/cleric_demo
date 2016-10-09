@@ -15,11 +15,15 @@ class Payload
 
   def filename
     current_class = self.class.to_s
-    current_class.slice! "Payload"
-    file_name = current_class.downcase!
-    return file_name + '.yml'
+    array = current_class.split("::")
+    path = ''
+    array.each do |a|
+      a.slice!('Payload') if a.include? 'Payload'
+      path = path + a
+      path = path + '/' unless a.equal? array.last
+    end
+    return path.downcase! + '.yml'
   end
-
 end
 
 

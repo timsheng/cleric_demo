@@ -48,5 +48,13 @@ describe "Frontend Facade" do
         puts frontend_facade.expect_result(key)
       end
     end
+
+    context "new payload structure" do
+      it "demo", :tag => 'student_villiage_summary_en' do |example|
+        key = example.metadata[:tag]
+        property_payload = FrontendFacadePayload::Property::Summary.new(key)
+        puts property_payload.payload
+      end
+    end
   end
 end
