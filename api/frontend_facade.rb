@@ -12,9 +12,14 @@ class FrontendFacade < API
     self.class.post('/users', :body => payload.to_json)
   end
 
-  def get_summary_for_a_property property_slug,locale
+  def get_summary_for_a_property property_slug, locale
     self.class.headers({'Accept-Language' => locale})
     self.class.get("/properties/#{property_slug}/summary")
+  end
+
+  def get_details_of_a_city city_slug, locale
+    self.class.headers({'Accept-Language' => locale})
+    self.class.get("/cities/#{city_slug}")
   end
 
   def expect_result key
