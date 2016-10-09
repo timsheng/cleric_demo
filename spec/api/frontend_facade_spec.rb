@@ -52,11 +52,30 @@ describe "Frontend Facade" do
 
   describe "Locations" do
     context "Get the list of cities of a given country" do
+
+      def check_cities_sort key, sort, locale
+        frontend_facade_payload = FrontendFacadePayload.new(key)
+        expected = frontend_facade_payload.payload
+        response = frontend_facade.get_cities_of_a_given_country('au', locale, sort)
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        if sort == 'rank'
+          expected_array = expected['cities'].sort_by{|x| x[sort] * -1}
+          size = expected_array.size
+          for i in 0..size - 1
+            expect(result['cities'][i]['rank']).to eq(expected_array[i]['rank'])
+          end
+        else
+          expected_array = expected['cities'].sort_by{|x| x[sort]}
+          expect(result['cities']).to eq(expected_array)
+        end
+      end
+
       it "Check basic information is correct based on given country for en-gb.", :tag => 'location_cities_au_en' do |example|
         key = example.metadata[:tag]
         frontend_facade_payload = FrontendFacadePayload.new(key)
         expected = frontend_facade_payload.payload
-        response = frontend_facade.get_cities_of_a_given_country('au','en-gb',nil)
+        response = frontend_facade.get_cities_of_a_given_country('au', 'en-gb')
         result = response.parsed_response
         expect(response.code).to be(200)
         expect(result).to be_deep_equal(expected)
@@ -66,7 +85,7 @@ describe "Frontend Facade" do
         key = example.metadata[:tag]
         frontend_facade_payload = FrontendFacadePayload.new(key)
         expected = frontend_facade_payload.payload
-        response = frontend_facade.get_cities_of_a_given_country('au','zh-cn',nil)
+        response = frontend_facade.get_cities_of_a_given_country('au', 'zh-cn')
         result = response.parsed_response
         expect(response.code).to be(200)
         expect(result).to be_deep_equal(expected)
@@ -76,68 +95,22 @@ describe "Frontend Facade" do
         key = example.metadata[:tag]
         frontend_facade_payload = FrontendFacadePayload.new(key)
         expected = frontend_facade_payload.payload
-        response = frontend_facade.get_cities_of_a_given_country('de','en-gb',nil)
+        response = frontend_facade.get_cities_of_a_given_country('de', 'en-gb')
         result = response.parsed_response
         expect(response.code).to be(200)
         expect(result).to be_deep_equal(expected)
       end
 
-      it "Check response can be sorted by original_name for en-gb", :tag => 'location_cities_au_en' do |example|
+      it "Check response can be sorted by name,original_name,slug,rank for en-gb", :tag => 'location_cities_au_en' do |example|
         key = example.metadata[:tag]
-        frontend_facade_payload = FrontendFacadePayload.new(key)
-        expected = frontend_facade_payload.payload
-        expected_array = expected['cities'].sort_by{|x| x["original_name"]}
-        response = frontend_facade.get_cities_of_a_given_country('au','en-gb','original_name')
-        result = response.parsed_response
-        expect(response.code).to be(200)
-        expect(result['cities']).to eq(expected_array)
-      end
-
-      it "Check response can be sorted by name for en-gb", :tag => 'location_cities_au_en' do |example|
-        key = example.metadata[:tag]
-        frontend_facade_payload = FrontendFacadePayload.new(key)
-        expected = frontend_facade_payload.payload
-        expected_array = expected['cities'].sort_by{|x| x["name"]}
-        response = frontend_facade.get_cities_of_a_given_country('au','en-gb','name')
-        result = response.parsed_response
-        expect(response.code).to be(200)
-        expect(result['cities']).to eq(expected_array)
-      end
-
-      it "Check response can be sorted by rank for en-gb", :tag => 'location_cities_au_en' do |example|
-        key = example.metadata[:tag]
-        frontend_facade_payload = FrontendFacadePayload.new(key)
-        expected = frontend_facade_payload.payload
-        expected_array = expected['cities'].sort_by{|x| x["rank"] * -1}
-        response = frontend_facade.get_cities_of_a_given_country('au','en-gb','rank')
-        result = response.parsed_response
-        expect(response.code).to be(200)
-        size = expected_array.size
-        for i in 0..size - 1
-          expect(result['cities'][i]['rank']).to eq(expected_array[i]['rank'])
+        ["name", "original_name", "slug", "rank"].each do |e|
+          check_cities_sort key, e, 'en-gb'
         end
-      end
-
-      it "Check response can be sorted by slug for en-gb", :tag => 'location_cities_au_en' do |example|
-        key = example.metadata[:tag]
-        frontend_facade_payload = FrontendFacadePayload.new(key)
-        expected = frontend_facade_payload.payload
-        expected_array = expected['cities'].sort_by{|x| x["slug"]}
-        response = frontend_facade.get_cities_of_a_given_country('au','en-gb','slug')
-        result = response.parsed_response
-        expect(response.code).to be(200)
-        expect(result['cities']).to eq(expected_array)
       end
 
       it "Check response can be sorted by name for zh-cn", :tag => 'location_cities_au_cn' do |example|
         key = example.metadata[:tag]
-        frontend_facade_payload = FrontendFacadePayload.new(key)
-        expected = frontend_facade_payload.payload
-        expected_array = expected['cities'].sort_by{|x| x["name"]}
-        response = frontend_facade.get_cities_of_a_given_country('au','zh-cn','name')
-        result = response.parsed_response
-        expect(response.code).to be(200)
-        expect(result['cities']).to eq(expected_array)
+        check_cities_sort key, 'name', 'zh-cn'
       end
     end
   end
