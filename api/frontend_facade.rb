@@ -17,6 +17,11 @@ class FrontendFacade < API
     self.class.get("/properties/#{property_slug}/summary")
   end
 
+  def get_details_of_a_city city_slug, locale
+    self.class.headers({'Accept-Language' => locale})
+    self.class.get("/cities/#{city_slug}")
+  end
+
   def get_cities_of_a_given_country country_slug, locale, sort = nil
     self.class.headers({'Accept-Language' => locale})
     if sort == nil

@@ -167,5 +167,37 @@ describe "Frontend Facade" do
         check_cities_sort key, 'name', 'zh-cn'
       end
     end
+
+    context "Get the details of a city" do
+      it "Check basic info base on the given city for en-gb.", :tag => 'location_city_sydney_en' do |example|
+        key = example.metadata[:tag]
+        frontend_facade_payload = FrontendFacadePayload.new(key)
+        expected = frontend_facade_payload.payload
+        response = frontend_facade.get_details_of_a_city('sydney', 'en-gb')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        expect(result).to be_deep_equal(expected)
+      end
+
+      it "Check basic info base on the given city for zh-cn.", :tag => 'location_city_sydney_cn' do |example|
+        key = example.metadata[:tag]
+        frontend_facade_payload = FrontendFacadePayload.new(key)
+        expected = frontend_facade_payload.payload
+        response = frontend_facade.get_details_of_a_city('sydney', 'zh-cn')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        expect(result).to be_deep_equal(expected)
+      end
+
+      it "Check unpublished areas are not returned", :tag => 'location_city_london_en' do |example|
+        key = example.metadata[:tag]
+        frontend_facade_payload = FrontendFacadePayload.new(key)
+        expected = frontend_facade_payload.payload
+        response = frontend_facade.get_details_of_a_city('london', 'en-gb')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        expect(result['areas']).to be_deep_equal(expected['areas'])
+      end
+    end
   end
 end
