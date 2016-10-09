@@ -26,6 +26,15 @@ class FrontendFacade < API
     end
   end
 
+  def get_list_of_countries locale, sort = nil
+    self.class.headers({'Accept-Language' => locale})
+    if sort == nil
+      self.class.get("/countries")
+    else
+      self.class.get("/countries?sort=#{sort}")
+    end
+  end
+
   def expect_result key
     DataMagic.load 'frontendfacade.yml'
     data_for(key)['response']

@@ -21,7 +21,7 @@ describe "Frontend Facade" do
         key = example.metadata[:tag]
         frontend_facade_payload = FrontendFacadePayload.new(key)
         expected = frontend_facade_payload.payload
-        response = frontend_facade.get_summary_for_a_property('student-village','en-gb')
+        response = frontend_facade.get_summary_for_a_property('student-village', 'en-gb')
         result = response.parsed_response
         expect(response.code).to be(200)
         expect(result).to be_deep_equal(expected)
@@ -31,10 +31,10 @@ describe "Frontend Facade" do
         key = example.metadata[:tag]
         frontend_facade_payload = FrontendFacadePayload.new(key)
         expected = frontend_facade_payload.payload
-        response = frontend_facade.get_summary_for_a_property('te-puni-village','zh-cn')
+        response = frontend_facade.get_summary_for_a_property('te-puni-village', 'zh-cn')
         result = response.parsed_response
         expect(response.code).to be(200)
-        expect(result).to eq(expected)
+        expect(result).to be_deep_equal(expected)
       end
     end
 
@@ -48,9 +48,63 @@ describe "Frontend Facade" do
         puts frontend_facade.expect_result(key)
       end
     end
+
+    context "new payload structure" do
+      it "demo", :tag => 'student_villiage_summary_en' do |example|
+        key = example.metadata[:tag]
+        property_payload = FrontendFacadePayload::Property::Summary.new(key)
+        puts property_payload.payload
+      end
+    end
   end
 
   describe "Locations" do
+
+    context "Get the list of countries" do
+
+      def check_countries_sort key, sort, locale
+        frontend_facade_payload = FrontendFacadePayload.new(key)
+        expected = frontend_facade_payload.payload
+        expected_array = expected['countries'].sort_by{|x| x[sort]}
+        response = frontend_facade.get_list_of_countries(locale, sort)
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        expect(result['countries']).to eq(expected_array)
+      end
+
+      it "Check basic information is correct for en-gb and unpublished country is not returned.", :tag => 'location_countries_list_en' do |example|
+        key = example.metadata[:tag]
+        frontend_facade_payload = FrontendFacadePayload.new(key)
+        expected = frontend_facade_payload.payload
+        response = frontend_facade.get_list_of_countries('en-gb')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        expect(result).to be_deep_equal(expected)
+      end
+
+      it "Check basic information is correct for zh-cn.", :tag => 'location_countries_list_cn' do |example|
+        key = example.metadata[:tag]
+        frontend_facade_payload = FrontendFacadePayload.new(key)
+        expected = frontend_facade_payload.payload
+        response = frontend_facade.get_list_of_countries('zh-cn')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        expect(result).to be_deep_equal(expected)
+      end
+
+      it "Check response can be sorted by name,original_name,slug for en-gb", :tag => 'location_countries_list_en' do |example|
+        key = example.metadata[:tag]
+        ["name", "original_name", "slug"].each do |e|
+          check_countries_sort(key, e, 'en-gb')
+        end
+      end
+
+      it "Check response can be sorted by name for zh-cn", :tag => 'location_countries_list_cn' do |example|
+        key = example.metadata[:tag]
+        check_countries_sort(key, 'name', 'zh-cn')
+      end
+    end
+
     context "Get the list of cities of a given country" do
 
       def check_cities_sort key, sort, locale

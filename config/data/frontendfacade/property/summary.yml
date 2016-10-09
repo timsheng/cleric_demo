@@ -1,0 +1,88 @@
+student_villiage_summary_en:
+  payload:
+    name: Student Village
+    address: 116-128 Leicester Street
+    description: |-
+      Get to campus in just a couple of minutes from Student Village. Take a detour to hip Le Miel et La Lune café for your morning coffee, or save your caffeine fix for after class – you’re never far from a gourmet hotspot in this cosmopolitan locale. After, browse the stalls at Finders Keepers craft market in the historic Royal Exhibition Building, before heading to the hip Fitzroy neighbourhood for a night out with its eclectic mix of cool bars. Cocktails at The Everleigh Melbourne or live music at The Old Bar are hard to beat! <p>Your brand new home is around five minutes on foot from The University of Melbourne, and close to the city’s Central Business District. Melbourne Central railway station is just a few blocks away, while the nearby tram stops will take you to the transport hub of Flinders Street Station – your launchpad for discovering the busy social scene on Chapel Street in South Yarra.</p>
+
+      <p>Back at home, relax after a busy day in your contemporary apartment. All homes have a modern, well-equipped kitchen, which can be either private or shared, so you can whip up your favourite meals for dinner. If you’re sharing accommodation, you might be able to pick up some delicious recipe ideas from your friends. Better still, head to the outdoor BBQ zone and enjoy dining together alfresco.</p>
+
+      <p>Get ready each morning before class in your apartment’s stylish bathroom, then choose what to wear from your built-in wardrobe. You can make sure you’ve always got clean clothes available, thanks to the on-site laundry facilities. After your lectures, use the high-speed Wi-Fi and wireless e-library back home to work on your assignments at your study desk.</p>
+
+      <p>When it’s time to kick back, relax in the recreation zone or make some noise in the music room. If you’ve got some energy to burn off, head to the gym or half basketball court to work up a sweat, before having a refreshing dip in the heated swimming pool. You can rest easy knowing there’s 24/7 support available if you have any problems.</p>
+    longitude: 144.961
+    hero_image:
+      alt_text:
+      src: "/mstr/country/australia/city/melbourne/property/student-village/image-o6cpfy.jpeg"
+    zip_code: '3053'
+    currency: AUD
+    facilities:
+    - type: facilities
+      items:
+      - active: true
+        slug: outdoor_area
+      - active: true
+        slug: gym
+      - active: true
+        slug: wifi
+      - active: true
+        slug: bbq
+      - active: true
+        slug: fan
+      - active: true
+        slug: cooking_facilities
+      - active: true
+        slug: basketball_court
+      - active: true
+        slug: library_study_area
+      - active: true
+        slug: maintenance_team
+      - active: true
+        slug: entertainment_area
+      - active: true
+        slug: computer_lab
+      - active: true
+        slug: heating
+      - active: true
+        slug: swimming_pool
+    headline: Live a stone’s throw from The University of Melbourne, within reach of trendy craft markets, live music and buzzing bars
+    id: 383
+    latitude: -37.8014
+    total_beds: 650
+    billing_cycle: weekly
+    gallery_images:
+    - alt_text: Student accommodation photo for Student Village in Melbourne City Centre, Melbourne
+      src: "/mstr/country/australia/city/melbourne/property/student-village/gallery/image-6/image-nvukjw.jpeg"
+    - alt_text: Student accommodation photo for Student Village in Melbourne City Centre, Melbourne
+      src: "/mstr/country/australia/city/melbourne/property/student-village/gallery/image-1/image-nvukjw.jpeg"
+    - alt_text: Student accommodation photo for Student Village in Melbourne City Centre, Melbourne
+      src: "/mstr/country/australia/city/melbourne/property/student-village/gallery/image-12/image-nvukjy.jpeg"
+    - alt_text: Student accommodation photo for Student Village in Melbourne City Centre, Melbourne
+      src: "/mstr/country/australia/city/melbourne/property/student-village/gallery/image-3/image-nvukjw.jpeg"
+    - alt_text: Student accommodation photo for Student Village in Melbourne City Centre, Melbourne
+      src: "/mstr/country/australia/city/melbourne/property/student-village/gallery/image-4/image-nvukjw.jpeg"
+    - alt_text: Student accommodation photo for Student Village in Melbourne City Centre, Melbourne
+      src: "/mstr/country/australia/city/melbourne/property/student-village/gallery/image-5/image-nvukjw.jpeg"
+    - alt_text: Student accommodation photo for Student Village in Melbourne City Centre, Melbourne
+      src: "/mstr/country/australia/city/melbourne/property/student-village/gallery/image-9/image-nvukjy.jpeg"
+    - alt_text: Student accommodation photo for Student Village in Melbourne City Centre, Melbourne
+      src: "/mstr/country/australia/city/melbourne/property/student-village/gallery/image-10/image-nvukjx.jpeg"
+    - alt_text: Student accommodation photo for Student Village in Melbourne City Centre, Melbourne
+      src: "/mstr/country/australia/city/melbourne/property/student-village/gallery/image-7/image-nvukjy.jpeg"
+    - alt_text: Student accommodation photo for Student Village in Melbourne City Centre, Melbourne
+      src: "/mstr/country/australia/city/melbourne/property/student-village/gallery/image-8/image-nvukjx.jpeg"
+    meta_title:
+    city:
+      name: Melbourne
+      original_name: Melbourne
+      slug: melbourne
+    area:
+      name: Melbourne City Centre
+      original_name: Melbourne City Centre
+      slug: melbourne-city-centre
+    country:
+      name: Australia
+      original_name: Australia
+      slug: au
+    meta_description: Book rooms at Student Village. We make booking student accommodation easy. Our experts will find you the best room and manage everything else for you.
+    slug: student-village
