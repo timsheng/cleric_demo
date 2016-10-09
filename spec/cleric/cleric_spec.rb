@@ -1,9 +1,9 @@
-require 'spec_helper'
-
-class TestCleric
-  include Cleric
-
-end
+# require 'spec_helper'
+#
+# class TestCleric
+#   include Cleric
+#
+# end
 
 # describe Cleric do
   # context "when included in other class" do
