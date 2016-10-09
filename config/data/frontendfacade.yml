@@ -238,7 +238,7 @@ te_puni_village_summary_cn:
     headline: " "
     slug: te-puni-village
 
-location_country_en:
+location_countries_list_en:
   payload:
     countries:
     - original_name: United States
@@ -302,7 +302,7 @@ location_country_en:
       name: Austria
       slug: at
 
-location_country_cn:
+location_countries_list_cn:
   payload:
     countries:
     - original_name: United States
