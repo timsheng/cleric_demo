@@ -17,6 +17,15 @@ class FrontendFacade < API
     self.class.get("/properties/#{property_slug}/summary")
   end
 
+  def get_cities_of_a_given_country country_slug,locale,sort
+    self.class.headers({'Accept-Language' => locale})
+    if sort == nil
+      self.class.get("/cities?country_slug=#{country_slug}")
+    else
+      self.class.get("/cities?country_slug=#{country_slug}&sort=#{sort}")
+    end
+  end
+
   def expect_result key
     DataMagic.load 'frontendfacade.yml'
     data_for(key)['response']

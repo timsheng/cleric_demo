@@ -49,4 +49,96 @@ describe "Frontend Facade" do
       end
     end
   end
+
+  describe "Locations" do
+    context "Get the list of cities of a given country" do
+      it "Check basic information is correct based on given country for en-gb.", :tag => 'location_cities_au_en' do |example|
+        key = example.metadata[:tag]
+        frontend_facade_payload = FrontendFacadePayload.new(key)
+        expected = frontend_facade_payload.payload
+        response = frontend_facade.get_cities_of_a_given_country('au','en-gb',nil)
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        expect(result).to be_deep_equal(expected)
+      end
+
+      it "Check basic information is correct based on given country for zh-cn.", :tag => 'location_cities_au_cn' do |example|
+        key = example.metadata[:tag]
+        frontend_facade_payload = FrontendFacadePayload.new(key)
+        expected = frontend_facade_payload.payload
+        response = frontend_facade.get_cities_of_a_given_country('au','zh-cn',nil)
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        expect(result).to be_deep_equal(expected)
+      end
+
+      it "Check unpublished cities are not returned for de.", :tag => 'location_cities_de_en' do |example|
+        key = example.metadata[:tag]
+        frontend_facade_payload = FrontendFacadePayload.new(key)
+        expected = frontend_facade_payload.payload
+        response = frontend_facade.get_cities_of_a_given_country('de','en-gb',nil)
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        expect(result).to be_deep_equal(expected)
+      end
+
+      it "Check response can be sorted by original_name for en-gb", :tag => 'location_cities_au_en' do |example|
+        key = example.metadata[:tag]
+        frontend_facade_payload = FrontendFacadePayload.new(key)
+        expected = frontend_facade_payload.payload
+        expected_array = expected['cities'].sort_by{|x| x["original_name"]}
+        response = frontend_facade.get_cities_of_a_given_country('au','en-gb','original_name')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        expect(result['cities']).to eq(expected_array)
+      end
+
+      it "Check response can be sorted by name for en-gb", :tag => 'location_cities_au_en' do |example|
+        key = example.metadata[:tag]
+        frontend_facade_payload = FrontendFacadePayload.new(key)
+        expected = frontend_facade_payload.payload
+        expected_array = expected['cities'].sort_by{|x| x["name"]}
+        response = frontend_facade.get_cities_of_a_given_country('au','en-gb','name')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        expect(result['cities']).to eq(expected_array)
+      end
+
+      it "Check response can be sorted by rank for en-gb", :tag => 'location_cities_au_en' do |example|
+        key = example.metadata[:tag]
+        frontend_facade_payload = FrontendFacadePayload.new(key)
+        expected = frontend_facade_payload.payload
+        expected_array = expected['cities'].sort_by{|x| x["rank"] * -1}
+        response = frontend_facade.get_cities_of_a_given_country('au','en-gb','rank')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        size = expected_array.size
+        for i in 0..size - 1
+          expect(result['cities'][i]['rank']).to eq(expected_array[i]['rank'])
+        end
+      end
+
+      it "Check response can be sorted by slug for en-gb", :tag => 'location_cities_au_en' do |example|
+        key = example.metadata[:tag]
+        frontend_facade_payload = FrontendFacadePayload.new(key)
+        expected = frontend_facade_payload.payload
+        expected_array = expected['cities'].sort_by{|x| x["slug"]}
+        response = frontend_facade.get_cities_of_a_given_country('au','en-gb','slug')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        expect(result['cities']).to eq(expected_array)
+      end
+
+      it "Check response can be sorted by name for zh-cn", :tag => 'location_cities_au_cn' do |example|
+        key = example.metadata[:tag]
+        frontend_facade_payload = FrontendFacadePayload.new(key)
+        expected = frontend_facade_payload.payload
+        expected_array = expected['cities'].sort_by{|x| x["name"]}
+        response = frontend_facade.get_cities_of_a_given_country('au','zh-cn','name')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        expect(result['cities']).to eq(expected_array)
+      end
+    end
+  end
 end
