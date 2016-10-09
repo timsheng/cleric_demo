@@ -15,18 +15,14 @@ class Payload
 
   def filename
     current_class = self.class.to_s
-    if current_class.include? "::"
-      path, sub_path, file_name = current_class.split("::")
-      path.slice!('Payload')
-      new_path = path + '/' + sub_path
-      new_path = new_path.downcase!
-      new_file_name = file_name.downcase!
-      DataMagic.yml_directory = "config/data/#{new_path}"
-      return new_file_name + '.yml'
-    else
-      current_class.slice!('Payload')
-      return current_class + '.yml'
+    array = current_class.split("::")
+    path = ''
+    array.each do |a|
+      a.slice!('Payload') if a.include? 'Payload'
+      path = path + a
+      path = path + '/' unless a.equal? array.last
     end
+    return path.downcase! + '.yml'
   end
 end
 
