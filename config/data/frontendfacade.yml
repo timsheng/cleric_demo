@@ -238,6 +238,134 @@ te_puni_village_summary_cn:
     headline: " "
     slug: te-puni-village
 
+location_countries_list_en:
+  payload:
+    countries:
+    - original_name: United States
+      name: United States
+      slug: us
+    - original_name: United Kingdom
+      name: United Kingdom
+      slug: uk
+    - original_name: New Zealand
+      name: New Zealand
+      slug: nz
+    - original_name: Canada
+      name: Canada
+      slug: ca
+    - original_name: Australia
+      name: Australia
+      slug: au
+    - original_name: Germany
+      name: Germany
+      slug: de
+    - original_name: Netherlands
+      name: Netherlands
+      slug: nl
+    - original_name: Spain
+      name: Spain
+      slug: es
+    - original_name: South Africa
+      name: South Africa
+      slug: za
+    - original_name: Hungary
+      name: Hungary
+      slug: hu
+    - original_name: France
+      name: France
+      slug: fr
+    - original_name: Denmark
+      name: Denmark
+      slug: dm
+    - original_name: Ireland
+      name: Ireland
+      slug: ie
+    - original_name: Poland
+      name: Poland
+      slug: pl
+    - original_name: Italy
+      name: Italy
+      slug: it
+    - original_name: Japan - TEST
+      name: Japan - TEST
+      slug: jp
+    - original_name: United Arab Emirates - TEST
+      name: United Arab Emirates
+      slug: ae
+    - original_name: New country
+      name: New country
+      slug: ao
+    - original_name: Switzerland
+      name: Switzerland
+      slug: ch
+    - original_name: Austria
+      name: Austria
+      slug: at
+
+location_countries_list_cn:
+  payload:
+    countries:
+    - original_name: United States
+      name: 美国
+      slug: us
+    - original_name: United Kingdom
+      name: 英国
+      slug: uk
+    - original_name: New Zealand
+      name: 新西兰
+      slug: nz
+    - original_name: Canada
+      name: 加拿大
+      slug: ca
+    - original_name: Australia
+      name: 澳大利亚
+      slug: au
+    - original_name: Germany
+      name: 德国
+      slug: de
+    - original_name: Netherlands
+      name: 荷兰
+      slug: nl
+    - original_name: Spain
+      name: 西班牙
+      slug: es
+    - original_name: South Africa
+      name: 南非
+      slug: za
+    - original_name: Hungary
+      name: 匈牙利
+      slug: hu
+    - original_name: France
+      name: 法国
+      slug: fr
+    - original_name: Denmark
+      name: 丹麦
+      slug: dm
+    - original_name: Ireland
+      name: 爱尔兰
+      slug: ie
+    - original_name: Poland
+      name: 波兰
+      slug: pl
+    - original_name: Italy
+      name: 意大利
+      slug: it
+    - original_name: Japan - TEST
+      name: 日本
+      slug: jp
+    - original_name: United Arab Emirates - TEST
+      name: 阿拉伯联合酋长国
+      slug: ae
+    - original_name: New country
+      name: New country
+      slug: ao
+    - original_name: Switzerland
+      name: 瑞士
+      slug: ch
+    - original_name: Austria
+      name: 奥地利
+      slug: at
+
 Users2:
   response:
     id: ^id
