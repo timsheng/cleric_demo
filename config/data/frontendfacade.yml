@@ -238,6 +238,222 @@ te_puni_village_summary_cn:
     headline: " "
     slug: te-puni-village
 
+location_areas_sydney_en:
+  payload:
+    areas:
+    - rank: 0.0
+      original_name: Inner Sydney
+      name: Inner Sydney
+      slug: inner-sydney
+    - rank: 0.0
+      original_name: Sydney CBD
+      name: Sydney CBD
+      slug: cbd
+    - rank: 0.0
+      original_name: North West Sydney
+      name: North West Sydney
+      slug: north-west-sydney
+    - rank: 40.0
+      original_name: Inner West
+      name: Inner West
+      slug: inner-west
+    - rank: 0.0
+      original_name: South West Sydney
+      name: South West Sydney
+      slug: south-west-sydney
+    - rank: 0.0
+      original_name: Western Sydney
+      name: Western Sydney
+      slug: western-sydney
+    - rank: 0.0
+      original_name: North Sydney
+      name: North Sydney
+      slug: north-sydney
+    - rank: 0.0
+      original_name: Parramatta
+      name: Parramatta
+      slug: parramatta
+    - rank: 0.0
+      original_name: Richmond
+      name: Richmond
+      slug: richmond
+    - rank: 0.0
+      original_name: The Eastern Suburbs
+      name: The Eastern Suburbs
+      slug: eastern-suburbs
+    - rank: 50.0
+      original_name: Sydney Central
+      name: Sydney Central
+      slug: central
+
+location_areas_london_en:
+  payload:
+    areas:
+    - rank: 0
+      original_name: Colindale
+      name: Colindale
+      slug: colindale
+    - rank: 0
+      original_name: Waterloo
+      name: Waterloo
+      slug: waterloo
+    - rank: 0
+      original_name: Marylebone
+      name: Marylebone
+      slug: marylebone
+    - rank: 0
+      original_name: Kennington
+      name: Kennington
+      slug: kennington
+    - rank: 0
+      original_name: Stratford
+      name: Stratford
+      slug: stratford
+    - rank: 0
+      original_name: South Bank
+      name: South Bank
+      slug: south-bank
+    - rank: 0
+      original_name: Kingston
+      name: Kingston
+      slug: kingston
+    - rank: 0
+      original_name: Spitalfields
+      name: Spitalfields
+      slug: spitalfields
+    - rank: 0
+      original_name: West Hampstead
+      name: West Hampstead
+      slug: west-hampstead
+    - rank: 0
+      original_name: Wembley
+      name: Wembley
+      slug: wembley
+    - rank: 0
+      original_name: Ealing
+      name: Ealing
+      slug: ealing
+    - rank: 0
+      original_name: Hammersmith
+      name: Hammersmith
+      slug: hammersmith
+    - rank: 0
+      original_name: Kensington & Chelsea
+      name: Kensington & Chelsea
+      slug: kensington-chelsea
+    - rank: 0
+      original_name: Stoke Newington
+      name: Stoke Newington
+      slug: stoke-newington
+    - rank: 0
+      original_name: Bloomsbury
+      name: Bloomsbury
+      slug: bloomsbury
+    - rank: 0
+      original_name: Willesden
+      name: Willesden
+      slug: willesden
+    - rank: 0
+      original_name: Twickenham
+      name: Twickenham
+      slug: twickenham
+    - rank: 0
+      original_name: Area TEST
+      name: Area TEST
+      slug: area-test
+    - rank: 0
+      original_name: Clerkenwell
+      name: Clerkenwell
+      slug: clerkenwell
+    - rank: 0
+      original_name: Kentish Town
+      name: Kentish Town
+      slug: kentish-town
+    - rank: 0
+      original_name: Kings Cross
+      name: Kings Cross
+      slug: kings-cross
+    - rank: 0
+      original_name: Greenwich
+      name: Greenwich
+      slug: greenwich
+    - rank: 0
+      original_name: Tottenham
+      name: Tottenham
+      slug: tottenham
+    - rank: 0
+      original_name: Islington
+      name: Islington
+      slug: islington
+    - rank: 0
+      original_name: Notting Hill
+      name: Notting Hill
+      slug: notting-hill
+    - rank: 0
+      original_name: Shoreditch
+      name: Shoreditch
+      slug: shoreditch
+    - rank: 0
+      original_name: South London
+      name: South London
+      slug: south-london
+    - rank: 0
+      original_name: Camden
+      name: Camden
+      slug: camden
+    - rank: 0
+      original_name: Mile End & Bethnal Green
+      name: Mile End & Bethnal Green
+      slug: mile-end-bethnal-green
+
+location_areas_sydney_cn:
+  payload:
+    areas:
+    - rank: 0.0
+      original_name: Inner Sydney
+      name: 悉尼内城区
+      slug: inner-sydney
+    - rank: 0.0
+      original_name: Sydney CBD
+      name: 悉尼中心商业区
+      slug: cbd
+    - rank: 0.0
+      original_name: North West Sydney
+      name: 悉尼西北部
+      slug: north-west-sydney
+    - rank: 40.0
+      original_name: Inner West
+      name: 内西区
+      slug: inner-west
+    - rank: 0.0
+      original_name: South West Sydney
+      name: 悉尼西南部
+      slug: south-west-sydney
+    - rank: 0.0
+      original_name: Western Sydney
+      name: 悉尼西区
+      slug: western-sydney
+    - rank: 0.0
+      original_name: North Sydney
+      name: 北悉尼
+      slug: north-sydney
+    - rank: 0.0
+      original_name: Parramatta
+      name: Parramatta
+      slug: parramatta
+    - rank: 0.0
+      original_name: Richmond
+      name: Richmond
+      slug: richmond
+    - rank: 0.0
+      original_name: The Eastern Suburbs
+      name: 东郊
+      slug: eastern-suburbs
+    - rank: 50.0
+      original_name: Sydney Central
+      name: 悉尼市中心
+      slug: central
+
 Users2:
   response:
     id: ^id
