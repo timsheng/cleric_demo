@@ -100,6 +100,14 @@ describe "Frontend Facade" do
         expect(result).to be_deep_equal(expected)
       end
 
+      it "Check areas for non-area city" do
+        expected = {"areas" => []}
+        response = frontend_facade.get_areas_of_a_given_city('wellington-changed', 'en-gb')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        expect(result).to eq(expected)
+      end
+
       it "Check response can be sorted by name,original_name,slug,rank for en-gb", :tag => 'location_areas_sydney_en' do |example|
         key = example.metadata[:tag]
         ["name", "original_name", "slug", "rank"].each do |e|
