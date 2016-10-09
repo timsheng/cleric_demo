@@ -238,6 +238,194 @@ te_puni_village_summary_cn:
     headline: " "
     slug: te-puni-village
 
+location_cities_au_en:
+  payload:
+    cities:
+    - rank: 0.0
+      original_name: Sunshine Coast
+      name: Sunshine Coast
+      slug: sunshine-coast
+    - rank: 109.0
+      original_name: Melbourne
+      name: Melbourne
+      slug: melbourne
+    - rank: 110.0
+      original_name: Sydney
+      name: Sydney
+      slug: sydney
+    - rank: 107.0
+      original_name: Canberra
+      name: Canberra
+      slug: canberra
+    - rank: 64.0
+      original_name: Darwin
+      name: Darwin
+      slug: darwin
+    - rank: 63.0
+      original_name: Gold Coast
+      name: Gold Coast
+      slug: gold-coast
+    - rank: 0.0
+      original_name: Lismore
+      name: Lismore
+      slug: lismore
+    - rank: 0.0
+      original_name: Coffs Harbour
+      name: Coffs Harbour
+      slug: coffs-harbour
+    - rank: 66.0
+      original_name: Perth
+      name: Perth
+      slug: perth
+    - rank: 65.0
+      original_name: Brisbane
+      name: Brisbane
+      slug: brisbane
+    - rank: 67.0
+      original_name: Adelaide
+      name: Adelaide
+      slug: adelaide
+    - rank: 0.0
+      original_name: Bunbury
+      name: Bunbury
+      slug: bunbury
+    - rank: 0.0
+      original_name: City new test
+      name: City new test
+      slug: city-new-test
+
+location_cities_de_en:
+  payload:
+    cities:
+    - rank: 0.0
+      original_name: Leipzig
+      name: Leipzig
+      slug: leipzig
+    - rank: 0.0
+      original_name: Bayreuth
+      name: Bayreuth
+      slug: bayreuth
+    - rank: 0.0
+      original_name: Dresden
+      name: Dresden
+      slug: dresden
+    - rank: 0.0
+      original_name: Munich
+      name: Munich
+      slug: munich
+    - rank: 0.0
+      original_name: Essen
+      name: Essen
+      slug: essen
+    - rank: 0.0
+      original_name: Frankfurt
+      name: Frankfurt
+      slug: frankfurt
+    - rank: 0.0
+      original_name: Karlsruhe
+      name: Karlsruhe
+      slug: karlsruhe
+    - rank: 0.0
+      original_name: Hamburg
+      name: Hamburg
+      slug: hamburg
+    - rank: 0.0
+      original_name: Mainz
+      name: Mainz
+      slug: mainz
+    - rank: 0.0
+      original_name: Bremen
+      name: Bremen
+      slug: bremen
+    - rank: 0.0
+      original_name: Berlin
+      name: Berlin
+      slug: berlin
+    - rank: 0.0
+      original_name: Greifswald
+      name: Greifswald
+      slug: greifswald
+    - rank: 0.0
+      original_name: Kiel
+      name: Kiel
+      slug: kiel
+    - rank: 0.0
+      original_name: Stuttgart
+      name: Stuttgart
+      slug: stuttgart
+    - rank: 0.0
+      original_name: Nuremberg
+      name: Nuremberg
+      slug: nuremberg
+    - rank: 0.0
+      original_name: Erlangen
+      name: Erlangen
+      slug: erlangen
+    - rank: 0.0
+      original_name: Aachen
+      name: Aachen
+      slug: aachen
+    - rank: 0.0
+      original_name: Potsdam
+      name: Potsdam
+      slug: potsdam
+
+location_cities_au_cn:
+  payload:
+    cities:
+    - rank: 0.0
+      original_name: Sunshine Coast
+      name: 阳光海岸
+      slug: sunshine-coast
+    - rank: 109.0
+      original_name: Melbourne
+      name: 墨尔本
+      slug: melbourne
+    - rank: 110.0
+      original_name: Sydney
+      name: 悉尼
+      slug: sydney
+    - rank: 107.0
+      original_name: Canberra
+      name: 堪培拉
+      slug: canberra
+    - rank: 64.0
+      original_name: Darwin
+      name: 达尔文
+      slug: darwin
+    - rank: 63.0
+      original_name: Gold Coast
+      name: 黄金海岸
+      slug: gold-coast
+    - rank: 0.0
+      original_name: Lismore
+      name: 利斯莫尔
+      slug: lismore
+    - rank: 0.0
+      original_name: Coffs Harbour
+      name: 科夫斯港
+      slug: coffs-harbour
+    - rank: 66.0
+      original_name: Perth
+      name: 珀斯
+      slug: perth
+    - rank: 65.0
+      original_name: Brisbane
+      name: 布里斯班
+      slug: brisbane
+    - rank: 67.0
+      original_name: Adelaide
+      name: 阿德莱德
+      slug: adelaide
+    - rank: 0.0
+      original_name: Bunbury
+      name: 班伯里
+      slug: bunbury
+    - rank: 0.0
+      original_name: City new test
+      name: City new test
+      slug: city-new-test
+
 location_countries_list_en:
   payload:
     countries:
