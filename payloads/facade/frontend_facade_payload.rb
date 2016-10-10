@@ -21,5 +21,8 @@ module FrontendFacadePayload
 
     class Areas < Payload
     end
+
+    class Area < Payload
+    end
   end
 end
