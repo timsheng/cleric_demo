@@ -86,3 +86,99 @@ student_villiage_summary_en:
       slug: au
     meta_description: Book rooms at Student Village. We make booking student accommodation easy. Our experts will find you the best room and manage everything else for you.
     slug: student-village
+
+te_puni_village_summary_cn:
+  payload:
+    hero_image:
+      alt_text:
+      src: "/mstr/country/new-zealand/city/wellington/property/te-puni-village/image-nygyck.jpeg"
+    total_beds: 398
+    zip_code: '6021'
+    longitude: 174.767
+    city:
+      original_name: Wellington
+      name: 惠灵顿
+      slug: wellington-changed
+    description: "<p><strong>公寓概况 </strong></p>\r\n\r\n<p>Te Puni Village于2009年开业，是学生公寓中的劳斯莱斯，引领全新学生公寓理念。在无敌海景环绕下学习生活的梦想即将成为现实！
+      Te Puni Village中的The Edge和The Tower两栋公寓里有348个单人间，The Terrace公寓楼里有33个单间套房和17个多人套房床位。所有房间家具齐全，设施一流。</p>\r\n\r\n<p><strong>地理位置
+      \ </strong></p>\r\n\r\n<p>位于维多利亚大学Kelburn校区内，12分钟步行就是建筑和设计学院，15分钟就到了Pipitea校区和惠灵顿市中心。</p>\r\n\r\n<p><strong>环境设施
+      \ </strong></p>\r\n\r\n<ul>\r\n\t<li>宽带</li>\r\n\t<li>无线网学习室</li>\r\n\t<li>社交区域</li>\r\n\t<li>户外露台</li>\r\n\t<li>天空电视影院和音乐房</li>\r\n\t<li>带公共卫浴设施的单人间</li>\r\n\t<li>惠灵顿海港无敌海景</li>\r\n\t<li>免费网络 </li>\r\n\t<li>免费停车</li>\r\n\t<li>洗衣房</li>\r\n</ul>\r\n\r\n<p><strong>其它费用</strong></p>\r\n\r\n<ul>\r\n\t<li>$50管理费</li>\r\n\t<li>$100社区活动费</li>\r\n\t<li>$368押金（退房时返还）</li>\r\n</ul>\r\n\r\n<p> </p>"
+    meta_title:
+    id: 390
+    currency: NZD
+    country:
+      original_name: New Zealand
+      name: 新西兰
+      slug: nz
+    gallery_images:
+    - alt_text:
+      src: "/mstr/country/new-zealand/city/wellington/property/te-puni-village/gallery/image-1/image-nygy6j.jpeg"
+    - alt_text:
+      src: "/mstr/country/new-zealand/city/wellington/property/te-puni-village/gallery/image-3/image-nygy6k.jpeg"
+    - alt_text:
+      src: "/mstr/country/new-zealand/city/wellington/property/te-puni-village/gallery/image-4/image-nygy6k.jpeg"
+    - alt_text:
+      src: "/mstr/country/new-zealand/city/wellington/property/te-puni-village/gallery/image-5/image-nygy6l.jpeg"
+    - alt_text:
+      src: "/mstr/country/new-zealand/city/wellington/property/te-puni-village/gallery/image-6/image-nygy6k.jpeg"
+    - alt_text:
+      src: "/mstr/country/new-zealand/city/wellington/property/te-puni-village/gallery/image-7/image-nygy6m.jpeg"
+    - alt_text:
+      src: "/mstr/country/new-zealand/city/wellington/property/te-puni-village/gallery/image-8/image-nygy6k.jpeg"
+    - alt_text:
+      src: "/mstr/country/new-zealand/city/wellington/property/te-puni-village/gallery/image-9/image-nygy6l.jpeg"
+    - alt_text:
+      src: "/mstr/country/new-zealand/city/wellington/property/te-puni-village/gallery/image-10/image-nygy6m.jpeg"
+    - alt_text:
+      src: "/mstr/country/new-zealand/city/wellington/property/te-puni-village/gallery/image-11/image-nygy6m.jpeg"
+    - alt_text:
+      src: "/mstr/country/new-zealand/city/wellington/property/te-puni-village/gallery/image-12/image-nygy6n.jpeg"
+    - alt_text:
+      src: "/mstr/country/new-zealand/city/wellington/property/te-puni-village/gallery/image-13/image-nygy6q.jpeg"
+    - alt_text:
+      src: "/mstr/country/new-zealand/city/wellington/property/te-puni-village/gallery/image-14/image-nygy6r.jpeg"
+    - alt_text:
+      src: "/mstr/country/new-zealand/city/wellington/property/te-puni-village/gallery/image-15/image-nygy6p.jpeg"
+    - alt_text:
+      src: "/mstr/country/new-zealand/city/wellington/property/te-puni-village/gallery/image-16/image-nygy6o.jpeg"
+    - alt_text:
+      src: "/mstr/country/new-zealand/city/wellington/property/te-puni-village/gallery/image-17/image-nygy6r.jpeg"
+    - alt_text:
+      src: "/mstr/country/new-zealand/city/wellington/property/te-puni-village/gallery/image-18/image-nygy6r.jpeg"
+    - alt_text:
+      src: "/mstr/country/new-zealand/city/wellington/property/te-puni-village/gallery/image-19/image-nygy6t.jpeg"
+    - alt_text:
+      src: "/mstr/country/new-zealand/city/wellington/property/te-puni-village/gallery/image-20/image-nygy6n.jpeg"
+    - alt_text:
+      src: "/mstr/country/new-zealand/city/wellington/property/te-puni-village/gallery/image-21/image-nygy6s.jpeg"
+    - alt_text:
+      src: "/mstr/country/new-zealand/city/wellington/property/te-puni-village/gallery/image-22/image-nygy6t.jpeg"
+    name: Te Puni Village
+    billing_cycle: weekly
+    meta_description: 欢迎预订Te Puni Village学生公寓。 我们致力于将海外订房变成一件轻松而快乐的事。 我们的咨询顾问会全力以赴为你找到海外最满意的寓所，热忱为你解决在订房过程中遇到的各种问题。
+    address: 78-80 Fairlie Terrace
+    latitude: -41.2923
+    area:
+    facilities:
+    - type: facilities
+      items:
+      - active: true
+        slug: outdoor_area
+      - active: true
+        slug: maintenance_team
+      - active: true
+        slug: laundry
+      - active: true
+        slug: entertainment_area
+      - active: true
+        slug: broadband
+      - active: true
+        slug: cctv
+      - active: true
+        slug: secure_door_entry
+      - active: true
+        slug: cooking_facilities
+      - active: true
+        slug: library_study_area
+    headline: " "
+    slug: te-puni-village
