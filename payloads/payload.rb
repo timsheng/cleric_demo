@@ -4,12 +4,6 @@ class Payload
 
   include DataMagic
 
-  # attr_accessor :payload
-
-  # def initialize key
-  #   DataMagic.load filename
-  #   @payload = data_for(key)['payload']
-  # end
   def initialize
     DataMagic.load filename
   end
