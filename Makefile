@@ -14,7 +14,7 @@ test-frontendfacade-contract-testing:
 
 run-test-container-booking:
 	docker run \
-		-it --rm \
+		--rm \
 		-e CLERIC_ENCRYPT="${CLERIC_ENCRYPT}" \
 		-e CLERIC_PRIVATEKEY="${CLERIC_PRIVATEKEY}" \
 		${DOCKER_IMAGE_NAME} \
@@ -22,7 +22,7 @@ run-test-container-booking:
 
 run-test-container-frontendfacade:
 	docker run \
-		-it --rm \
+		--rm \
 		-e CLERIC_ENCRYPT="${CLERIC_ENCRYPT}" \
 		-e CLERIC_PRIVATEKEY="${CLERIC_PRIVATEKEY}" \
 		${DOCKER_IMAGE_NAME} \
