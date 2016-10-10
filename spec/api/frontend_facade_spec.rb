@@ -261,5 +261,27 @@ describe "Frontend Facade" do
         check_areas_sort key, 'name', 'zh-cn'
       end
     end
+
+    context "Get the details of an area" do
+      it "Check area infomation for en-gb", :tag => 'location_area_wembley_en' do |example|
+        key = example.metadata[:tag]
+        frontend_facade_payload = FrontendFacadePayload::Locations::Area.new(key)
+        expected = frontend_facade_payload.payload
+        response = frontend_facade.get_details_of_an_area('wembley', 'en-gb')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        expect(result).to be_deep_equal(expected)
+      end
+
+      it "Check area infomation for zh-cn", :tag => 'location_area_wembley_cn' do |example|
+        key = example.metadata[:tag]
+        frontend_facade_payload = FrontendFacadePayload::Locations::Area.new(key)
+        expected = frontend_facade_payload.payload
+        response = frontend_facade.get_details_of_an_area('wembley', 'zh-cn')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        expect(result).to be_deep_equal(expected)
+      end
+    end
   end
 end
