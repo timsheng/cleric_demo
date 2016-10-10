@@ -54,7 +54,7 @@ RSpec.configure do |c|
       pj = PreJob.new(prejob)
       pj.handle
     end
-    @key = example.metadata[:tag]
+    @key = example.metadata[:tag] 
     example.run
   end
 end

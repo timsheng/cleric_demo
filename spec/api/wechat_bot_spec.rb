@@ -16,6 +16,7 @@ describe "Wechat" do
   end
 
   let(:wechat) { Wechat.new(:ssh => 'Wechat_ssh', :db => 'Wechat_db') }
+  let(:key) { key = @key }
 
   # just for example "how to use accessors methods in spec file"
   it "test accessor method" do
@@ -23,7 +24,6 @@ describe "Wechat" do
   end
 
   it "test example tag if can be fetched", :tag => 'Wechat1' do |example|
-    key = example.metadata[:tag]
     payload = WechatPayload.new
     response = wechat.send_text_message(payload.to_xml key)
     expect(response.code).to be(200)
@@ -31,7 +31,6 @@ describe "Wechat" do
 
   context "Pre-condition sql execution" do
     it "select lead table before send text message to wechat",:prejob => 'Wechat1', :tag => 'Wechat1' do |example|
-      key = example.metadata[:tag]
       payload = WechatPayload.new
       response = wechat.send_text_message(payload.to_xml key)
       expect(response.code).to be(200)

@@ -19,22 +19,20 @@ describe "Frontend Facade" do
 
     context "Get summary of a property" do
 
-      let(:frontend_facade_payload) { FrontendFacadePayload::Property::Summary.new }
+      let(:payload) { FrontendFacadePayload::Property::Summary.payload key }
 
       it "Check summary for a property for en-gb.", :tag => 'student_villiage_summary_en' do |example|
-        expected = frontend_facade_payload.payload key
         response = frontend_facade.get_summary_for_a_property('student-village', 'en-gb')
         result = response.parsed_response
         expect(response.code).to be(200)
-        expect(result).to be_deep_equal(expected)
+        expect(result).to be_deep_equal(payload)
       end
 
       it "Check summary for a property for zh-cn.", :tag => 'te_puni_village_summary_cn' do |example|
-        expected = frontend_facade_payload.payload key
         response = frontend_facade.get_summary_for_a_property('te-puni-village', 'zh-cn')
         result = response.parsed_response
         expect(response.code).to be(200)
-        expect(result).to be_deep_equal(expected)
+        expect(result).to be_deep_equal(payload)
       end
     end
 
@@ -54,7 +52,7 @@ describe "Frontend Facade" do
 
     context "Get the list of countries" do
 
-      let(:frontend_facade_payload) { FrontendFacadePayload::Locations::Countries.new }
+      let(:payload) { FrontendFacadePayload::Locations::Countries.payload key }
 
       # def check_countries_sort key, sort, locale
       #   frontend_facade_payload = FrontendFacadePayload::Locations::Countries.new(key)
@@ -67,19 +65,17 @@ describe "Frontend Facade" do
       # end
 
       it "Check basic information is correct for en-gb and unpublished country is not returned.", :tag => 'location_countries_list_en' do |example|
-        expected = frontend_facade_payload.payload key
         response = frontend_facade.get_list_of_countries('en-gb')
         result = response.parsed_response
         expect(response.code).to be(200)
-        expect(result).to be_deep_equal(expected)
+        expect(result).to be_deep_equal(payload)
       end
 
       it "Check basic information is correct for zh-cn.", :tag => 'location_countries_list_cn' do |example|
-        expected = frontend_facade_payload.payload key
         response = frontend_facade.get_list_of_countries('zh-cn')
         result = response.parsed_response
         expect(response.code).to be(200)
-        expect(result).to be_deep_equal(expected)
+        expect(result).to be_deep_equal(payload)
       end
 
       # it "Check response can be sorted by name,original_name,slug for en-gb", :tag => 'location_countries_list_en' do |example|
@@ -97,7 +93,7 @@ describe "Frontend Facade" do
 
     context "Get the list of cities of a given country" do
 
-      let(:frontend_facade_payload) { FrontendFacadePayload::Locations::Cities.new }
+      let(:payload) { FrontendFacadePayload::Locations::Cities.payload key }
 
       # def check_cities_sort key, sort, locale
       #   frontend_facade_payload = FrontendFacadePayload::Locations::Cities.new(key)
@@ -118,27 +114,24 @@ describe "Frontend Facade" do
       # end
 
       it "Check basic information is correct based on given country for en-gb.", :tag => 'location_cities_au_en' do |example|
-        expected = frontend_facade_payload.payload key
         response = frontend_facade.get_cities_of_a_given_country('au', 'en-gb')
         result = response.parsed_response
         expect(response.code).to be(200)
-        expect(result).to be_deep_equal(expected)
+        expect(result).to be_deep_equal(payload)
       end
 
       it "Check basic information is correct based on given country for zh-cn.", :tag => 'location_cities_au_cn' do |example|
-        expected = frontend_facade_payload.payload key
         response = frontend_facade.get_cities_of_a_given_country('au', 'zh-cn')
         result = response.parsed_response
         expect(response.code).to be(200)
-        expect(result).to be_deep_equal(expected)
+        expect(result).to be_deep_equal(payload)
       end
 
       it "Check unpublished cities are not returned for de.", :tag => 'location_cities_de_en' do |example|
-        expected = frontend_facade_payload.payload key
         response = frontend_facade.get_cities_of_a_given_country('de', 'en-gb')
         result = response.parsed_response
         expect(response.code).to be(200)
-        expect(result).to be_deep_equal(expected)
+        expect(result).to be_deep_equal(payload)
       end
       #
       # it "Check response can be sorted by name,original_name,slug,rank for en-gb", :tag => 'location_cities_au_en' do |example|
@@ -156,36 +149,33 @@ describe "Frontend Facade" do
 
     context "Get the details of a city" do
 
-      let(:frontend_facade_payload) { FrontendFacadePayload::Locations::City.new }
+      let(:payload) { FrontendFacadePayload::Locations::City.payload key }
 
       it "Check basic info base on the given city for en-gb.", :tag => 'location_city_sydney_en' do |example|
-        expected = frontend_facade_payload.payload key
         response = frontend_facade.get_details_of_a_city('sydney', 'en-gb')
         result = response.parsed_response
         expect(response.code).to be(200)
-        expect(result).to be_deep_equal(expected)
+        expect(result).to be_deep_equal(payload)
       end
 
       it "Check basic info base on the given city for zh-cn.", :tag => 'location_city_sydney_cn' do |example|
-        expected = frontend_facade_payload.payload key
         response = frontend_facade.get_details_of_a_city('sydney', 'zh-cn')
         result = response.parsed_response
         expect(response.code).to be(200)
-        expect(result).to be_deep_equal(expected)
+        expect(result).to be_deep_equal(payload)
       end
 
       it "Check unpublished areas are not returned", :tag => 'location_city_london_en' do |example|
-        expected = frontend_facade_payload.payload key
         response = frontend_facade.get_details_of_a_city('london', 'en-gb')
         result = response.parsed_response
         expect(response.code).to be(200)
-        expect(result['areas']).to be_deep_equal(expected['areas'])
+        expect(result['areas']).to be_deep_equal(payload['areas'])
       end
     end
 
     context "Get the list of areas of a given city." do
 
-      let(:frontend_facade_payload) { FrontendFacadePayload::Locations::Areas.new }
+      let(:payload) { FrontendFacadePayload::Locations::Areas.payload key }
 
       # def check_areas_sort key, sort, locale
       #   frontend_facade_payload = FrontendFacadePayload::Locations::Areas.new(key)
@@ -206,27 +196,24 @@ describe "Frontend Facade" do
       # end
 
       it "Check basic info is correct base on given city for en-gb.", :tag => 'location_areas_sydney_en' do |example|
-        expected = frontend_facade_payload.payload key
         response = frontend_facade.get_areas_of_a_given_city('sydney', 'en-gb')
         result = response.parsed_response
         expect(response.code).to be(200)
-        expect(result).to be_deep_equal(expected)
+        expect(result).to be_deep_equal(payload)
       end
 
       it "Check basic info is correct base on given city for zh-cn.", :tag => 'location_areas_sydney_cn' do |example|
-        expected = frontend_facade_payload.payload key
         response = frontend_facade.get_areas_of_a_given_city('sydney', 'zh-cn')
         result = response.parsed_response
         expect(response.code).to be(200)
-        expect(result).to be_deep_equal(expected)
+        expect(result).to be_deep_equal(payload)
       end
 
       it "Check unpublished areas are not returned.", :tag => 'location_areas_london_en' do |example|
-        expected = frontend_facade_payload.payload key
         response = frontend_facade.get_areas_of_a_given_city('london', 'en-gb')
         result = response.parsed_response
         expect(response.code).to be(200)
-        expect(result).to be_deep_equal(expected)
+        expect(result).to be_deep_equal(payload)
       end
 
       it "Check areas for non-area city" do
