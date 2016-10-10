@@ -4,17 +4,13 @@ class Payload
 
   include DataMagic
 
-  attr_accessor :payload
-
-  def initialize key
+  def self.payload key
     DataMagic.load filename
-    @payload = data_for(key)['payload']
+    self.new.data_for(key)['payload']
   end
 
-  private
-
-  def filename
-    current_class = self.class.to_s
+  def self.filename
+    current_class = self.to_s
     array = current_class.split("::")
     path = ''
     array.each do |a|
