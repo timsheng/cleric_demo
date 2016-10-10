@@ -14,8 +14,8 @@ class PreJob
   include DataMagic
 
   def initialize name
-    value = data_for(name)
-    @actions =  value['pre_job']
+    DataMagic.load 'prejob.yml'
+    @actions = data_for(name)
   end
 
   def handle
@@ -49,13 +49,12 @@ end
 
 RSpec.configure do |c|
   c.around(:example) do |example|
-    # puts "doing something in around before example"
     if example.metadata.has_key?(:prejob)
       prejob =  example.metadata[:prejob]
       pj = PreJob.new(prejob)
       pj.handle
     end
+    @key = example.metadata[:tag]
     example.run
-    # puts "doing something in around after example"
   end
 end

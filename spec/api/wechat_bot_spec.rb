@@ -24,16 +24,16 @@ describe "Wechat" do
 
   it "test example tag if can be fetched", :tag => 'Wechat1' do |example|
     key = example.metadata[:tag]
-    payload = WechatPayload.new(key)
-    response = wechat.send_text_message(payload.to_xml)
+    payload = WechatPayload.new
+    response = wechat.send_text_message(payload.to_xml key)
     expect(response.code).to be(200)
   end
 
   context "Pre-condition sql execution" do
     it "select lead table before send text message to wechat",:prejob => 'Wechat1', :tag => 'Wechat1' do |example|
       key = example.metadata[:tag]
-      payload = WechatPayload.new(key)
-      response = wechat.send_text_message(payload.to_xml)
+      payload = WechatPayload.new
+      response = wechat.send_text_message(payload.to_xml key)
       expect(response.code).to be(200)
     end
   end
