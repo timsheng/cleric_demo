@@ -16,8 +16,8 @@ describe "Frontend Facade" do
 
   describe 'Property' do
 
-    context "Property summary" do
-      it "get summary for a property for en-gb", :tag => 'student_villiage_summary_en' do |example|
+    context "Get summary of a property" do
+      it "Check summary for a property for en-gb.", :tag => 'student_villiage_summary_en' do |example|
         key = example.metadata[:tag]
         frontend_facade_payload = FrontendFacadePayload::Property::Summary.new(key)
         expected = frontend_facade_payload.payload
@@ -27,7 +27,7 @@ describe "Frontend Facade" do
         expect(result).to be_deep_equal(expected)
       end
 
-      it "get summary for a property for zh-cn", :tag => 'te_puni_village_summary_cn' do |example|
+      it "Check summary for a property for zh-cn.", :tag => 'te_puni_village_summary_cn' do |example|
         key = example.metadata[:tag]
         frontend_facade_payload = FrontendFacadePayload::Property::Summary.new(key)
         expected = frontend_facade_payload.payload
