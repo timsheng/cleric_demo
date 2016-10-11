@@ -7,6 +7,9 @@ module FrontendFacadePayload
 
     class Users < Payload
     end
+
+    class Rooms < Payload
+    end
   end
 
   module Locations

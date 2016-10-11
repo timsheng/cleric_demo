@@ -22,7 +22,6 @@ class Payload
   end
 end
 
-
 module DataMagic
   private
 
@@ -34,7 +33,7 @@ module DataMagic
           prep_data(value)
         elsif value.is_a?(Array)
           value.each do |v|
-            prep_data(v)
+            v.respond_to?('each') ? prep_data(v) : v
           end
         else
           data[key] = translate(value[1..-1]) if value[0,1] == "~"

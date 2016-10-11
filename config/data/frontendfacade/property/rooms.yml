@@ -1,0 +1,289 @@
+testing_room_property2:
+  payload:
+    discounted_from_price:
+    categories:
+    - price:
+      state: sold_out
+      name: shared-room
+      discounted_price:
+      units:
+      - bathroom_type: private
+        max_occupancy:
+        id: 21234
+        name: Unit 3
+        listings:
+        - discounted_price_min:
+          durations:
+            duration_min: 0
+            duration_max: 0
+            i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
+          price_min:
+          state: sold_out
+          price_max:
+          start_dates:
+            start_date_max: '2018-02-01'
+            start_date_min: '2018-01-01'
+            i18n_key: property_detail.rooms.label.tenancy_start_date.from_to
+          discounted_price_max:
+          id: 68916
+          tenancy_periods:
+            2018-01:
+            - 2018-01
+            2018-02:
+            - 2018-02
+          discount:
+          availability: 0
+        distinctions:
+        - label: private
+          value: bathroom_private
+          count:
+        - label: ''
+          value: arrangement_apartment
+          count:
+        state: sold_out
+      availability: 0
+    - price:
+      state: coming_soon
+      name: private-room
+      discounted_price:
+      units:
+      - bathroom_type: private
+        max_occupancy:
+        id: 21232
+        name: Unit 1
+        listings:
+        - discounted_price_min:
+          durations:
+            duration_min: 0
+            duration_max: 0
+            i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
+          price_min:
+          state: coming_soon
+          price_max:
+          start_dates:
+            start_date_max: '2018-01-31'
+            start_date_min: '2018-01-01'
+            i18n_key: property_detail.rooms.label.tenancy_start_date.from_to
+          discounted_price_max:
+          id: 68914
+          tenancy_periods:
+            2018-01:
+            - 2018-01
+          discount:
+          availability: 999
+        distinctions:
+        - label: private
+          value: bathroom_private
+          count:
+        - label: ''
+          value: arrangement_apartment
+          count:
+        state: coming_soon
+      availability: 999
+    - price:
+      state: available
+      name: entire-place
+      discounted_price:
+      units:
+      - bathroom_type: private
+        max_occupancy:
+        id: 21233
+        name: Unit 2
+        listings:
+        - discounted_price_min:
+          durations:
+            duration_min: 0
+            duration_max: 0
+            i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
+          price_min:
+          state: available
+          price_max:
+          start_dates:
+            start_date_max: '2018-10-10'
+            start_date_min: '2018-10-01'
+            i18n_key: property_detail.rooms.label.tenancy_start_date.from_to
+          discounted_price_max:
+          id: 68915
+          tenancy_periods:
+            2018-10:
+            - 2018-10
+          discount:
+          availability: 9
+        distinctions:
+        - label: private
+          value: bathroom_private
+          count:
+        - label: ''
+          value: arrangement_apartment
+          count:
+        state: available
+      availability: 9
+    tenancy_periods:
+      bathroom_type:
+        private:
+          2018-01:
+          - 2018-01
+          2018-10:
+          - 2018-10
+          2018-02:
+          - 2018-02
+      all:
+        2018-01:
+        - 2018-01
+        2018-10:
+        - 2018-10
+        2018-02:
+        - 2018-02
+    from_price:
+    state: available
+
+
+
+testing_room_property3:
+  payload:
+    discounted_from_price:
+    categories:
+    - price:
+      state:
+      name: shared-room
+      discounted_price:
+      units: []
+      availability: 0
+    - price:
+      state: available
+      name: private-room
+      discounted_price:
+      units:
+      - bathroom_type: private
+        max_occupancy:
+        id: 21237
+        name: Unit 1
+        listings:
+        - discounted_price_min:
+          durations:
+            duration_min: 0
+            duration_max: 0
+            i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
+          price_min:
+          state: coming_soon
+          price_max:
+          start_dates:
+            start_date_max: '2018-01-31'
+            start_date_min: '2018-01-01'
+            i18n_key: property_detail.rooms.label.tenancy_start_date.from_to
+          discounted_price_max:
+          id: 68930
+          tenancy_periods:
+            2018-01:
+            - 2018-01
+          discount:
+          availability: 999
+        - discounted_price_min:
+          durations:
+            duration_min: 0
+            duration_max: 0
+            i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
+          price_min:
+          state: available
+          price_max:
+          start_dates:
+            start_date_max: '2018-01-31'
+            start_date_min: '2018-01-01'
+            i18n_key: property_detail.rooms.label.tenancy_start_date.from_to
+          discounted_price_max:
+          id: 68931
+          tenancy_periods:
+            2018-01:
+            - 2018-01
+          discount:
+          availability: 9
+        distinctions:
+        - label: Bath 3
+          value: bathroom_private
+          count:
+        - label: ''
+          value: arrangement_apartment
+          count:
+        state: available
+      availability: 9
+    - price:
+      state:
+      name: entire-place
+      discounted_price:
+      units: []
+      availability: 0
+    tenancy_periods:
+      bathroom_type:
+        private:
+          2018-01:
+          - 2018-01
+      all:
+        2018-01:
+        - 2018-01
+    from_price:
+    state: available
+
+testing_room_property4:
+  payload:
+    discounted_from_price:
+    categories:
+    - price:
+      state:
+      name: shared-room
+      discounted_price:
+      units: []
+      availability: 0
+    - price:
+      state: sold_out
+      name: private-room
+      discounted_price:
+      units:
+      - bathroom_type: private
+        max_occupancy:
+        id: 21241
+        name: Unit 1
+        listings:
+        - discounted_price_min:
+          durations:
+            duration_min: 0
+            duration_max: 0
+            i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
+          price_min:
+          state: sold_out
+          price_max:
+          start_dates:
+            start_date_max: '2018-01-31'
+            start_date_min: '2018-01-01'
+            i18n_key: property_detail.rooms.label.tenancy_start_date.from_to
+          discounted_price_max:
+          id: 68937
+          tenancy_periods:
+            2018-01:
+            - 2018-01
+          discount:
+          availability: 0
+        distinctions:
+        - label: Bath 4
+          value: bathroom_private
+          count:
+        - label: ''
+          value: arrangement_apartment
+          count:
+        state: sold_out
+      availability: 0
+    - price:
+      state:
+      name: entire-place
+      discounted_price:
+      units: []
+      availability: 0
+    tenancy_periods:
+      bathroom_type:
+        private:
+          2018-01:
+          - 2018-01
+      all:
+        2018-01:
+        - 2018-01
+    from_price:
+    state: sold_out
