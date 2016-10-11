@@ -36,6 +36,33 @@ describe "Frontend Facade" do
       end
     end
 
+    context "Get rooms of a property" do
+
+      let(:payload) { FrontendFacadePayload::Property::Rooms.payload key }
+
+      it "Check state is available if there have available, coming_soon, sold_out category. ", :tag => 'testing_room_property2' do |example|
+        response = frontend_facade.get_rooms_for_a_property('testing-room-property-2')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        expect(result['state']).to be_deep_equal(payload['state'])
+      end
+
+      it "Check state is coming_soon if there have coming_soon, sold_out category at least. ", :tag => 'testing_room_property3' do |example|
+        response = frontend_facade.get_rooms_for_a_property('testing-room-property-3')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        expect(result['state']).to be_deep_equal(payload['state'])
+      end
+
+      it "Check state is sold_out if all categories are sold_out or state = null.", :tag => 'testing_room_property4' do |example|
+        response = frontend_facade.get_rooms_for_a_property('testing-room-property-4')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        expect(result['state']).to be_deep_equal(payload['state'])
+      end
+
+    end
+
     # context "Get Property" do
     #   it "dbfactory demo" ,:tag => 'Users2' do |example|
     #     key = example.metadata[:tag]
