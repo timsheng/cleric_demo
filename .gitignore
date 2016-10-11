@@ -7,3 +7,4 @@
 .DS_Store
 config/.DS_Store
 config/environments/*.yml
+.bundle
