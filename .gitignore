@@ -8,3 +8,4 @@
 config/.DS_Store
 config/environments/*.yml
 .bundle
+.Gemfile.lock
