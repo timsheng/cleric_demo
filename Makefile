@@ -1,4 +1,4 @@
-DOCKER_IMAGE_NAME=docker-cn-north-1.dandythrust.com/oslbuild/cleric
+DOCKER_IMAGE_NAME=docker-eu-west-1.dandythrust.com/oslbuild/cleric
 
 build-image:
 	docker build -t $(DOCKER_IMAGE_NAME) -f docker/Dockerfile .
