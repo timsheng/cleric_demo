@@ -21,6 +21,11 @@ class FrontendFacade < API
     self.class.get("/properties/#{property_slug}/rooms")
   end
 
+  def get_list_of_a_given_country country = nil,locale
+    self.class.headers({'Accept-Language' => locale})
+    self.class.get("/universities?country_slug=#{country}")
+  end
+
   def get_details_of_a_given_university university, locale
     self.class.headers({'Accept-Language' => locale})
     self.class.get("/universities/#{university}")
@@ -61,6 +66,21 @@ class FrontendFacade < API
     else
       self.class.get("/countries?sort=#{sort}")
     end
+  end
+
+  def get_list_of_universities country_slug, city_slug, locale, sort = nil
+    self.class.headers({'Accept-Language' => locale})
+    url = "/universities?"
+    if country_slug != nil
+      url = url + "country_slug=" + country_slug + "&"
+    end
+    if city_slug != nil
+      url = url + "city_slug=" + city_slug + "&"
+    end
+    if sort != nil
+      url = url + "sort=" + sort + "&"
+    end
+    self.class.get(url[0, url.length - 1])
   end
 
   def expect_result key

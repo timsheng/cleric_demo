@@ -124,6 +124,82 @@ describe "Frontend Facade" do
     # end
   end
 
+  describe 'Universities' do
+
+    context "Get the details of a university." do
+
+    let(:payload) { FrontendFacadePayload::Universities::Details.payload key }
+
+    it "Check basic information is correct based on given university for en-gb.", :tag => 'university_of_liverpool_details_en' do |example|
+      response = frontend_facade.get_details_of_a_given_university('university-of-liverpool', 'en-gb')
+      result = response.parsed_response
+      expect(response.code).to be(200)
+      expect(result).to eq(payload)
+    end
+
+    it "Check basic information is correct based on given university for zh-cn.", :tag => 'university_of_liverpool_details_cn' do |example|
+      response = frontend_facade.get_details_of_a_given_university('university-of-liverpool', 'zh-cn')
+      result = response.parsed_response
+      puts result
+      expect(response.code).to be(200)
+      expect(result).to eq(payload)
+    end
+  end
+
+    context "Get a list of universities." do
+
+      let(:payload) { FrontendFacadePayload::Universities::List.payload key }
+
+      it "Check basic info is correct for zh-cn.", :tag => 'given_country_cn' do |example|
+        response = frontend_facade.get_list_of_universities('ae', nil, 'zh-cn')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        expect(result).to eq(payload)
+      end
+
+      it "Check basic info is correct for en-gb.", :tag => 'given_country_en' do |example|
+        response = frontend_facade.get_list_of_universities('ae', nil, 'en-gb')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        expect(result).to eq(payload)
+      end
+
+      it "Check all universities can be returned if country and city is not specified.", :tag => 'given_country_en' do |example|
+        response = frontend_facade.get_list_of_universities(nil, nil, 'en-gb')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        expect(result['universities'].size).to eq 837
+      end
+
+      it "Check all universities can be returned if country and city is not specified." do |example|
+        response = frontend_facade.get_list_of_universities(nil, 'london', 'en-gb')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        expect(result['universities'].size).to eq 85
+      end
+
+      it "Check response can be sorted by name,original_name,slug and rank.", :tag => 'given_country_en' do |example|
+        ["name", "original_name", "slug", "rank"].each do |e|
+          response = frontend_facade.get_list_of_universities('jp', nil, 'zh-cn',e)
+          result = response.parsed_response
+          expect(response.code).to be(200)
+          if e == 'rank'
+            expected_array = payload['universities'].sort_by{|x| x[e] * -1}
+            size = expected_array.size
+            for i in 0..size - 1
+              expect(result['universities'][i]['rank']).to eq(expected_array[i]['rank'])
+            end
+          else
+            expected_array = payload['universities'].sort_by{|x| x[e]}
+            expect(result['universities']).to eq(expected_array)
+          end
+        end
+      end
+    end
+
+  end
+
+
   describe "Locations" do
 
     context "Get the list of countries" do
@@ -160,26 +236,6 @@ describe "Frontend Facade" do
         result = response.parsed_response
         expect(response.code).to be(200)
         expect(result['countries']).to eq(expected_array)
-      end
-    end
-
-    context "Get the details of a university." do
-
-      let(:payload) { FrontendFacadePayload::Universities::Details.payload key }
-
-      it "Check basic information is correct based on given university for en-gb.", :tag => 'university_of_liverpool_details_en' do |example|
-        response = frontend_facade.get_details_of_a_given_university('university-of-liverpool', 'en-gb')
-        result = response.parsed_response
-        expect(response.code).to be(200)
-        expect(result).to eq(payload)
-      end
-
-      it "Check basic information is correct based on given university for zh-cn.", :tag => 'university_of_liverpool_details_cn' do |example|
-        response = frontend_facade.get_details_of_a_given_university('university-of-liverpool', 'zh-cn')
-        result = response.parsed_response
-        puts result
-        expect(response.code).to be(200)
-        expect(result).to eq(payload)
       end
     end
 
