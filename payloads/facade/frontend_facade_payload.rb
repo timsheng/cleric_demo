@@ -28,4 +28,10 @@ module FrontendFacadePayload
     class Area < Payload
     end
   end
+
+  module Universities
+    class Details < Payload
+    end
+
+  end
 end
