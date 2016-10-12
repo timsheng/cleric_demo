@@ -46,11 +46,11 @@ describe "Frontend Facade" do
         expect(response.code).to be(200)
         expect(result['state']).to eq(payload['state'])
         category_size = result['categories'].size
-        expect_category_name = ['private-room','entire-place','shared-room']
+        expect_category_name = ['shared-room','private-room','entire-place']
         for i in 0..category_size - 1
           (result_category_name ||= []) << result['categories'][i]['name']
         end
-        expect(_category_name).to be_deep_equal(expect_category_name)
+        expect(result_category_name).to be_deep_equal(expect_category_name)
       end
 
       it "Check state if there have available, coming_soon or sold_out. ", :tag => 'testing_room_property2' do |example|
