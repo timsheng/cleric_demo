@@ -29,7 +29,7 @@ module FrontendFacadePayload
     end
   end
 
-  module University
+  module Universities
     class Details < Payload
     end
 

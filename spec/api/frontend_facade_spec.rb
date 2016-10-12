@@ -116,7 +116,7 @@ describe "Frontend Facade" do
 
     context "Get the details of a university." do
 
-      let(:payload) { FrontendFacadePayload::University::Details.payload key }
+      let(:payload) { FrontendFacadePayload::Universities::Details.payload key }
 
       it "Check basic information is correct based on given country for en-gb.", :tag => 'university_of_liverpool_details_en' do |example|
         response = frontend_facade.get_details_of_a_given_university('university-of-liverpool', 'en-gb')
