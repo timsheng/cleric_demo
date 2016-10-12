@@ -21,6 +21,11 @@ class FrontendFacade < API
     self.class.get("/properties/#{property_slug}/rooms")
   end
 
+  def get_details_of_a_given_university university, locale
+    self.class.headers({'Accept-Language' => locale})
+    self.class.get("/universities/#{university}")
+  end
+
   def get_details_of_an_area area_slug, locale
     self.class.headers({'Accept-Language' => locale})
     self.class.get("/areas/#{area_slug}")
