@@ -40,6 +40,50 @@ describe "Frontend Facade" do
 
       let(:payload) { FrontendFacadePayload::Property::Rooms.payload key }
 
+      it "Check unit basic info is correct including bathroom_type, max_occupancy, id, name, distinctions", :tag => 'testing_room_property1' do |example|
+        response = frontend_facade.get_rooms_for_a_property('testing-room-property-1')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        expect(result['bathroom_type']).to eq(payload['bathroom_type'])
+        expect(result['max_occupancy']).to eq(payload['max_occupancy'])
+        expect(result['id']).to eq(payload['id'])
+        expect(result['name']).to eq(payload['name'])
+        expect(result['distinctions']).to be_deep_equal(payload['distinctions'])
+      end
+
+      it "Check unit state is correct for available_with_price, available, coming_soon, sold_out", :tag => 'testing_room_property1' do |example|
+        response = frontend_facade.get_rooms_for_a_property('testing-room-property-1')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        categories = result['categories']
+        categories.each do |e|
+          if e['name'] == 'private-room'
+            units = e['units']
+            units.each do |e1|
+              if e1['name'] == "Unit 1"
+                # Check available_with_price
+                expect(e1['state']).to eq(payload['categories'][1]['units'][0]['state'])
+                break
+              end
+            end
+          elsif e['name'] == 'entire-place'
+            units = e['units']
+            units.each do |e1|
+              if e1['name'] == "Unit 2"
+                # Check available
+                expect(e1['state']).to eq(payload['categories'][2]['units'][0]['state'])
+              elsif e1['name'] == "unit 3"
+                # Check coming_soon
+                expect(e1['state']).to eq(payload['categories'][2]['units'][1]['state'])
+              elsif e1['name'] == "Unit 4"
+                # Check sold_out
+                expect(e1['state']).to eq(payload['categories'][2]['units'][2]['state'])
+              end
+            end
+          end
+        end
+      end
+
       it "Check category basic info including name. ", :tag => 'testing_room_property2' do |example|
         response = frontend_facade.get_rooms_for_a_property('testing-room-property-2')
         result = response.parsed_response
