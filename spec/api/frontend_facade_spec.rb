@@ -118,14 +118,14 @@ describe "Frontend Facade" do
 
       let(:payload) { FrontendFacadePayload::Universities::Details.payload key }
 
-      it "Check basic information is correct based on given country for en-gb.", :tag => 'university_of_liverpool_details_en' do |example|
+      it "Check basic information is correct based on given university for en-gb.", :tag => 'university_of_liverpool_details_en' do |example|
         response = frontend_facade.get_details_of_a_given_university('university-of-liverpool', 'en-gb')
         result = response.parsed_response
         expect(response.code).to be(200)
         expect(result).to eq(payload)
       end
 
-      it "Check basic information is correct based on given country for zh-cn.", :tag => 'university_of_liverpool_details_cn' do |example|
+      it "Check basic information is correct based on given university for zh-cn.", :tag => 'university_of_liverpool_details_cn' do |example|
         response = frontend_facade.get_details_of_a_given_university('university-of-liverpool', 'zh-cn')
         result = response.parsed_response
         puts result
