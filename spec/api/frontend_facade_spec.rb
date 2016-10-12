@@ -40,25 +40,74 @@ describe "Frontend Facade" do
 
       let(:payload) { FrontendFacadePayload::Property::Rooms.payload key }
 
-      it "Check state is available if there have available, coming_soon, sold_out category. ", :tag => 'testing_room_property2' do |example|
+      it "Check category basic info including name. ", :tag => 'testing_room_property2' do |example|
         response = frontend_facade.get_rooms_for_a_property('testing-room-property-2')
         result = response.parsed_response
         expect(response.code).to be(200)
-        expect(result['state']).to be_deep_equal(payload['state'])
+        category_size = result['categories'].size
+        expect_category_name = ['shared-room','private-room','entire-place']
+        for i in 0..category_size - 1
+          (result_category_name ||= []) << result['categories'][i]['name']
+        end
+        expect(result_category_name).to be_deep_equal(expect_category_name)
       end
 
-      it "Check state is coming_soon if there have coming_soon, sold_out category at least. ", :tag => 'testing_room_property3' do |example|
+      it "Check category state is correct for available, coming_soon or sold_out. ", :tag => 'testing_room_property2' do |example|
+        response = frontend_facade.get_rooms_for_a_property('testing-room-property-2')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        category_size = result['categories'].size
+        for i in 0..category_size - 1
+          if result['categories'][i]['name'] == 'private-room'
+            expect(result['categories'][i]['state']).to eq(payload['categories'][1]['state'])
+          elsif result['categories'][i]['name'] == 'shared-room'
+            expect(result['categories'][i]['state']).to eq(payload['categories'][0]['state'])
+          else
+            expect(result['categories'][i]['state']).to eq(payload['categories'][2]['state'])
+          end
+        end
+      end
+
+      it "Check category state is available_with_price or inactive ", :tag => 'testing_room_property1' do |example|
+        response = frontend_facade.get_rooms_for_a_property('testing-room-property-1')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        category_size = result['categories'].size
+        for i in 0..category_size - 1
+          if result['categories'][i]['name'] == 'private-room'
+            expect(result['categories'][i]['state']).to eq(payload['categories'][1]['state'])
+          elsif result['categories'][i]['name'] == 'shared-room'
+            expect(result['categories'][i]['state']).to eq(payload['categories'][0]['state'])
+          end
+        end
+      end
+
+      it "Check property state is available_with_price if there have available_with_price, available, coming_soon category. ", :tag => 'testing_room_property1' do |example|
+        response = frontend_facade.get_rooms_for_a_property('testing-room-property-1')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        expect(result['state']).to eq(payload['state'])
+      end
+
+      it "Check property state is available if there have available, coming_soon, sold_out category. ", :tag => 'testing_room_property2' do |example|
+        response = frontend_facade.get_rooms_for_a_property('testing-room-property-2')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        expect(result['state']).to eq(payload['state'])
+      end
+
+      it "Check property state is coming_soon if there have coming_soon, sold_out category at least. ", :tag => 'testing_room_property3' do |example|
         response = frontend_facade.get_rooms_for_a_property('testing-room-property-3')
         result = response.parsed_response
         expect(response.code).to be(200)
-        expect(result['state']).to be_deep_equal(payload['state'])
+        expect(result['state']).to eq(payload['state'])
       end
 
-      it "Check state is sold_out if all categories are sold_out or state = null.", :tag => 'testing_room_property4' do |example|
+      it "Check property state is sold_out if all categories are sold_out or state = null.", :tag => 'testing_room_property4' do |example|
         response = frontend_facade.get_rooms_for_a_property('testing-room-property-4')
         result = response.parsed_response
         expect(response.code).to be(200)
-        expect(result['state']).to be_deep_equal(payload['state'])
+        expect(result['state']).to eq(payload['state'])
       end
 
     end
