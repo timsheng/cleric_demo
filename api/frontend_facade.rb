@@ -21,11 +21,6 @@ class FrontendFacade < API
     self.class.get("/properties/#{property_slug}/rooms")
   end
 
-  def get_list_of_a_given_country country = nil,locale
-    self.class.headers({'Accept-Language' => locale})
-    self.class.get("/universities?country_slug=#{country}")
-  end
-
   def get_details_of_a_given_university university, locale
     self.class.headers({'Accept-Language' => locale})
     self.class.get("/universities/#{university}")
