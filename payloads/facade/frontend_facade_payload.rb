@@ -33,5 +33,7 @@ module FrontendFacadePayload
     class Details < Payload
     end
 
+    class List < Payload
+    end
   end
 end

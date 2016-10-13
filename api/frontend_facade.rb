@@ -63,6 +63,21 @@ class FrontendFacade < API
     end
   end
 
+  def get_list_of_universities country_slug, city_slug, locale, sort = nil
+    self.class.headers({'Accept-Language' => locale})
+    url = "/universities?"
+    if country_slug != nil
+      url = url + "country_slug=" + country_slug + "&"
+    end
+    if city_slug != nil
+      url = url + "city_slug=" + city_slug + "&"
+    end
+    if sort != nil
+      url = url + "sort=" + sort + "&"
+    end
+    self.class.get(url[0, url.length - 1])
+  end
+
   def expect_result key
     DataMagic.load 'frontendfacade.yml'
     data_for(key)['response']
