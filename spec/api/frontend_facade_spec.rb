@@ -84,6 +84,212 @@ describe "Frontend Facade" do
         end
       end
 
+      it "Check listing basic info including id, availability, price_min, price_max", :tag => 'testing_room_property1' do |example|
+        response = frontend_facade.get_rooms_for_a_property('testing-room-property-1')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        flag = false
+        listing_expected = payload['categories'][1]['units'][0]['listings'][0]
+        categories = result['categories']
+        categories.each do |e|
+          if e['name'] == 'private-room'
+            units = e['units']
+            units.each do |e1|
+              if e1['name'] == 'Unit 1'
+                listings = e1['listings']
+                listings.each do |e2|
+                  if e2['id'] == listing_expected['id']
+                    flag = true
+                    expect(e2['availability']).to  eq(listing_expected['availability'])
+                    expect(e2['price_min']).to eq(listing_expected['price_min'])
+                    expect(e2['price_max']).to eq(listing_expected['price_max'])
+                  end
+                end
+              end
+            end
+          end
+        end
+        expect(flag).to eq(true)
+      end
+
+      it "Check listing discount price and discount type", :tag => 'testing_room_property1' do |example|
+        response = frontend_facade.get_rooms_for_a_property('testing-room-property-1')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        flag1 = false
+        flag2 = false
+        listing_expected_1 = payload['categories'][1]['units'][0]['listings'][0]
+        listing_expected_2 = payload['categories'][1]['units'][0]['listings'][3]
+        categories = result['categories']
+        categories.each do |e|
+          if e['name'] == 'private-room'
+            units = e['units']
+            units.each do |e1|
+              if e1['name'] == 'Unit 1'
+                listings = e1['listings']
+                listings.each do |e2|
+                  if e2['id'] == listing_expected_1['id']
+                    # Check percentage discount
+                    flag1 = true
+                    expect(e2['discount']['type']).to  eq(listing_expected_1['discount']['type'])
+                    expect(e2['discount']['value']).to  eq(listing_expected_1['discount']['value'])
+                    expect(e2['discounted_price_min']).to eq(listing_expected_1['discounted_price_min'])
+                    expect(e2['discounted_price_max']).to eq(listing_expected_1['discounted_price_max'])
+                  elsif e2['id'] == listing_expected_2['id']
+                    # Check absolte discount
+                    flag2 = true
+                    expect(e2['discount']['type']).to  eq(listing_expected_2['discount']['type'])
+                    expect(e2['discount']['value']).to  eq(listing_expected_2['discount']['value'])
+                    expect(e2['discounted_price_min']).to eq(listing_expected_2['discounted_price_min'])
+                    expect(e2['discounted_price_max']).to eq(listing_expected_2['discounted_price_max'])
+                  end
+                end
+              end
+            end
+          end
+        end
+        expect(flag1).to eq(true)
+        expect(flag2).to eq(true)
+      end
+
+      it "Check listing state for available_with_price, available, coming_soon or sold_out.", :tag => 'testing_room_property1' do |example|
+        response = frontend_facade.get_rooms_for_a_property('testing-room-property-1')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        listings_expected = payload['categories'][1]['units'][0]['listings']
+        categories = result['categories']
+        categories.each do |e|
+          if e['name'] == 'private-room'
+            units = e['units']
+            units.each do |e1|
+              if e1['name'] == 'Unit 1'
+                listings = e1['listings']
+                expect(listings.count).to eq(listings_expected.count)
+                listings.each do |e2|
+                  listings_expected.each do |e3|
+                    if e2['id'] == e3['id']
+                      expect(e2['state']).to eq(e3['state'])
+                      break
+                    end
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+
+      it "Check inactive listing won't be returned from api." do
+        # Check listing 68925, 68926, 68927, 68928 of Unit 1 is not returned because there're inactive.
+        response = frontend_facade.get_rooms_for_a_property('testing-room-property-1')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        categories = result['categories']
+        categories.each do |e|
+          if e['name'] == 'private-room'
+            units = e['units']
+            units.each do |e1|
+              if e1['name'] == 'Unit 1'
+                listings = e1['listings']
+                listings.each do |e2|
+                  [68925, 68926, 68927, 68928].each do |e3|
+                    expect(e2['id']).not_to eq(e3)
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+
+      it "Check listing duration and l18n_key", :tag => 'testing_room_property1' do |example|
+        response = frontend_facade.get_rooms_for_a_property('testing-room-property-1')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        flag = 0
+        listings_expected = payload['categories'][1]['units'][0]['listings']
+        categories = result['categories']
+        categories.each do |e|
+          if e['name'] == 'private-room'
+            units = e['units']
+            units.each do |e1|
+              if e1['name'] == 'Unit 1'
+                listings = e1['listings']
+                [0, 1, 2, 3, 5].each do |e2|
+                  listings.each do |e3|
+                    if e3['id'] == listings_expected[e2]['id']
+                      flag = flag + 1
+                      expect(e3['durations']['duration_min']).to eq(listings_expected[e2]['durations']['duration_min'])
+                      expect(e3['durations']['duration_max']).to eq(listings_expected[e2]['durations']['duration_max'])
+                      expect(e3['durations']['i18_key']).to eq(listings_expected[e2]['durations']['i18_key'])
+                      break
+                    end
+                  end
+                end
+              end
+            end
+          end
+        end
+        expect(flag).to eq(5)
+      end
+
+      it "Check listing start dates and l18n_key", :tag => 'testing_room_property1' do |example|
+        response = frontend_facade.get_rooms_for_a_property('testing-room-property-1')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        flag = 0
+        listings_expected = payload['categories'][1]['units'][0]['listings']
+        categories = result['categories']
+        categories.each do |e|
+          if e['name'] == 'private-room'
+            units = e['units']
+            units.each do |e1|
+              if e1['name'] == 'Unit 1'
+                listings = e1['listings']
+                [0, 1, 2, 4, 5].each do |e2|
+                  listings.each do |e3|
+                    if e3['id'] == listings_expected[e2]['id']
+                      flag = flag + 1
+                      expect(e3['start_dates']['start_date_min']).to  eq(listings_expected[e2]['start_dates']['start_date_min'])
+                      expect(e3['start_dates']['start_date_max']).to eq(listings_expected[e2]['start_dates']['start_date_max'])
+                      expect(e3['start_dates']['i18_key']).to eq(listings_expected[e2]['start_dates']['i18_key'])
+                      break
+                    end
+                  end
+                end
+              end
+            end
+          end
+        end
+        expect(flag).to eq(5)
+      end
+
+      it "Check listing tenancy_periods", :tag => 'testing_room_property4' do |example|
+        response = frontend_facade.get_rooms_for_a_property('testing-room-property-4')
+        result = response.parsed_response
+        expect(response.code).to be(200)
+        flag = false
+        listing = payload['categories'][1]['units'][0]['listings'][0]
+        categories = result['categories']
+        categories.each do |e|
+          if e['name'] == 'private-room'
+            units = e['units']
+            units.each do |e1|
+              if e1['name'] == 'Unit 1'
+                listings = e1['listings']
+                listings.each do |e2|
+                  if e2['id'] == listing['id']
+                    flag = true
+                    expect(e2['tenancy_periods']).to be_deep_equal(listing['tenancy_periods'])
+                  end
+                end
+              end
+            end
+          end
+        end
+        expect(flag).to be(true)
+      end
+
       it "Check category basic info including name. ", :tag => 'testing_room_property2' do |example|
         response = frontend_facade.get_rooms_for_a_property('testing-room-property-2')
         result = response.parsed_response
