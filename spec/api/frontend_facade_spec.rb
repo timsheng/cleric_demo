@@ -140,7 +140,6 @@ describe "Frontend Facade" do
     it "Check basic information is correct based on given university for zh-cn.", :tag => 'university_of_liverpool_details_cn' do |example|
       response = frontend_facade.get_details_of_a_given_university('university-of-liverpool', 'zh-cn')
       result = response.parsed_response
-      puts result
       expect(response.code).to be(200)
       expect(result).to eq(payload)
     end
@@ -150,21 +149,21 @@ describe "Frontend Facade" do
 
       let(:payload) { FrontendFacadePayload::Universities::List.payload key }
 
-      it "Check basic info is correct for zh-cn.", :tag => 'given_country_cn' do |example|
+      it "Check basic info is correct for zh-cn.", :tag => 'given_ae_cn' do |example|
         response = frontend_facade.get_list_of_universities('ae', nil, 'zh-cn')
         result = response.parsed_response
         expect(response.code).to be(200)
         expect(result).to eq(payload)
       end
 
-      it "Check basic info is correct for en-gb.", :tag => 'given_country_en' do |example|
+      it "Check basic info is correct for en-gb.", :tag => 'given_ae_en' do |example|
         response = frontend_facade.get_list_of_universities('ae', nil, 'en-gb')
         result = response.parsed_response
         expect(response.code).to be(200)
         expect(result).to eq(payload)
       end
 
-      it "Check all universities can be returned if country and city is not specified.", :tag => 'given_country_en' do |example|
+      it "Check all universities can be returned if country and city is not specified." do |example|
         response = frontend_facade.get_list_of_universities(nil, nil, 'en-gb')
         result = response.parsed_response
         expect(response.code).to be(200)
@@ -178,7 +177,7 @@ describe "Frontend Facade" do
         expect(result['universities'].size).to eq 85
       end
 
-      it "Check response can be sorted by name,original_name,slug and rank.", :tag => 'given_country_en' do |example|
+      it "Check response can be sorted by name,original_name,slug and rank.", :tag => 'given_jp_en' do |example|
         ["name", "original_name", "slug", "rank"].each do |e|
           response = frontend_facade.get_list_of_universities('jp', nil, 'zh-cn',e)
           result = response.parsed_response

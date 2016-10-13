@@ -1,4 +1,4 @@
-given_country_cn:
+given_ae_cn:
   payload:
     universities:
     - rank: 0
@@ -11,7 +11,7 @@ given_country_cn:
       latitude: 25.1038
       slug: hult-international-business-school-dubai-campus
 
-given_country_en:
+given_ae_en:
   payload:
     universities:
     - rank: 0
@@ -24,7 +24,7 @@ given_country_en:
       latitude: 25.1038
       slug: hult-international-business-school-dubai-campus
 
-given_country_en:
+given_jp_en:
   payload:
     universities:
     - rank: 0
