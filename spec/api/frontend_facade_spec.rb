@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Frontend Facade" do
 
-  let(:frontend_facade) { FrontendFacade.new }
+  subject(:frontend_facade) { FrontendFacade.new }
   let(:key) { key = @key }
 
   # describe "Users" do
@@ -20,17 +20,23 @@ describe "Frontend Facade" do
     context "Get summary of a property" do
 
       let(:payload) { FrontendFacadePayload::Property::Summary.payload key }
+      let(:response) { frontend_facade.get_summary_for_a_property(*params) }
 
-      it "Check summary for a property for en-gb.", :tag => 'student_villiage_summary_en' do |example|
-        response = frontend_facade.get_summary_for_a_property('student-village', 'en-gb')
-        expect(response[:code]).to be(200)
-        expect(response[:result]).to be_deep_equal(payload)
+      shared_examples "Check summary for a property"  do
+        it "Check summary for a property" do |example|
+          expect(response[:code]).to be(200)
+          expect(response[:result]).to be_deep_equal(payload)
+        end
       end
 
-      it "Check summary for a property for zh-cn.", :tag => 'te_puni_village_summary_cn' do |example|
-        response = frontend_facade.get_summary_for_a_property('te-puni-village', 'zh-cn')
-        expect(response[:code]).to be(200)
-        expect(response[:result]).to be_deep_equal(payload)
+      context "for en-gb", :tag => 'student_villiage_summary_en' do
+        let(:params) {['student-village','en-gb']}
+        include_examples "Check summary for a property"
+      end
+      
+      context "for zh-cn", :tag => 'te_puni_village_summary_cn' do
+        let(:params) {['te-puni-village','zh-cn']}
+        include_examples "Check summary for a property"
       end
     end
 
