@@ -13,7 +13,7 @@ module Cleric
       end
     end
 
-    def delete_user_query name, identifier
+    def delete_query name, identifier
       puts identifier.keys.last
       define_method("#{name}") do
         puts "generate #{name} method "

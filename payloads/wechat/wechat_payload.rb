@@ -1,10 +1,8 @@
 require 'cleric/xml'
 require './payloads/payload'
 
-module WechatPayload
+class WechatPayload < Payload
 
-  class Chatbot < Payload
-    include Cleric::XML
-  end
+  include Cleric::XML
 
 end
