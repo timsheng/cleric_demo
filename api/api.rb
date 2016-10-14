@@ -20,7 +20,7 @@ class API
 
   def new_response response
     new_response = {}
-    new_response.merge({:response => response, :result => response.parsed_response, :code => response.code})
+    new_response.merge({:response => response, :message => response.parsed_response, :status => response.code})
   end
 
 end
