@@ -1,0 +1,22 @@
+university_of_liverpool_details_en:
+  payload:
+    hero_image:
+      alt_text:
+      src: "/mstr/country/united-kingdom/city/liverpool/university/university-of-liverpool/image-nr3xev.jpeg"
+    name: University of Liverpool
+    summary: University of Liverpool is one of The Russell Group’s 24 research-led universities in the UK. The 100-acre main site is in the centre of Liverpool, with a centre in Leahurst on the Wirral and a London campus too. Go for student accommodation around the university or in Liverpool city centre for easy access to the main campus.
+    headline: The university has a £114m research income and research-led curricula, with
+      its main campus in Liverpool city centre
+    slug: university-of-liverpool
+    original_name: University of Liverpool
+
+university_of_liverpool_details_cn:
+  payload:
+    hero_image:
+      alt_text:
+      src: "/mstr/country/united-kingdom/city/liverpool/university/university-of-liverpool/image-nr3xev.jpeg"
+    name: 利物浦大学
+    summary: 利物浦大学是英国罗素大学集团以研究为导向的24所大学之一。它的主校区位于利物浦市中心，占地100英亩。除此以外，它还有威勒尔半岛的Leahurst校区和伦敦校区。利物浦大学周边有众多学生公寓可供选择。你也可以选择市中心的学生公寓，去利物浦大学主校区上课十分方便。
+    headline: 利物浦大学有1.14亿英镑的研究收入和以研究为导向的课程设置，它的主校区位于利物浦市中心
+    slug: university-of-liverpool
+    original_name: University of Liverpool
