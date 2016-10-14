@@ -1,8 +1,8 @@
 require 'builder'
 module Cleric
   module XML
-    def to_xml key
-      hash = self.class.payload key
+    def to_xml hash
+      # hash = self.class.payload
       builder = Builder::XmlMarkup.new
       xml = builder.xml do |b|
         hash.each do |tagname, text|
