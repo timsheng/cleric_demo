@@ -257,20 +257,20 @@ describe "Frontend Facade" do
 
     context "Get the details of a university." do
 
-    let(:payload) { FrontendFacadePayload::Universities::Details.payload key }
+      let(:payload) { FrontendFacadePayload::Universities::Details.payload key }
 
-    it "Check basic information is correct based on given university for en-gb.", :tag => 'university_of_liverpool_details_en' do |example|
-      response = frontend_facade.get_details_of_a_given_university('university-of-liverpool', 'en-gb')
-      expect(response[:status]).to be(200)
-      expect(response[:message]).to eq(payload)
-    end
+      it "Check basic information is correct based on given university for en-gb.", :tag => 'university_of_liverpool_details_en' do |example|
+        response = frontend_facade.get_details_of_a_given_university('university-of-liverpool', 'en-gb')
+        expect(response[:status]).to be(200)
+        expect(response[:message]).to eq(payload)
+      end
 
-    it "Check basic information is correct based on given university for zh-cn.", :tag => 'university_of_liverpool_details_cn' do |example|
-      response = frontend_facade.get_details_of_a_given_university('university-of-liverpool', 'zh-cn')
-      expect(response[:status]).to be(200)
-      expect(response[:message]).to eq(payload)
+      it "Check basic information is correct based on given university for zh-cn.", :tag => 'university_of_liverpool_details_cn' do |example|
+        response = frontend_facade.get_details_of_a_given_university('university-of-liverpool', 'zh-cn')
+        expect(response[:status]).to be(200)
+        expect(response[:message]).to eq(payload)
+      end
     end
-  end
 
     context "Get a list of universities." do
 
@@ -317,7 +317,6 @@ describe "Frontend Facade" do
         end
       end
     end
-
   end
 
 
