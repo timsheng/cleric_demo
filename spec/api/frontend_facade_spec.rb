@@ -42,6 +42,8 @@ describe "Frontend Facade" do
 
     context "Get rooms of a property" do
 
+      let(:payload) { FrontendFacadePayload::Property::Rooms.payload key }
+
       def get_elements hash, category_name = nil, unit_name = nil, listing_id = nil
         categories = hash['categories']
         categories.each do |e|
@@ -69,8 +71,6 @@ describe "Frontend Facade" do
         end
         return nil
       end
-
-      let(:payload) { FrontendFacadePayload::Property::Rooms.payload key }
 
       it "Check unit basic info is correct including bathroom_type, max_occupancy, id, name, distinctions", :tag => 'testing_room_property1' do |example|
         response = frontend_facade.get_rooms_for_a_property('testing-room-property-1')
@@ -294,7 +294,7 @@ describe "Frontend Facade" do
         expect(response[:message]['universities'].size).to eq 837
       end
 
-      it "Check all universities can be returned if country and city is not specified." do |example|
+      it "Check all universities can be returned if country and city is specified." do |example|
         response = frontend_facade.get_list_of_universities(nil, 'london', 'en-gb')
         expect(response[:status]).to be(200)
         expect(response[:message]['universities'].size).to eq 85
