@@ -13,6 +13,14 @@ module Cleric
       end
     end
 
+    def delete_user_query name, identifier
+      puts identifier.keys.last
+      define_method("#{name}") do
+        puts "generate #{name} method "
+        db.execute("delete from #{identifier[:db]} where #{identifier.keys.last} = '#{identifier.values.last}'")
+      end
+    end
+
     def query name, identifier
       define_method("#{name}") do
         puts "generate #{name} method "
