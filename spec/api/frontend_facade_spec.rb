@@ -173,6 +173,7 @@ describe "Frontend Facade" do
         response = frontend_facade.get_rooms_for_a_property('testing-room-property-1')
         result = response.parsed_response
         expect(response.code).to be(200)
+        flag = 0
         listings_expected = payload['categories'][1]['units'][0]['listings']
         categories = result['categories']
         categories.each do |e|
@@ -185,6 +186,7 @@ describe "Frontend Facade" do
                 listings.each do |e2|
                   listings_expected.each do |e3|
                     if e2['id'] == e3['id']
+                      flag = flag + 1
                       expect(e2['state']).to eq(e3['state'])
                       break
                     end
@@ -194,6 +196,7 @@ describe "Frontend Facade" do
             end
           end
         end
+        expect(flag).to eq(8)
       end
 
       it "Check inactive listing won't be returned from api." do
