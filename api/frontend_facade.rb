@@ -14,53 +14,61 @@ class FrontendFacade < API
 
   def get_summary_for_a_property property_slug, locale
     self.class.headers({'Accept-Language' => locale})
-    self.class.get("/properties/#{property_slug}/summary")
+    response = self.class.get("/properties/#{property_slug}/summary")
+    return new_response(response)
   end
 
   def get_rooms_for_a_property property_slug
-    self.class.get("/properties/#{property_slug}/rooms")
+    response = self.class.get("/properties/#{property_slug}/rooms")
+    return new_response(response)
   end
 
   def get_details_of_a_given_university university, locale
     self.class.headers({'Accept-Language' => locale})
-    self.class.get("/universities/#{university}")
+    response = self.class.get("/universities/#{university}")
+    return new_response(response)
   end
 
   def get_details_of_an_area area_slug, locale
     self.class.headers({'Accept-Language' => locale})
-    self.class.get("/areas/#{area_slug}")
+    response = self.class.get("/areas/#{area_slug}")
+    return new_response(response)
   end
 
   def get_areas_of_a_given_city city_slug, locale, sort = nil
     self.class.headers({'Accept-Language' => locale})
     if sort == nil
-      self.class.get("/areas?city_slug=#{city_slug}")
+      response = self.class.get("/areas?city_slug=#{city_slug}")
     else
-      self.class.get("/areas?city_slug=#{city_slug}&sort=#{sort}")
+      response = self.class.get("/areas?city_slug=#{city_slug}&sort=#{sort}")
     end
+    return new_response(response)
   end
 
   def get_details_of_a_city city_slug, locale
     self.class.headers({'Accept-Language' => locale})
-    self.class.get("/cities/#{city_slug}")
+    response = self.class.get("/cities/#{city_slug}")
+    return new_response(response)
   end
 
   def get_cities_of_a_given_country country_slug, locale, sort = nil
     self.class.headers({'Accept-Language' => locale})
     if sort == nil
-      self.class.get("/cities?country_slug=#{country_slug}")
+      response = self.class.get("/cities?country_slug=#{country_slug}")
     else
-      self.class.get("/cities?country_slug=#{country_slug}&sort=#{sort}")
+      response = self.class.get("/cities?country_slug=#{country_slug}&sort=#{sort}")
     end
+    return new_response(response)
   end
 
   def get_list_of_countries locale, sort = nil
     self.class.headers({'Accept-Language' => locale})
     if sort == nil
-      self.class.get("/countries")
+      response = self.class.get("/countries")
     else
-      self.class.get("/countries?sort=#{sort}")
+      response = self.class.get("/countries?sort=#{sort}")
     end
+    return new_response(response)
   end
 
   def get_list_of_universities country_slug, city_slug, locale, sort = nil
@@ -75,7 +83,8 @@ class FrontendFacade < API
     if sort != nil
       url = url + "sort=" + sort + "&"
     end
-    self.class.get(url[0, url.length - 1])
+    response = self.class.get(url[0, url.length - 1])
+    return new_response(response)
   end
 
   def expect_result key

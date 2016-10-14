@@ -18,4 +18,9 @@ class API
     return http_conf[key] if key
   end
 
+  def new_response response
+    new_response = {}
+    new_response.merge({:response => response, :result => response.parsed_response, :code => response.code})
+  end
+
 end
