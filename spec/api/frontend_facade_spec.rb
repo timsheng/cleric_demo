@@ -11,7 +11,7 @@ describe "Frontend Facade" do
   #     frontend_facade_payload = FrontendFacadePayload::Property::Users.new(key)
   #     puts frontend_facade_payload.payload
   #     response = frontend_facade.create_user(frontend_facade_payload.payload)
-  #     expect(response.code).to be(200)
+  #     expect(response[:status]).to be(200)
   #   end
   # end
 
@@ -44,13 +44,153 @@ describe "Frontend Facade" do
 
       let(:payload) { FrontendFacadePayload::Property::Rooms.payload key }
 
+      def get_elements hash, category_name = nil, unit_name = nil, listing_id = nil
+        categories = hash['categories']
+        categories.each do |e|
+          if e['name'] == category_name
+            if unit_name == nil
+              return e
+            elsif
+              units = e['units']
+              units.each do |e1|
+                if e1['name'] == unit_name
+                  if listing_id == nil
+                    return e1
+                  elsif
+                    listings = e1['listings']
+                    listings.each do |e2|
+                      if e2['id'] == listing_id
+                        return e2
+                      end
+                    end
+                  end
+                end
+              end
+            end
+          end
+        end
+        return nil
+      end
+
+      it "Check unit basic info is correct including bathroom_type, max_occupancy, id, name, distinctions", :tag => 'testing_room_property1' do |example|
+        response = frontend_facade.get_rooms_for_a_property('testing-room-property-1')
+        expect(response[:status]).to be(200)
+        unit_expected = get_elements(payload, 'private-room', 'Unit 1')
+        unit_actual = get_elements(response[:message], 'private-room', 'Unit 1')
+        ['bathroom_type', 'max_occupancy', 'id', 'name', 'distinctions'].each do |e|
+          expect(unit_actual[e]).to be_deep_equal(unit_expected[e])
+        end
+      end
+
+      it "Check unit state is correct for available_with_price, available, coming_soon, sold_out", :tag => 'testing_room_property1' do |example|
+        response = frontend_facade.get_rooms_for_a_property('testing-room-property-1')
+        expect(response[:status]).to be(200)
+        unit_expected = get_elements(payload, 'private-room', 'Unit 1')
+        unit_actual = get_elements(response[:message], 'private-room', 'Unit 1')
+        expect(unit_actual['state']).to eq(unit_expected['state'])
+        ['Unit 2', 'unit 3', 'Unit 4'].each do |e|
+          unit_expected = get_elements(payload, 'entire-place', e)
+          unit_actual = get_elements(response[:message], 'entire-place', e)
+          expect(unit_actual['state']).to eq(unit_expected['state'])
+        end
+      end
+
+      it "Check listing basic info including id, availability, price_min, price_max", :tag => 'testing_room_property1' do |example|
+        response = frontend_facade.get_rooms_for_a_property('testing-room-property-1')
+        expect(response[:status]).to be(200)
+        listing_expected = get_elements(payload, 'private-room', 'Unit 1', 68918)
+        listing_actual = get_elements(response[:message], 'private-room', 'Unit 1', 68918)
+        ['availability', 'price_min', 'price_max'].each do |e|
+          expect(listing_actual[e]).to eq(listing_expected[e])
+        end
+      end
+
+      it "Check listing discount price and discount type", :tag => 'testing_room_property1' do |example|
+        response = frontend_facade.get_rooms_for_a_property('testing-room-property-1')
+        expect(response[:status]).to be(200)
+        [68918, 68917].each do |e|
+          listing_expected = get_elements(payload, 'private-room', 'Unit 1', e)
+          listing_actual = get_elements(response[:message], 'private-room', 'Unit 1', e)
+          expect(listing_actual['discount']['type']).to  eq(listing_expected['discount']['type'])
+          expect(listing_actual['discount']['value']).to  eq(listing_expected['discount']['value'])
+          expect(listing_actual['discounted_price_min']).to eq(listing_expected['discounted_price_min'])
+          expect(listing_actual['discounted_price_max']).to eq(listing_expected['discounted_price_max'])
+        end
+      end
+
+      it "Check listing state for available_with_price, available, coming_soon or sold_out.", :tag => 'testing_room_property1' do |example|
+        def get_listing_id_state hash
+          listings = []
+          hash.each do |e|
+            listing = []
+            listing << e['id']
+            listing << e['state']
+            listings << listing
+          end
+          return listings
+        end
+
+        response = frontend_facade.get_rooms_for_a_property('testing-room-property-1')
+        expect(response[:status]).to be(200)
+        unit_expected = get_elements(payload, 'private-room', 'Unit 1')
+        unit_actual = get_elements(response[:message], 'private-room', 'Unit 1')
+        listings_expected = get_listing_id_state(unit_expected['listings'])
+        listings_actual = get_listing_id_state(unit_actual['listings'])
+        expect(listings_actual).to be_deep_equal(listings_expected)
+      end
+
+      it "Check inactive listing won't be returned from api." do
+        # Check listing 68925, 68926, 68927, 68928 of Unit 1 is not returned because there're inactive.
+        response = frontend_facade.get_rooms_for_a_property('testing-room-property-1')
+        expect(response[:status]).to be(200)
+        unit_actual = get_elements(response[:message], 'private-room', 'Unit 1')
+        listing_ids = []
+        unit_actual['listings'].each do |e|
+          listing_ids << e['id']
+        end
+        expect(listing_ids).to be_deep_equal(listing_ids - [68925, 68926, 68927, 68928])
+      end
+
+      it "Check listing duration and l18n_key", :tag => 'testing_room_property1' do |example|
+        response = frontend_facade.get_rooms_for_a_property('testing-room-property-1')
+        expect(response[:status]).to be(200)
+        [68918, 68924, 68922, 68917, 68920].each do |e|
+          listing_expected = get_elements(payload, 'private-room', 'Unit 1', e)
+          listing_actual = get_elements(response[:message], 'private-room', 'Unit 1', e)
+          ['duration_min', 'duration_max', 'i18n_key'].each do |e1|
+            expect(listing_actual['durations'][e1]).to eq(listing_expected['durations'][e1])
+          end
+        end
+      end
+
+      it "Check listing start dates and l18n_key", :tag => 'testing_room_property1' do |example|
+        response = frontend_facade.get_rooms_for_a_property('testing-room-property-1')
+        expect(response[:status]).to be(200)
+        [68918, 68924, 68922, 68919, 68920].each do |e|
+          listing_expected = get_elements(payload, 'private-room', 'Unit 1', e)
+          listing_actual = get_elements(response[:message], 'private-room', 'Unit 1', e)
+          ['start_date_min', 'start_date_max', 'i18n_key'].each do |e1|
+            expect(listing_actual['start_dates'][e1]).to eq(listing_expected['start_dates'][e1])
+          end
+        end
+      end
+
+      it "Check listing tenancy_periods", :tag => 'testing_room_property4' do |example|
+        response = frontend_facade.get_rooms_for_a_property('testing-room-property-4')
+        expect(response[:status]).to be(200)
+        listing_expected = get_elements(payload, 'private-room', 'Unit 1', 68937)
+        listing_actual = get_elements(response[:message], 'private-room', 'Unit 1', 68937)
+        expect(listing_actual['tenancy_periods']).to be_deep_equal(listing_expected['tenancy_periods'])
+      end
+
       it "Check category basic info including name. ", :tag => 'testing_room_property2' do |example|
         response = frontend_facade.get_rooms_for_a_property('testing-room-property-2')
         expect(response[:status]).to be(200)
-        category_size = response[:message]['categories'].size
+        categories = response[:message]['categories']
+        result_category_name = []
         expect_category_name = ['shared-room','private-room','entire-place']
-        for i in 0..category_size - 1
-          (result_category_name ||= []) << response[:message]['categories'][i]['name']
+        categories.each do |e|
+          result_category_name << e['name']
         end
         expect(result_category_name).to be_deep_equal(expect_category_name)
       end
@@ -58,28 +198,20 @@ describe "Frontend Facade" do
       it "Check category state is correct for available, coming_soon or sold_out. ", :tag => 'testing_room_property2' do |example|
         response = frontend_facade.get_rooms_for_a_property('testing-room-property-2')
         expect(response[:status]).to be(200)
-        category_size = response[:message]['categories'].size
-        for i in 0..category_size - 1
-          if response[:message]['categories'][i]['name'] == 'private-room'
-            expect(response[:message]['categories'][i]['state']).to eq(payload['categories'][1]['state'])
-          elsif response[:message]['categories'][i]['name'] == 'shared-room'
-            expect(response[:message]['categories'][i]['state']).to eq(payload['categories'][0]['state'])
-          else
-            expect(response[:message]['categories'][i]['state']).to eq(payload['categories'][2]['state'])
-          end
+        ['private-room', 'shared-room', 'entire-place'].each do |e|
+          category_expected = get_elements(payload, e)
+          category_actual = get_elements(response[:message], e)
+          expect(category_actual['state']).to eq(category_expected['state'])
         end
       end
 
       it "Check category state is available_with_price or inactive ", :tag => 'testing_room_property1' do |example|
         response = frontend_facade.get_rooms_for_a_property('testing-room-property-1')
         expect(response[:status]).to be(200)
-        category_size = response[:message]['categories'].size
-        for i in 0..category_size - 1
-          if response[:message]['categories'][i]['name'] == 'private-room'
-            expect(response[:message]['categories'][i]['state']).to eq(payload['categories'][1]['state'])
-          elsif response[:message]['categories'][i]['name'] == 'shared-room'
-            expect(response[:message]['categories'][i]['state']).to eq(payload['categories'][0]['state'])
-          end
+        ['private-room', 'shared-room'].each do |e|
+          category_expected = get_elements(payload, e)
+          category_actual = get_elements(response[:message], e)
+          expect(category_actual['state']).to eq(category_expected['state'])
         end
       end
 
@@ -162,7 +294,7 @@ describe "Frontend Facade" do
         expect(response[:message]['universities'].size).to eq 837
       end
 
-      it "Check all universities can be returned if country and city is not specified." do |example|
+      it "Check all universities can be returned if country and city is specified." do |example|
         response = frontend_facade.get_list_of_universities(nil, 'london', 'en-gb')
         expect(response[:status]).to be(200)
         expect(response[:message]['universities'].size).to eq 85
