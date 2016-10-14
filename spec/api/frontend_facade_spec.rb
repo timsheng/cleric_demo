@@ -53,11 +53,9 @@ describe "Frontend Facade" do
             units.each do |e1|
               if e1['name'] == "Unit 1"
                 flag = true
-                expect(e1['bathroom_type']).to eq(unit_expected['bathroom_type'])
-                expect(e1['max_occupancy']).to eq(unit_expected['max_occupancy'])
-                expect(e1['id']).to eq(unit_expected['id'])
-                expect(e1['name']).to eq(unit_expected['name'])
-                expect(e1['distinctions']).to be_deep_equal(unit_expected['distinctions'])
+                ['bathroom_type', 'max_occupancy', 'id', 'name', 'distinctions'].each do |e2|
+                  expect(e1[e2]).to be_deep_equal(unit_expected[e2])
+                end
                 break
               end
             end
