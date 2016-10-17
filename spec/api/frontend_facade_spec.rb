@@ -257,20 +257,20 @@ describe "Frontend Facade" do
 
     context "Get the details of a university." do
 
-    let(:payload) { FrontendFacadePayload::Universities::Details.payload key }
+      let(:payload) { FrontendFacadePayload::Universities::Details.payload key }
 
-    it "Check basic information is correct based on given university for en-gb.", :tag => 'university_of_liverpool_details_en' do |example|
-      response = frontend_facade.get_details_of_a_given_university('university-of-liverpool', 'en-gb')
-      expect(response[:status]).to be(200)
-      expect(response[:message]).to eq(payload)
-    end
+      it "Check basic information is correct based on given university for en-gb.", :tag => 'university_of_liverpool_details_en' do |example|
+        response = frontend_facade.get_details_of_a_given_university('university-of-liverpool', 'en-gb')
+        expect(response[:status]).to be(200)
+        expect(response[:message]).to eq(payload)
+      end
 
-    it "Check basic information is correct based on given university for zh-cn.", :tag => 'university_of_liverpool_details_cn' do |example|
-      response = frontend_facade.get_details_of_a_given_university('university-of-liverpool', 'zh-cn')
-      expect(response[:status]).to be(200)
-      expect(response[:message]).to eq(payload)
+      it "Check basic information is correct based on given university for zh-cn.", :tag => 'university_of_liverpool_details_cn' do |example|
+        response = frontend_facade.get_details_of_a_given_university('university-of-liverpool', 'zh-cn')
+        expect(response[:status]).to be(200)
+        expect(response[:message]).to eq(payload)
+      end
     end
-  end
 
     context "Get a list of universities." do
 
@@ -300,6 +300,15 @@ describe "Frontend Facade" do
         expect(response[:message]['universities'].size).to eq 85
       end
 
+      it "Check unpublished university is not returned." do |example|
+        # city-of-glasgow-college is not published.
+        response = frontend_facade.get_list_of_universities(nil, 'glasgow', 'en-gb')
+        expect(response[:status]).to be(200)
+        response[:message]['universities'].each do |e|
+          expect(e['slug']).not_to eq('city-of-glasgow-college')
+        end
+      end
+
       it "Check response can be sorted by name,original_name,slug and rank.", :tag => 'given_jp_en' do |example|
         ["name", "original_name", "slug", "rank"].each do |e|
           response = frontend_facade.get_list_of_universities('jp', nil, 'zh-cn',e)
@@ -317,7 +326,6 @@ describe "Frontend Facade" do
         end
       end
     end
-
   end
 
 
@@ -327,7 +335,7 @@ describe "Frontend Facade" do
 
       let(:payload) { FrontendFacadePayload::Locations::Countries.payload key }
 
-      it "Check basic information is correct for en-gb and unpublished country is not returned.", :tag => 'location_countries_list_en' do |example|
+      it "Check basic information is correct for en-gb", :tag => 'location_countries_list_en' do |example|
         response = frontend_facade.get_list_of_countries('en-gb')
         expect(response[:status]).to be(200)
         expect(response[:message]).to be_deep_equal(payload)
@@ -354,6 +362,15 @@ describe "Frontend Facade" do
         expect(response[:status]).to be(200)
         expect(response[:message]['countries']).to eq(expected_array)
       end
+
+      it "Check unpublished country is not returned." do |example|
+        # da is not published.
+        response = frontend_facade.get_list_of_countries('en-gb')
+        expect(response[:status]).to be(200)
+        response[:message]['countries'].each do |e|
+          expect(e['slug']).not_to eq('da')
+        end
+      end
     end
 
     context "Get the list of cities of a given country" do
@@ -373,9 +390,12 @@ describe "Frontend Facade" do
       end
 
       it "Check unpublished cities are not returned for de.", :tag => 'location_cities_de_en' do |example|
+        # unpublished-city-test-dan is not published.
         response = frontend_facade.get_cities_of_a_given_country('de', 'en-gb')
         expect(response[:status]).to be(200)
-        expect(response[:message]).to be_deep_equal(payload)
+        response[:message]['cities'].each do |e|
+          expect(e['slug']).not_to eq('unpublished-city-test-dan')
+        end
       end
 
       it "Check response can be sorted by name,original_name,slug,rank for en-gb", :tag => 'location_cities_au_en' do |example|
@@ -443,9 +463,12 @@ describe "Frontend Facade" do
       end
 
       it "Check unpublished areas are not returned.", :tag => 'location_areas_london_en' do |example|
+        # london-area-test is not published.
         response = frontend_facade.get_areas_of_a_given_city('london', 'en-gb')
         expect(response[:status]).to be(200)
-        expect(response[:message]).to be_deep_equal(payload)
+        response[:message]['areas'].each do |e|
+          expect(e['slug']).not_to eq('london-area-test')
+        end
       end
 
       it "Check areas for non-area city" do
