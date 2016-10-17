@@ -17,7 +17,8 @@ module Cleric
       puts identifier.keys.last
       define_method("#{name}") do
         puts "generate #{name} method "
-        db.execute("delete from #{identifier[:db]} where #{identifier.keys.last} = '#{identifier.values.last}'")
+        table = db[identifier[:db].to_sym]
+        table.filter(identifier.keys.last =>identifier.values.last ).delete
       end
     end
 

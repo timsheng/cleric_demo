@@ -2,7 +2,6 @@ require 'spec_helper'
 require 'cleric/xml'
 
 describe "Wechat" do
-  include Cleric::XML
   before(:all) do
     puts "starting wechat api testing"
   end
@@ -30,15 +29,14 @@ describe "Wechat" do
   end
 
   context "Check Chatbot workflow." do
-    payload = WechatPayload.new
-    # let(:payload) { WechatPayload::Chatbot.payload key }
+    let(:payload) { WechatPayload.new}
 
     it "New user send message to wechat will go into chatbot flow.", :tag => 'Wechat1' do |example|
       wechat.delete_user
       xml = payload.to_xml key
-      # response = wechat.send_text_message(xml)
-      # expect(response.code).to be(200)
-      # expect(response).to include("请问你的姓名是")
+      response = wechat.send_text_message(xml)
+      expect(response.code).to be(200)
+      expect(response).to include("请问你的姓名是")
     end
   end
 
