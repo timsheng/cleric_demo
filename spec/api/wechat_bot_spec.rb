@@ -1,7 +1,7 @@
 require 'spec_helper'
+require 'cleric/xml'
 
 describe "Wechat" do
-
   before(:all) do
     puts "starting wechat api testing"
   end
@@ -24,16 +24,19 @@ describe "Wechat" do
   end
 
   it "test example tag if can be fetched", :tag => 'Wechat1' do |example|
-    payload = WechatPayload.new
     response = wechat.send_text_message(payload.to_xml key)
     expect(response.code).to be(200)
   end
 
-  context "Pre-condition sql execution" do
-    it "select lead table before send text message to wechat",:prejob => 'Wechat1', :tag => 'Wechat1' do |example|
-      payload = WechatPayload.new
-      response = wechat.send_text_message(payload.to_xml key)
+  context "Check Chatbot workflow." do
+    let(:payload) { WechatPayload.new}
+
+    it "New user send message to wechat will go into chatbot flow.", :tag => 'Wechat1' do |example|
+      wechat.delete_user
+      xml = payload.to_xml key
+      response = wechat.send_text_message(xml)
       expect(response.code).to be(200)
+      expect(response).to include("请问你的姓名是")
     end
   end
 
