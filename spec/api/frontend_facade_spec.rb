@@ -278,7 +278,7 @@ describe "Frontend Facade" do
           expect(response[:message]['universities'].size).to eq 837
         end
 
-        it "Check all universities can be returned if country and city is specified.", :params => [nil, 'london', 'en-gb'] do
+        it "can be returned if country and city is specified.", :params => [nil, 'london', 'en-gb'] do
           expect(response[:status]).to be(200)
           expect(response[:message]['universities'].size).to eq 85
         end
@@ -349,7 +349,7 @@ describe "Frontend Facade" do
           expect(response[:message]).to be_deep_equal(payload)
         end
 
-        it "Check basic information is correct based on given country for zh-cn.", :key => 'location_cities_au_cn', :params => ['au', 'zh-cn'] do
+        it "should be correct based on given country for zh-cn.", :key => 'location_cities_au_cn', :params => ['au', 'zh-cn'] do
           expect(response[:status]).to be(200)
           expect(response[:message]).to be_deep_equal(payload)
         end
@@ -415,12 +415,12 @@ describe "Frontend Facade" do
       let(:response) { frontend_facade.get_areas_of_a_given_city(*params) }
 
       context "Check basic info" do
-        it "Check basic info is correct base on given city for en-gb." do
+        it "should be correct base on given city for en-gb." do
           expect(response[:status]).to be(200)
           expect(response[:message]).to be_deep_equal(payload)
         end
 
-        it "Check basic info is correct base on given city for zh-cn.", :key => 'location_areas_sydney_cn', :params => ['sydney', 'zh-cn'] do
+        it "should be correct base on given city for zh-cn.", :key => 'location_areas_sydney_cn', :params => ['sydney', 'zh-cn'] do
           expect(response[:status]).to be(200)
           expect(response[:message]).to be_deep_equal(payload)
         end
@@ -434,13 +434,13 @@ describe "Frontend Facade" do
       end
 
       context "Check areas" do
-        it "Check areas for non-area city", :params => ['wellington-changed', 'en-gb'] do
+        it "should be correct for non-area city", :params => ['wellington-changed', 'en-gb'] do
           expected = {"areas" => []}
           expect(response[:status]).to be(200)
           expect(response[:message]).to eq(expected)
         end
 
-        it "can be sorted by name,original_name,slug,rank for en-gb" do
+        it "can be sorted by name, original_name, slug, rank for en-gb" do
           ["name", "original_name", "slug", "rank"].each do |e|
             response = frontend_facade.get_areas_of_a_given_city('sydney', 'en-gb', e)
             expect(response[:status]).to be(200)
