@@ -272,6 +272,16 @@ describe "Frontend Facade" do
         end
       end
 
+      context "Check unpublished university", :params => [nil, 'glasgow', 'en-gb'] do
+        it "should not returned." do
+          # city-of-glasgow-college is not published.
+          expect(response[:status]).to be(200)
+          response[:message]['universities'].each do |e|
+            expect(e['slug']).not_to eq('city-of-glasgow-college')
+          end
+        end
+      end
+
       context "Check all universities" do
         it "should return if country and city is not specified.", :params => [nil, nil, 'en-gb'] do
           expect(response[:status]).to be(200)
@@ -337,6 +347,16 @@ describe "Frontend Facade" do
           expect(response[:message]['countries']).to eq(expected_array)
         end
       end
+
+      context "Check unpublished country" do
+        it "Check unpublished country is not returned." do
+          # da is not published.
+          expect(response[:status]).to be(200)
+          response[:message]['countries'].each do |e|
+            expect(e['slug']).not_to eq('da')
+          end
+        end
+      end
     end
 
     context "Get the list of cities of a given country", :key => 'location_cities_au_en', :params => ['au', 'en-gb'] do
@@ -358,7 +378,9 @@ describe "Frontend Facade" do
       context "Check cities" do
         it "unpublished cities shouldn't return for de.", :key => 'location_cities_de_en', :params => ['de', 'en-gb'] do
           expect(response[:status]).to be(200)
-          expect(response[:message]).to be_deep_equal(payload)
+          response[:message]['cities'].each do |e|
+            expect(e['slug']).not_to eq('unpublished-city-test-dan')
+          end
         end
 
         it "can be sorted by name, original_name, slug, rank for en-gb" do
@@ -429,7 +451,9 @@ describe "Frontend Facade" do
       context "Check unpublished areas" do
         it "shouldn't return.", :key => 'location_areas_london_en', :params => ['london', 'en-gb'] do
           expect(response[:status]).to be(200)
-          expect(response[:message]).to be_deep_equal(payload)
+          response[:message]['areas'].each do |e|
+            expect(e['slug']).not_to eq('london-area-test')
+          end
         end
       end
 
