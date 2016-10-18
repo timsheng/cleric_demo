@@ -1,4 +1,5 @@
 require 'data_magic'
+require 'cleric'
 
 class Payload
 

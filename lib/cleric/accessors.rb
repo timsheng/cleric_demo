@@ -14,7 +14,6 @@ module Cleric
     end
 
     def delete_query name, identifier
-      puts identifier.keys.last
       define_method("#{name}") do
         puts "generate #{name} method "
         table = db[identifier[:db].to_sym]

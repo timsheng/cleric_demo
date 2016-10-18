@@ -1,9 +1,6 @@
 require './lib/cleric'
 require 'httparty'
-require 'base64'
-require 'openssl'
 require 'data_magic'
-
 
 class API
   include Cleric

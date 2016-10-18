@@ -1,8 +1,6 @@
-require 'rbnacl'
-require 'base64'
 require '../lib/cleric/box'
 
-include Cleric
+include Cleric::BOX
 
 box = get_box
 ciphertext = File.read(get_file_enc)
