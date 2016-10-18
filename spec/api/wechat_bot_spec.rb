@@ -9,24 +9,24 @@ describe "Wechat" do
     puts "---finished wechat api testing---"
   end
 
-  # after(:each) do
-  #   wechat.close_ssh wechat.port
-  # end
+  after(:each) do
+    wechat.close_ssh wechat.port
+  end
 
   let(:wechat) { Wechat.new(:ssh => 'Wechat_ssh', :db => 'Wechat_db') }
   let(:key) { key = @key }
 
   context "cleric methods demo" do
     # just for example "how to use accessors methods in spec file"
-    # it "test accessor method" do
-    #   wechat.lead
-    # end
+    it "test accessor method" do
+      wechat.lead
+    end
 
-    # it "test example tag if can be fetched", :key => 'Wechat1' do
-    #   payload = WechatPayload.new
-    #   response = wechat.send_text_message(payload.to_xml key)
-    #   expect(response.code).to be(200)
-    # end
+    it "test example tag if can be fetched", :key => 'Wechat1' do
+      payload = WechatPayload.new
+      response = wechat.send_text_message(payload.to_xml key)
+      expect(response.code).to be(200)
+    end
 
     # context "Check Chatbot workflow." do
     #   let(:payload) { WechatPayload.new}
@@ -40,12 +40,12 @@ describe "Wechat" do
     #   end
     # end
 
-    # context "Pre-condition sql execution" do
-    #   it "select lead table before send text message to wechat",:prejob => 'Wechat1', :key => 'Wechat1' do |example|
-    #     payload = WechatPayload.new
-    #     response = wechat.send_text_message(payload.to_xml key)
-    #   end
-    # end
+    context "Pre-condition sql execution" do
+      it "select lead table before send text message to wechat",:prejob => 'Wechat1', :key => 'Wechat1' do |example|
+        payload = WechatPayload.new
+        response = wechat.send_text_message(payload.to_xml key)
+      end
+    end
   end
 
 end
