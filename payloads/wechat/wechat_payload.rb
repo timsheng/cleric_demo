@@ -5,6 +5,4 @@ class WechatPayload < Payload
 
   include Cleric::XML
 
-
-
 end
