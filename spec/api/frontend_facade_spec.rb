@@ -507,3 +507,42 @@ describe "Frontend Facade" do
     end
   end
 end
+
+describe "demo" do
+  after(:each) {frontend_facade.close_ssh frontend_facade.port}
+
+  context "db" do
+    let(:frontend_facade) { FrontendFacade.new(:ssh => 'Property_ssh', :db => 'Property_db')}
+
+    it "arbitrary raw SQL example" do
+      dataset = frontend_facade.db["select id, name from properties limit 10"]
+      # will return the number of records in the result set
+      dataset.count
+      # will return an array containing all values of the id column in the result set
+      dataset.map(:id)
+      dataset.each do |row|
+        p row
+      end
+    end
+
+    it "change database" do
+      frontend_facade.connect_database('Listing_db')
+    end
+
+    it "avg column by" do
+      puts frontend_facade.avg_property_rank(:city_lsg_id => 231004020)
+    end
+
+    it "query specific column by" do
+      # id is unique
+      puts frontend_facade.query_property_rank(:id => 1)
+    end
+
+    it "query columns by" do
+      # city_lsg_id is not unique
+      puts frontend_facade.query_property_rank(:city_lsg_id => 231004020)
+    end
+
+  end
+
+end

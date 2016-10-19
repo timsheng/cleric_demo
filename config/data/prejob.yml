@@ -3,5 +3,4 @@ Wechat1:
     Wechat: I am wechat helper
     Booking: I am booking helper
   db:
-    Wechat: lead
     Booking: "select * from user"
