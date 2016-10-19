@@ -1,87 +1,3 @@
-location_city_london_en:
-  payload:
-    country:
-      original_name: United Kingdom
-      name: United Kingdom
-      slug: uk
-    gallery_images: []
-    name: London
-    hero_image:
-    rank: 120
-    areas:
-    - name: Colindale
-      slug: colindale
-    - name: Waterloo
-      slug: waterloo
-    - name: Marylebone
-      slug: marylebone
-    - name: Kennington
-      slug: kennington
-    - name: Stratford
-      slug: stratford
-    - name: South Bank
-      slug: south-bank
-    - name: Kingston
-      slug: kingston
-    - name: Spitalfields
-      slug: spitalfields
-    - name: West Hampstead
-      slug: west-hampstead
-    - name: Wembley
-      slug: wembley
-    - name: Ealing
-      slug: ealing
-    - name: Hammersmith
-      slug: hammersmith
-    - name: Kensington & Chelsea
-      slug: kensington-chelsea
-    - name: Stoke Newington
-      slug: stoke-newington
-    - name: Bloomsbury
-      slug: bloomsbury
-    - name: Willesden
-      slug: willesden
-    - name: Twickenham
-      slug: twickenham
-    - name: Area TEST
-      slug: area-test
-    - name: Clerkenwell
-      slug: clerkenwell
-    - name: Kentish Town
-      slug: kentish-town
-    - name: Kings Cross
-      slug: kings-cross
-    - name: Greenwich
-      slug: greenwich
-    - name: Tottenham
-      slug: tottenham
-    - name: Islington
-      slug: islington
-    - name: Notting Hill
-      slug: notting-hill
-    - name: Shoreditch
-      slug: shoreditch
-    - name: South London
-      slug: south-london
-    - name: Camden
-      slug: camden
-    - name: Mile End & Bethnal Green
-      slug: mile-end-bethnal-green
-    summary: "<p>London is everything and its opposite. It’s a grand, striving metropolis
-      and a network of villages, hugely diverse in their own distinct character. It’s
-      voraciously modern. Iconic skyscrapers overlook global finance, science and technology
-      hubs. London oozes the past. Palaces, parliaments and great houses wrapped in stories
-      and tradition fill the city. London is glass and stone. But intensely green. Regal
-      parks, banks of flowers, mighty trees, heaths and secret gardens pool around its
-      cobbles, flagstones, bricks and concrete. It absorbs a vast multitude of cultures.
-      It emits its world-changing brew of art, music, fashion and thinking. Living here
-      is an experience like nothing else. Choose your village. Find your part in the patchwork
-      and dive into the magic.</p>"
-    original_name: London
-    headline: An immense patchwork crammed with the whole of human life, London is an
-      endless festival of adventure and opportunity
-    slug: london
-
 location_city_sydney_en:
   payload:
     country:
@@ -90,6 +6,7 @@ location_city_sydney_en:
       slug: au
     gallery_images: []
     name: Sydney
+    lsg_id: 019008003
     hero_image:
     rank: 110
     areas:
@@ -130,38 +47,39 @@ location_city_sydney_en:
 
 location_city_sydney_cn:
   payload:
+    rank: 110
+    gallery_images: []
+    original_name: Sydney
+    name: 悉尼
+    lsg_id: 019008003
+    areas:
+    - slug: inner-sydney
+      name: 悉尼内城区
+    - slug: cbd
+      name: 悉尼中心商业区
+    - slug: north-west-sydney
+      name: 悉尼西北部
+    - slug: inner-west
+      name: 内西区
+    - slug: south-west-sydney
+      name: 悉尼西南部
+    - slug: western-sydney
+      name: 悉尼西区
+    - slug: north-sydney
+      name: 北悉尼
+    - slug: parramatta
+      name: Parramatta
+    - slug: richmond
+      name: Richmond
+    - slug: eastern-suburbs
+      name: 东郊
+    - slug: central
+      name: 悉尼市中心
+    slug: sydney
     country:
+      slug: au
       original_name: Australia
       name: 澳大利亚
-      slug: au
-    gallery_images: []
-    name: 悉尼
-    hero_image:
-    rank: 110
-    areas:
-    - name: 悉尼内城区
-      slug: inner-sydney
-    - name: 悉尼中心商业区
-      slug: cbd
-    - name: 悉尼西北部
-      slug: north-west-sydney
-    - name: 内西区
-      slug: inner-west
-    - name: 悉尼西南部
-      slug: south-west-sydney
-    - name: 悉尼西区
-      slug: western-sydney
-    - name: 北悉尼
-      slug: north-sydney
-    - name: Parramatta
-      slug: parramatta
-    - name: Richmond
-      slug: richmond
-    - name: 东郊
-      slug: eastern-suburbs
-    - name: 悉尼市中心
-      slug: central
     summary: "<p>Eastern Suburbs区有着美丽迷人的海滩，值得探索一番。位于中心商务区的悉尼港的著名地标值得细细参观品味。业余时间，你可以去划皮艇、冲浪或者海上航行，也可以去咖啡馆喝喝咖啡，看看过往的人群。逛逛设计师商店，你可以买到许多时尚潮品。在复古集市，你同样可以淘到许多宝贝。新鲜的海鲜食物千万不要错过。Parramatta区有着当地最好的餐馆，你可以去那儿度过美好的夜晚时光。你还可以在那儿一边喝鸡尾酒，一边欣赏美丽的夜景。看看世界一流的戏剧和表演，你一定会赞不绝口，绝佳的画廊和街头艺术则会让你的灵感喷涌而出。友情提醒：你一定会舍不得离开。</p>"
-    original_name: Sydney
+    hero_image:
     headline: 在悉尼这座美丽的澳大利亚城市安家，你可以尽情享受优秀的文化、精致的食物和令人羡慕的户外生活
-    slug: sydney
