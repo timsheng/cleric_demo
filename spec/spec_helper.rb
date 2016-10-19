@@ -4,8 +4,6 @@ require './api/booking'
 require './api/frontend_facade'
 require './payloads/wechat/wechat_payload'
 require './payloads/facade/frontend_facade_payload'
-require 'cleric'
-require 'data_magic'
 
 Dir[File.dirname(__FILE__) + "/support/**/*.rb"].each { |f| require f }
 

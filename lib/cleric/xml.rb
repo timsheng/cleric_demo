@@ -1,4 +1,5 @@
 require 'builder'
+
 module Cleric
   module XML
     def to_xml key
