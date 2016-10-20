@@ -4,9 +4,7 @@ class FrontendFacade < API
 
   base_uri http('base_uri')
 
-  query :id, :db => 'properties',:name => '1 Penta House'
-  query :name, :db => 'properties', :id => 1
-  query :address, :db => 'properties', :id => 1
+  column :property_rank, :table => 'properties', :items => 'rank'
 
   def create_user payload
     self.class.post('/users', :body => payload.to_json)

@@ -6,26 +6,21 @@ module Cleric
   module Accessors
 
     # just for example "how to create method in accesors"
-    def count_table name
-      define_method("#{name}") do
-        puts "generate #{name} method "
-        db['select id from lead'].count
+    def row name, identifier
+      define_method("delete_#{name}") do |value|
+        puts "generate delete_#{name} method"
+        db[identifier[:table].to_sym].filter(value).delete
       end
     end
 
-    def delete_query name, identifier
-      define_method("#{name}") do
-        puts "generate #{name} method "
-        table = db[identifier[:db].to_sym]
-        table.filter(identifier.keys.last =>identifier.values.last ).delete
+    def column name, identifier
+      define_method("avg_#{name}") do |value|
+        puts "generate avg_#{name} method"
+        db[identifier[:table].to_sym].filter(value).avg(identifier.values.last.to_sym)
       end
-    end
-
-    def query name, identifier
-      define_method("#{name}") do
-        puts "generate #{name} method "
-        properties = db[identifier[:db].to_sym]
-        properties.filter(identifier.keys.last => identifier.values.last).map(name).first
+      define_method("query_#{name}") do |value|
+        puts "generate query_#{name} method"
+        db[identifier[:table].to_sym].filter(value).map(identifier.values.last.to_sym)
       end
     end
 

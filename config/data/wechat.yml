@@ -4,5 +4,5 @@ Wechat1:
     FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
     CreateTime: 1476213299
     MsgType: text
-    Content: 伦敦
+    Content: 利物浦
     MsgId: <%= rand(10000) %>
