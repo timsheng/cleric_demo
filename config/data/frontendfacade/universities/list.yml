@@ -1,216 +1,213 @@
 given_ae_cn:
-  payload:
-    universities:
-    - rank: 0
-      longitude: 55.1676
-      original_name: Hult International Business School (Dubai Campus)
-      hero_image:
-        alt_text:
-        src: "/mstr/country/united-arab-emirates/city/dubai/university/hult-international-business-school-dubai-campus/image-o6l9gx.jpeg"
-      name: 霍特国际商学院迪拜校区
-      latitude: 25.1038
-      slug: hult-international-business-school-dubai-campus
+  universities:
+  - rank: 0
+    longitude: 55.1676
+    original_name: Hult International Business School (Dubai Campus)
+    hero_image:
+      alt_text:
+      src: "/mstr/country/united-arab-emirates/city/dubai/university/hult-international-business-school-dubai-campus/image-o6l9gx.jpeg"
+    name: 霍特国际商学院迪拜校区
+    latitude: 25.1038
+    slug: hult-international-business-school-dubai-campus
 
 given_ae_en:
-  payload:
-    universities:
-    - rank: 0
-      longitude: 55.1676
-      original_name: Hult International Business School (Dubai Campus)
-      hero_image:
-        alt_text:
-        src: "/mstr/country/united-arab-emirates/city/dubai/university/hult-international-business-school-dubai-campus/image-o6l9gx.jpeg"
-      name: Hult International Business School (Dubai Campus)
-      latitude: 25.1038
-      slug: hult-international-business-school-dubai-campus
+  universities:
+  - rank: 0
+    longitude: 55.1676
+    original_name: Hult International Business School (Dubai Campus)
+    hero_image:
+      alt_text:
+      src: "/mstr/country/united-arab-emirates/city/dubai/university/hult-international-business-school-dubai-campus/image-o6l9gx.jpeg"
+    name: Hult International Business School (Dubai Campus)
+    latitude: 25.1038
+    slug: hult-international-business-school-dubai-campus
 
 given_jp_en:
-  payload:
-    universities:
-    - rank: 0
-      longitude: 139.721
-      original_name: Waseda University - Waseda Campus
-      hero_image:
-        alt_text:
-        src: "/mstr/country/japan/city/tokyo2/university/waseda-university-waseda-campus/image-o5t6x7.jpeg"
-      name: 早稻田大学早稻田校区
-      latitude: 35.7094
-      slug: waseda-university-waseda-campus
-    - rank: 0
-      longitude: 139.701
-      original_name: Tokyo International University
-      hero_image:
-        alt_text:
-        src: "/mstr/country/japan/city/tokyo2/university/tokyo-international-university/image-o5t8x5.jpeg"
-      name: 东京国际大学
-      latitude: 35.7099
-      slug: tokyo-international-university
-    - rank: 0
-      longitude: 139.718
-      original_name: Tokyo University of Social Welfare
-      hero_image:
-        alt_text:
-        src: "/mstr/country/japan/city/tokyo2/university/tokyo-university-of-social-welfare/image-o5t90d.jpeg"
-      name: 东京福祉大学
-      latitude: 35.7278
-      slug: tokyo-university-of-social-welfare
-    - rank: 0
-      longitude: 139.718
-      original_name: Waseda University - Toyama Campus
-      hero_image:
-        alt_text:
-        src: "/mstr/country/japan/city/tokyo2/university/waseda-university-toyama-campus/image-o5t794.jpeg"
-      name: 早稻田大学户山校区
-      latitude: 35.7061
-      slug: waseda-university-toyama-campus
-    - rank: 0
-      longitude: 139.764
-      original_name: Nihon University
-      hero_image:
-        alt_text:
-        src: "/mstr/country/japan/city/tokyo2/university/nihon-university/image-o5t8l5.jpeg"
-      name: 日本大学
-      latitude: 35.6976
-      slug: nihon-university
-    - rank: 0
-      longitude: 139.684
-      original_name: Tokyo Institute of Technology
-      hero_image:
-        alt_text:
-        src: "/mstr/country/japan/city/tokyo2/university/tokyo-institute-of-technology/image-o5t86s.jpeg"
-      name: 东京工业大学
-      latitude: 35.6051
-      slug: tokyo-institute-of-technology
-    - rank: 0
-      longitude: 139.66
-      original_name: Meiji University - Nakano Campus
-      hero_image:
-        alt_text:
-        src: "/mstr/country/japan/city/tokyo2/university/meiji-university-nakano-campus/image-o5t8i2.jpeg"
-      name: 明治大学中野校区
-      latitude: 35.7069
-      slug: meiji-university-nakano-campus
-    - rank: 0
-      longitude: 139.732
-      original_name: Sophia University
-      hero_image:
-        alt_text:
-        src: "/mstr/country/japan/city/tokyo2/university/sophia-university/image-o5t8ql.jpeg"
-      name: 上智大学
-      latitude: 35.6829
-      slug: sophia-university
-    - rank: 0
-      longitude: 139.762
-      original_name: Meiji University - Surugadai Campus
-      hero_image:
-        alt_text:
-        src: "/mstr/country/japan/city/tokyo2/university/meiji-university-surugadai-campus/image-o5t8a6.jpeg"
-      name: 明治大学骏河台校区
-      latitude: 35.6972
-      slug: meiji-university-surugadai-campus
-    - rank: 0
-      longitude: 139.685
-      original_name: The University of Tokyo  - Komaba Campus
-      hero_image:
-        alt_text:
-        src: "/mstr/country/japan/city/tokyo2/university/the-university-of-tokyo-komaba-campus/image-o5t7ku.jpeg"
-      name: 东京大学驹场校区
-      latitude: 35.6599
-      slug: the-university-of-tokyo-komaba-campus
-    - rank: 0
-      longitude: 139.736
-      original_name: Takushoku University
-      hero_image:
-        alt_text:
-        src: "/mstr/country/japan/city/tokyo2/university/takushoku-university/image-o5t8nn.jpeg"
-      name: 拓殖大学
-      latitude: 35.7154
-      slug: takushoku-university
-    - rank: 0
-      longitude: 139.762
-      original_name: The University of Tokyo - Hongo Campus
-      hero_image:
-        alt_text:
-        src: "/mstr/country/japan/city/tokyo2/university/the-university-of-tokyo-hongo-campus/image-o5t753.jpeg"
-      name: 东京大学本乡校区
-      latitude: 35.7127
-      slug: the-university-of-tokyo-hongo-campus
-    - rank: 0
-      longitude: 139.743
-      original_name: Keio University - Mita Campus
-      hero_image:
-        alt_text:
-        src: "/mstr/country/japan/city/tokyo2/university/keio-university-mita-campus/image-o5t7vs.jpeg"
-      name: 庆应义塾大学三田校区
-      latitude: 35.6493
-      slug: keio-university-mita-campus
-    - rank: 0
-      longitude: 135.641
-      original_name: Osaka Sangyo University
-      hero_image:
-        alt_text:
-        src: "/mstr/country/japan/city/osaka2/university/osaka-sangyo-university/image-o5t9hu.jpeg"
-      name: 大阪产业大学
-      latitude: 34.7079
-      slug: osaka-sangyo-university
-    - rank: 0
-      longitude: 135.723
-      original_name: Ritsumeikan University
-      hero_image:
-      name: 立命馆大学
-      latitude: 35.0325
-      slug: ritsumeikan-university
-    - rank: 0
-      longitude: 135.781
-      original_name: Kyoto Univiersity
-      hero_image:
-        alt_text:
-        src: "/mstr/country/japan/city/kyoto2/university/kyoto-univiersity/image-o5t9kt.jpeg"
-      name: 京都大学
-      latitude: 35.0263
-      slug: kyoto-univiersity
-    - rank: 0
-      longitude: 135.761
-      original_name: Doshisha University
-      hero_image:
-        alt_text:
-        src: "/mstr/country/japan/city/kyoto2/university/doshisha-university/image-o5t9sq.jpeg"
-      name: 同志社大学
-      latitude: 35.0301
-      slug: doshisha-university
-    - rank: 0
-      longitude: 135.523
-      original_name: Osaka University
-      hero_image:
-        alt_text:
-        src: "/mstr/country/japan/city/osaka2/university/osaka-university/image-o5t9eg.jpeg"
-      name: 大阪大学
-      latitude: 34.8179
-      slug: osaka-university
-    - rank: 0
-      longitude: 139.648
-      original_name: Meiji University - Izumi Campus
-      hero_image:
-        alt_text:
-        src: "/mstr/country/japan/city/tokyo2/university/meiji-university-izumi-campus/image-o5t8de.jpeg"
-      name: 明治大学和泉校区
-      latitude: 35.6709
-      slug: meiji-university-izumi-campus
-    - rank: 0
-      longitude: 139.406
-      original_name: Chuo University
-      hero_image:
-        alt_text:
-        src: "/mstr/country/japan/city/tokyo2/university/chuo-university/image-o5t8ug.jpeg"
-      name: 中央大学
-      latitude: 35.6414
-      slug: chuo-university
-    - rank: 0
-      longitude: 139.648
-      original_name: Keio University - Hiyoshi Campus
-      hero_image:
-        alt_text:
-        src: "/mstr/country/japan/city/tokyo2/university/keio-university-hiyoshi-campus/image-o5t837.jpeg"
-      name: 庆应义塾大学日吉校区
-      latitude: 35.5536
-      slug: keio-university-hiyoshi-campus
+  universities:
+  - rank: 0
+    longitude: 139.721
+    original_name: Waseda University - Waseda Campus
+    hero_image:
+      alt_text:
+      src: "/mstr/country/japan/city/tokyo2/university/waseda-university-waseda-campus/image-o5t6x7.jpeg"
+    name: 早稻田大学早稻田校区
+    latitude: 35.7094
+    slug: waseda-university-waseda-campus
+  - rank: 0
+    longitude: 139.701
+    original_name: Tokyo International University
+    hero_image:
+      alt_text:
+      src: "/mstr/country/japan/city/tokyo2/university/tokyo-international-university/image-o5t8x5.jpeg"
+    name: 东京国际大学
+    latitude: 35.7099
+    slug: tokyo-international-university
+  - rank: 0
+    longitude: 139.718
+    original_name: Tokyo University of Social Welfare
+    hero_image:
+      alt_text:
+      src: "/mstr/country/japan/city/tokyo2/university/tokyo-university-of-social-welfare/image-o5t90d.jpeg"
+    name: 东京福祉大学
+    latitude: 35.7278
+    slug: tokyo-university-of-social-welfare
+  - rank: 0
+    longitude: 139.718
+    original_name: Waseda University - Toyama Campus
+    hero_image:
+      alt_text:
+      src: "/mstr/country/japan/city/tokyo2/university/waseda-university-toyama-campus/image-o5t794.jpeg"
+    name: 早稻田大学户山校区
+    latitude: 35.7061
+    slug: waseda-university-toyama-campus
+  - rank: 0
+    longitude: 139.764
+    original_name: Nihon University
+    hero_image:
+      alt_text:
+      src: "/mstr/country/japan/city/tokyo2/university/nihon-university/image-o5t8l5.jpeg"
+    name: 日本大学
+    latitude: 35.6976
+    slug: nihon-university
+  - rank: 0
+    longitude: 139.684
+    original_name: Tokyo Institute of Technology
+    hero_image:
+      alt_text:
+      src: "/mstr/country/japan/city/tokyo2/university/tokyo-institute-of-technology/image-o5t86s.jpeg"
+    name: 东京工业大学
+    latitude: 35.6051
+    slug: tokyo-institute-of-technology
+  - rank: 0
+    longitude: 139.66
+    original_name: Meiji University - Nakano Campus
+    hero_image:
+      alt_text:
+      src: "/mstr/country/japan/city/tokyo2/university/meiji-university-nakano-campus/image-o5t8i2.jpeg"
+    name: 明治大学中野校区
+    latitude: 35.7069
+    slug: meiji-university-nakano-campus
+  - rank: 0
+    longitude: 139.732
+    original_name: Sophia University
+    hero_image:
+      alt_text:
+      src: "/mstr/country/japan/city/tokyo2/university/sophia-university/image-o5t8ql.jpeg"
+    name: 上智大学
+    latitude: 35.6829
+    slug: sophia-university
+  - rank: 0
+    longitude: 139.762
+    original_name: Meiji University - Surugadai Campus
+    hero_image:
+      alt_text:
+      src: "/mstr/country/japan/city/tokyo2/university/meiji-university-surugadai-campus/image-o5t8a6.jpeg"
+    name: 明治大学骏河台校区
+    latitude: 35.6972
+    slug: meiji-university-surugadai-campus
+  - rank: 0
+    longitude: 139.685
+    original_name: The University of Tokyo  - Komaba Campus
+    hero_image:
+      alt_text:
+      src: "/mstr/country/japan/city/tokyo2/university/the-university-of-tokyo-komaba-campus/image-o5t7ku.jpeg"
+    name: 东京大学驹场校区
+    latitude: 35.6599
+    slug: the-university-of-tokyo-komaba-campus
+  - rank: 0
+    longitude: 139.736
+    original_name: Takushoku University
+    hero_image:
+      alt_text:
+      src: "/mstr/country/japan/city/tokyo2/university/takushoku-university/image-o5t8nn.jpeg"
+    name: 拓殖大学
+    latitude: 35.7154
+    slug: takushoku-university
+  - rank: 0
+    longitude: 139.762
+    original_name: The University of Tokyo - Hongo Campus
+    hero_image:
+      alt_text:
+      src: "/mstr/country/japan/city/tokyo2/university/the-university-of-tokyo-hongo-campus/image-o5t753.jpeg"
+    name: 东京大学本乡校区
+    latitude: 35.7127
+    slug: the-university-of-tokyo-hongo-campus
+  - rank: 0
+    longitude: 139.743
+    original_name: Keio University - Mita Campus
+    hero_image:
+      alt_text:
+      src: "/mstr/country/japan/city/tokyo2/university/keio-university-mita-campus/image-o5t7vs.jpeg"
+    name: 庆应义塾大学三田校区
+    latitude: 35.6493
+    slug: keio-university-mita-campus
+  - rank: 0
+    longitude: 135.641
+    original_name: Osaka Sangyo University
+    hero_image:
+      alt_text:
+      src: "/mstr/country/japan/city/osaka2/university/osaka-sangyo-university/image-o5t9hu.jpeg"
+    name: 大阪产业大学
+    latitude: 34.7079
+    slug: osaka-sangyo-university
+  - rank: 0
+    longitude: 135.723
+    original_name: Ritsumeikan University
+    hero_image:
+    name: 立命馆大学
+    latitude: 35.0325
+    slug: ritsumeikan-university
+  - rank: 0
+    longitude: 135.781
+    original_name: Kyoto Univiersity
+    hero_image:
+      alt_text:
+      src: "/mstr/country/japan/city/kyoto2/university/kyoto-univiersity/image-o5t9kt.jpeg"
+    name: 京都大学
+    latitude: 35.0263
+    slug: kyoto-univiersity
+  - rank: 0
+    longitude: 135.761
+    original_name: Doshisha University
+    hero_image:
+      alt_text:
+      src: "/mstr/country/japan/city/kyoto2/university/doshisha-university/image-o5t9sq.jpeg"
+    name: 同志社大学
+    latitude: 35.0301
+    slug: doshisha-university
+  - rank: 0
+    longitude: 135.523
+    original_name: Osaka University
+    hero_image:
+      alt_text:
+      src: "/mstr/country/japan/city/osaka2/university/osaka-university/image-o5t9eg.jpeg"
+    name: 大阪大学
+    latitude: 34.8179
+    slug: osaka-university
+  - rank: 0
+    longitude: 139.648
+    original_name: Meiji University - Izumi Campus
+    hero_image:
+      alt_text:
+      src: "/mstr/country/japan/city/tokyo2/university/meiji-university-izumi-campus/image-o5t8de.jpeg"
+    name: 明治大学和泉校区
+    latitude: 35.6709
+    slug: meiji-university-izumi-campus
+  - rank: 0
+    longitude: 139.406
+    original_name: Chuo University
+    hero_image:
+      alt_text:
+      src: "/mstr/country/japan/city/tokyo2/university/chuo-university/image-o5t8ug.jpeg"
+    name: 中央大学
+    latitude: 35.6414
+    slug: chuo-university
+  - rank: 0
+    longitude: 139.648
+    original_name: Keio University - Hiyoshi Campus
+    hero_image:
+      alt_text:
+      src: "/mstr/country/japan/city/tokyo2/university/keio-university-hiyoshi-campus/image-o5t837.jpeg"
+    name: 庆应义塾大学日吉校区
+    latitude: 35.5536
+    slug: keio-university-hiyoshi-campus

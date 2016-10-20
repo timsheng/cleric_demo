@@ -1,60 +1,53 @@
 Users1:
-  payload:
+  email: ~email_address
+  password: abc20052614
+  email_verified: true
+  email_token: abc
+  newsletter_accepted: false
+  forgot_password_token: abc
+  forgot_password_token_issued_at: '2016-08-13 00:47:28'
+  password_set_by_user: true
+  create_password_token: abc
+  osl_password_key_pair: 5367c1b829ebf
+  student:
+    first_name: ~first_name
+    last_name: ~last_name
     email: ~email_address
-    password: abc20052614
-    email_verified: true
-    email_token: abc
-    newsletter_accepted: false
-    forgot_password_token: abc
-    forgot_password_token_issued_at: '2016-08-13 00:47:28'
-    password_set_by_user: true
-    create_password_token: abc
-    osl_password_key_pair: 5367c1b829ebf
-    student:
-      first_name: ~first_name
+    academic_year: '2'
+    study_abroad_date: '2017-03-01T00:00:00+0000'
+    study_major: Finance
+    study_current_uni: University of Beijing
+    study_destination_uni: Oxford University
+    other_preferences: 'no'
+    locale: zh_CN
+    address_line_1: ~street_address
+    address_line_2: ~street_address
+    country: ~country
+    city: ~city
+    state: ~state
+    zip_code: ~zip_code
+    date_of_birth: '1987-01-02'
+    gender: male
+    nationality: Chinese
+    how_did_you_hear_about_us: Friend recommended
+    contact_details:
+    - type: email
+      value: ~email_address
+    - type: source_phone
+      value: ~cell_phone
+    preferences:
+    - key: vegetarian
+      value: '1'
+    potential_guarantors:
+    - first_name: ~first_name
       last_name: ~last_name
       email: ~email_address
-      academic_year: '2'
-      study_abroad_date: '2017-03-01T00:00:00+0000'
-      study_major: Finance
-      study_current_uni: University of Beijing
-      study_destination_uni: Oxford University
-      other_preferences: 'no'
-      locale: zh_CN
+      phone: ~cell_phone
+      relationship_with_student: parent
+      date_of_birth: '1970-01-02'
       address_line_1: ~street_address
       address_line_2: ~street_address
       country: ~country
       city: ~city
       state: ~state
       zip_code: ~zip_code
-      date_of_birth: '1987-01-02'
-      gender: male
-      nationality: Chinese
-      how_did_you_hear_about_us: Friend recommended
-      contact_details:
-      - type: email
-        value: ~email_address
-      - type: source_phone
-        value: ~cell_phone
-      preferences:
-      - key: vegetarian
-        value: '1'
-      potential_guarantors:
-      - first_name: ~first_name
-        last_name: ~last_name
-        email: ~email_address
-        phone: ~cell_phone
-        relationship_with_student: parent
-        date_of_birth: '1970-01-02'
-        address_line_1: ~street_address
-        address_line_2: ~street_address
-        country: ~country
-        city: ~city
-        state: ~state
-        zip_code: ~zip_code
-
-Users2:
-  response:
-    id: ^id
-    name: ^name
-    address: ^address
