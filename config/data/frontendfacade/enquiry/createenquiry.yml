@@ -1,0 +1,9 @@
+enquiry1:
+  payload:
+    source: partner
+    enquiry_type: partner
+    city_slug: london
+    student:
+      first_name: Fresh
+      last_name: Man
+      email: dan.pan+2016101806@student.com

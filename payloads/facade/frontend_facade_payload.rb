@@ -50,4 +50,9 @@ module FrontendFacadePayload
     class ForgotPassword < Payload
     end
   end
+
+  module Enquiry
+    class CreateEnquiry < Payload
+    end
+  end
 end
