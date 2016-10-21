@@ -10,6 +10,48 @@ class FrontendFacade < API
     self.class.post('/users', :body => payload.to_json)
   end
 
+  def user_signup payload
+    self.class.headers({'Content-Type' => "application/json"})
+    response = self.class.post('/users/sign-up', :body => payload.to_json)
+    return new_response(response)
+  end
+
+  def user_login payload
+    self.class.headers({'Content-Type' => "application/json"})
+    response = self.class.post('/users/login', :body => payload.to_json)
+    return new_response(response)
+  end
+
+  def user_forgot_password payload
+    self.class.headers({'Content-Type' => "application/json"})
+    response = self.class.post('/users/forgot-password', :body => payload.to_json)
+    return new_response(response)
+  end
+
+  def check_user_exist payload
+    self.class.headers({'Content-Type' => "application/json"})
+    response = self.class.post('/users/check', :body => payload.to_json)
+    return new_response(response)
+  end
+
+  def user_set_password payload, token = nil
+    self.class.headers({'Content-Type' => "application/json"})
+    if token != nil
+      self.class.headers({'Authorization' => "Bearer #{token}"})
+    end
+    response = self.class.post('/users/set-password', :body => payload.to_json)
+    return new_response(response)
+  end
+
+  def create_enquiry payload, token = nil
+    self.class.headers({'Content-Type' => "application/json"})
+    if token != nil
+      self.class.headers({'Authorization' => "Bearer #{token}"})
+    end
+    response = self.class.post('/enquiry', :body => payload.to_json)
+    return new_response(response)
+  end
+
   def get_summary_for_a_property property_slug, locale
     self.class.headers({'Accept-Language' => locale})
     response = self.class.get("/properties/#{property_slug}/summary")

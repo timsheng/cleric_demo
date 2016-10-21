@@ -47,5 +47,11 @@ module DataMagic
   def transform(value)
     self.send :eval, value
   end
-
 end
+
+module MyData
+  def email_student
+    "dan.pan+" + Time.now.to_i.to_s + "@student.com"
+  end
+end
+DataMagic.add_translator MyData

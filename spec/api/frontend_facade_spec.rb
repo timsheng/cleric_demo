@@ -16,6 +16,51 @@ describe "Frontend Facade" do
   #   end
   # end
 
+  describe "Users" do
+
+    context "User sign up" do
+      let(:payload) { FrontendFacadePayload::Users::Signup.payload key }
+      let(:response) { frontend_facade.user_signup(payload) }
+
+      it "able to sign up for a new user", :key => 'new_user' do
+        expect(response[:status]).to be(200)
+        expect(response[:message]['auth_token']).not_to be_nil
+      end
+
+      it "unable to sign up for an exist user", :key => 'exist_user' do
+        expect(response[:status]).to be(400)
+        expect(response[:message]['error']).to eql("USER_ALREADY_EXISTS")
+      end
+    end
+
+    context "User login" do
+      let(:payload) { FrontendFacadePayload::Users::Login.payload key }
+      let(:response) { frontend_facade.user_login(payload) }
+
+      it "able to login with correct password", :key => 'user_correct_password' do
+        expect(response[:status]).to be(200)
+        expect(response[:message]['auth_token']).not_to be_nil
+      end
+
+      it "unable to login with correct password", :key => 'user_incorrect_password' do
+        expect(response[:status]).to be(401)
+        expect(response[:message]['error']).to eql("INVALID_CREDENTIALS")
+      end
+
+      context "Check multiple JWT-token is available" do
+        it "create enquiry" do
+          # to do
+        end
+
+        it "set password" do
+          # to do
+        end
+      end
+    end
+
+    context ""
+  end
+
   describe 'Property' do
     context "Get summary of a property" do
       let(:payload) { FrontendFacadePayload::Property::Summary.payload key }
