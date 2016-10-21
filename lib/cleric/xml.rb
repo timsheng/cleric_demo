@@ -2,9 +2,9 @@ require 'builder'
 
 module Cleric
   module XML
-    def to_xml(key, arr=false)
+    def to_xml(key, arr = false)
       hash = self.class.payload key
-      unless arr==false
+      unless arr == false
         arr.each do |e|
           hash = hash[e]
         end
