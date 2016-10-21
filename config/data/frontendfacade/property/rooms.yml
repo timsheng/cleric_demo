@@ -1,2033 +1,1504 @@
 testing_room_property1:
-  payload:
-    discounted_from_price: 90
-    categories:
-    - price:
-      state:
-      name: shared-room
-      discounted_price:
-      units: []
-      availability: 0
-    - price: 100
-      state: available_with_price
-      name: private-room
-      discounted_price: 90
-      units:
-      - bathroom_type: private
-        max_occupancy: 6
-        id: 21235
-        name: Unit 1
-        listings:
-        - discounted_price_min: 90
-          durations:
-            duration_min: 21
-            duration_max: 27
-            i18n_key: property_detail.rooms.label.duration.tenancy_flexible_weeks
-          price_min: 100
-          state: available_with_price
-          price_max: 200
-          start_dates:
-            start_date_max: '2017-10-01'
-            start_date_min:
-            i18n_key: property_detail.rooms.label.tenancy_start_date.until
-          discounted_price_max: 180
-          id: 68918
-          tenancy_periods:
-            2017-10:
-            - 2018-03
-            - 2018-02
-            - 2018-04
-            2017-04:
-            - 2017-10
-            - 2017-08
-            - 2017-09
-            2017-09:
-            - 2018-03
-            - 2018-02
-            - 2018-01
-            2017-06:
-            - 2017-10
-            - 2017-11
-            - 2017-12
-            2016-10:
-            - 2017-03
-            - 2017-02
-            - 2017-04
-            2017-08:
-            - 2018-02
-            - 2017-12
-            - 2018-01
-            2016-11:
-            - 2017-03
-            - 2017-04
-            - 2017-05
-            2017-05:
-            - 2017-10
-            - 2017-11
-            - 2017-09
-            2017-01:
-            - 2017-07
-            - 2017-06
-            - 2017-05
-            2016-12:
-            - 2017-04
-            - 2017-06
-            - 2017-05
-            2017-02:
-            - 2017-07
-            - 2017-08
-            2017-03:
-            - 2017-07
-            - 2017-08
-            - 2017-09
-            2017-07:
-            - 2017-11
-            - 2017-12
-            - 2018-01
-          discount:
-            type: percentage
-            value: '10.00'
-          availability: 9
-        - discounted_price_min:
-          durations:
-            duration_min:
-            duration_max:
-            i18n_key: property_detail.rooms.label.duration.tenancy_fully_flexible
-          price_min: 100
-          state: sold_out
-          price_max: 100
-          start_dates:
-            start_date_max:
-            start_date_min:
-            i18n_key: property_detail.rooms.label.tenancy_start_date.now
-          discounted_price_max:
-          id: 68924
-          tenancy_periods:
-            2017-12:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-03
-            - 2018-06
-            - 2018-02
-            - 2018-05
-            - 2017-12
-            - 2018-08
-            - 2018-04
-            - 2018-07
-            - 2018-09
-            - 2018-11
-            - 2019-03
-            - 2018-01
-            2017-10:
-            - 2018-12
-            - 2017-11
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-03
-            - 2018-06
-            - 2017-10
-            - 2018-02
-            - 2018-05
-            - 2017-12
-            - 2018-08
-            - 2018-04
-            - 2018-07
-            - 2018-09
-            - 2018-11
-            - 2019-03
-            - 2018-01
-            2017-09:
-            - 2018-12
-            - 2017-11
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-03
-            - 2018-06
-            - 2017-09
-            - 2017-10
-            - 2018-02
-            - 2018-05
-            - 2017-12
-            - 2018-08
-            - 2018-04
-            - 2018-07
-            - 2018-09
-            - 2018-11
-            - 2019-03
-            - 2018-01
-            2018-05:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-06
-            - 2018-09
-            - 2018-05
-            - 2018-11
-            - 2018-08
-            - 2018-07
-            - 2019-03
-            2016-10:
-            - 2019-01
-            - 2018-06
-            - 2017-10
-            - 2017-04
-            - 2017-12
-            - 2018-04
-            - 2017-01
-            - 2016-12
-            - 2018-12
-            - 2017-11
-            - 2019-04
-            - 2016-10
-            - 2017-08
-            - 2018-05
-            - 2017-06
-            - 2017-05
-            - 2019-02
-            - 2017-09
-            - 2018-11
-            - 2017-03
-            - 2018-10
-            - 2018-03
-            - 2016-11
-            - 2017-07
-            - 2018-02
-            - 2017-02
-            - 2018-09
-            - 2018-08
-            - 2018-07
-            - 2019-03
-            - 2018-01
-            2018-08:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-09
-            - 2018-11
-            - 2018-08
-            - 2019-03
-            2019-03:
-            - 2019-03
-            - 2019-04
-            2016-11:
-            - 2019-01
-            - 2018-06
-            - 2017-10
-            - 2017-04
-            - 2017-12
-            - 2018-04
-            - 2017-01
-            - 2016-12
-            - 2018-12
-            - 2017-11
-            - 2019-04
-            - 2017-08
-            - 2018-05
-            - 2017-06
-            - 2017-05
-            - 2019-02
-            - 2017-09
-            - 2018-11
-            - 2017-03
-            - 2018-10
-            - 2018-03
-            - 2016-11
-            - 2017-07
-            - 2018-02
-            - 2017-02
-            - 2018-09
-            - 2018-08
-            - 2018-07
-            - 2019-03
-            - 2018-01
-            2018-12:
-            - 2018-12
-            - 2019-03
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            2018-07:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-09
-            - 2018-11
-            - 2018-08
-            - 2018-07
-            - 2019-03
-            2018-06:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-06
-            - 2018-09
-            - 2018-11
-            - 2018-08
-            - 2018-07
-            - 2019-03
-            2017-01:
-            - 2019-01
-            - 2018-06
-            - 2017-10
-            - 2017-04
-            - 2017-12
-            - 2018-04
-            - 2017-01
-            - 2018-12
-            - 2017-11
-            - 2019-04
-            - 2017-08
-            - 2018-05
-            - 2017-06
-            - 2017-05
-            - 2019-02
-            - 2017-09
-            - 2018-11
-            - 2017-03
-            - 2018-10
-            - 2018-03
-            - 2017-07
-            - 2018-02
-            - 2017-02
-            - 2018-09
-            - 2018-08
-            - 2018-07
-            - 2019-03
-            - 2018-01
-            2019-04:
-            - 2019-04
-            2017-02:
-            - 2019-01
-            - 2018-06
-            - 2017-10
-            - 2017-04
-            - 2017-12
-            - 2018-04
-            - 2018-12
-            - 2017-11
-            - 2019-04
-            - 2017-08
-            - 2018-05
-            - 2017-06
-            - 2017-05
-            - 2019-02
-            - 2017-09
-            - 2018-11
-            - 2017-03
-            - 2018-10
-            - 2018-03
-            - 2017-07
-            - 2018-02
-            - 2017-02
-            - 2018-09
-            - 2018-08
-            - 2018-07
-            - 2019-03
-            - 2018-01
-            2017-03:
-            - 2019-01
-            - 2018-06
-            - 2017-10
-            - 2017-04
-            - 2017-12
-            - 2018-04
-            - 2018-12
-            - 2017-11
-            - 2019-04
-            - 2017-08
-            - 2018-05
-            - 2017-06
-            - 2017-05
-            - 2019-02
-            - 2017-09
-            - 2018-11
-            - 2017-03
-            - 2018-10
-            - 2018-03
-            - 2017-07
-            - 2018-02
-            - 2018-09
-            - 2018-08
-            - 2018-07
-            - 2019-03
-            - 2018-01
-            2017-07:
-            - 2019-01
-            - 2018-06
-            - 2017-10
-            - 2017-12
-            - 2018-04
-            - 2018-12
-            - 2017-11
-            - 2019-04
-            - 2017-08
-            - 2018-05
-            - 2019-02
-            - 2017-09
-            - 2018-11
-            - 2018-10
-            - 2018-03
-            - 2017-07
-            - 2018-02
-            - 2018-09
-            - 2018-08
-            - 2018-07
-            - 2019-03
-            - 2018-01
-            2018-01:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-03
-            - 2018-06
-            - 2018-02
-            - 2018-05
-            - 2018-09
-            - 2018-08
-            - 2018-04
-            - 2018-07
-            - 2018-11
-            - 2019-03
-            - 2018-01
-            2017-11:
-            - 2018-12
-            - 2017-11
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-03
-            - 2018-06
-            - 2018-02
-            - 2018-05
-            - 2017-12
-            - 2018-08
-            - 2018-04
-            - 2018-07
-            - 2018-09
-            - 2018-11
-            - 2019-03
-            - 2018-01
-            2018-09:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-09
-            - 2018-11
-            - 2019-03
-            2019-01:
-            - 2019-03
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            2017-04:
-            - 2019-01
-            - 2018-06
-            - 2017-10
-            - 2017-04
-            - 2017-12
-            - 2018-04
-            - 2018-12
-            - 2017-11
-            - 2019-04
-            - 2017-08
-            - 2018-05
-            - 2017-06
-            - 2017-05
-            - 2019-02
-            - 2017-09
-            - 2018-11
-            - 2018-10
-            - 2018-03
-            - 2017-07
-            - 2018-02
-            - 2018-09
-            - 2018-08
-            - 2018-07
-            - 2019-03
-            - 2018-01
-            2017-05:
-            - 2019-01
-            - 2018-06
-            - 2017-10
-            - 2017-12
-            - 2018-04
-            - 2018-12
-            - 2017-11
-            - 2019-04
-            - 2017-08
-            - 2018-05
-            - 2017-06
-            - 2017-05
-            - 2019-02
-            - 2017-09
-            - 2018-11
-            - 2018-10
-            - 2018-03
-            - 2017-07
-            - 2018-02
-            - 2018-09
-            - 2018-08
-            - 2018-07
-            - 2019-03
-            - 2018-01
-            2017-06:
-            - 2019-01
-            - 2018-06
-            - 2017-10
-            - 2017-12
-            - 2018-04
-            - 2018-12
-            - 2017-11
-            - 2019-04
-            - 2017-08
-            - 2018-05
-            - 2017-06
-            - 2019-02
-            - 2017-09
-            - 2018-11
-            - 2018-10
-            - 2018-03
-            - 2017-07
-            - 2018-02
-            - 2018-09
-            - 2018-08
-            - 2018-07
-            - 2019-03
-            - 2018-01
-            2019-02:
-            - 2019-03
-            - 2019-02
-            - 2019-04
-            2017-08:
-            - 2018-12
-            - 2017-11
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-03
-            - 2018-06
-            - 2017-09
-            - 2017-10
-            - 2018-02
-            - 2017-08
-            - 2017-12
-            - 2018-05
-            - 2018-04
-            - 2018-07
-            - 2018-08
-            - 2018-09
-            - 2018-11
-            - 2019-03
-            - 2018-01
-            2018-02:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-03
-            - 2018-06
-            - 2018-02
-            - 2018-05
-            - 2018-09
-            - 2018-08
-            - 2018-04
-            - 2018-07
-            - 2018-11
-            - 2019-03
-            2018-04:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-06
-            - 2018-09
-            - 2018-05
-            - 2018-11
-            - 2018-08
-            - 2018-04
-            - 2018-07
-            - 2019-03
-            2016-12:
-            - 2019-01
-            - 2018-06
-            - 2017-10
-            - 2017-04
-            - 2017-12
-            - 2018-04
-            - 2017-01
-            - 2016-12
-            - 2018-12
-            - 2017-11
-            - 2019-04
-            - 2017-08
-            - 2018-05
-            - 2017-06
-            - 2017-05
-            - 2019-02
-            - 2017-09
-            - 2018-11
-            - 2017-03
-            - 2018-10
-            - 2018-03
-            - 2017-07
-            - 2018-09
-            - 2018-02
-            - 2017-02
-            - 2018-08
-            - 2018-07
-            - 2019-03
-            - 2018-01
-            2018-10:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-11
-            - 2019-03
-            2018-11:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-11
-            - 2019-03
-            2018-03:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-03
-            - 2018-06
-            - 2018-09
-            - 2018-05
-            - 2018-11
-            - 2018-08
-            - 2018-04
-            - 2018-07
-            - 2019-03
-          discount:
-          availability: 0
-        - discounted_price_min:
-          durations:
-            duration_min: 19
-            duration_max:
-            i18n_key: property_detail.rooms.label.duration.tenancy_from_weeks
-          price_min: 110
-          state: coming_soon
-          price_max: 110
-          start_dates:
-            start_date_max:
-            start_date_min: '2017-10-01'
-            i18n_key: property_detail.rooms.label.tenancy_start_date.from
-          discounted_price_max:
-          id: 68922
-          tenancy_periods:
-            2018-01:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-06
-            - 2018-09
-            - 2018-05
-            - 2018-11
-            - 2018-08
-            - 2018-07
-            - 2019-03
-            2017-12:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-06
-            - 2018-09
-            - 2018-05
-            - 2018-11
-            - 2018-08
-            - 2018-04
-            - 2018-07
-            - 2019-03
-            2017-11:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-03
-            - 2018-06
-            - 2018-09
-            - 2018-05
-            - 2018-11
-            - 2018-08
-            - 2018-04
-            - 2018-07
-            - 2019-03
-            2017-10:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-03
-            - 2018-06
-            - 2018-02
-            - 2018-05
-            - 2018-09
-            - 2018-08
-            - 2018-04
-            - 2018-07
-            - 2018-11
-            - 2019-03
-            2018-09:
-            - 2019-03
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            2018-05:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-09
-            - 2018-11
-            - 2019-03
-            2018-08:
-            - 2018-12
-            - 2019-03
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            2018-02:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-06
-            - 2018-09
-            - 2018-11
-            - 2018-08
-            - 2018-07
-            - 2019-03
-            2018-12:
-            - 2019-04
-            2018-07:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-11
-            - 2019-03
-            2018-06:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-11
-            - 2019-03
-            2018-10:
-            - 2019-03
-            - 2019-02
-            - 2019-04
-            2018-03:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-09
-            - 2018-11
-            - 2018-08
-            - 2018-07
-            - 2019-03
-            2018-04:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-09
-            - 2018-11
-            - 2018-08
-            - 2019-03
-            2018-11:
-            - 2019-03
-            - 2019-04
-          discount:
-          availability: 9
-        - discounted_price_min: 180
-          durations:
-            duration_min: 24
-            duration_max: 24
-            i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
-          price_min: 200
-          state: available_with_price
-          price_max: 200
-          start_dates:
-            start_date_max:
-            start_date_min: '2017-10-01'
-            i18n_key: property_detail.rooms.label.tenancy_start_date.from
-          discounted_price_max: 180
-          id: 68917
-          tenancy_periods:
-            2018-01:
-            - 2018-06
-            2017-12:
-            - 2018-05
-            2017-11:
-            - 2018-04
-            2017-10:
-            - 2018-03
-            2018-09:
-            - 2019-02
-            2018-08:
-            - 2019-01
-            2018-02:
-            - 2018-07
-            2018-05:
-            - 2018-10
-            2018-07:
-            - 2018-12
-            2018-06:
-            - 2018-11
-            2018-10:
-            - 2019-03
-            2018-03:
-            - 2018-08
-            2018-04:
-            - 2018-09
-            2018-11:
-            - 2019-04
-          discount:
-            type: absolute
-            value: '20.00'
-          availability: 999
-        - discounted_price_min:
-          durations:
-            duration_min: 14
-            duration_max:
-            i18n_key: property_detail.rooms.label.duration.tenancy_from_weeks
-          price_min:
-          state: available
-          price_max:
-          start_dates:
-            start_date_max: '2017-10-01'
-            start_date_min: '2017-10-01'
-            i18n_key: property_detail.rooms.label.tenancy_start_date.starts
-          discounted_price_max:
-          id: 68919
-          tenancy_periods:
-            2017-10:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-03
-            - 2018-06
-            - 2018-02
-            - 2018-05
-            - 2018-09
-            - 2018-08
-            - 2018-04
-            - 2018-07
-            - 2018-11
-            - 2019-03
-            - 2018-01
-          discount:
-          availability: 999
-        - discounted_price_min:
-          durations:
-            duration_min:
-            duration_max: 16
-            i18n_key: property_detail.rooms.label.duration.tenancy_up_to_weeks
-          price_min:
-          state: available
-          price_max:
-          start_dates:
-            start_date_max: '2017-10-01'
-            start_date_min: '2017-08-01'
-            i18n_key: property_detail.rooms.label.tenancy_start_date.from_to
-          discounted_price_max:
-          id: 68920
-          tenancy_periods:
-            2017-08:
-            - 2017-10
-            - 2017-11
-            - 2017-08
-            - 2017-09
-            2017-10:
-            - 2017-10
-            - 2017-11
-            - 2017-12
-            - 2018-01
-            2017-09:
-            - 2017-10
-            - 2017-11
-            - 2017-12
-            - 2017-09
-          discount:
-          availability: 9
-        - discounted_price_min:
-          durations:
-            duration_min: 17
-            duration_max:
-            i18n_key: property_detail.rooms.label.duration.tenancy_from_weeks
-          price_min:
-          state: coming_soon
-          price_max:
-          start_dates:
-            start_date_max:
-            start_date_min: '2017-10-01'
-            i18n_key: property_detail.rooms.label.tenancy_start_date.from
-          discounted_price_max:
-          id: 68921
-          tenancy_periods:
-            2018-01:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-06
-            - 2018-09
-            - 2018-05
-            - 2018-11
-            - 2018-08
-            - 2018-07
-            - 2019-03
-            2017-12:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-03
-            - 2018-06
-            - 2018-09
-            - 2018-05
-            - 2018-11
-            - 2018-08
-            - 2018-04
-            - 2018-07
-            - 2019-03
-            2017-11:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-03
-            - 2018-06
-            - 2018-09
-            - 2018-05
-            - 2018-11
-            - 2018-08
-            - 2018-04
-            - 2018-07
-            - 2019-03
-            2017-10:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-03
-            - 2018-06
-            - 2018-02
-            - 2018-05
-            - 2018-09
-            - 2018-08
-            - 2018-04
-            - 2018-07
-            - 2018-11
-            - 2019-03
-            - 2018-01
-            2018-09:
-            - 2018-12
-            - 2019-03
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            2018-05:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-09
-            - 2018-11
-            - 2018-08
-            - 2019-03
-            2018-08:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-11
-            - 2019-03
-            2018-02:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-06
-            - 2018-09
-            - 2018-11
-            - 2018-08
-            - 2018-07
-            - 2019-03
-            2018-12:
-            - 2019-03
-            - 2019-04
-            2018-07:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-11
-            - 2019-03
-            2018-06:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-09
-            - 2018-11
-            - 2019-03
-            2018-10:
-            - 2019-03
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            2018-03:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-06
-            - 2018-09
-            - 2018-11
-            - 2018-08
-            - 2018-07
-            - 2019-03
-            2018-04:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-09
-            - 2018-11
-            - 2018-08
-            - 2018-07
-            - 2019-03
-            2018-11:
-            - 2019-03
-            - 2019-04
-          discount:
-          availability: 999
-        - discounted_price_min:
-          durations:
-            duration_min: 20
-            duration_max:
-            i18n_key: property_detail.rooms.label.duration.tenancy_from_weeks
-          price_min:
-          state: coming_soon
-          price_max:
-          start_dates:
-            start_date_max:
-            start_date_min: '2017-10-01'
-            i18n_key: property_detail.rooms.label.tenancy_start_date.from
-          discounted_price_max:
-          id: 68923
-          tenancy_periods:
-            2018-01:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-06
-            - 2018-09
-            - 2018-05
-            - 2018-11
-            - 2018-08
-            - 2018-07
-            - 2019-03
-            2017-12:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-06
-            - 2018-09
-            - 2018-05
-            - 2018-11
-            - 2018-08
-            - 2018-04
-            - 2018-07
-            - 2019-03
-            2017-11:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-03
-            - 2018-06
-            - 2018-09
-            - 2018-05
-            - 2018-11
-            - 2018-08
-            - 2018-04
-            - 2018-07
-            - 2019-03
-            2017-10:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-03
-            - 2018-06
-            - 2018-02
-            - 2018-05
-            - 2018-09
-            - 2018-08
-            - 2018-04
-            - 2018-07
-            - 2018-11
-            - 2019-03
-            2018-09:
-            - 2019-03
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            2018-05:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-09
-            - 2018-11
-            - 2019-03
-            2018-08:
-            - 2018-12
-            - 2019-03
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            2018-02:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-06
-            - 2018-09
-            - 2018-11
-            - 2018-08
-            - 2018-07
-            - 2019-03
-            2018-12:
-            - 2019-04
-            2018-07:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-11
-            - 2019-03
-            2018-06:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-11
-            - 2019-03
-            2018-10:
-            - 2019-03
-            - 2019-02
-            - 2019-04
-            2018-03:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-09
-            - 2018-11
-            - 2018-08
-            - 2018-07
-            - 2019-03
-            2018-04:
-            - 2018-12
-            - 2019-02
-            - 2019-01
-            - 2019-04
-            - 2018-10
-            - 2018-09
-            - 2018-11
-            - 2018-08
-            - 2019-03
-            2018-11:
-            - 2019-03
-            - 2019-04
-          discount:
-          availability: 0
-        distinctions:
-        - label: size standard
-          value: size_standard
-          count:
-        - label: bed bunk
-          value: bed_bunk
-          count:
-        - label: bathroom private
-          value: bathroom_private
-          count:
-        - label: floor low
-          value: floor_low
-          count:
-        - label: ''
-          value: arrangement_cluster
-          count: 10-20
+  discounted_from_price: 90
+  categories:
+  - price:
+    state:
+    name: shared-room
+    discounted_price:
+    units: []
+    availability: 0
+  - price: 100
+    state: available_with_price
+    name: private-room
+    discounted_price: 90
+    units:
+    - bathroom_type: private
+      max_occupancy: 6
+      id: 21235
+      name: Unit 1
+      listings:
+      - discounted_price_min: 90
+        durations:
+          duration_min: 21
+          duration_max: 27
+          i18n_key: property_detail.rooms.label.duration.tenancy_flexible_weeks
+        price_min: 100
         state: available_with_price
-      - bathroom_type: private
-        max_occupancy:
-        id: 21242
-        name: Unit 5
-        listings:
-        - discounted_price_min:
-          durations:
-            duration_min: 14
-            duration_max: 14
-            i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
-          price_min:
-          state: coming_soon
-          price_max:
-          start_dates:
-            start_date_max: '2017-10-01'
-            start_date_min: '2017-10-01'
-            i18n_key: property_detail.rooms.label.tenancy_start_date.starts
-          discounted_price_max:
-          id: 68938
-          tenancy_periods:
-            2017-10:
-            - 2018-01
-          discount:
-          availability: 999
-        distinctions:
-        - label: bathroom private
-          value: bathroom_private
-          count:
-        - label: ''
-          value: arrangement_apartment
-          count:
-        state: coming_soon
-      - bathroom_type: private
-        max_occupancy:
-        id: 21243
-        name: Unit 6
-        listings:
-        - discounted_price_min:
-          durations:
-            duration_min: 14
-            duration_max: 14
-            i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
-          price_min:
-          state: available
-          price_max:
-          start_dates:
-            start_date_max: '2017-10-01'
-            start_date_min: '2017-10-01'
-            i18n_key: property_detail.rooms.label.tenancy_start_date.starts
-          discounted_price_max:
-          id: 68939
-          tenancy_periods:
-            2017-10:
-            - 2018-01
-          discount:
-          availability: 999
-        distinctions:
-        - label: bathroom private
-          value: bathroom_private
-          count:
-        - label: ''
-          value: arrangement_apartment
-          count:
-        state: available
-      - bathroom_type: private
-        max_occupancy:
-        id: 21244
-        name: Unit 7
-        listings:
-        - discounted_price_min:
-          durations:
-            duration_min: 14
-            duration_max: 14
-            i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
-          price_min:
-          state: sold_out
-          price_max:
-          start_dates:
-            start_date_max: '2017-10-01'
-            start_date_min: '2017-10-01'
-            i18n_key: property_detail.rooms.label.tenancy_start_date.starts
-          discounted_price_max:
-          id: 68940
-          tenancy_periods:
-            2017-10:
-            - 2018-01
-          discount:
-          availability: 0
-        distinctions:
-        - label: bathroom private
-          value: bathroom_private
-          count:
-        - label: ''
-          value: arrangement_apartment
-          count:
-        state: sold_out
-      availability: 9
-    - price:
-      state: available
-      name: entire-place
-      discounted_price:
-      units:
-      - bathroom_type: shared
-        max_occupancy:
-        id: 21236
-        name: Unit 2
-        listings:
-        - discounted_price_min:
-          durations:
-            duration_min: 14
-            duration_max: 14
-            i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
-          price_min:
-          state: available
-          price_max:
-          start_dates:
-            start_date_max: '2017-10-01'
-            start_date_min: '2017-10-01'
-            i18n_key: property_detail.rooms.label.tenancy_start_date.starts
-          discounted_price_max:
-          id: 68929
-          tenancy_periods:
-            2017-10:
-            - 2018-01
-          discount:
-          availability: 999
-        - discounted_price_min:
-          durations:
-            duration_min: 14
-            duration_max: 14
-            i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
-          price_min:
-          state: coming_soon
-          price_max:
-          start_dates:
-            start_date_max: '2017-10-01'
-            start_date_min: '2017-10-01'
-            i18n_key: property_detail.rooms.label.tenancy_start_date.starts
-          discounted_price_max:
-          id: 68932
-          tenancy_periods:
-            2017-10:
-            - 2018-01
-          discount:
-          availability: 9
-        - discounted_price_min:
-          durations:
-            duration_min: 14
-            duration_max: 14
-            i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
-          price_min:
-          state: sold_out
-          price_max:
-          start_dates:
-            start_date_max: '2017-10-10'
-            start_date_min: '2017-10-10'
-            i18n_key: property_detail.rooms.label.tenancy_start_date.starts
-          discounted_price_max:
-          id: 68933
-          tenancy_periods:
-            2017-10:
-            - 2018-01
-          discount:
-          availability: 0
-        distinctions:
-        - label: size large
-          value: size_large
-          count:
-        - label: bed single
-          value: bed_single
-          count:
-        - label: floor low
-          value: floor_low
-          count:
-        - label: ''
-          value: arrangement_apartment
-          count: 10-20
-        state: available
-      - bathroom_type: private
-        max_occupancy:
-        id: 21239
-        name: unit 3
-        listings:
-        - discounted_price_min:
-          durations:
-            duration_min: 14
-            duration_max: 14
-            i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
-          price_min:
-          state: coming_soon
-          price_max:
-          start_dates:
-            start_date_max: '2017-10-01'
-            start_date_min: '2017-10-01'
-            i18n_key: property_detail.rooms.label.tenancy_start_date.starts
-          discounted_price_max:
-          id: 68934
-          tenancy_periods:
-            2017-10:
-            - 2018-01
-          discount:
-          availability: 9
-        - discounted_price_min:
-          durations:
-            duration_min: 14
-            duration_max: 14
-            i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
-          price_min:
-          state: sold_out
-          price_max:
-          start_dates:
-            start_date_max: '2017-10-01'
-            start_date_min: '2017-10-01'
-            i18n_key: property_detail.rooms.label.tenancy_start_date.starts
-          discounted_price_max:
-          id: 68935
-          tenancy_periods:
-            2017-10:
-            - 2018-01
-          discount:
-          availability: 0
-        distinctions:
-        - label: size large
-          value: size_large
-          count:
-        - label: bathroom private
-          value: bathroom_private
-          count:
-        - label: ''
-          value: arrangement_apartment
-          count:
-        state: coming_soon
-      - bathroom_type: private
-        max_occupancy:
-        id: 21240
-        name: Unit 4
-        listings:
-        - discounted_price_min:
-          durations:
-            duration_min: 14
-            duration_max: 14
-            i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
-          price_min:
-          state: sold_out
-          price_max:
-          start_dates:
-            start_date_max: '2017-10-01'
-            start_date_min: '2017-10-01'
-            i18n_key: property_detail.rooms.label.tenancy_start_date.starts
-          discounted_price_max:
-          id: 68936
-          tenancy_periods:
-            2017-10:
-            - 2018-01
-          discount:
-          availability: 0
-        distinctions:
-        - label: bathroom private
-          value: bathroom_private
-          count:
-        - label: ''
-          value: arrangement_apartment
-          count:
-        state: sold_out
-      availability: 999
-    tenancy_periods:
-      bathroom_type:
-        shared:
+        price_max: 200
+        start_dates:
+          start_date_max: '2017-10-01'
+          start_date_min:
+          i18n_key: property_detail.rooms.label.tenancy_start_date.until
+        discounted_price_max: 180
+        id: 68918
+        tenancy_periods:
           2017-10:
-          - 2018-01
-        private:
-          2017-12:
-          - 2017-12
-          - 2018-01
-          - 2018-02
           - 2018-03
+          - 2018-02
           - 2018-04
-          - 2018-05
-          - 2018-06
-          - 2018-07
-          - 2018-08
-          - 2018-09
-          - 2018-10
-          - 2018-11
-          - 2018-12
-          - 2019-01
-          - 2019-02
-          - 2019-03
-          - 2019-04
-          2017-10:
+          2017-04:
           - 2017-10
-          - 2017-11
-          - 2017-12
-          - 2018-01
-          - 2018-02
-          - 2018-03
-          - 2018-04
-          - 2018-05
-          - 2018-06
-          - 2018-07
-          - 2018-08
-          - 2018-09
-          - 2018-10
-          - 2018-11
-          - 2018-12
-          - 2019-01
-          - 2019-02
-          - 2019-03
-          - 2019-04
-          2017-09:
+          - 2017-08
           - 2017-09
+          2017-09:
+          - 2018-03
+          - 2018-02
+          - 2018-01
+          2017-06:
           - 2017-10
           - 2017-11
           - 2017-12
-          - 2018-01
-          - 2018-02
-          - 2018-03
-          - 2018-04
-          - 2018-05
-          - 2018-06
-          - 2018-07
-          - 2018-08
-          - 2018-09
-          - 2018-10
-          - 2018-11
-          - 2018-12
-          - 2019-01
-          - 2019-02
-          - 2019-03
-          - 2019-04
-          2018-05:
-          - 2018-05
-          - 2018-06
-          - 2018-07
-          - 2018-08
-          - 2018-09
-          - 2018-10
-          - 2018-11
-          - 2018-12
-          - 2019-01
-          - 2019-02
-          - 2019-03
-          - 2019-04
-          2018-08:
-          - 2018-08
-          - 2018-09
-          - 2018-10
-          - 2018-11
-          - 2018-12
-          - 2019-01
-          - 2019-02
-          - 2019-03
-          - 2019-04
           2016-10:
-          - 2016-10
-          - 2016-11
-          - 2016-12
-          - 2017-01
+          - 2017-03
           - 2017-02
+          - 2017-04
+          2017-08:
+          - 2018-02
+          - 2017-12
+          - 2018-01
+          2016-11:
           - 2017-03
           - 2017-04
           - 2017-05
+          2017-05:
+          - 2017-10
+          - 2017-11
+          - 2017-09
+          2017-01:
+          - 2017-07
           - 2017-06
+          - 2017-05
+          2016-12:
+          - 2017-04
+          - 2017-06
+          - 2017-05
+          2017-02:
+          - 2017-07
+          - 2017-08
+          2017-03:
           - 2017-07
           - 2017-08
           - 2017-09
-          - 2017-10
+          2017-07:
           - 2017-11
           - 2017-12
           - 2018-01
-          - 2018-02
-          - 2018-03
-          - 2018-04
-          - 2018-05
-          - 2018-06
-          - 2018-07
-          - 2018-08
-          - 2018-09
-          - 2018-10
-          - 2018-11
+        discount:
+          type: percentage
+          value: '10.00'
+        availability: 9
+      - discounted_price_min:
+        durations:
+          duration_min:
+          duration_max:
+          i18n_key: property_detail.rooms.label.duration.tenancy_fully_flexible
+        price_min: 100
+        state: sold_out
+        price_max: 100
+        start_dates:
+          start_date_max:
+          start_date_min:
+          i18n_key: property_detail.rooms.label.tenancy_start_date.now
+        discounted_price_max:
+        id: 68924
+        tenancy_periods:
+          2017-12:
           - 2018-12
-          - 2019-01
           - 2019-02
-          - 2019-03
+          - 2019-01
           - 2019-04
+          - 2018-10
+          - 2018-03
+          - 2018-06
+          - 2018-02
+          - 2018-05
+          - 2017-12
+          - 2018-08
+          - 2018-04
+          - 2018-07
+          - 2018-09
+          - 2018-11
+          - 2019-03
+          - 2018-01
+          2017-10:
+          - 2018-12
+          - 2017-11
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-03
+          - 2018-06
+          - 2017-10
+          - 2018-02
+          - 2018-05
+          - 2017-12
+          - 2018-08
+          - 2018-04
+          - 2018-07
+          - 2018-09
+          - 2018-11
+          - 2019-03
+          - 2018-01
+          2017-09:
+          - 2018-12
+          - 2017-11
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-03
+          - 2018-06
+          - 2017-09
+          - 2017-10
+          - 2018-02
+          - 2018-05
+          - 2017-12
+          - 2018-08
+          - 2018-04
+          - 2018-07
+          - 2018-09
+          - 2018-11
+          - 2019-03
+          - 2018-01
+          2018-05:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-06
+          - 2018-09
+          - 2018-05
+          - 2018-11
+          - 2018-08
+          - 2018-07
+          - 2019-03
+          2016-10:
+          - 2019-01
+          - 2018-06
+          - 2017-10
+          - 2017-04
+          - 2017-12
+          - 2018-04
+          - 2017-01
+          - 2016-12
+          - 2018-12
+          - 2017-11
+          - 2019-04
+          - 2016-10
+          - 2017-08
+          - 2018-05
+          - 2017-06
+          - 2017-05
+          - 2019-02
+          - 2017-09
+          - 2018-11
+          - 2017-03
+          - 2018-10
+          - 2018-03
+          - 2016-11
+          - 2017-07
+          - 2018-02
+          - 2017-02
+          - 2018-09
+          - 2018-08
+          - 2018-07
+          - 2019-03
+          - 2018-01
+          2018-08:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-09
+          - 2018-11
+          - 2018-08
+          - 2019-03
           2019-03:
           - 2019-03
           - 2019-04
           2016-11:
-          - 2016-11
-          - 2016-12
-          - 2017-01
-          - 2017-02
-          - 2017-03
+          - 2019-01
+          - 2018-06
+          - 2017-10
           - 2017-04
-          - 2017-05
-          - 2017-06
-          - 2017-07
-          - 2017-08
-          - 2017-09
-          - 2017-10
-          - 2017-11
           - 2017-12
-          - 2018-01
-          - 2018-02
-          - 2018-03
           - 2018-04
-          - 2018-05
-          - 2018-06
-          - 2018-07
-          - 2018-08
-          - 2018-09
-          - 2018-10
-          - 2018-11
+          - 2017-01
+          - 2016-12
           - 2018-12
-          - 2019-01
-          - 2019-02
-          - 2019-03
+          - 2017-11
           - 2019-04
-          2017-05:
-          - 2017-05
-          - 2017-06
-          - 2017-07
           - 2017-08
-          - 2017-09
-          - 2017-10
-          - 2017-11
-          - 2017-12
-          - 2018-01
-          - 2018-02
-          - 2018-03
-          - 2018-04
           - 2018-05
-          - 2018-06
-          - 2018-07
-          - 2018-08
-          - 2018-09
-          - 2018-10
-          - 2018-11
-          - 2018-12
-          - 2019-01
+          - 2017-06
+          - 2017-05
           - 2019-02
+          - 2017-09
+          - 2018-11
+          - 2017-03
+          - 2018-10
+          - 2018-03
+          - 2016-11
+          - 2017-07
+          - 2018-02
+          - 2017-02
+          - 2018-09
+          - 2018-08
+          - 2018-07
           - 2019-03
+          - 2018-01
+          2018-12:
+          - 2018-12
+          - 2019-03
+          - 2019-02
+          - 2019-01
           - 2019-04
           2018-07:
-          - 2018-07
-          - 2018-08
-          - 2018-09
-          - 2018-10
-          - 2018-11
           - 2018-12
-          - 2019-01
           - 2019-02
-          - 2019-03
+          - 2019-01
           - 2019-04
+          - 2018-10
+          - 2018-09
+          - 2018-11
+          - 2018-08
+          - 2018-07
+          - 2019-03
           2018-06:
-          - 2018-06
-          - 2018-07
-          - 2018-08
-          - 2018-09
-          - 2018-10
-          - 2018-11
           - 2018-12
-          - 2019-01
           - 2019-02
-          - 2019-03
+          - 2019-01
           - 2019-04
+          - 2018-10
+          - 2018-06
+          - 2018-09
+          - 2018-11
+          - 2018-08
+          - 2018-07
+          - 2019-03
           2017-01:
-          - 2017-01
-          - 2017-02
-          - 2017-03
-          - 2017-04
-          - 2017-05
-          - 2017-06
-          - 2017-07
-          - 2017-08
-          - 2017-09
-          - 2017-10
-          - 2017-11
-          - 2017-12
-          - 2018-01
-          - 2018-02
-          - 2018-03
-          - 2018-04
-          - 2018-05
-          - 2018-06
-          - 2018-07
-          - 2018-08
-          - 2018-09
-          - 2018-10
-          - 2018-11
-          - 2018-12
           - 2019-01
-          - 2019-02
-          - 2019-03
+          - 2018-06
+          - 2017-10
+          - 2017-04
+          - 2017-12
+          - 2018-04
+          - 2017-01
+          - 2018-12
+          - 2017-11
           - 2019-04
+          - 2017-08
+          - 2018-05
+          - 2017-06
+          - 2017-05
+          - 2019-02
+          - 2017-09
+          - 2018-11
+          - 2017-03
+          - 2018-10
+          - 2018-03
+          - 2017-07
+          - 2018-02
+          - 2017-02
+          - 2018-09
+          - 2018-08
+          - 2018-07
+          - 2019-03
+          - 2018-01
           2019-04:
           - 2019-04
           2017-02:
+          - 2019-01
+          - 2018-06
+          - 2017-10
+          - 2017-04
+          - 2017-12
+          - 2018-04
+          - 2018-12
+          - 2017-11
+          - 2019-04
+          - 2017-08
+          - 2018-05
+          - 2017-06
+          - 2017-05
+          - 2019-02
+          - 2017-09
+          - 2018-11
+          - 2017-03
+          - 2018-10
+          - 2018-03
+          - 2017-07
+          - 2018-02
           - 2017-02
-          - 2017-03
-          - 2017-04
-          - 2017-05
-          - 2017-06
-          - 2017-07
-          - 2017-08
-          - 2017-09
-          - 2017-10
-          - 2017-11
-          - 2017-12
-          - 2018-01
-          - 2018-02
-          - 2018-03
-          - 2018-04
-          - 2018-05
-          - 2018-06
-          - 2018-07
-          - 2018-08
           - 2018-09
-          - 2018-10
-          - 2018-11
-          - 2018-12
-          - 2019-01
-          - 2019-02
+          - 2018-08
+          - 2018-07
           - 2019-03
-          - 2019-04
+          - 2018-01
           2017-03:
-          - 2017-03
+          - 2019-01
+          - 2018-06
+          - 2017-10
           - 2017-04
-          - 2017-05
+          - 2017-12
+          - 2018-04
+          - 2018-12
+          - 2017-11
+          - 2019-04
+          - 2017-08
+          - 2018-05
           - 2017-06
-          - 2017-07
-          - 2017-08
-          - 2017-09
-          - 2017-10
-          - 2017-11
-          - 2017-12
-          - 2018-01
-          - 2018-02
-          - 2018-03
-          - 2018-04
-          - 2018-05
-          - 2018-06
-          - 2018-07
-          - 2018-08
-          - 2018-09
-          - 2018-10
-          - 2018-11
-          - 2018-12
-          - 2019-01
+          - 2017-05
           - 2019-02
+          - 2017-09
+          - 2018-11
+          - 2017-03
+          - 2018-10
+          - 2018-03
+          - 2017-07
+          - 2018-02
+          - 2018-09
+          - 2018-08
+          - 2018-07
           - 2019-03
-          - 2019-04
+          - 2018-01
           2017-07:
-          - 2017-07
-          - 2017-08
-          - 2017-09
+          - 2019-01
+          - 2018-06
           - 2017-10
-          - 2017-11
           - 2017-12
-          - 2018-01
-          - 2018-02
-          - 2018-03
           - 2018-04
-          - 2018-05
-          - 2018-06
-          - 2018-07
-          - 2018-08
-          - 2018-09
-          - 2018-10
-          - 2018-11
           - 2018-12
-          - 2019-01
-          - 2019-02
-          - 2019-03
+          - 2017-11
           - 2019-04
+          - 2017-08
+          - 2018-05
+          - 2019-02
+          - 2017-09
+          - 2018-11
+          - 2018-10
+          - 2018-03
+          - 2017-07
+          - 2018-02
+          - 2018-09
+          - 2018-08
+          - 2018-07
+          - 2019-03
+          - 2018-01
           2018-01:
-          - 2018-01
-          - 2018-02
-          - 2018-03
-          - 2018-04
-          - 2018-05
-          - 2018-06
-          - 2018-07
-          - 2018-08
-          - 2018-09
-          - 2018-10
-          - 2018-11
           - 2018-12
-          - 2019-01
           - 2019-02
-          - 2019-03
+          - 2019-01
           - 2019-04
+          - 2018-10
+          - 2018-03
+          - 2018-06
+          - 2018-02
+          - 2018-05
+          - 2018-09
+          - 2018-08
+          - 2018-04
+          - 2018-07
+          - 2018-11
+          - 2019-03
+          - 2018-01
           2017-11:
+          - 2018-12
           - 2017-11
-          - 2017-12
-          - 2018-01
-          - 2018-02
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
           - 2018-03
-          - 2018-04
-          - 2018-05
           - 2018-06
-          - 2018-07
+          - 2018-02
+          - 2018-05
+          - 2017-12
           - 2018-08
+          - 2018-04
+          - 2018-07
           - 2018-09
-          - 2018-10
           - 2018-11
-          - 2018-12
-          - 2019-01
-          - 2019-02
           - 2019-03
-          - 2019-04
+          - 2018-01
           2018-09:
-          - 2018-09
-          - 2018-10
-          - 2018-11
           - 2018-12
-          - 2019-01
           - 2019-02
-          - 2019-03
+          - 2019-01
           - 2019-04
-          2019-01:
-          - 2019-01
-          - 2019-02
+          - 2018-10
+          - 2018-09
+          - 2018-11
           - 2019-03
+          2019-01:
+          - 2019-03
+          - 2019-02
+          - 2019-01
           - 2019-04
           2017-04:
+          - 2019-01
+          - 2018-06
+          - 2017-10
           - 2017-04
+          - 2017-12
+          - 2018-04
+          - 2018-12
+          - 2017-11
+          - 2019-04
+          - 2017-08
+          - 2018-05
+          - 2017-06
           - 2017-05
-          - 2017-06
-          - 2017-07
-          - 2017-08
-          - 2017-09
-          - 2017-10
-          - 2017-11
-          - 2017-12
-          - 2018-01
-          - 2018-02
-          - 2018-03
-          - 2018-04
-          - 2018-05
-          - 2018-06
-          - 2018-07
-          - 2018-08
-          - 2018-09
-          - 2018-10
-          - 2018-11
-          - 2018-12
-          - 2019-01
           - 2019-02
+          - 2017-09
+          - 2018-11
+          - 2018-10
+          - 2018-03
+          - 2017-07
+          - 2018-02
+          - 2018-09
+          - 2018-08
+          - 2018-07
           - 2019-03
+          - 2018-01
+          2017-05:
+          - 2019-01
+          - 2018-06
+          - 2017-10
+          - 2017-12
+          - 2018-04
+          - 2018-12
+          - 2017-11
           - 2019-04
+          - 2017-08
+          - 2018-05
+          - 2017-06
+          - 2017-05
+          - 2019-02
+          - 2017-09
+          - 2018-11
+          - 2018-10
+          - 2018-03
+          - 2017-07
+          - 2018-02
+          - 2018-09
+          - 2018-08
+          - 2018-07
+          - 2019-03
+          - 2018-01
           2017-06:
-          - 2017-06
-          - 2017-07
-          - 2017-08
-          - 2017-09
-          - 2017-10
-          - 2017-11
-          - 2017-12
-          - 2018-01
-          - 2018-02
-          - 2018-03
-          - 2018-04
-          - 2018-05
-          - 2018-06
-          - 2018-07
-          - 2018-08
-          - 2018-09
-          - 2018-10
-          - 2018-11
-          - 2018-12
           - 2019-01
-          - 2019-02
-          - 2019-03
+          - 2018-06
+          - 2017-10
+          - 2017-12
+          - 2018-04
+          - 2018-12
+          - 2017-11
           - 2019-04
-          2019-02:
+          - 2017-08
+          - 2018-05
+          - 2017-06
           - 2019-02
+          - 2017-09
+          - 2018-11
+          - 2018-10
+          - 2018-03
+          - 2017-07
+          - 2018-02
+          - 2018-09
+          - 2018-08
+          - 2018-07
           - 2019-03
+          - 2018-01
+          2019-02:
+          - 2019-03
+          - 2019-02
           - 2019-04
           2017-08:
-          - 2017-08
+          - 2018-12
+          - 2017-11
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-03
+          - 2018-06
           - 2017-09
           - 2017-10
-          - 2017-11
-          - 2017-12
-          - 2018-01
           - 2018-02
-          - 2018-03
-          - 2018-04
+          - 2017-08
+          - 2017-12
           - 2018-05
-          - 2018-06
+          - 2018-04
           - 2018-07
           - 2018-08
           - 2018-09
+          - 2018-11
+          - 2019-03
+          - 2018-01
+          2018-02:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-03
+          - 2018-06
+          - 2018-02
+          - 2018-05
+          - 2018-09
+          - 2018-08
+          - 2018-04
+          - 2018-07
+          - 2018-11
+          - 2019-03
+          2018-04:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-06
+          - 2018-09
+          - 2018-05
+          - 2018-11
+          - 2018-08
+          - 2018-04
+          - 2018-07
+          - 2019-03
+          2016-12:
+          - 2019-01
+          - 2018-06
+          - 2017-10
+          - 2017-04
+          - 2017-12
+          - 2018-04
+          - 2017-01
+          - 2016-12
+          - 2018-12
+          - 2017-11
+          - 2019-04
+          - 2017-08
+          - 2018-05
+          - 2017-06
+          - 2017-05
+          - 2019-02
+          - 2017-09
+          - 2018-11
+          - 2017-03
+          - 2018-10
+          - 2018-03
+          - 2017-07
+          - 2018-09
+          - 2018-02
+          - 2017-02
+          - 2018-08
+          - 2018-07
+          - 2019-03
+          - 2018-01
+          2018-10:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
           - 2018-10
           - 2018-11
-          - 2018-12
-          - 2019-01
-          - 2019-02
           - 2019-03
+          2018-11:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-11
+          - 2019-03
+          2018-03:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-03
+          - 2018-06
+          - 2018-09
+          - 2018-05
+          - 2018-11
+          - 2018-08
+          - 2018-04
+          - 2018-07
+          - 2019-03
+        discount:
+        availability: 0
+      - discounted_price_min:
+        durations:
+          duration_min: 19
+          duration_max:
+          i18n_key: property_detail.rooms.label.duration.tenancy_from_weeks
+        price_min: 110
+        state: coming_soon
+        price_max: 110
+        start_dates:
+          start_date_max:
+          start_date_min: '2017-10-01'
+          i18n_key: property_detail.rooms.label.tenancy_start_date.from
+        discounted_price_max:
+        id: 68922
+        tenancy_periods:
+          2018-01:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-06
+          - 2018-09
+          - 2018-05
+          - 2018-11
+          - 2018-08
+          - 2018-07
+          - 2019-03
+          2017-12:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-06
+          - 2018-09
+          - 2018-05
+          - 2018-11
+          - 2018-08
+          - 2018-04
+          - 2018-07
+          - 2019-03
+          2017-11:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-03
+          - 2018-06
+          - 2018-09
+          - 2018-05
+          - 2018-11
+          - 2018-08
+          - 2018-04
+          - 2018-07
+          - 2019-03
+          2017-10:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-03
+          - 2018-06
+          - 2018-02
+          - 2018-05
+          - 2018-09
+          - 2018-08
+          - 2018-04
+          - 2018-07
+          - 2018-11
+          - 2019-03
+          2018-09:
+          - 2019-03
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          2018-05:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-09
+          - 2018-11
+          - 2019-03
+          2018-08:
+          - 2018-12
+          - 2019-03
+          - 2019-02
+          - 2019-01
           - 2019-04
           2018-02:
-          - 2018-02
-          - 2018-03
-          - 2018-04
-          - 2018-05
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
           - 2018-06
-          - 2018-07
-          - 2018-08
           - 2018-09
+          - 2018-11
+          - 2018-08
+          - 2018-07
+          - 2019-03
+          2018-12:
+          - 2019-04
+          2018-07:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-11
+          - 2019-03
+          2018-06:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
           - 2018-10
           - 2018-11
-          - 2018-12
-          - 2019-01
-          - 2019-02
           - 2019-03
+          2018-10:
+          - 2019-03
+          - 2019-02
           - 2019-04
+          2018-03:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-09
+          - 2018-11
+          - 2018-08
+          - 2018-07
+          - 2019-03
           2018-04:
-          - 2018-04
-          - 2018-05
-          - 2018-06
-          - 2018-07
-          - 2018-08
-          - 2018-09
-          - 2018-10
-          - 2018-11
           - 2018-12
-          - 2019-01
           - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-09
+          - 2018-11
+          - 2018-08
+          - 2019-03
+          2018-11:
           - 2019-03
           - 2019-04
-          2016-12:
-          - 2016-12
-          - 2017-01
-          - 2017-02
-          - 2017-03
-          - 2017-04
-          - 2017-05
-          - 2017-06
-          - 2017-07
+        discount:
+        availability: 9
+      - discounted_price_min: 180
+        durations:
+          duration_min: 24
+          duration_max: 24
+          i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
+        price_min: 200
+        state: available_with_price
+        price_max: 200
+        start_dates:
+          start_date_max:
+          start_date_min: '2017-10-01'
+          i18n_key: property_detail.rooms.label.tenancy_start_date.from
+        discounted_price_max: 180
+        id: 68917
+        tenancy_periods:
+          2018-01:
+          - 2018-06
+          2017-12:
+          - 2018-05
+          2017-11:
+          - 2018-04
+          2017-10:
+          - 2018-03
+          2018-09:
+          - 2019-02
+          2018-08:
+          - 2019-01
+          2018-02:
+          - 2018-07
+          2018-05:
+          - 2018-10
+          2018-07:
+          - 2018-12
+          2018-06:
+          - 2018-11
+          2018-10:
+          - 2019-03
+          2018-03:
+          - 2018-08
+          2018-04:
+          - 2018-09
+          2018-11:
+          - 2019-04
+        discount:
+          type: absolute
+          value: '20.00'
+        availability: 999
+      - discounted_price_min:
+        durations:
+          duration_min: 14
+          duration_max:
+          i18n_key: property_detail.rooms.label.duration.tenancy_from_weeks
+        price_min:
+        state: available
+        price_max:
+        start_dates:
+          start_date_max: '2017-10-01'
+          start_date_min: '2017-10-01'
+          i18n_key: property_detail.rooms.label.tenancy_start_date.starts
+        discounted_price_max:
+        id: 68919
+        tenancy_periods:
+          2017-10:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-03
+          - 2018-06
+          - 2018-02
+          - 2018-05
+          - 2018-09
+          - 2018-08
+          - 2018-04
+          - 2018-07
+          - 2018-11
+          - 2019-03
+          - 2018-01
+        discount:
+        availability: 999
+      - discounted_price_min:
+        durations:
+          duration_min:
+          duration_max: 16
+          i18n_key: property_detail.rooms.label.duration.tenancy_up_to_weeks
+        price_min:
+        state: available
+        price_max:
+        start_dates:
+          start_date_max: '2017-10-01'
+          start_date_min: '2017-08-01'
+          i18n_key: property_detail.rooms.label.tenancy_start_date.from_to
+        discounted_price_max:
+        id: 68920
+        tenancy_periods:
+          2017-08:
+          - 2017-10
+          - 2017-11
           - 2017-08
           - 2017-09
+          2017-10:
           - 2017-10
           - 2017-11
           - 2017-12
           - 2018-01
-          - 2018-02
-          - 2018-03
-          - 2018-04
-          - 2018-05
+          2017-09:
+          - 2017-10
+          - 2017-11
+          - 2017-12
+          - 2017-09
+        discount:
+        availability: 9
+      - discounted_price_min:
+        durations:
+          duration_min: 17
+          duration_max:
+          i18n_key: property_detail.rooms.label.duration.tenancy_from_weeks
+        price_min:
+        state: coming_soon
+        price_max:
+        start_dates:
+          start_date_max:
+          start_date_min: '2017-10-01'
+          i18n_key: property_detail.rooms.label.tenancy_start_date.from
+        discounted_price_max:
+        id: 68921
+        tenancy_periods:
+          2018-01:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
           - 2018-06
-          - 2018-07
-          - 2018-08
           - 2018-09
-          - 2018-10
+          - 2018-05
           - 2018-11
-          - 2018-12
-          - 2019-01
-          - 2019-02
+          - 2018-08
+          - 2018-07
           - 2019-03
+          2017-12:
+          - 2018-12
+          - 2019-02
+          - 2019-01
           - 2019-04
-          2018-10:
           - 2018-10
+          - 2018-03
+          - 2018-06
+          - 2018-09
+          - 2018-05
           - 2018-11
-          - 2018-12
-          - 2019-01
-          - 2019-02
+          - 2018-08
+          - 2018-04
+          - 2018-07
           - 2019-03
+          2017-11:
+          - 2018-12
+          - 2019-02
+          - 2019-01
           - 2019-04
+          - 2018-10
+          - 2018-03
+          - 2018-06
+          - 2018-09
+          - 2018-05
+          - 2018-11
+          - 2018-08
+          - 2018-04
+          - 2018-07
+          - 2019-03
+          2017-10:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-03
+          - 2018-06
+          - 2018-02
+          - 2018-05
+          - 2018-09
+          - 2018-08
+          - 2018-04
+          - 2018-07
+          - 2018-11
+          - 2019-03
+          - 2018-01
+          2018-09:
+          - 2018-12
+          - 2019-03
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          2018-05:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-09
+          - 2018-11
+          - 2018-08
+          - 2019-03
+          2018-08:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-11
+          - 2019-03
+          2018-02:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-06
+          - 2018-09
+          - 2018-11
+          - 2018-08
+          - 2018-07
+          - 2019-03
           2018-12:
-          - 2018-12
-          - 2019-01
-          - 2019-02
           - 2019-03
           - 2019-04
-          2018-11:
-          - 2018-11
+          2018-07:
           - 2018-12
-          - 2019-01
           - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-11
           - 2019-03
+          2018-06:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-09
+          - 2018-11
+          - 2019-03
+          2018-10:
+          - 2019-03
+          - 2019-02
+          - 2019-01
           - 2019-04
           2018-03:
-          - 2018-03
-          - 2018-04
-          - 2018-05
-          - 2018-06
-          - 2018-07
-          - 2018-08
-          - 2018-09
-          - 2018-10
-          - 2018-11
           - 2018-12
-          - 2019-01
           - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-06
+          - 2018-09
+          - 2018-11
+          - 2018-08
+          - 2018-07
+          - 2019-03
+          2018-04:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-09
+          - 2018-11
+          - 2018-08
+          - 2018-07
+          - 2019-03
+          2018-11:
           - 2019-03
           - 2019-04
-      all:
+        discount:
+        availability: 999
+      - discounted_price_min:
+        durations:
+          duration_min: 20
+          duration_max:
+          i18n_key: property_detail.rooms.label.duration.tenancy_from_weeks
+        price_min:
+        state: coming_soon
+        price_max:
+        start_dates:
+          start_date_max:
+          start_date_min: '2017-10-01'
+          i18n_key: property_detail.rooms.label.tenancy_start_date.from
+        discounted_price_max:
+        id: 68923
+        tenancy_periods:
+          2018-01:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-06
+          - 2018-09
+          - 2018-05
+          - 2018-11
+          - 2018-08
+          - 2018-07
+          - 2019-03
+          2017-12:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-06
+          - 2018-09
+          - 2018-05
+          - 2018-11
+          - 2018-08
+          - 2018-04
+          - 2018-07
+          - 2019-03
+          2017-11:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-03
+          - 2018-06
+          - 2018-09
+          - 2018-05
+          - 2018-11
+          - 2018-08
+          - 2018-04
+          - 2018-07
+          - 2019-03
+          2017-10:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-03
+          - 2018-06
+          - 2018-02
+          - 2018-05
+          - 2018-09
+          - 2018-08
+          - 2018-04
+          - 2018-07
+          - 2018-11
+          - 2019-03
+          2018-09:
+          - 2019-03
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          2018-05:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-09
+          - 2018-11
+          - 2019-03
+          2018-08:
+          - 2018-12
+          - 2019-03
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          2018-02:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-06
+          - 2018-09
+          - 2018-11
+          - 2018-08
+          - 2018-07
+          - 2019-03
+          2018-12:
+          - 2019-04
+          2018-07:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-11
+          - 2019-03
+          2018-06:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-11
+          - 2019-03
+          2018-10:
+          - 2019-03
+          - 2019-02
+          - 2019-04
+          2018-03:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-09
+          - 2018-11
+          - 2018-08
+          - 2018-07
+          - 2019-03
+          2018-04:
+          - 2018-12
+          - 2019-02
+          - 2019-01
+          - 2019-04
+          - 2018-10
+          - 2018-09
+          - 2018-11
+          - 2018-08
+          - 2019-03
+          2018-11:
+          - 2019-03
+          - 2019-04
+        discount:
+        availability: 0
+      distinctions:
+      - label: size standard
+        value: size_standard
+        count:
+      - label: bed bunk
+        value: bed_bunk
+        count:
+      - label: bathroom private
+        value: bathroom_private
+        count:
+      - label: floor low
+        value: floor_low
+        count:
+      - label: ''
+        value: arrangement_cluster
+        count: 10-20
+      state: available_with_price
+    - bathroom_type: private
+      max_occupancy:
+      id: 21242
+      name: Unit 5
+      listings:
+      - discounted_price_min:
+        durations:
+          duration_min: 14
+          duration_max: 14
+          i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
+        price_min:
+        state: coming_soon
+        price_max:
+        start_dates:
+          start_date_max: '2017-10-01'
+          start_date_min: '2017-10-01'
+          i18n_key: property_detail.rooms.label.tenancy_start_date.starts
+        discounted_price_max:
+        id: 68938
+        tenancy_periods:
+          2017-10:
+          - 2018-01
+        discount:
+        availability: 999
+      distinctions:
+      - label: bathroom private
+        value: bathroom_private
+        count:
+      - label: ''
+        value: arrangement_apartment
+        count:
+      state: coming_soon
+    - bathroom_type: private
+      max_occupancy:
+      id: 21243
+      name: Unit 6
+      listings:
+      - discounted_price_min:
+        durations:
+          duration_min: 14
+          duration_max: 14
+          i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
+        price_min:
+        state: available
+        price_max:
+        start_dates:
+          start_date_max: '2017-10-01'
+          start_date_min: '2017-10-01'
+          i18n_key: property_detail.rooms.label.tenancy_start_date.starts
+        discounted_price_max:
+        id: 68939
+        tenancy_periods:
+          2017-10:
+          - 2018-01
+        discount:
+        availability: 999
+      distinctions:
+      - label: bathroom private
+        value: bathroom_private
+        count:
+      - label: ''
+        value: arrangement_apartment
+        count:
+      state: available
+    - bathroom_type: private
+      max_occupancy:
+      id: 21244
+      name: Unit 7
+      listings:
+      - discounted_price_min:
+        durations:
+          duration_min: 14
+          duration_max: 14
+          i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
+        price_min:
+        state: sold_out
+        price_max:
+        start_dates:
+          start_date_max: '2017-10-01'
+          start_date_min: '2017-10-01'
+          i18n_key: property_detail.rooms.label.tenancy_start_date.starts
+        discounted_price_max:
+        id: 68940
+        tenancy_periods:
+          2017-10:
+          - 2018-01
+        discount:
+        availability: 0
+      distinctions:
+      - label: bathroom private
+        value: bathroom_private
+        count:
+      - label: ''
+        value: arrangement_apartment
+        count:
+      state: sold_out
+    availability: 9
+  - price:
+    state: available
+    name: entire-place
+    discounted_price:
+    units:
+    - bathroom_type: shared
+      max_occupancy:
+      id: 21236
+      name: Unit 2
+      listings:
+      - discounted_price_min:
+        durations:
+          duration_min: 14
+          duration_max: 14
+          i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
+        price_min:
+        state: available
+        price_max:
+        start_dates:
+          start_date_max: '2017-10-01'
+          start_date_min: '2017-10-01'
+          i18n_key: property_detail.rooms.label.tenancy_start_date.starts
+        discounted_price_max:
+        id: 68929
+        tenancy_periods:
+          2017-10:
+          - 2018-01
+        discount:
+        availability: 999
+      - discounted_price_min:
+        durations:
+          duration_min: 14
+          duration_max: 14
+          i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
+        price_min:
+        state: coming_soon
+        price_max:
+        start_dates:
+          start_date_max: '2017-10-01'
+          start_date_min: '2017-10-01'
+          i18n_key: property_detail.rooms.label.tenancy_start_date.starts
+        discounted_price_max:
+        id: 68932
+        tenancy_periods:
+          2017-10:
+          - 2018-01
+        discount:
+        availability: 9
+      - discounted_price_min:
+        durations:
+          duration_min: 14
+          duration_max: 14
+          i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
+        price_min:
+        state: sold_out
+        price_max:
+        start_dates:
+          start_date_max: '2017-10-10'
+          start_date_min: '2017-10-10'
+          i18n_key: property_detail.rooms.label.tenancy_start_date.starts
+        discounted_price_max:
+        id: 68933
+        tenancy_periods:
+          2017-10:
+          - 2018-01
+        discount:
+        availability: 0
+      distinctions:
+      - label: size large
+        value: size_large
+        count:
+      - label: bed single
+        value: bed_single
+        count:
+      - label: floor low
+        value: floor_low
+        count:
+      - label: ''
+        value: arrangement_apartment
+        count: 10-20
+      state: available
+    - bathroom_type: private
+      max_occupancy:
+      id: 21239
+      name: unit 3
+      listings:
+      - discounted_price_min:
+        durations:
+          duration_min: 14
+          duration_max: 14
+          i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
+        price_min:
+        state: coming_soon
+        price_max:
+        start_dates:
+          start_date_max: '2017-10-01'
+          start_date_min: '2017-10-01'
+          i18n_key: property_detail.rooms.label.tenancy_start_date.starts
+        discounted_price_max:
+        id: 68934
+        tenancy_periods:
+          2017-10:
+          - 2018-01
+        discount:
+        availability: 9
+      - discounted_price_min:
+        durations:
+          duration_min: 14
+          duration_max: 14
+          i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
+        price_min:
+        state: sold_out
+        price_max:
+        start_dates:
+          start_date_max: '2017-10-01'
+          start_date_min: '2017-10-01'
+          i18n_key: property_detail.rooms.label.tenancy_start_date.starts
+        discounted_price_max:
+        id: 68935
+        tenancy_periods:
+          2017-10:
+          - 2018-01
+        discount:
+        availability: 0
+      distinctions:
+      - label: size large
+        value: size_large
+        count:
+      - label: bathroom private
+        value: bathroom_private
+        count:
+      - label: ''
+        value: arrangement_apartment
+        count:
+      state: coming_soon
+    - bathroom_type: private
+      max_occupancy:
+      id: 21240
+      name: Unit 4
+      listings:
+      - discounted_price_min:
+        durations:
+          duration_min: 14
+          duration_max: 14
+          i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
+        price_min:
+        state: sold_out
+        price_max:
+        start_dates:
+          start_date_max: '2017-10-01'
+          start_date_min: '2017-10-01'
+          i18n_key: property_detail.rooms.label.tenancy_start_date.starts
+        discounted_price_max:
+        id: 68936
+        tenancy_periods:
+          2017-10:
+          - 2018-01
+        discount:
+        availability: 0
+      distinctions:
+      - label: bathroom private
+        value: bathroom_private
+        count:
+      - label: ''
+        value: arrangement_apartment
+        count:
+      state: sold_out
+    availability: 999
+  tenancy_periods:
+    bathroom_type:
+      shared:
+        2017-10:
+        - 2018-01
+      private:
         2017-12:
         - 2017-12
         - 2018-01
@@ -2555,268 +2026,783 @@ testing_room_property1:
         - 2019-02
         - 2019-03
         - 2019-04
-    from_price: 90
-    state: available_with_price
+    all:
+      2017-12:
+      - 2017-12
+      - 2018-01
+      - 2018-02
+      - 2018-03
+      - 2018-04
+      - 2018-05
+      - 2018-06
+      - 2018-07
+      - 2018-08
+      - 2018-09
+      - 2018-10
+      - 2018-11
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2017-10:
+      - 2017-10
+      - 2017-11
+      - 2017-12
+      - 2018-01
+      - 2018-02
+      - 2018-03
+      - 2018-04
+      - 2018-05
+      - 2018-06
+      - 2018-07
+      - 2018-08
+      - 2018-09
+      - 2018-10
+      - 2018-11
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2017-09:
+      - 2017-09
+      - 2017-10
+      - 2017-11
+      - 2017-12
+      - 2018-01
+      - 2018-02
+      - 2018-03
+      - 2018-04
+      - 2018-05
+      - 2018-06
+      - 2018-07
+      - 2018-08
+      - 2018-09
+      - 2018-10
+      - 2018-11
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2018-05:
+      - 2018-05
+      - 2018-06
+      - 2018-07
+      - 2018-08
+      - 2018-09
+      - 2018-10
+      - 2018-11
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2018-08:
+      - 2018-08
+      - 2018-09
+      - 2018-10
+      - 2018-11
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2016-10:
+      - 2016-10
+      - 2016-11
+      - 2016-12
+      - 2017-01
+      - 2017-02
+      - 2017-03
+      - 2017-04
+      - 2017-05
+      - 2017-06
+      - 2017-07
+      - 2017-08
+      - 2017-09
+      - 2017-10
+      - 2017-11
+      - 2017-12
+      - 2018-01
+      - 2018-02
+      - 2018-03
+      - 2018-04
+      - 2018-05
+      - 2018-06
+      - 2018-07
+      - 2018-08
+      - 2018-09
+      - 2018-10
+      - 2018-11
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2019-03:
+      - 2019-03
+      - 2019-04
+      2016-11:
+      - 2016-11
+      - 2016-12
+      - 2017-01
+      - 2017-02
+      - 2017-03
+      - 2017-04
+      - 2017-05
+      - 2017-06
+      - 2017-07
+      - 2017-08
+      - 2017-09
+      - 2017-10
+      - 2017-11
+      - 2017-12
+      - 2018-01
+      - 2018-02
+      - 2018-03
+      - 2018-04
+      - 2018-05
+      - 2018-06
+      - 2018-07
+      - 2018-08
+      - 2018-09
+      - 2018-10
+      - 2018-11
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2017-05:
+      - 2017-05
+      - 2017-06
+      - 2017-07
+      - 2017-08
+      - 2017-09
+      - 2017-10
+      - 2017-11
+      - 2017-12
+      - 2018-01
+      - 2018-02
+      - 2018-03
+      - 2018-04
+      - 2018-05
+      - 2018-06
+      - 2018-07
+      - 2018-08
+      - 2018-09
+      - 2018-10
+      - 2018-11
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2018-07:
+      - 2018-07
+      - 2018-08
+      - 2018-09
+      - 2018-10
+      - 2018-11
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2018-06:
+      - 2018-06
+      - 2018-07
+      - 2018-08
+      - 2018-09
+      - 2018-10
+      - 2018-11
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2017-01:
+      - 2017-01
+      - 2017-02
+      - 2017-03
+      - 2017-04
+      - 2017-05
+      - 2017-06
+      - 2017-07
+      - 2017-08
+      - 2017-09
+      - 2017-10
+      - 2017-11
+      - 2017-12
+      - 2018-01
+      - 2018-02
+      - 2018-03
+      - 2018-04
+      - 2018-05
+      - 2018-06
+      - 2018-07
+      - 2018-08
+      - 2018-09
+      - 2018-10
+      - 2018-11
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2019-04:
+      - 2019-04
+      2017-02:
+      - 2017-02
+      - 2017-03
+      - 2017-04
+      - 2017-05
+      - 2017-06
+      - 2017-07
+      - 2017-08
+      - 2017-09
+      - 2017-10
+      - 2017-11
+      - 2017-12
+      - 2018-01
+      - 2018-02
+      - 2018-03
+      - 2018-04
+      - 2018-05
+      - 2018-06
+      - 2018-07
+      - 2018-08
+      - 2018-09
+      - 2018-10
+      - 2018-11
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2017-03:
+      - 2017-03
+      - 2017-04
+      - 2017-05
+      - 2017-06
+      - 2017-07
+      - 2017-08
+      - 2017-09
+      - 2017-10
+      - 2017-11
+      - 2017-12
+      - 2018-01
+      - 2018-02
+      - 2018-03
+      - 2018-04
+      - 2018-05
+      - 2018-06
+      - 2018-07
+      - 2018-08
+      - 2018-09
+      - 2018-10
+      - 2018-11
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2017-07:
+      - 2017-07
+      - 2017-08
+      - 2017-09
+      - 2017-10
+      - 2017-11
+      - 2017-12
+      - 2018-01
+      - 2018-02
+      - 2018-03
+      - 2018-04
+      - 2018-05
+      - 2018-06
+      - 2018-07
+      - 2018-08
+      - 2018-09
+      - 2018-10
+      - 2018-11
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2018-01:
+      - 2018-01
+      - 2018-02
+      - 2018-03
+      - 2018-04
+      - 2018-05
+      - 2018-06
+      - 2018-07
+      - 2018-08
+      - 2018-09
+      - 2018-10
+      - 2018-11
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2017-11:
+      - 2017-11
+      - 2017-12
+      - 2018-01
+      - 2018-02
+      - 2018-03
+      - 2018-04
+      - 2018-05
+      - 2018-06
+      - 2018-07
+      - 2018-08
+      - 2018-09
+      - 2018-10
+      - 2018-11
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2018-09:
+      - 2018-09
+      - 2018-10
+      - 2018-11
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2019-01:
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2017-04:
+      - 2017-04
+      - 2017-05
+      - 2017-06
+      - 2017-07
+      - 2017-08
+      - 2017-09
+      - 2017-10
+      - 2017-11
+      - 2017-12
+      - 2018-01
+      - 2018-02
+      - 2018-03
+      - 2018-04
+      - 2018-05
+      - 2018-06
+      - 2018-07
+      - 2018-08
+      - 2018-09
+      - 2018-10
+      - 2018-11
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2017-06:
+      - 2017-06
+      - 2017-07
+      - 2017-08
+      - 2017-09
+      - 2017-10
+      - 2017-11
+      - 2017-12
+      - 2018-01
+      - 2018-02
+      - 2018-03
+      - 2018-04
+      - 2018-05
+      - 2018-06
+      - 2018-07
+      - 2018-08
+      - 2018-09
+      - 2018-10
+      - 2018-11
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2019-02:
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2017-08:
+      - 2017-08
+      - 2017-09
+      - 2017-10
+      - 2017-11
+      - 2017-12
+      - 2018-01
+      - 2018-02
+      - 2018-03
+      - 2018-04
+      - 2018-05
+      - 2018-06
+      - 2018-07
+      - 2018-08
+      - 2018-09
+      - 2018-10
+      - 2018-11
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2018-02:
+      - 2018-02
+      - 2018-03
+      - 2018-04
+      - 2018-05
+      - 2018-06
+      - 2018-07
+      - 2018-08
+      - 2018-09
+      - 2018-10
+      - 2018-11
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2018-04:
+      - 2018-04
+      - 2018-05
+      - 2018-06
+      - 2018-07
+      - 2018-08
+      - 2018-09
+      - 2018-10
+      - 2018-11
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2016-12:
+      - 2016-12
+      - 2017-01
+      - 2017-02
+      - 2017-03
+      - 2017-04
+      - 2017-05
+      - 2017-06
+      - 2017-07
+      - 2017-08
+      - 2017-09
+      - 2017-10
+      - 2017-11
+      - 2017-12
+      - 2018-01
+      - 2018-02
+      - 2018-03
+      - 2018-04
+      - 2018-05
+      - 2018-06
+      - 2018-07
+      - 2018-08
+      - 2018-09
+      - 2018-10
+      - 2018-11
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2018-10:
+      - 2018-10
+      - 2018-11
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2018-12:
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2018-11:
+      - 2018-11
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+      2018-03:
+      - 2018-03
+      - 2018-04
+      - 2018-05
+      - 2018-06
+      - 2018-07
+      - 2018-08
+      - 2018-09
+      - 2018-10
+      - 2018-11
+      - 2018-12
+      - 2019-01
+      - 2019-02
+      - 2019-03
+      - 2019-04
+  from_price: 90
+  state: available_with_price
 
 testing_room_property2:
-  payload:
-    discounted_from_price:
-    categories:
-    - price:
-      state: sold_out
-      name: shared-room
-      discounted_price:
-      units:
-      - bathroom_type: private
-        max_occupancy:
-        id: 21234
-        name: Unit 3
-        listings:
-        - discounted_price_min:
-          durations:
-            duration_min: 0
-            duration_max: 0
-            i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
-          price_min:
-          state: sold_out
-          price_max:
-          start_dates:
-            start_date_max: '2018-02-01'
-            start_date_min: '2018-01-01'
-            i18n_key: property_detail.rooms.label.tenancy_start_date.from_to
-          discounted_price_max:
-          id: 68916
-          tenancy_periods:
-            2018-01:
-            - 2018-01
-            2018-02:
-            - 2018-02
-          discount:
-          availability: 0
-        distinctions:
-        - label: private
-          value: bathroom_private
-          count:
-        - label: ''
-          value: arrangement_apartment
-          count:
+  discounted_from_price:
+  categories:
+  - price:
+    state: sold_out
+    name: shared-room
+    discounted_price:
+    units:
+    - bathroom_type: private
+      max_occupancy:
+      id: 21234
+      name: Unit 3
+      listings:
+      - discounted_price_min:
+        durations:
+          duration_min: 0
+          duration_max: 0
+          i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
+        price_min:
         state: sold_out
-      availability: 0
-    - price:
-      state: coming_soon
-      name: private-room
-      discounted_price:
-      units:
-      - bathroom_type: private
-        max_occupancy:
-        id: 21232
-        name: Unit 1
-        listings:
-        - discounted_price_min:
-          durations:
-            duration_min: 0
-            duration_max: 0
-            i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
-          price_min:
-          state: coming_soon
-          price_max:
-          start_dates:
-            start_date_max: '2018-01-31'
-            start_date_min: '2018-01-01'
-            i18n_key: property_detail.rooms.label.tenancy_start_date.from_to
-          discounted_price_max:
-          id: 68914
-          tenancy_periods:
-            2018-01:
-            - 2018-01
-          discount:
-          availability: 999
-        - discounted_price_min:
-          durations:
-            duration_min: 0
-            duration_max: 0
-            i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
-          price_min:
-          state: sold_out
-          price_max:
-          start_dates:
-            start_date_max: '2018-01-31'
-            start_date_min: '2018-01-01'
-            i18n_key: property_detail.rooms.label.tenancy_start_date.from_to
-          discounted_price_max:
-          id: 68941
-          tenancy_periods:
-            2018-01:
-            - 2018-01
-          discount:
-          availability: 0
-        distinctions:
-        - label: private
-          value: bathroom_private
-          count:
-        - label: ''
-          value: arrangement_apartment
-          count:
-        state: coming_soon
-      availability: 999
-    - price:
-      state: available
-      name: entire-place
-      discounted_price:
-      units:
-      - bathroom_type: private
-        max_occupancy:
-        id: 21233
-        name: Unit 2
-        listings:
-        - discounted_price_min:
-          durations:
-            duration_min: 0
-            duration_max: 0
-            i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
-          price_min:
-          state: available
-          price_max:
-          start_dates:
-            start_date_max: '2018-10-10'
-            start_date_min: '2018-10-01'
-            i18n_key: property_detail.rooms.label.tenancy_start_date.from_to
-          discounted_price_max:
-          id: 68915
-          tenancy_periods:
-            2018-10:
-            - 2018-10
-          discount:
-          availability: 9
-        distinctions:
-        - label: private
-          value: bathroom_private
-          count:
-        - label: ''
-          value: arrangement_apartment
-          count:
-        state: available
-      availability: 9
-    tenancy_periods:
-      bathroom_type:
-        private:
+        price_max:
+        start_dates:
+          start_date_max: '2018-02-01'
+          start_date_min: '2018-01-01'
+          i18n_key: property_detail.rooms.label.tenancy_start_date.from_to
+        discounted_price_max:
+        id: 68916
+        tenancy_periods:
           2018-01:
           - 2018-01
-          2018-10:
-          - 2018-10
           2018-02:
           - 2018-02
-      all:
+        discount:
+        availability: 0
+      distinctions:
+      - label: private
+        value: bathroom_private
+        count:
+      - label: ''
+        value: arrangement_apartment
+        count:
+      state: sold_out
+    availability: 0
+  - price:
+    state: coming_soon
+    name: private-room
+    discounted_price:
+    units:
+    - bathroom_type: private
+      max_occupancy:
+      id: 21232
+      name: Unit 1
+      listings:
+      - discounted_price_min:
+        durations:
+          duration_min: 0
+          duration_max: 0
+          i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
+        price_min:
+        state: coming_soon
+        price_max:
+        start_dates:
+          start_date_max: '2018-01-31'
+          start_date_min: '2018-01-01'
+          i18n_key: property_detail.rooms.label.tenancy_start_date.from_to
+        discounted_price_max:
+        id: 68914
+        tenancy_periods:
+          2018-01:
+          - 2018-01
+        discount:
+        availability: 999
+      - discounted_price_min:
+        durations:
+          duration_min: 0
+          duration_max: 0
+          i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
+        price_min:
+        state: sold_out
+        price_max:
+        start_dates:
+          start_date_max: '2018-01-31'
+          start_date_min: '2018-01-01'
+          i18n_key: property_detail.rooms.label.tenancy_start_date.from_to
+        discounted_price_max:
+        id: 68941
+        tenancy_periods:
+          2018-01:
+          - 2018-01
+        discount:
+        availability: 0
+      distinctions:
+      - label: private
+        value: bathroom_private
+        count:
+      - label: ''
+        value: arrangement_apartment
+        count:
+      state: coming_soon
+    availability: 999
+  - price:
+    state: available
+    name: entire-place
+    discounted_price:
+    units:
+    - bathroom_type: private
+      max_occupancy:
+      id: 21233
+      name: Unit 2
+      listings:
+      - discounted_price_min:
+        durations:
+          duration_min: 0
+          duration_max: 0
+          i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
+        price_min:
+        state: available
+        price_max:
+        start_dates:
+          start_date_max: '2018-10-10'
+          start_date_min: '2018-10-01'
+          i18n_key: property_detail.rooms.label.tenancy_start_date.from_to
+        discounted_price_max:
+        id: 68915
+        tenancy_periods:
+          2018-10:
+          - 2018-10
+        discount:
+        availability: 9
+      distinctions:
+      - label: private
+        value: bathroom_private
+        count:
+      - label: ''
+        value: arrangement_apartment
+        count:
+      state: available
+    availability: 9
+  tenancy_periods:
+    bathroom_type:
+      private:
         2018-01:
         - 2018-01
         2018-10:
         - 2018-10
         2018-02:
         - 2018-02
-    from_price:
-    state: available
+    all:
+      2018-01:
+      - 2018-01
+      2018-10:
+      - 2018-10
+      2018-02:
+      - 2018-02
+  from_price:
+  state: available
 
 
 
 testing_room_property3:
-  payload:
-    discounted_from_price:
-    categories:
-    - price:
-      state:
-      name: shared-room
-      discounted_price:
-      units: []
-      availability: 0
-    - price:
-      state: available
-      name: private-room
-      discounted_price:
-      units:
-      - bathroom_type: private
-        max_occupancy:
-        id: 21237
-        name: Unit 1
-        listings:
-        - discounted_price_min:
-          durations:
-            duration_min: 0
-            duration_max: 0
-            i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
-          price_min:
-          state: coming_soon
-          price_max:
-          start_dates:
-            start_date_max: '2018-01-31'
-            start_date_min: '2018-01-01'
-            i18n_key: property_detail.rooms.label.tenancy_start_date.from_to
-          discounted_price_max:
-          id: 68930
-          tenancy_periods:
-            2018-01:
-            - 2018-01
-          discount:
-          availability: 999
-        - discounted_price_min:
-          durations:
-            duration_min: 0
-            duration_max: 0
-            i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
-          price_min:
-          state: available
-          price_max:
-          start_dates:
-            start_date_max: '2018-01-31'
-            start_date_min: '2018-01-01'
-            i18n_key: property_detail.rooms.label.tenancy_start_date.from_to
-          discounted_price_max:
-          id: 68931
-          tenancy_periods:
-            2018-01:
-            - 2018-01
-          discount:
-          availability: 9
-        distinctions:
-        - label: Bath 3
-          value: bathroom_private
-          count:
-        - label: ''
-          value: arrangement_apartment
-          count:
-        state: available
-      availability: 9
-    - price:
-      state:
-      name: entire-place
-      discounted_price:
-      units: []
-      availability: 0
-    tenancy_periods:
-      bathroom_type:
-        private:
+  discounted_from_price:
+  categories:
+  - price:
+    state:
+    name: shared-room
+    discounted_price:
+    units: []
+    availability: 0
+  - price:
+    state: available
+    name: private-room
+    discounted_price:
+    units:
+    - bathroom_type: private
+      max_occupancy:
+      id: 21237
+      name: Unit 1
+      listings:
+      - discounted_price_min:
+        durations:
+          duration_min: 0
+          duration_max: 0
+          i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
+        price_min:
+        state: coming_soon
+        price_max:
+        start_dates:
+          start_date_max: '2018-01-31'
+          start_date_min: '2018-01-01'
+          i18n_key: property_detail.rooms.label.tenancy_start_date.from_to
+        discounted_price_max:
+        id: 68930
+        tenancy_periods:
           2018-01:
           - 2018-01
-      all:
+        discount:
+        availability: 999
+      - discounted_price_min:
+        durations:
+          duration_min: 0
+          duration_max: 0
+          i18n_key: property_detail.rooms.label.duration.tenancy_exact_weeks
+        price_min:
+        state: available
+        price_max:
+        start_dates:
+          start_date_max: '2018-01-31'
+          start_date_min: '2018-01-01'
+          i18n_key: property_detail.rooms.label.tenancy_start_date.from_to
+        discounted_price_max:
+        id: 68931
+        tenancy_periods:
+          2018-01:
+          - 2018-01
+        discount:
+        availability: 9
+      distinctions:
+      - label: Bath 3
+        value: bathroom_private
+        count:
+      - label: ''
+        value: arrangement_apartment
+        count:
+      state: available
+    availability: 9
+  - price:
+    state:
+    name: entire-place
+    discounted_price:
+    units: []
+    availability: 0
+  tenancy_periods:
+    bathroom_type:
+      private:
         2018-01:
         - 2018-01
-    from_price:
-    state: available
+    all:
+      2018-01:
+      - 2018-01
+  from_price:
+  state: available
 
 testing_room_property4:
-  payload:
-    tenancy_periods:
-      bathroom_type:
-        private:
-          2018-01:
-          - 2018-01
-          - 2018-02
-          2018-03:
-          - 2018-03
-          - 2018-04
-          2018-02:
-          - 2018-02
-          - 2018-03
-      all:
+  tenancy_periods:
+    bathroom_type:
+      private:
         2018-01:
         - 2018-01
         - 2018-02
@@ -2826,64 +2812,74 @@ testing_room_property4:
         2018-02:
         - 2018-02
         - 2018-03
-    categories:
-    - units: []
-      discounted_price:
-      name: shared-room
-      price:
-      availability: 0
-      state:
-    - units:
-      - distinctions:
-        - count:
-          value: bathroom_private
-          label: Bath 4
-        - count:
-          value: arrangement_apartment
-          label: ''
-        id: 21241
-        state: sold_out
-        max_occupancy:
-        name: Unit 1
-        bathroom_type: private
-        listings:
-        - start_dates:
-            i18n_key: property_detail.rooms.label.tenancy_start_date.from_to
-            start_date_min: '2018-01-01'
-            start_date_max: '2018-03-28'
-          price_max:
-          price_min:
-          discounted_price_min:
-          id: 68937
-          discount:
-          durations:
-            duration_max: 6
-            i18n_key: property_detail.rooms.label.duration.tenancy_flexible_weeks
-            duration_min: 3
-          availability: 0
-          discounted_price_max:
-          state: sold_out
-          tenancy_periods:
-            2018-01:
-            - 2018-02
-            - 2018-01
-            2018-03:
-            - 2018-03
-            - 2018-04
-            2018-02:
-            - 2018-02
-            - 2018-03
-      discounted_price:
-      name: private-room
-      price:
-      availability: 0
+    all:
+      2018-01:
+      - 2018-01
+      - 2018-02
+      2018-03:
+      - 2018-03
+      - 2018-04
+      2018-02:
+      - 2018-02
+      - 2018-03
+  categories:
+  - units: []
+    discounted_price:
+    name: shared-room
+    price:
+    availability: 0
+    state:
+  - units:
+    - distinctions:
+      - count:
+        value: bathroom_private
+        label: Bath 4
+      - count:
+        value: arrangement_apartment
+        label: ''
+      id: 21241
       state: sold_out
-    - units: []
-      discounted_price:
-      name: entire-place
-      price:
-      availability: 0
-      state:
-    discounted_from_price:
+      max_occupancy:
+      name: Unit 1
+      bathroom_type: private
+      listings:
+      - start_dates:
+          i18n_key: property_detail.rooms.label.tenancy_start_date.from_to
+          start_date_min: '2018-01-01'
+          start_date_max: '2018-03-28'
+        price_max:
+        price_min:
+        discounted_price_min:
+        id: 68937
+        discount:
+        durations:
+          duration_max: 6
+          i18n_key: property_detail.rooms.label.duration.tenancy_flexible_weeks
+          duration_min: 3
+        availability: 0
+        discounted_price_max:
+        state: sold_out
+        tenancy_periods:
+          2018-01:
+          - 2018-02
+          - 2018-01
+          2018-03:
+          - 2018-03
+          - 2018-04
+          2018-02:
+          - 2018-02
+          - 2018-03
+    discounted_price:
+    name: private-room
+    price:
+    availability: 0
     state: sold_out
-    from_price:
+  - units: []
+    discounted_price:
+    name: entire-place
+    price:
+    availability: 0
+    state:
+  discounted_from_price:
+  state: sold_out
+  from_price:

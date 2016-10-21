@@ -36,6 +36,15 @@ describe "Wechat" do
       end
     end
 
+    context "new to_xml method example", :key => 'Wechat2' do
+      it "support multiple questions for one case in yml" do
+        payload = WechatPayload.new
+        puts payload.to_xml(key)
+        puts payload.to_xml(key,['1st'])
+        puts payload.to_xml(key,['tier','2nd'])
+      end
+    end
+
     context "Pre-condition sql execution" do
       it "select lead table before send text message to wechat",:prejob => 'Wechat1', :key => 'Wechat1' do
         payload = WechatPayload.new

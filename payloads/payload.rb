@@ -6,7 +6,7 @@ class Payload
 
   def self.payload key
     DataMagic.load filename
-    self.new.data_for(key)['payload']
+    self.new.data_for(key)
   end
 
   def self.filename
