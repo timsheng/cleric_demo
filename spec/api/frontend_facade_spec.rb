@@ -74,11 +74,11 @@ describe "Frontend Facade" do
         expect(response[:message]['error_description']).to eql("`language code` must be provided.")
       end
 
-      it "success if provided real email", :key => 'exist_user', :params => ['zh-cn'] do
+      it "success if provide real email", :key => 'exist_user', :params => ['zh-cn'] do
         expect(response[:status]).to be(200)
       end
 
-      it "failed if provided un-exist email", :key => 'new_user', :params => ['zh-cn'] do
+      it "failed if provide un-exist email", :key => 'new_user', :params => ['zh-cn'] do
         expect(response[:status]).to be(400)
         expect(response[:message]['error']).to eql("USER_NOT_FOUND")
       end
@@ -93,7 +93,7 @@ describe "Frontend Facade" do
     end
 
     context "Check user exists" do
-      let(:payload) { FrontendFacadePayload::Users::ForgotPassword.payload key }
+      let(:payload) { FrontendFacadePayload::Users::User.payload key }
       let(:response) { frontend_facade.check_user_exist(payload) }
 
       it "true if user exist", :key => 'exist_user' do
