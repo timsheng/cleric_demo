@@ -22,11 +22,9 @@ class FrontendFacade < API
     return new_response(response)
   end
 
-  def user_forgot_password payload, language = nil
+  def user_forgot_password payload, language = false
     self.class.headers({'Content-Type' => "application/json"})
-    if language != nil
-      self.class.headers({'Accept-Language' => language})
-    end
+    self.class.headers({'Accept-Language' => language}) if language
     response = self.class.post('/users/forgot-password', :body => payload.to_json)
     return new_response(response)
   end
@@ -37,20 +35,16 @@ class FrontendFacade < API
     return new_response(response)
   end
 
-  def user_set_password payload, token = nil
+  def user_set_password payload, token = false
     self.class.headers({'Content-Type' => "application/json"})
-    if token != nil
-      self.class.headers({'Authorization' => "Bearer #{token}"})
-    end
+    self.class.headers({'Authorization' => "Bearer #{token}"}) if token
     response = self.class.post('/users/set-password', :body => payload.to_json)
     return new_response(response)
   end
 
-  def create_enquiry payload, token = nil
+  def create_enquiry payload, token = false
     self.class.headers({'Content-Type' => "application/json"})
-    if token != nil
-      self.class.headers({'Authorization' => "Bearer #{token}"})
-    end
+    self.class.headers({'Authorization' => "Bearer #{token}"}) if token
     response = self.class.post('/enquiry', :body => payload.to_json)
     return new_response(response)
   end

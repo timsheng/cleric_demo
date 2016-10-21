@@ -47,7 +47,7 @@ module FrontendFacadePayload
     class SetPassword < Payload
     end
 
-    class ForgotPassword < Payload
+    class User < Payload
     end
   end
 
