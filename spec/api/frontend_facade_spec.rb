@@ -494,7 +494,7 @@ describe "Frontend Facade" do
       end
 
       context "Check unpublished areas" do
-        it "shouldn't return.", :key => 'location_areas_london_en', :params => ['london', 'en-gb'] do
+        it "shouldn't return.", :params => ['london', 'en-gb'] do
           expect(response[:status]).to be(200)
           response[:message]['areas'].each do |e|
             expect(e['slug']).not_to eq('london-area-test')
