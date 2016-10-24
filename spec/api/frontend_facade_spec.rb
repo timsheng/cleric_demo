@@ -21,6 +21,12 @@ describe "Frontend Facade" do
         expect(response[:status]).to be(400)
         expect(response[:message]['error']).to eql("USER_ALREADY_EXISTS")
       end
+
+      it "unable to sign up with an invalid email", :key => 'invalid_email_user' do
+        expect(response[:status]).to be(400)
+        expect(response[:message]['error']).to eql("BAD_REQUEST")
+        expect(response[:message]['error_description']).to eql("Validation failure")
+      end
     end
 
     context "User login" do
@@ -46,7 +52,7 @@ describe "Frontend Facade" do
           expect(token_1).not_to eql(token_2)
         end
 
-        it "create enquiry" do
+        it "the two token is able to create enquiry" do
           payload_enquiry = FrontendFacadePayload::Enquiry::CreateEnquiry.payload('enquiry1')
           [token_1, token_2].each do |e|
             response = frontend_facade.create_enquiry(payload_enquiry, e)
@@ -54,7 +60,7 @@ describe "Frontend Facade" do
           end
         end
 
-        it "set password" do
+        it "the two token is able to set password" do
           payload_password = FrontendFacadePayload::Users::SetPassword.payload('password2')
           [token_1, token_2].each do |e|
             response = frontend_facade.user_set_password(payload_password, e)
@@ -79,7 +85,7 @@ describe "Frontend Facade" do
       end
 
       it "failed if provide un-exist email", :key => 'new_user', :params => ['zh-cn'] do
-        expect(response[:status]).to be(400)
+        expect(response[:status]).to be(404)
         expect(response[:message]['error']).to eql("USER_NOT_FOUND")
       end
     end
