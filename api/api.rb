@@ -6,6 +6,7 @@ class API
   include Cleric
   include HTTParty
   include DataMagic
+  include Cleric::Accessors
 
   # debug_output $stdout
 

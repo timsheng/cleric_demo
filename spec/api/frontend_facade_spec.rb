@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Frontend Facade" do
 
-  subject(:frontend_facade) { FrontendFacade.new }
+  subject(:frontend_facade) { FrontendFacade.new(:ssh => 'Booking_ssh', :db => 'Booking_db') }
   let(:key) { key = @key }
   let(:params) { params = @params }
 
@@ -15,6 +15,9 @@ describe "Frontend Facade" do
       it "able to sign up for a new user", :key => 'new_user' do
         expect(response[:status]).to be(200)
         expect(response[:message]['auth_token']).not_to be_nil
+        sleep 1
+        expect(frontend_facade.query_booking_student(:email => response[:message]['email']).count).to be(1)
+        # expect(frontend_facade.query_identity_user(:email => response[:message]['email']).count).to be(1)
       end
 
       it "unable to sign up for an exist user", :key => 'exist_user' do
