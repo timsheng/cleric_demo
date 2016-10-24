@@ -36,4 +36,23 @@ module FrontendFacadePayload
     class List < Payload
     end
   end
+
+  module Users
+    class Login < Payload
+    end
+
+    class Signup < Payload
+    end
+
+    class SetPassword < Payload
+    end
+
+    class User < Payload
+    end
+  end
+
+  module Enquiry
+    class CreateEnquiry < Payload
+    end
+  end
 end

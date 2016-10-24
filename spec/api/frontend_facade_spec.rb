@@ -6,15 +6,137 @@ describe "Frontend Facade" do
   let(:key) { key = @key }
   let(:params) { params = @params }
 
-  # describe "Users" do
-  #   it "should create user", :tag => 'Users1' do |example|
-  #     key = example.metadata[:tag]
-  #     frontend_facade_payload = FrontendFacadePayload::Property::Users.new(key)
-  #     puts frontend_facade_payload.payload
-  #     response = frontend_facade.create_user(frontend_facade_payload.payload)
-  #     expect(response[:status]).to be(200)
-  #   end
-  # end
+  describe "Users" do
+
+    context "User sign up" do
+      let(:payload) { FrontendFacadePayload::Users::Signup.payload key }
+      let(:response) { frontend_facade.user_signup(payload) }
+
+      it "able to sign up for a new user", :key => 'new_user' do
+        expect(response[:status]).to be(200)
+        expect(response[:message]['auth_token']).not_to be_nil
+      end
+
+      it "unable to sign up for an exist user", :key => 'exist_user' do
+        expect(response[:status]).to be(400)
+        expect(response[:message]['error']).to eql("USER_ALREADY_EXISTS")
+      end
+
+      it "unable to sign up with an invalid email", :key => 'invalid_email_user' do
+        expect(response[:status]).to be(400)
+        expect(response[:message]['error']).to eql("BAD_REQUEST")
+        expect(response[:message]['error_description']).to eql("Validation failure")
+      end
+    end
+
+    context "User login" do
+      let(:payload) { FrontendFacadePayload::Users::Login.payload key }
+      let(:response) { frontend_facade.user_login(payload) }
+      let(:response_twice) { frontend_facade.user_login(payload) }
+
+      it "able to login with correct password", :key => 'user_correct_password' do
+        expect(response[:status]).to be(200)
+        expect(response[:message]['auth_token']).not_to be_nil
+      end
+
+      it "unable to login with incorrect password", :key => 'user_incorrect_password' do
+        expect(response[:status]).to be(401)
+        expect(response[:message]['error']).to eql("INVALID_CREDENTIALS")
+      end
+
+      context "Check multiple JWT-token is available", :key => 'user_correct_password' do
+        let(:token_1) {response[:message]['auth_token']}
+        let(:token_2) {response_twice[:message]['auth_token']}
+
+        it "there is different token if user login twice" do
+          expect(token_1).not_to eql(token_2)
+        end
+
+        it "the two token is able to create enquiry" do
+          payload_enquiry = FrontendFacadePayload::Enquiry::CreateEnquiry.payload('enquiry1')
+          [token_1, token_2].each do |e|
+            response = frontend_facade.create_enquiry(payload_enquiry, e)
+            expect(response[:status]).to be(200)
+          end
+        end
+
+        it "the two token is able to set password" do
+          payload_password = FrontendFacadePayload::Users::SetPassword.payload('password2')
+          [token_1, token_2].each do |e|
+            response = frontend_facade.user_set_password(payload_password, e)
+            expect(response[:status]).to be(200)
+          end
+        end
+      end
+    end
+
+    context "User forgot password" do
+      let(:payload) { FrontendFacadePayload::Users::User.payload key }
+      let(:response) { frontend_facade.user_forgot_password(payload, *params) }
+
+      it "failed if language is not provided", :key => 'exist_user' do
+        expect(response[:status]).to be(400)
+        expect(response[:message]['error']).to eql("BAD_REQUEST")
+        expect(response[:message]['error_description']).to eql("`language code` must be provided.")
+      end
+
+      it "success if provide real email", :key => 'exist_user', :params => ['zh-cn'] do
+        expect(response[:status]).to be(200)
+      end
+
+      it "failed if provide un-exist email", :key => 'new_user', :params => ['zh-cn'] do
+        expect(response[:status]).to be(404)
+        expect(response[:message]['error']).to eql("USER_NOT_FOUND")
+      end
+    end
+
+    context "Reset password" do
+      pending
+    end
+
+    context "Validate reset_password_token" do
+      pending
+    end
+
+    context "Check user exists" do
+      let(:payload) { FrontendFacadePayload::Users::User.payload key }
+      let(:response) { frontend_facade.check_user_exist(payload) }
+
+      it "true if user exist", :key => 'exist_user' do
+        expect(response[:status]).to be(200)
+      end
+
+      it "false if user doesn't exist", :key => 'new_user' do
+        expect(response[:status]).to be(404)
+        expect(response[:message]['error']).to eql("USER_NOT_FOUND")
+      end
+    end
+
+    context "Set password" do
+      let(:payload_new_user) { FrontendFacadePayload::Users::Signup.payload 'new_user'}
+      let(:payload_password) { FrontendFacadePayload::Users::SetPassword.payload 'password1'}
+      let(:response_signup) { frontend_facade.user_signup(payload_new_user) }
+      let(:response) { frontend_facade.user_set_password(payload_password, *params) }
+
+      it "failed if token is not provided" do
+        expect(response[:status]).to be(401)
+        expect(response[:message]['error']).to eq("INVALID_CREDENTIALS")
+        expect(response[:message]['error_description']).to eq("Token not found.")
+      end
+
+      it "success if token is avaiable" do
+        response = frontend_facade.user_set_password(payload_password, response_signup[:message]['auth_token'])
+        expect(response[:status]).to be(200)
+        expect(response[:message]['auth_token']).to eq(response_signup[:message]['auth_token'])
+      end
+
+      it "failed if token is incorrect", :params => ['incorrecttoken'] do
+        expect(response[:status]).to be(401)
+        expect(response[:message]['error']).to eq("INVALID_CREDENTIALS")
+        expect(response[:message]['error_description']).to eq("Token incorrecttoken is invalid.")
+      end
+    end
+  end
 
   describe 'Property' do
     context "Get summary of a property" do
@@ -319,7 +441,7 @@ describe "Frontend Facade" do
       let(:response) { frontend_facade.get_list_of_countries(*params) }
 
       context "Check basic info" do
-        it "should be correct for en-gb and unpublished country is not returned." do
+        it "should be correct for en-gb." do
           expect(response[:status]).to be(200)
           expect(response[:message]).to be_deep_equal(payload)
         end
@@ -425,9 +547,11 @@ describe "Frontend Facade" do
       end
 
       context "Check unpublished areas" do
-        it "shouldn't be returned", :key => 'location_city_london_en', :params => ['london', 'en-gb'] do
+        it "shouldn't be returned", :params => ['london', 'en-gb'] do
           expect(response[:status]).to be(200)
-          expect(response[:message]['areas']).to be_deep_equal(payload['areas'])
+          response[:message]['areas'].each do |e|
+            expect(e['slug']).not_to eq('london-area-test')
+          end
         end
       end
     end
@@ -449,7 +573,7 @@ describe "Frontend Facade" do
       end
 
       context "Check unpublished areas" do
-        it "shouldn't return.", :key => 'location_areas_london_en', :params => ['london', 'en-gb'] do
+        it "shouldn't return.", :params => ['london', 'en-gb'] do
           expect(response[:status]).to be(200)
           response[:message]['areas'].each do |e|
             expect(e['slug']).not_to eq('london-area-test')

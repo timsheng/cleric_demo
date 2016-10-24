@@ -1,0 +1,26 @@
+new_user:
+  email: ~email_student
+  password: student.com1
+  first_name: Dan
+  last_name: Pan
+  phone: (+86)18101872701
+  locale: zh-cn
+  newsletter_accepted: true
+
+exist_user:
+  email: dan.pan+2016101806@student.com
+  password: student.com1
+  first_name: Dan
+  last_name: Pan
+  phone: (+86)18101872701
+  locale: zh-cn
+  newsletter_accepted: true
+
+invalid_email_user:
+  email: dan.pan+2016101806student.com
+  password: student.com1
+  first_name: Dan
+  last_name: Pan
+  phone: (+86)18101872701
+  locale: zh-cn
+  newsletter_accepted: true

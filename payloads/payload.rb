@@ -4,9 +4,10 @@ class Payload
 
   include DataMagic
 
-  def self.payload key
-    DataMagic.load filename
-    self.new.data_for(key)
+  def self.payload key = false
+    data = DataMagic.load filename
+    data = self.new.data_for(key) if key
+    return data
   end
 
   def self.filename
@@ -47,5 +48,11 @@ module DataMagic
   def transform(value)
     self.send :eval, value
   end
-
 end
+
+module MyData
+  def email_student
+    "dan.pan+" + Time.now.to_i.to_s + "@student.com"
+  end
+end
+DataMagic.add_translator MyData
