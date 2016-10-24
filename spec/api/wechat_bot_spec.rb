@@ -10,6 +10,7 @@ describe "Wechat" do
   end
 
   before(:each) do
+    wechat.delete_account_binding(:open_id => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo')
     wechat.delete_lead(:from_user_name => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo')
     wechat.delete_session(:from_user_name => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo')
   end
