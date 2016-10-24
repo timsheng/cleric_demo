@@ -45,7 +45,7 @@ describe "Wechat" do
         expect(wechat.db[:lead][:from_user_name => 'oTEVLv8uOrqOG3kukvEkmH04oMOw'].nil?).to be false
         for i in 0..expect_result.size - 1
           xml =  payload.to_xml(key,[expect_result.keys[i]])
-          response = wechat.send_text_message(payload.to_xml(key,[expect_result.keys[i]]))
+          response = wechat.send_text_message(xml)
           expect(response.code).to be(200)
           expect(response).to include(expect_result.values[i])
         end
