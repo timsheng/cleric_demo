@@ -8,6 +8,7 @@ class API
   include DataMagic
   include Cleric::Accessors
 
+  attr_accessor :new_headers
   # debug_output $stdout
 
   def self.http key, subkey = false
@@ -21,4 +22,9 @@ class API
     new_response.merge({:response => response, :message => response.parsed_response, :status => response.code})
   end
 
+  def add_headers value
+    @new_headers ||= {}
+    @new_headers = @new_headers.merge(value.to_hash)
+    return @new_headers
+  end
 end

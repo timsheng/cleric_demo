@@ -22,3 +22,75 @@ Wechat2:
       MsgType: text
       Content: 纽卡斯尔
       MsgId: <%= rand(10000) %>
+
+Wechat3:
+  callbot:
+    ToUserName: gh_0d6f2db688b4
+    FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
+    CreateTime: 1476213299
+    MsgType: text
+    Content: 呼叫公寓君
+    MsgId: <%= rand(100000000) %>
+  name:
+    ToUserName: gh_0d6f2db688b4
+    FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
+    CreateTime: 1476213299
+    MsgType: text
+    Content: 道格拉斯
+    MsgId: <%= rand(100000000) %>
+  country:
+    ToUserName: gh_0d6f2db688b4
+    FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
+    CreateTime: 1476213299
+    MsgType: text
+    Content: 英国
+    MsgId: <%= rand(100000000) %>
+  city:
+    ToUserName: gh_0d6f2db688b4
+    FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
+    CreateTime: 1476213299
+    MsgType: text
+    Content: 曼彻斯特
+    MsgId: <%= rand(100000000) %>
+  university:
+    ToUserName: gh_0d6f2db688b4
+    FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
+    CreateTime: 1476213299
+    MsgType: text
+    Content: 曼彻斯特大学
+    MsgId: <%= rand(100000000) %>
+  move_in_year:
+    ToUserName: gh_0d6f2db688b4
+    FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
+    CreateTime: 1476213299
+    MsgType: text
+    Content: 2
+    MsgId: <%= rand(100000000) %>
+  move_in_month:
+    ToUserName: gh_0d6f2db688b4
+    FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
+    CreateTime: 1476213299
+    MsgType: text
+    Content: 1
+    MsgId: <%= rand(100000000) %>
+  tenancy:
+    ToUserName: gh_0d6f2db688b4
+    FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
+    CreateTime: 1476213299
+    MsgType: text
+    Content: 6
+    MsgId: <%= rand(100000000) %>
+  email:
+    ToUserName: gh_0d6f2db688b4
+    FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
+    CreateTime: 1476213299
+    MsgType: text
+    Content: ~email_address
+    MsgId: <%= rand(100000000) %>
+  phone:
+    ToUserName: gh_0d6f2db688b4
+    FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
+    CreateTime: 1476213299
+    MsgType: text
+    Content: <%= rand(10 ** 10) %>
+    MsgId: <%= rand(100000000) %>
