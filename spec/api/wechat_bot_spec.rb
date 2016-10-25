@@ -41,7 +41,7 @@ describe "Wechat" do
       end
 
       it "New user send message to creat an enquiry on chatbot.", :key => 'Wechat3' do
-        expect_result={'callbot' => '你的姓名是','name' => '你要去哪个国家呢','country' => '你要去哪个城市就读呢','city' => '你要去哪所学校就读呢','university' => '今年还是明年入住呢','move_in_year' => '你打算几月入住呢','move_in_month' => '你需要预订几个月呢','tenancy' => '留下你的邮箱','email' => '留下你的电话','phone' => 'success' }
+        expect_result = {'callbot' => '你的姓名是','name' => '你要去哪个国家呢','country' => '你要去哪个城市就读呢','city' => '你要去哪所学校就读呢','university' => '今年还是明年入住呢','move_in_year' => '你打算几月入住呢','move_in_month' => '你需要预订几个月呢','tenancy' => '留下你的邮箱','email' => '留下你的电话','phone' => 'success' }
         # expect(wechat.db[:lead][:from_user_name => 'oTEVLv8uOrqOG3kukvEkmH04oMOw'].nil?).to be false
         expect_result.each do |e|
           xml =  payload.to_xml(key,[e[0]])
@@ -50,6 +50,33 @@ describe "Wechat" do
           expect(response).to include(e[1])
         end
       end
+
+      it "New user scan QRcode on homepage can go to chatbot workflow.", :key => 'Wechat4' do
+        expect_result = {'callbot' => '你的姓名是'}
+        xml =  payload.to_xml(key,[expect_result.keys[0]])
+        response = wechat.send_text_message(xml)
+        expect(response.code).to be(200)
+        expect(response).to include(expect_result.values[0])
+      end
+
+      it "New user tab menu to call BC can go to chatbot workflow.", :key => 'Wechat5' do
+        expect_result = {'callbot' => '你的姓名是'}
+        xml =  payload.to_xml(key,[expect_result.keys[0]])
+        response = wechat.send_text_message(xml)
+        expect(response.code).to be(200)
+        expect(response).to include(expect_result.values[0])
+      end
+
+      it "Scan QRcode on manchester SRP page,chatbot will not ask to answer these two questions.", :key => 'Wechat6' do
+        expect_result = {'callbot' => '你的姓名是','name' => '你要去哪所学校就读呢'}
+        expect_result.each do |e|
+          xml =  payload.to_xml(key,[e[0]])
+          response = wechat.send_text_message(xml)
+          expect(response.code).to be(200)
+          expect(response).to include(e[1])
+        end
+      end
+
     end
 
     context "new to_xml method example", :key => 'Wechat2' do

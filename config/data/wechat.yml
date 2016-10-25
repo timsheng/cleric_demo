@@ -94,3 +94,42 @@ Wechat3:
     MsgType: text
     Content: <%= rand(10 ** 10) %>
     MsgId: <%= rand(100000000) %>
+
+Wechat4:
+  callbot:
+    ToUserName: gh_0d6f2db688b4
+    FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
+    CreateTime: 1476213299
+    MsgType: event
+    Event: SCAN
+    EventKey: 9112
+    Ticket: gQFL8DoAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL3FFU2VJdHJtbDh6dUNwcXc4R3FJAAIE2P4OWAMEgPUgAA==
+    MsgId: <%= rand(100000000) %>
+
+Wechat5:
+  callbot:
+    ToUserName: gh_0d6f2db688b4
+    FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
+    CreateTime: 1476213299
+    MsgType: event
+    Event: CLICK
+    EventKey: MAINBUTTON_1
+    MsgId: <%= rand(100000000) %>
+
+Wechat6:
+  callbot:
+    ToUserName: gh_0d6f2db688b4
+    FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
+    CreateTime: 1476213299
+    MsgType: event
+    Event: SCAN
+    EventKey: 9114
+    Ticket: gQGe8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL24wU0x1OTNtbjh6bW82MDA1V3FJAAIEhwkPWAMEgPUgAA==
+    MsgId: <%= rand(100000000) %>
+  name:
+    ToUserName: gh_0d6f2db688b4
+    FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
+    CreateTime: 1476213299
+    MsgType: text
+    Content: 道格拉斯
+    MsgId: <%= rand(100000000) %>
