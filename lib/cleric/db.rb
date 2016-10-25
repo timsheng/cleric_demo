@@ -19,9 +19,5 @@ module Cleric
         fail "database configuration \n #{conf} \n is not correct, please double check"
       end
     end
-
-    def query sql
-      db[sql].all
-    end
   end
 end
