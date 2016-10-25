@@ -6,6 +6,10 @@ describe "Frontend Facade" do
   let(:key) { key = @key }
   let(:params) { params = @params }
 
+  after(:each) do
+    frontend_facade.close_ssh frontend_facade.port
+  end
+
   describe "Users" do
 
     context "User sign up" do
@@ -59,6 +63,7 @@ describe "Frontend Facade" do
           payload_enquiry = FrontendFacadePayload::Enquiry::CreateEnquiry.payload('enquiry1')
           [token_1, token_2].each do |e|
             response = frontend_facade.create_enquiry(payload_enquiry, e)
+            puts response[:message]
             expect(response[:status]).to be(200)
           end
         end
