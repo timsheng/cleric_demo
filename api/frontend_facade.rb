@@ -38,7 +38,18 @@ class FrontendFacade < API
   def user_set_password payload, token = false
     add_headers({'Content-Type' => "application/json"})
     add_headers({'Authorization' => "Bearer #{token}"}) if token
-    response = self.class.post('/users/set-password', :body => payload.to_json, :headers => new_headers )
+    response = self.class.post('/users/set-password', :body => payload.to_json, :headers => new_headers)
+    return new_response(response)
+  end
+
+  def user_reset_password payload
+    add_headers({'Content-Type' => "application/json"})
+    response = self.class.post('/users/reset-password', :body => payload.to_json, :headers => new_headers)
+    return new_response(response)
+  end
+
+  def validate_reset_token token
+    response = self.class.post("/users/reset-password/validate?token=#{toekn}")
     return new_response(response)
   end
 

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Frontend Facade" do
 
-  subject(:frontend_facade) { FrontendFacade.new(:ssh => 'Booking_ssh', :db => 'Booking_db') }
+  subject(:frontend_facade) { FrontendFacade.new(:ssh => 'Messages_ssh', :db => 'Messages_db') }
   let(:key) { key = @key }
   let(:params) { params = @params }
 
@@ -19,8 +19,8 @@ describe "Frontend Facade" do
       it "able to sign up for a new user", :key => 'new_user' do
         expect(response[:status]).to be(200)
         expect(response[:message]['auth_token']).not_to be_nil
-        sleep 1
-        expect(frontend_facade.query_booking_student(:email => response[:message]['email']).count).to be(1)
+        # sleep 1
+        # expect(frontend_facade.query_booking_student(:email => response[:message]['email']).count).to be(1)
         # expect(frontend_facade.query_identity_user(:email => response[:message]['email']).count).to be(1)
       end
 
@@ -81,12 +81,6 @@ describe "Frontend Facade" do
       let(:payload) { FrontendFacadePayload::Users::User.payload key }
       let(:response) { frontend_facade.user_forgot_password(payload, *params) }
 
-      it "failed if language is not provided", :key => 'exist_user' do
-        expect(response[:status]).to be(400)
-        expect(response[:message]['error']).to eql("BAD_REQUEST")
-        expect(response[:message]['error_description']).to eql("`language code` must be provided.")
-      end
-
       it "success if provide real email", :key => 'exist_user', :params => ['zh-cn'] do
         expect(response[:status]).to be(200)
       end
@@ -94,14 +88,43 @@ describe "Frontend Facade" do
       it "success if provide un-exist email", :key => 'new_user', :params => ['zh-cn'] do
         expect(response[:status]).to be(200)
       end
+
+      it "failed if language is not provided", :key => 'exist_user' do
+        expect(response[:status]).to be(400)
+        expect(response[:message]['error']).to eql("BAD_REQUEST")
+        expect(response[:message]['error_description']).to eql("`language code` must be provided.")
+      end
     end
 
-    context "Reset password" do
-      pending
+    context "Reset password", :key => 'exist_user' do
+      let(:payload) { FrontendFacadePayload::Users::User.payload key }
+
+      def get_reset_token
+        # sql = "select m.body_text from messages m left join recipients r on r.message_id = m.id where r.email = '#{payload['email']}' and r.created_at >= '2016-10-25'"
+        sql = "select m.body_text from messages m left join recipients r on r.message_id = m.id where r.email = 'dan.pan+2016101806@student.com'"
+        data = frontend_facade.query(sql)
+        return data[0]['body_text'].
+      end
+
+      it "success if provide a valid reset_password_token" do
+        reset_token = get_reset_token
+        expect(reset_token).not_to be_empty
+        new_payload ||= {}
+        new_payload.merge(:password => "password112")
+        new_payload.merge(:reset_password_token => reset_token)
+        puts new_payload
+        # response = frontend_facade.user_reset_password(new_payload)
+        # expect(response[:status]).to be(200)
+      end
     end
 
     context "Validate reset_password_token" do
-      pending
+      it "success if provide a valid reset_password_token" do
+        reset_token = get_reset_token
+        expect(reset_token).not_to be_empty
+        response = frontend_facade.validate_reset_token(reset_token)
+        expect(response[:status]).to be(200)
+      end
     end
 
     context "Check user exists" do
