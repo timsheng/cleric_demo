@@ -87,9 +87,8 @@ describe "Frontend Facade" do
         expect(response[:status]).to be(200)
       end
 
-      it "failed if provide un-exist email", :key => 'new_user', :params => ['zh-cn'] do
-        expect(response[:status]).to be(404)
-        expect(response[:message]['error']).to eql("USER_NOT_FOUND")
+      it "success if provide un-exist email", :key => 'new_user', :params => ['zh-cn'] do
+        expect(response[:status]).to be(200)
       end
     end
 
