@@ -153,6 +153,11 @@ describe "Frontend Facade" do
           expect(response[:status]).to be(200)
           expect(response[:message]).to be_deep_equal(payload)
         end
+
+        it "translated is false for testing-room-property-5", :params => ['testing-room-property-5','zh-cn'] do
+          expect(response[:status]).to be(200)
+          expect(response[:message]['translated']).to be false
+        end
       end
     end
 
