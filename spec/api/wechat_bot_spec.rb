@@ -9,6 +9,12 @@ describe "Wechat" do
     puts "---finished wechat api testing---"
   end
 
+  before(:each) do
+    wechat.delete_account_binding(:open_id => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo')
+    wechat.delete_lead(:from_user_name => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo')
+    wechat.delete_session(:from_user_name => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo')
+  end
+
   after(:each) do
     wechat.close_ssh wechat.port
   end
@@ -25,14 +31,24 @@ describe "Wechat" do
 
     context "Check Chatbot workflow." do
       let(:payload) { WechatPayload.new}
-
       it "New user send message to wechat will go into chatbot flow.", :key => 'Wechat1' do
         # sequel raw chained methods
         # wechat.db[:lead].filter(:from_user_name => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo').delete
-        wechat.delete_user(:from_user_name => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo')
+        # wechat.delete_user(:from_user_name => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo')
         response = wechat.send_text_message(payload.to_xml key)
         expect(response.code).to be(200)
         expect(response).to include("请问你的姓名是")
+      end
+
+      it "New user send message to creat an enquiry on chatbot.", :key => 'Wechat3' do
+        expect_result={'callbot' => '你的姓名是','name' => '你要去哪个国家呢','country' => '你要去哪个城市就读呢','city' => '你要去哪所学校就读呢','university' => '今年还是明年入住呢','move_in_year' => '你打算几月入住呢','move_in_month' => '你需要预订几个月呢','tenancy' => '留下你的邮箱','email' => '留下你的电话','phone' => 'success' }
+        # expect(wechat.db[:lead][:from_user_name => 'oTEVLv8uOrqOG3kukvEkmH04oMOw'].nil?).to be false
+        expect_result.each do |e|
+          xml =  payload.to_xml(key,[e[0]])
+          response = wechat.send_text_message(xml)
+          expect(response.code).to be(200)
+          expect(response).to include(e[1])
+        end
       end
     end
 
