@@ -20,5 +20,8 @@ module Cleric
       end
     end
 
+    def query sql
+      db[sql].all
+    end
   end
 end
