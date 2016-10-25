@@ -6,7 +6,7 @@ class API
   include Cleric
   include HTTParty
   include DataMagic
-  
+
   attr_accessor :new_headers
   # debug_output $stdout
 
