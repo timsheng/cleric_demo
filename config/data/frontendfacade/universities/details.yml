@@ -8,6 +8,7 @@ university_of_liverpool_details_en:
     its main campus in Liverpool city centre
   slug: university-of-liverpool
   original_name: University of Liverpool
+  gallery_images: []
 
 university_of_liverpool_details_cn:
   hero_image:
@@ -18,3 +19,4 @@ university_of_liverpool_details_cn:
   headline: 利物浦大学有1.14亿英镑的研究收入和以研究为导向的课程设置，它的主校区位于利物浦市中心
   slug: university-of-liverpool
   original_name: University of Liverpool
+  gallery_images: []
