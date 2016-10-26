@@ -5,6 +5,10 @@ class FrontendFacade < API
   base_uri http('base_uri')
   column :booking_student, :table => 'student'
   column :identity_user, :table => 'user'
+  column :universities, :table => 'universities'
+  column :locations_countries, :table => 'countries'
+  column :locations_cities, :table => 'cities'
+  column :locations_areas, :table => 'areas'
 
   def create_user payload
     self.class.post('/users', :body => payload.to_json)

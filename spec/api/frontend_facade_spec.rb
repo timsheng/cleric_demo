@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Frontend Facade" do
 
-  subject(:frontend_facade) { FrontendFacade.new(:ssh => 'Messages_ssh', :db => 'Messages_db') }
+  subject(:frontend_facade) { FrontendFacade.new(:ssh => 'Inventory01_ssh', :db => 'Locations_db') }
   let(:key) { key = @key }
   let(:params) { params = @params }
 
@@ -190,12 +190,6 @@ describe "Frontend Facade" do
       let(:response_signup) { frontend_facade.user_signup(payload_new_user) }
       let(:response) { frontend_facade.user_set_password(payload_password, *params) }
 
-      it "failed if token is not provided" do
-        expect(response[:status]).to be(401)
-        expect(response[:message]['error']).to eq("INVALID_CREDENTIALS")
-        expect(response[:message]['error_description']).to eq("Token not found.")
-      end
-
       it "success if token is avaiable" do
         response = frontend_facade.user_set_password(payload_password, response_signup[:message]['auth_token'])
         expect(response[:status]).to be(200)
@@ -206,6 +200,12 @@ describe "Frontend Facade" do
         expect(response[:status]).to be(401)
         expect(response[:message]['error']).to eq("INVALID_CREDENTIALS")
         expect(response[:message]['error_description']).to eq("Token incorrecttoken is invalid.")
+      end
+
+      it "failed if token is not provided" do
+        expect(response[:status]).to be(401)
+        expect(response[:message]['error']).to eq("INVALID_CREDENTIALS")
+        expect(response[:message]['error_description']).to eq("Token not found.")
       end
     end
   end
@@ -463,6 +463,8 @@ describe "Frontend Facade" do
       context "Check unpublished university", :params => [nil, 'glasgow', 'en-gb'] do
         it "should not returned." do
           # city-of-glasgow-college is not published.
+          data = frontend_facade.query_universities(:slug => "city-of-glasgow-college")
+          expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
           response[:message]['universities'].each do |e|
             expect(e['slug']).not_to eq('city-of-glasgow-college')
@@ -539,6 +541,8 @@ describe "Frontend Facade" do
       context "Check unpublished country" do
         it "Check unpublished country is not returned." do
           # da is not published.
+          data = frontend_facade.query_locations_countries(:slug => "da")
+          expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
           response[:message]['countries'].each do |e|
             expect(e['slug']).not_to eq('da')
@@ -565,6 +569,8 @@ describe "Frontend Facade" do
 
       context "Check cities" do
         it "unpublished cities shouldn't return for de.", :key => 'location_cities_de_en', :params => ['de', 'en-gb'] do
+          data = frontend_facade.query_locations_cities(:slug => "unpublished-city-test-dan")
+          expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
           response[:message]['cities'].each do |e|
             expect(e['slug']).not_to eq('unpublished-city-test-dan')
@@ -614,6 +620,8 @@ describe "Frontend Facade" do
 
       context "Check unpublished areas" do
         it "shouldn't be returned", :params => ['london', 'en-gb'] do
+          data = frontend_facade.query_locations_areas(:slug => "london-area-test")
+          expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
           response[:message]['areas'].each do |e|
             expect(e['slug']).not_to eq('london-area-test')
@@ -640,6 +648,8 @@ describe "Frontend Facade" do
 
       context "Check unpublished areas" do
         it "shouldn't return.", :params => ['london', 'en-gb'] do
+          data = frontend_facade.query_locations_areas(:slug => "london-area-test")
+          expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
           response[:message]['areas'].each do |e|
             expect(e['slug']).not_to eq('london-area-test')
