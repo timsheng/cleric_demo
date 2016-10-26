@@ -14,9 +14,9 @@ describe "Frontend Facade" do
 
     def get_reset_token is_valid = true
       if is_valid
-        sql = "select m.body_text from messages m left join recipients r on r.message_id = m.id where r.email = '#{payload['email']}' order by m.created_at desc limit 1"
+        sql = "select m.body_text from messages m left join recipients r on r.message_id = m.id where r.email = '#{payload['email']}' and m.body_text like '%reset-token%' order by m.created_at desc limit 1"
       elsif
-        sql = "select m.body_text from messages m left join recipients r on r.message_id = m.id where r.email = '#{payload['email']}' order by m.created_at limit 1"
+        sql = "select m.body_text from messages m left join recipients r on r.message_id = m.id where r.email = '#{payload['email']}' and m.body_text like '%reset-token%' order by m.created_at limit 1"
       end
       data = frontend_facade.query(sql)
       expect(data).not_to be_empty
