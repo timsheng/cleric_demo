@@ -22,5 +22,7 @@ module Cleric
     cls.extend Cleric::Accessors
   end
 
-
+  def query sql
+    db[sql].all
+  end
 end

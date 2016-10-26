@@ -6,9 +6,9 @@ module Cleric
     def connect_remote_server name
       ssh_conf = Cleric::YAML.fetch_corresponding_conf_by name
       ssh_conf = ssh_conf.delete_if { |key,value| key == 'database'}
-      puts "start to connect #{name} remote_server"
+      # puts "start to connect #{name} remote_server"
       ssh = get_ready_for_ssh ssh_conf
-      puts "connect #{name} remote_server successfully" if ssh.active?
+      # puts "connect #{name} remote_server successfully" if ssh.active?
       return ssh
     end
 
@@ -30,7 +30,7 @@ module Cleric
       host = new_conf.delete('host')
       remote_port = new_conf.delete('remote_port')
       local_port = new_conf.delete('local_port')
-      puts "forward remote port #{remote_port} to local port #{local_port}"
+      # puts "forward remote port #{remote_port} to local port #{local_port}"
       begin
         ssh.open(host, remote_port, local_port)
       rescue
