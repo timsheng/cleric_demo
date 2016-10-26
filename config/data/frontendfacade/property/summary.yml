@@ -1,4 +1,5 @@
 student_village_summary_en:
+  translated: true
   name: Student Village
   address: 116-128 Leicester Street
   description: |-
@@ -87,6 +88,7 @@ student_village_summary_en:
   slug: student-village
 
 te_puni_village_summary_cn:
+  translated: true
   hero_image:
     alt_text:
     src: "/mstr/country/new-zealand/city/wellington/property/te-puni-village/image-nygyck.jpeg"
