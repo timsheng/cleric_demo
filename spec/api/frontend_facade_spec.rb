@@ -103,12 +103,12 @@ describe "Frontend Facade" do
         # sql = "select m.body_text from messages m left join recipients r on r.message_id = m.id where r.email = '#{payload['email']}' and r.created_at >= '2016-10-25'"
         sql = "select m.body_text from messages m left join recipients r on r.message_id = m.id where r.email = 'dan.pan+2016101806@student.com'"
         data = frontend_facade.query(sql)
-        return data[0]['body_text']
+        return data[0][:body_text]
       end
 
       it "success if provide a valid reset_password_token" do
         reset_token = get_reset_token
-        expect(reset_token).not_to be_empty
+        expect(reset_token).not_to be_nil
         new_payload ||= {}
         new_payload.merge(:password => "password112")
         new_payload.merge(:reset_password_token => reset_token)
