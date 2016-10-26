@@ -417,17 +417,6 @@ describe "Frontend Facade" do
         end
       end
     end
-
-    # context "Get Property" do
-    #   it "dbfactory demo" ,:tag => 'Users2' do |example|
-    #     key = example.metadata[:tag]
-    #     frontend_facade = FrontendFacadePayload::Property::Users.new(:ssh => 'Property_ssh', :db => 'Property_db')
-    #     puts frontend_facade.id
-    #     puts frontend_facade.name
-    #     puts frontend_facade.address
-    #     puts frontend_facade.expect_result(key)
-    #   end
-    # end
   end
 
   describe 'Universities' do
@@ -485,7 +474,7 @@ describe "Frontend Facade" do
           expect(response[:message]['universities'].size).to eq 85
         end
 
-        it "can be sorted by name, original_name, slug and rank.", :key => 'given_jp_en' do
+        it "can be sorted by name, original_name, slug and rank.", :key => 'given_jp_cn' do
           ["name", "original_name", "slug", "rank"].each do |e|
             response = frontend_facade.get_list_of_universities('jp', nil, 'zh-cn',e)
             expect(response[:status]).to be(200)
