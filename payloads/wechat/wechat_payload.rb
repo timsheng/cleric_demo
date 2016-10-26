@@ -1,8 +1,6 @@
-require 'cleric/xml'
+require 'cleric/hash'
 require './payloads/payload'
 
 class WechatPayload < Payload
-
-  include Cleric::XML
 
 end

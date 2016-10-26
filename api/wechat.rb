@@ -10,7 +10,7 @@ class Wechat < API
   row :account_binding, :table => 'account_binding'
 
   def send_text_message payload
-    self.class.post('', :body => payload)
+    self.class.post('', :body => payload.to_xml)
   end
 
 end
