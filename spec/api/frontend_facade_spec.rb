@@ -12,6 +12,19 @@ describe "Frontend Facade" do
 
   describe "Users" do
 
+    def get_reset_token is_valid = true
+      if is_valid
+        sql = "select m.body_text from messages m left join recipients r on r.message_id = m.id where r.email = '#{payload['email']}' order by m.created_at desc limit 1"
+      elsif
+        sql = "select m.body_text from messages m left join recipients r on r.message_id = m.id where r.email = '#{payload['email']}' order by m.created_at limit 1"
+      end
+      data = frontend_facade.query(sql)
+      expect(data).not_to be_empty
+      reset_token = data[0][:body_text].split("reset-token=")[1]
+      reset_token = reset_token.split(" ")[0]
+      return reset_token
+    end
+
     context "User sign up" do
       let(:payload) { FrontendFacadePayload::Users::Signup.payload key }
       let(:response) { frontend_facade.user_signup(payload) }
@@ -99,31 +112,54 @@ describe "Frontend Facade" do
     context "Reset password", :key => 'exist_user' do
       let(:payload) { FrontendFacadePayload::Users::User.payload key }
 
-      def get_reset_token
-        # sql = "select m.body_text from messages m left join recipients r on r.message_id = m.id where r.email = '#{payload['email']}' and r.created_at >= '2016-10-25'"
-        sql = "select m.body_text from messages m left join recipients r on r.message_id = m.id where r.email = 'dan.pan+2016101806@student.com'"
-        data = frontend_facade.query(sql)
-        return data[0][:body_text]
+      it "success if provide a valid reset_password_token" do
+        response = frontend_facade.user_reset_password(get_reset_token, "Password12")
+        expect(response[:status]).to be(200)
       end
 
-      it "success if provide a valid reset_password_token" do
-        reset_token = get_reset_token
-        expect(reset_token).not_to be_nil
-        new_payload ||= {}
-        new_payload.merge(:password => "password112")
-        new_payload.merge(:reset_password_token => reset_token)
-        puts new_payload
-        # response = frontend_facade.user_reset_password(new_payload)
-        # expect(response[:status]).to be(200)
+      it "fail to reset password with incorrect reset_password_token." do
+        response = frontend_facade.user_reset_password("incorrect_token", "password123")
+        expect(response[:status]).to be(401)
+        expect(response[:message]['error']).to eq("INVALID_CREDENTIALS")
+        expect(response[:message]['error_description']).to end_with("is invalid.")
+      end
+
+      it "fail to reset password if token is expired(more than 24 hours)." do
+        reset_token = get_reset_token false
+        response = frontend_facade.user_reset_password(reset_token, "password123")
+        expect(response[:status]).to be(401)
+        expect(response[:message]['error']).to eq("INVALID_CREDENTIALS")
+        expect(response[:message]['error_description']).to end_with("is invalid.")
+      end
+
+      it "fail to reset password without password and correct reset_password_token." do
+        response = frontend_facade.user_reset_password(get_reset_token)
+        expect(response[:status]).to be(400)
+        expect(response[:message]['error']).to eq("BAD_REQUEST")
       end
     end
 
-    context "Validate reset_password_token" do
+    context "Validate reset_password_token", :key => 'exist_user' do
+      let(:payload) { FrontendFacadePayload::Users::User.payload key }
+
       it "success if provide a valid reset_password_token" do
-        reset_token = get_reset_token
-        expect(reset_token).not_to be_empty
-        response = frontend_facade.validate_reset_token(reset_token)
+        response = frontend_facade.validate_reset_token(get_reset_token)
         expect(response[:status]).to be(200)
+      end
+
+      it "fail if provide a expired reset_password_token(more than 24h)" do
+        reset_token = get_reset_token false
+        response = frontend_facade.validate_reset_token(reset_token)
+        expect(response[:status]).to be(401)
+        expect(response[:message]['error']).to be("INVALID_CREDENTIALS")
+        expect(response[:message]['error_description']).to end_with("is invalid.")
+      end
+
+      it "fail if provide a incorrect reset_password_token" do
+        response = frontend_facade.validate_reset_token("incorrect_token")
+        expect(response[:status]).to be(401)
+        expect(response[:message]['error']).to be("INVALID_CREDENTIALS")
+        expect(response[:message]['error_description']).to end_with("is invalid.")
       end
     end
 
