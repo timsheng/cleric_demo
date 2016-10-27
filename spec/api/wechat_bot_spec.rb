@@ -174,7 +174,6 @@ describe "Wechat" do
     it "select lead table before send text message to wechat",:prejob => 'Wechat1', :key => 'Wechat1' do
       payload = WechatPayload.new
       response = wechat.send_text_message(payload.to_xml key)
-
     end
   end
 
