@@ -1,7 +1,8 @@
 enquiry1:
-  source: partner
-  enquiry_type: partner
+  source: student_www
+  enquiry_type: booking_online
   city_slug: london
+  my_application_link: my.student.com/applications
   student:
     first_name: Fresh
     last_name: Man
