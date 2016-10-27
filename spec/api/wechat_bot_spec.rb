@@ -49,12 +49,12 @@ describe "Wechat" do
         'success'
       ]
       payload.each_with_index do |(k, v), index|
-        @enquiry_email =v['Content'] if k == 'email'
+        @enquiry_email = v['Content'] if k == 'email'
         response = wechat.send_text_message(v)
         expect(response.code).to be(200)
         expect(response).to include expect_result[index]
       end
-      expect(wechat.db[:enquiry][:email => @enquiry_email][:email]).to eql @enquiry_email
+      expect(wechat.db[:enquiry][:email => @enquiry_email]).not_to be nil
       expect(wechat.db[:session][:from_user_name => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo'][:forward_to]).to eql 2
     end
 
