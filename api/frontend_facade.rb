@@ -55,7 +55,7 @@ class FrontendFacade < API
   end
 
   def validate_reset_token token
-    response = self.class.post("/users/reset-password/validate?token=#{token}")
+    response = self.class.get("/users/reset-password/validate?token=#{token}")
     return new_response(response)
   end
 

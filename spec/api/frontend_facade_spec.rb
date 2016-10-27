@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Frontend Facade" do
 
-  subject(:frontend_facade) { FrontendFacade.new(:ssh => 'Inventory01_ssh', :db => 'Locations_db') }
+  subject(:frontend_facade) { FrontendFacade.new(:ssh => 'Messages_ssh', :db => 'Messages_db') }
   let(:key) { key = @key }
   let(:params) { params = @params }
 
@@ -120,6 +120,7 @@ describe "Frontend Facade" do
         reset_token = get_reset_tokens
         response = frontend_facade.user_reset_password(reset_token[0], "Password12")
         expect(response[:status]).to be(200)
+        expect(response[:message]['auth_token']).not_to be_nil
       end
 
       it "fail to reset password with incorrect reset_password_token." do
@@ -155,17 +156,17 @@ describe "Frontend Facade" do
       end
 
       it "fail if provide a expired reset_password_token(more than 24h)" do
-        reset_token = get_reset_token false
+        reset_token = get_reset_tokens false
         response = frontend_facade.validate_reset_token(reset_token[0])
         expect(response[:status]).to be(401)
-        expect(response[:message]['error']).to be("INVALID_CREDENTIALS")
+        expect(response[:message]['error']).to eq("INVALID_CREDENTIALS")
         expect(response[:message]['error_description']).to end_with("is invalid.")
       end
 
       it "fail if provide a incorrect reset_password_token" do
         response = frontend_facade.validate_reset_token("incorrect_token")
         expect(response[:status]).to be(401)
-        expect(response[:message]['error']).to be("INVALID_CREDENTIALS")
+        expect(response[:message]['error']).to eq("INVALID_CREDENTIALS")
         expect(response[:message]['error_description']).to end_with("is invalid.")
       end
     end
