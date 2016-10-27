@@ -10,17 +10,57 @@ describe "Frontend Facade" do
     frontend_facade.close_ssh frontend_facade.port
   end
 
+  describe "Enquiries" do
+
+    context "Create enquiry" do
+      let(:payload) { FrontendFacadePayload::Enquiry::CreateEnquiry.payload key }
+      let(:response) { frontend_facade.create_enquiry(payload, *params) }
+
+      it "success for a new student, check enquiry/user/student is created, email is sent, token is returned and password_set is false.", :key => 'enquiry_full' do
+        email = payload['student']['email']
+        sql = "select m.body_text from messages m left join recipients r on r.message_id = m.id where r.email = '#{email}'"
+        expect(response[:status]).to be(200)
+        expect(response[:message]['auth_token']).not_to be_nil
+        expect(response[:message]['password_set']).to be false
+        expect(frontend_facade.query_identity_user(:email => email)).not_to be_empty
+        expect(frontend_facade.query_booking_student(:email => email)).not_to be_empty
+        expect(frontend_facade.query_booking_enquiry(:email => email)).not_to be_empty
+        expect(frontend_facade.query(sql)).not_to be_empty
+      end
+
+      it "success for an exist student, check enquiry is created, email is sent, token is corrent and password_set is true.", :key => 'enquiry_exist_user' do
+        token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiRnJlc2giLCJpc3MiOiJhdXRoIiwibGFzdF9uYW1lIjoiTWFuIiwiaWF0IjoxNDc3Mzc2MTYzLCJlbWFpbCI6ImRhbi5wYW4rMjAxNjEwMTgwNkBzdHVkZW50LmNvbSJ9.D5596-G8hEy2x5I-MQccrtCeIew63tCNFmLuaqzL-8c"
+        response = frontend_facade.create_enquiry(payload, token)
+        expect(response[:status]).to be(200)
+        expect(response[:message]['auth_token']).to eq(token)
+        expect(response[:message]['password_set']).to be true
+      end
+
+      it "failed for an exist student without JWT token", :key => 'enquiry_exist_user' do
+        expect(response[:status]).to be(400)
+        expect(response[:message]['error']).to eql("USER_ALREADY_EXISTS")
+      end
+
+      it "failed for an exist student with an incorrect token", :key => 'enquiry_exist_user' do
+        response = frontend_facade.create_enquiry(payload, 'incorrect_token')
+        expect(response[:status]).to be(401)
+        expect(response[:message]['error']).to eql("INVALID_CREDENTIALS")
+        expect(response[:message]['error_description']).to end_with("is invalid.")
+      end
+    end
+  end
+
   describe "Users" do
 
     def get_reset_tokens is_valid = true
-      if is_valid
-        sql = "select m.body_text from messages m left join recipients r on r.message_id = m.id where r.email = '#{payload['email']}' and m.body_text like '%reset-token%' order by m.created_at desc"
-      elsif
-        sql = "select m.body_text from messages m left join recipients r on r.message_id = m.id where r.email = '#{payload['email']}' and m.body_text like '%reset-token%' order by m.created_at"
-      end
+      sql = "select m.body_text from messages m left join recipients r on r.message_id = m.id where r.email = '#{payload['email']}' and m.status = 'sent' and m.body_text like '%reset-token%' order by m.created_at desc"
       data = frontend_facade.query(sql)
       expect(data).not_to be_empty
-      reset_token = data[0][:body_text].split("reset-token=")[1]
+      if is_valid
+        reset_token = data[0][:body_text].split("reset-token=")[1]
+      elsif
+        reset_token = data.last[:body_text].split("reset-token=")[1]
+      end
       reset_token = reset_token.split(" ")[0]
       return [reset_token, data.count]
     end
@@ -34,7 +74,7 @@ describe "Frontend Facade" do
         expect(response[:message]['auth_token']).not_to be_nil
         # sleep 1
         # expect(frontend_facade.query_booking_student(:email => response[:message]['email']).count).to be(1)
-        # expect(frontend_facade.query_identity_user(:email => response[:message]['email']).count).to be(1)
+        # expect(frontend_facade.query_identity_user(:email => response[:message]['email'])).not_to be_empty
       end
 
       it "unable to sign up for an exist user", :key => 'exist_user' do
@@ -73,7 +113,7 @@ describe "Frontend Facade" do
         end
 
         it "the two token is able to create enquiry" do
-          payload_enquiry = FrontendFacadePayload::Enquiry::CreateEnquiry.payload('enquiry1')
+          payload_enquiry = FrontendFacadePayload::Enquiry::CreateEnquiry.payload('enquiry_exist_user')
           [token_1, token_2].each do |e|
             response = frontend_facade.create_enquiry(payload_enquiry, e)
             expect(response[:status]).to be(200)
