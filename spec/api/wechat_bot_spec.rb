@@ -153,12 +153,28 @@ describe "Wechat" do
       expect(wechat.db[:enquiry][:email => 'dolores.zhang+0@student.com'][:enquiry_id]).to eql 93005
     end
 
+    it "User scan QRcode with log in account and with one open enquiry will combine successfully and forward to qiyu.", :key => 'Wechat11' do
+      response = wechat.send_text_message(payload)
+      expect(response.code).to be(200)
+      expect(wechat.db[:account_binding][:open_id => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo'][:email]).to eql 'dolores.zhang+0@student.com'
+      expect(wechat.db[:session][:from_user_name => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo'][:forward_to]).to eql 2
+    end
+
+    it "User scan QRcode whose account is log in and have no open enquiry will go to chatbot workflow.", :key => 'Wechat12' do
+      expect_result = '你的姓名是'
+      response = wechat.send_text_message(payload)
+      expect(response.code).to be(200)
+      expect(wechat.db[:account_binding][:open_id => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo'][:email]).to eql 'dolores.zhang+00@student.com'
+      expect(response).to include(expect_result)
+    end
+
   end
 
   context "Pre-condition sql execution" do
     it "select lead table before send text message to wechat",:prejob => 'Wechat1', :key => 'Wechat1' do
       payload = WechatPayload.new
       response = wechat.send_text_message(payload.to_xml key)
+
     end
   end
 

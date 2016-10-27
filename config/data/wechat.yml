@@ -381,3 +381,23 @@ Wechat10:
     MsgType: text
     Content: <%= rand(10 ** 10) %>
     MsgId: <%= rand(100000000) %>
+
+Wechat11:
+    ToUserName: gh_0d6f2db688b4
+    FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
+    CreateTime: 1476213299
+    MsgType: event
+    Event: SCAN
+    EventKey: 9123
+    Ticket: gQEm8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL3JFVDd1SjNtNjh5UzA1NHpsV3FJAAIERLoRWAMEgPUgAA==
+    MsgId: <%= rand(100000000) %>
+
+Wechat12:
+    ToUserName: gh_0d6f2db688b4
+    FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
+    CreateTime: 1476213299
+    MsgType: event
+    Event: SCAN
+    EventKey: 9126
+    Ticket: gQE78ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL3kwUWQzZ1htRk14dFN2bE1jMnFJAAIEgsURWAMEgPUgAA==
+    MsgId: <%= rand(100000000) %>
