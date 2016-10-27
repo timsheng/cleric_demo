@@ -103,25 +103,23 @@ Wechat3:
     MsgId: <%= rand(100000000) %>
 
 Wechat4:
-  callbot:
-    ToUserName: gh_0d6f2db688b4
-    FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
-    CreateTime: 1476213299
-    MsgType: event
-    Event: SCAN
-    EventKey: 9112
-    Ticket: gQFL8DoAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL3FFU2VJdHJtbDh6dUNwcXc4R3FJAAIE2P4OWAMEgPUgAA==
-    MsgId: <%= rand(100000000) %>
+  ToUserName: gh_0d6f2db688b4
+  FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
+  CreateTime: 1476213299
+  MsgType: event
+  Event: SCAN
+  EventKey: 9112
+  Ticket: gQFL8DoAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL3FFU2VJdHJtbDh6dUNwcXc4R3FJAAIE2P4OWAMEgPUgAA==
+  MsgId: <%= rand(100000000) %>
 
 Wechat5:
-  callbot:
-    ToUserName: gh_0d6f2db688b4
-    FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
-    CreateTime: 1476213299
-    MsgType: event
-    Event: CLICK
-    EventKey: MAINBUTTON_1
-    MsgId: <%= rand(100000000) %>
+  ToUserName: gh_0d6f2db688b4
+  FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
+  CreateTime: 1476213299
+  MsgType: event
+  Event: CLICK
+  EventKey: MAINBUTTON_1
+  MsgId: <%= rand(100000000) %>
 
 Wechat6:
   callbot:
@@ -322,4 +320,64 @@ Wechat9:
     CreateTime: 1476213299
     MsgType: text
     Content: 888888
+    MsgId: <%= rand(100000000) %>
+
+Wechat10:
+  callbot:
+    ToUserName: gh_0d6f2db688b4
+    FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
+    CreateTime: 1476213299
+    MsgType: event
+    Event: SCAN
+    EventKey: 9119
+    Ticket: gQEg8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL3MwUWpINHJtUmN3OGZJSGlUV3FJAAIEDYARWAMEgPUgAA==
+    MsgId: <%= rand(100000000) %>
+  name:
+    ToUserName: gh_0d6f2db688b4
+    FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
+    CreateTime: 1476213299
+    MsgType: text
+    Content: 道格拉斯
+    MsgId: <%= rand(100000000) %>
+  university:
+    ToUserName: gh_0d6f2db688b4
+    FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
+    CreateTime: 1476213299
+    MsgType: text
+    Content: 悉尼大学
+    MsgId: <%= rand(100000000) %>
+  move_in_year:
+    ToUserName: gh_0d6f2db688b4
+    FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
+    CreateTime: 1476213299
+    MsgType: text
+    Content: 2
+    MsgId: <%= rand(100000000) %>
+  move_in_month:
+    ToUserName: gh_0d6f2db688b4
+    FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
+    CreateTime: 1476213299
+    MsgType: text
+    Content: 1
+    MsgId: <%= rand(100000000) %>
+  tenancy:
+    ToUserName: gh_0d6f2db688b4
+    FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
+    CreateTime: 1476213299
+    MsgType: text
+    Content: 6
+    MsgId: <%= rand(100000000) %>
+  email:
+    ToUserName: gh_0d6f2db688b4
+    FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
+    CreateTime: 1476213299
+    MsgType: text
+    Content: dolores.zhang+0@student.com
+    MsgId: <%= rand(100000000) %>
+  phone:
+    ToUserName: gh_0d6f2db688b4
+    FromUserName: oTEVLvySMyYNIGW1iGPJq7ntTDOo
+    CreateTime: 1476213299
+    MsgType: text
+    Content: <%= rand(10 ** 10) %>
     MsgId: <%= rand(100000000) %>
