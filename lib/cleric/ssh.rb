@@ -1,15 +1,15 @@
 require 'net/ssh/gateway'
 
 module Cleric
-  module SSH
+  class SSH
 
     def connect_remote_server name
       ssh_conf = Cleric::YAML.fetch_corresponding_conf_by name
       ssh_conf = ssh_conf.delete_if { |key,value| key == 'database'}
       # puts "start to connect #{name} remote_server"
-      ssh = get_ready_for_ssh ssh_conf
+      @ssh = get_ready_for_ssh ssh_conf
       # puts "connect #{name} remote_server successfully" if ssh.active?
-      return ssh
+      return @ssh
     end
 
     def get_ready_for_ssh conf
@@ -32,14 +32,14 @@ module Cleric
       local_port = new_conf.delete('local_port')
       # puts "forward remote port #{remote_port} to local port #{local_port}"
       begin
-        ssh.open(host, remote_port, local_port)
+        @ssh.open(host, remote_port, local_port)
       rescue
         fail "fail to forward remote port #{remote_port} to local_port #{local_port}"
       end
     end
 
     def close_ssh port
-      ssh.close port
+      @ssh.close port
     end
 
   end

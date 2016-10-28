@@ -10,25 +10,24 @@ describe "Wechat" do
   end
 
   before(:each) do
-    wechat.delete_account_binding(:open_id => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo')
-    wechat.delete_lead(:from_user_name => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo')
-    wechat.delete_session(:from_user_name => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo')
+    session[:db].delete_account_binding(:open_id => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo')
+    session[:db].delete_lead(:from_user_name => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo')
+    session[:db].delete_session(:from_user_name => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo')
   end
 
   after(:each) do
-    wechat.close_ssh wechat.port
+    session[:ssh].close_ssh session[:port]
   end
 
-  let(:wechat) { Wechat.new(:ssh => 'Wechat_ssh', :db => 'Wechat_db') }
+  let(:wechat) { Wechat.new }
+  let(:pool) { Cleric::Pool.new }
+  let(:session) { pool.use('Wechat_db','Wechat_ssh')}
   let(:key) { key = @key }
 
   context "Check Chatbot workflow." do
     let(:payload) { WechatPayload.payload key}
 
     it "New user send message to wechat will go into chatbot flow.", :key => 'Wechat1' do
-      # sequel raw chained methods
-      # wechat.db[:lead].filter(:from_user_name => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo').delete
-      # wechat.delete_user(:from_user_name => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo')
       response = wechat.send_text_message(payload)
       expect(response.code).to be(200)
       expect(response).to include("请问你的姓名是")

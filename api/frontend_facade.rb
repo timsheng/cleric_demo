@@ -3,8 +3,6 @@ require './api/api'
 class FrontendFacade < API
 
   base_uri http('base_uri')
-  column :booking_student, :table => 'student'
-  column :identity_user, :table => 'user'
 
   def create_user payload
     self.class.post('/users', :body => payload.to_json)

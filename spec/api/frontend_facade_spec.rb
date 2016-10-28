@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Frontend Facade" do
 
-  subject(:frontend_facade) { FrontendFacade.new(:ssh => 'Booking_ssh', :db => 'Booking_db') }
+  subject(:pool) { Cleric::Pool.new }
   let(:key) { key = @key }
   let(:params) { params = @params }
 

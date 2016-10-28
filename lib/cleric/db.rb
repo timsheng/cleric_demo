@@ -1,8 +1,17 @@
 require 'mysql2'
 require 'sequel'
 
+Dir[File.expand_path('./sql_generator/*.rb')].each do |file|
+  require file
+end
+
 module Cleric
-  module DB
+  class DB
+    include WechatSQL
+    include BookingSQL
+    include PropertiesSQL
+
+    attr_accessor :db
 
     def connect_database name, port=false
       db_conf = Cleric::YAML.fetch_corresponding_conf_by name
@@ -18,6 +27,10 @@ module Cleric
       rescue
         fail "database configuration \n #{conf} \n is not correct, please double check"
       end
+    end
+
+    def query sql
+      db[sql].all
     end
   end
 end

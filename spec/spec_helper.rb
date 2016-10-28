@@ -1,4 +1,5 @@
 require 'rspec'
+require 'cleric/pool'
 require './api/wechat'
 require './api/booking'
 require './api/frontend_facade'
