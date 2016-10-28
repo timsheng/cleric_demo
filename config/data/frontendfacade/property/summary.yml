@@ -17,34 +17,108 @@ student_village_summary_en:
   zip_code: '3053'
   currency: AUD
   facilities:
-  - type: facilities
-    items:
-    - active: true
-      slug: outdoor_area
-    - active: true
-      slug: gym
-    - active: true
-      slug: wifi
-    - active: true
-      slug: bbq
-    - active: true
-      slug: fan
-    - active: true
-      slug: cooking_facilities
-    - active: true
-      slug: basketball_court
-    - active: true
-      slug: library_study_area
-    - active: true
-      slug: maintenance_team
-    - active: true
-      slug: entertainment_area
-    - active: true
-      slug: computer_lab
-    - active: true
-      slug: heating
-    - active: true
-      slug: swimming_pool
+  - items:
+    - slug: wifi
+      active: true
+    - slug: aircon
+      active: false
+    - slug: gym
+      active: true
+    - slug: terrace
+      active: false
+    - slug: elevators
+      active: false
+    - slug: broadband
+      active: false
+    - slug: laundry
+      active: false
+    - slug: library_study_area
+      active: true
+    - slug: property_transport
+      active: false
+    - slug: cooking_facilities
+      active: true
+    - slug: computer_lab
+      active: true
+    - slug: cable_tv
+      active: false
+    - slug: entertainment_area
+      active: true
+    - slug: outdoor_area
+      active: true
+    - slug: swimming_pool
+      active: true
+    - slug: fan
+      active: true
+    - slug: bike_storage
+      active: false
+    - slug: cinema
+      active: false
+    - slug: car_parking
+      active: false
+    - slug: tv_in_room
+      active: false
+    - slug: bbq
+      active: true
+    - slug: basketball_court
+      active: true
+    - slug: wheelchair_access
+      active: false
+    - slug: onsite_grocery_store
+      active: false
+    - slug: keyless_entry
+      active: false
+    - slug: vending_machines
+      active: false
+    - slug: storage_units
+      active: false
+    - slug: inhouse_restaurant
+      active: false
+    - slug: inhouse_cafe
+      active: false
+    - slug: communal_events
+      active: false
+    - slug: snow_removal_included
+      active: false
+    - slug: furnished_available
+      active: false
+    - slug: heating
+      active: true
+    - slug: electricity_included
+      active: false
+    - slug: water_included
+      active: false
+    - slug: gas_included
+      active: false
+    - slug: tv_license
+      active: false
+    - slug: cleaning_service
+      active: false
+    - slug: trash_included
+      active: false
+    - slug: no_alcohol
+      active: false
+    - slug: quiet_hours
+      active: false
+    - slug: pet_friendly
+      active: false
+    - slug: family_friendly
+      active: false
+    - slug: secure_door_entry
+      active: false
+    - slug: cctv
+      active: false
+    - slug: concierge
+      active: false
+    - slug: onsite_security_officer
+      active: false
+    - slug: security_alarm
+      active: false
+    - slug: maintenance_team
+      active: true
+    - slug: university_bus_stop
+      active: false
+    type: facilities
   headline: Live a stone’s throw from The University of Melbourne, within reach of trendy craft markets, live music and buzzing bars
   id: 383
   latitude: -37.8014
@@ -160,25 +234,107 @@ te_puni_village_summary_cn:
   latitude: -41.2923
   area:
   facilities:
-  - type: facilities
-    items:
-    - active: true
-      slug: outdoor_area
-    - active: true
-      slug: maintenance_team
-    - active: true
-      slug: laundry
-    - active: true
-      slug: entertainment_area
-    - active: true
-      slug: broadband
-    - active: true
-      slug: cctv
-    - active: true
-      slug: secure_door_entry
-    - active: true
-      slug: cooking_facilities
-    - active: true
-      slug: library_study_area
+  - items:
+    - slug: wifi
+      active: false
+    - slug: aircon
+      active: false
+    - slug: gym
+      active: false
+    - slug: terrace
+      active: false
+    - slug: elevators
+      active: false
+    - slug: broadband
+      active: true
+    - slug: laundry
+      active: true
+    - slug: library_study_area
+      active: true
+    - slug: property_transport
+      active: false
+    - slug: cooking_facilities
+      active: true
+    - slug: computer_lab
+      active: false
+    - slug: cable_tv
+      active: false
+    - slug: entertainment_area
+      active: true
+    - slug: outdoor_area
+      active: true
+    - slug: swimming_pool
+      active: false
+    - slug: fan
+      active: false
+    - slug: bike_storage
+      active: false
+    - slug: cinema
+      active: false
+    - slug: car_parking
+      active: false
+    - slug: tv_in_room
+      active: false
+    - slug: bbq
+      active: false
+    - slug: basketball_court
+      active: false
+    - slug: wheelchair_access
+      active: false
+    - slug: onsite_grocery_store
+      active: false
+    - slug: keyless_entry
+      active: false
+    - slug: vending_machines
+      active: false
+    - slug: storage_units
+      active: false
+    - slug: inhouse_restaurant
+      active: false
+    - slug: inhouse_cafe
+      active: false
+    - slug: communal_events
+      active: false
+    - slug: snow_removal_included
+      active: false
+    - slug: furnished_available
+      active: false
+    - slug: heating
+      active: false
+    - slug: electricity_included
+      active: false
+    - slug: water_included
+      active: false
+    - slug: gas_included
+      active: false
+    - slug: tv_license
+      active: false
+    - slug: cleaning_service
+      active: false
+    - slug: trash_included
+      active: false
+    - slug: no_alcohol
+      active: false
+    - slug: quiet_hours
+      active: false
+    - slug: pet_friendly
+      active: false
+    - slug: family_friendly
+      active: false
+    - slug: secure_door_entry
+      active: true
+    - slug: cctv
+      active: true
+    - slug: concierge
+      active: false
+    - slug: onsite_security_officer
+      active: false
+    - slug: security_alarm
+      active: false
+    - slug: maintenance_team
+      active: true
+    - slug: university_bus_stop
+      active: false
+    type: facilities
   headline: " "
   slug: te-puni-village

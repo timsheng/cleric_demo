@@ -13,62 +13,28 @@ enquiry_exist_user:
 enquiry_full:
   source: student_www
   enquiry_type: book_online
-  arrival_month: 2017-08
-  length_of_stay: 4 month
   city_slug: london
-  note: test enquiry
   listing_ids:
   - 68918
   move_in_month: 2017-08
   move_out_month: 2018-08
-  bathroom_type: private
+  bathroom_type: shared
   budget_value: 1000.01
   budget_currency: GBP
-  budget_frequency: weekly
+  budget_frequency: week
   my_application_link: my.student.com/applications
   property_id: 2915
-  room_type: private room
+  room_type: entire place
+  ambassador_mbsy:
+  ambassador_campaign_id:
   student:
     first_name: Fresh
     last_name: Man
     email: ~email_student
-    academic_year: '2'
-    study_abroad_date: '2015-03-01T00:00:00+0000'
-    study_major: Finance
-    study_current_uni: University of Beijing
-    study_destination_uni: Oxford University
-    other_preferences: 'no'
     locale: zh_CN
-    address_line_1: 7 St Martin's Place
-    address_line_2: address_line_2
-    country: United Kingdom
-    city: London
-    state: state
-    zip_code: WC2N 4HA
-    date_of_birth: '1998-01-02'
-    gender: male
-    nationality: Chinese
-    how_did_you_hear_about_us: Friend recommended
     contact_details:
     - type: source_phone
       value: "(+86)18101872701"
-    preferences:
-    - key: vegetarian
-      value: '1'
-    potential_guarantors:
-    - first_name: Mrs
-      last_name: Freshman
-      email: freshman@student.com
-      phone: '12345678'
-      relationship_with_student: parent
-      date_of_birth: '1970-01-02'
-      address_line_1: 7 St Martin's Place
-      address_line_2: "``"
-      country: United Kingdom
-      city: London
-      state: ''
-      zip_code: WC2N 4HA
-    newsletter_accepted: true
   campaign:
     gclid: gcl_id
     utm_source: baidu
