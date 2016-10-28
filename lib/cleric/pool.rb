@@ -16,13 +16,13 @@ module Cleric
       ssh_name = params.fetch(:ssh, false)
       db_name = params.fetch(:db, false)
       if @db_pool[db_name].nil? && db_name
-        if @ssh_pool[db_name].nil?
-          ssh_key = fetch_ssh_config db_name
+        ssh_key = fetch_ssh_config db_name
+        if @ssh_pool[ssh_key].nil?
           @ssh = connect_remote_server ssh_key
           port = forward_port ssh_key
-          @ssh_pool[db_name] = @ssh
+          @ssh_pool[ssh_key] = @ssh
         else
-          @ssh_pool[db_name]
+          @ssh_pool[ssh_key]
         end
         @db = connect_database db_name, port
         @db_pool[db_name] = @db
