@@ -1,6 +1,5 @@
-require 'cleric'
-module WechatSQL
-  include Cleric
+require 'cleric/db'
+class WechatDBFactory < Cleric::DBFactory
 
   row :lead, :table => 'lead'
   row :session, :table => 'session'

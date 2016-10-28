@@ -1,6 +1,5 @@
-require 'cleric'
-module PropertiesSQL
-  include Cleric
+require 'cleric/db'
+class PropertiesDBFactory < Cleric::DBFactory
 
   column :booking_student, :table => 'student'
   column :identity_user, :table => 'user'
@@ -8,4 +7,5 @@ module PropertiesSQL
   column :locations_countries, :table => 'countries'
   column :locations_cities, :table => 'cities'
   column :locations_areas, :table => 'areas'
+
 end

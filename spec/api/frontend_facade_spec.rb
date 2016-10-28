@@ -2,15 +2,11 @@ require 'spec_helper'
 
 describe "Frontend Facade" do
 
-  subject(:pool) { Cleric::Pool.new }
   subject(:frontend_facade) { FrontendFacade.new }
-  let(:session) { pool.use('Messages_db','Messages_ssh') }
+  let(:db) { @pool.use(:db => 'Messages_db') }
+  let(:dbfactory) { PropertiesDBFactory.new(db)}
   let(:key) { key = @key }
   let(:params) { params = @params }
-
-  after(:each) do
-    session[:ssh].close_ssh session[:port]
-  end
 
   describe "Users" do
 
@@ -20,7 +16,7 @@ describe "Frontend Facade" do
       elsif
         sql = "select m.body_text from messages m left join recipients r on r.message_id = m.id where r.email = '#{payload['email']}' and m.body_text like '%reset-token%' order by m.created_at"
       end
-      data = session[:db].query(sql)
+      data = dbfactory.query(sql)
       expect(data).not_to be_empty
       reset_token = data[0][:body_text].split("reset-token=")[1]
       reset_token = reset_token.split(" ")[0]
@@ -466,7 +462,7 @@ describe "Frontend Facade" do
       context "Check unpublished university", :params => [nil, 'glasgow', 'en-gb'] do
         it "should not returned." do
           # city-of-glasgow-college is not published.
-          data = session[:db].query_universities(:slug => "city-of-glasgow-college")
+          data = dbfactory.query_universities(:slug => "city-of-glasgow-college")
           expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
           response[:message]['universities'].each do |e|
@@ -544,7 +540,7 @@ describe "Frontend Facade" do
       context "Check unpublished country" do
         it "Check unpublished country is not returned." do
           # da is not published.
-          data = frontend_facade.query_locations_countries(:slug => "da")
+          data = dbfactory.query_locations_countries(:slug => "da")
           expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
           response[:message]['countries'].each do |e|
@@ -572,7 +568,7 @@ describe "Frontend Facade" do
 
       context "Check cities" do
         it "unpublished cities shouldn't return for de.", :key => 'location_cities_de_en', :params => ['de', 'en-gb'] do
-          data = frontend_facade.query_locations_cities(:slug => "unpublished-city-test-dan")
+          data = dbfactory.query_locations_cities(:slug => "unpublished-city-test-dan")
           expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
           response[:message]['cities'].each do |e|
@@ -623,7 +619,7 @@ describe "Frontend Facade" do
 
       context "Check unpublished areas" do
         it "shouldn't be returned", :params => ['london', 'en-gb'] do
-          data = frontend_facade.query_locations_areas(:slug => "london-area-test")
+          data = dbfactory.query_locations_areas(:slug => "london-area-test")
           expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
           response[:message]['areas'].each do |e|
@@ -651,7 +647,7 @@ describe "Frontend Facade" do
 
       context "Check unpublished areas" do
         it "shouldn't return.", :params => ['london', 'en-gb'] do
-          data = frontend_facade.query_locations_areas(:slug => "london-area-test")
+          data = dbfactory.query_locations_areas(:slug => "london-area-test")
           expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
           response[:message]['areas'].each do |e|
@@ -709,43 +705,4 @@ describe "Frontend Facade" do
       end
     end
   end
-end
-
-describe "demo" do
-  after(:each) {frontend_facade.close_ssh frontend_facade.port}
-
-  context "db" do
-    let(:frontend_facade) { FrontendFacade.new(:ssh => 'Property_ssh', :db => 'Property_db')}
-
-    it "arbitrary raw SQL example" do
-      dataset = frontend_facade.db["select id, name from properties limit 10"]
-      # will return the number of records in the result set
-      dataset.count
-      # will return an array containing all values of the id column in the result set
-      dataset.map(:id)
-      dataset.each do |row|
-        p row
-      end
-    end
-
-    it "change database" do
-      frontend_facade.connect_database('Listing_db')
-    end
-
-    it "avg column by" do
-      puts frontend_facade.avg_property_rank(:city_lsg_id => 231004020)
-    end
-
-    it "query specific column by" do
-      # id is unique
-      puts frontend_facade.query_property_rank(:id => 1)
-    end
-
-    it "query columns by" do
-      # city_lsg_id is not unique
-      puts frontend_facade.query_property_rank(:city_lsg_id => 231004020)
-    end
-
-  end
-
 end
