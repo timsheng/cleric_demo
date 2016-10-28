@@ -3,14 +3,29 @@ require 'spec_helper'
 describe "Frontend Facade" do
 
   subject(:pool) { Cleric::Pool.new }
+  subject(:frontend_facade) { FrontendFacade.new }
+  let(:session) { pool.use('Messages_db','Messages_ssh') }
   let(:key) { key = @key }
   let(:params) { params = @params }
 
   after(:each) do
-    frontend_facade.close_ssh frontend_facade.port
+    session[:ssh].close_ssh session[:port]
   end
 
   describe "Users" do
+
+    def get_reset_tokens is_valid = true
+      if is_valid
+        sql = "select m.body_text from messages m left join recipients r on r.message_id = m.id where r.email = '#{payload['email']}' and m.body_text like '%reset-token%' order by m.created_at desc"
+      elsif
+        sql = "select m.body_text from messages m left join recipients r on r.message_id = m.id where r.email = '#{payload['email']}' and m.body_text like '%reset-token%' order by m.created_at"
+      end
+      data = session[:db].query(sql)
+      expect(data).not_to be_empty
+      reset_token = data[0][:body_text].split("reset-token=")[1]
+      reset_token = reset_token.split(" ")[0]
+      return [reset_token, data.count]
+    end
 
     context "User sign up" do
       let(:payload) { FrontendFacadePayload::Users::Signup.payload key }
@@ -19,8 +34,8 @@ describe "Frontend Facade" do
       it "able to sign up for a new user", :key => 'new_user' do
         expect(response[:status]).to be(200)
         expect(response[:message]['auth_token']).not_to be_nil
-        sleep 1
-        expect(frontend_facade.query_booking_student(:email => response[:message]['email']).count).to be(1)
+        # sleep 1
+        # expect(frontend_facade.query_booking_student(:email => response[:message]['email']).count).to be(1)
         # expect(frontend_facade.query_identity_user(:email => response[:message]['email']).count).to be(1)
       end
 
@@ -81,27 +96,81 @@ describe "Frontend Facade" do
       let(:payload) { FrontendFacadePayload::Users::User.payload key }
       let(:response) { frontend_facade.user_forgot_password(payload, *params) }
 
-      it "failed if language is not provided", :key => 'exist_user' do
-        expect(response[:status]).to be(400)
-        expect(response[:message]['error']).to eql("BAD_REQUEST")
-        expect(response[:message]['error_description']).to eql("`language code` must be provided.")
-      end
-
       it "success if provide real email", :key => 'exist_user', :params => ['zh-cn'] do
+        result = get_reset_tokens
         expect(response[:status]).to be(200)
+        sleep 5
+        expected = get_reset_tokens
+        expect(expected[1]).to be(result[1] + 1)
       end
 
       it "success if provide un-exist email", :key => 'new_user', :params => ['zh-cn'] do
         expect(response[:status]).to be(200)
       end
+
+      it "failed if language is not provided", :key => 'exist_user' do
+        expect(response[:status]).to be(400)
+        expect(response[:message]['error']).to eql("BAD_REQUEST")
+        expect(response[:message]['error_description']).to eql("`language code` must be provided.")
+      end
     end
 
-    context "Reset password" do
-      pending
+    context "Reset password", :key => 'exist_user' do
+      let(:payload) { FrontendFacadePayload::Users::User.payload key }
+
+      it "success if provide a valid reset_password_token" do
+        reset_token = get_reset_tokens
+        response = frontend_facade.user_reset_password(reset_token[0], "Password12")
+        expect(response[:status]).to be(200)
+        expect(response[:message]['auth_token']).not_to be_nil
+      end
+
+      it "fail to reset password with incorrect reset_password_token." do
+        response = frontend_facade.user_reset_password("incorrect_token", "password123")
+        expect(response[:status]).to be(401)
+        expect(response[:message]['error']).to eq("INVALID_CREDENTIALS")
+        expect(response[:message]['error_description']).to end_with("is invalid.")
+      end
+
+      it "fail to reset password if token is expired(more than 24 hours)." do
+        reset_token = get_reset_tokens false
+        response = frontend_facade.user_reset_password(reset_token[0], "password123")
+        expect(response[:status]).to be(401)
+        expect(response[:message]['error']).to eq("INVALID_CREDENTIALS")
+        expect(response[:message]['error_description']).to end_with("is invalid.")
+      end
+
+      it "fail to reset password without password and correct reset_password_token." do
+        reset_token = get_reset_tokens
+        response = frontend_facade.user_reset_password(reset_token[0])
+        expect(response[:status]).to be(400)
+        expect(response[:message]['error']).to eq("BAD_REQUEST")
+      end
     end
 
-    context "Validate reset_password_token" do
-      pending
+    context "Validate reset_password_token", :key => 'exist_user' do
+      let(:payload) { FrontendFacadePayload::Users::User.payload key }
+
+      it "success if provide a valid reset_password_token" do
+        reset_token = get_reset_tokens
+        response = frontend_facade.validate_reset_token(reset_token[0])
+        expect(response[:status]).to be(200)
+      end
+
+      it "fail if provide a expired reset_password_token(more than 24h)" do
+        reset_token = get_reset_tokens false
+        response = frontend_facade.validate_reset_token(reset_token[0])
+        expect(response[:status]).to be(401)
+        expect(response[:message]['error']).to eq("INVALID_CREDENTIALS")
+        expect(response[:message]['error_description']).to end_with("is invalid.")
+      end
+
+      it "fail if provide a incorrect reset_password_token" do
+        response = frontend_facade.validate_reset_token("incorrect_token")
+        expect(response[:status]).to be(401)
+        expect(response[:message]['error']).to eq("INVALID_CREDENTIALS")
+        expect(response[:message]['error_description']).to end_with("is invalid.")
+      end
     end
 
     context "Check user exists" do
@@ -124,12 +193,6 @@ describe "Frontend Facade" do
       let(:response_signup) { frontend_facade.user_signup(payload_new_user) }
       let(:response) { frontend_facade.user_set_password(payload_password, *params) }
 
-      it "failed if token is not provided" do
-        expect(response[:status]).to be(401)
-        expect(response[:message]['error']).to eq("INVALID_CREDENTIALS")
-        expect(response[:message]['error_description']).to eq("Token not found.")
-      end
-
       it "success if token is avaiable" do
         response = frontend_facade.user_set_password(payload_password, response_signup[:message]['auth_token'])
         expect(response[:status]).to be(200)
@@ -140,6 +203,12 @@ describe "Frontend Facade" do
         expect(response[:status]).to be(401)
         expect(response[:message]['error']).to eq("INVALID_CREDENTIALS")
         expect(response[:message]['error_description']).to eq("Token incorrecttoken is invalid.")
+      end
+
+      it "failed if token is not provided" do
+        expect(response[:status]).to be(401)
+        expect(response[:message]['error']).to eq("INVALID_CREDENTIALS")
+        expect(response[:message]['error_description']).to eq("Token not found.")
       end
     end
   end
@@ -358,17 +427,6 @@ describe "Frontend Facade" do
         end
       end
     end
-
-    # context "Get Property" do
-    #   it "dbfactory demo" ,:tag => 'Users2' do |example|
-    #     key = example.metadata[:tag]
-    #     frontend_facade = FrontendFacadePayload::Property::Users.new(:ssh => 'Property_ssh', :db => 'Property_db')
-    #     puts frontend_facade.id
-    #     puts frontend_facade.name
-    #     puts frontend_facade.address
-    #     puts frontend_facade.expect_result(key)
-    #   end
-    # end
   end
 
   describe 'Universities' do
@@ -408,6 +466,8 @@ describe "Frontend Facade" do
       context "Check unpublished university", :params => [nil, 'glasgow', 'en-gb'] do
         it "should not returned." do
           # city-of-glasgow-college is not published.
+          data = session[:db].query_universities(:slug => "city-of-glasgow-college")
+          expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
           response[:message]['universities'].each do |e|
             expect(e['slug']).not_to eq('city-of-glasgow-college')
@@ -426,7 +486,7 @@ describe "Frontend Facade" do
           expect(response[:message]['universities'].size).to eq 85
         end
 
-        it "can be sorted by name, original_name, slug and rank.", :key => 'given_jp_en' do
+        it "can be sorted by name, original_name, slug and rank.", :key => 'given_jp_cn' do
           ["name", "original_name", "slug", "rank"].each do |e|
             response = frontend_facade.get_list_of_universities('jp', nil, 'zh-cn',e)
             expect(response[:status]).to be(200)
@@ -484,6 +544,8 @@ describe "Frontend Facade" do
       context "Check unpublished country" do
         it "Check unpublished country is not returned." do
           # da is not published.
+          data = frontend_facade.query_locations_countries(:slug => "da")
+          expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
           response[:message]['countries'].each do |e|
             expect(e['slug']).not_to eq('da')
@@ -510,6 +572,8 @@ describe "Frontend Facade" do
 
       context "Check cities" do
         it "unpublished cities shouldn't return for de.", :key => 'location_cities_de_en', :params => ['de', 'en-gb'] do
+          data = frontend_facade.query_locations_cities(:slug => "unpublished-city-test-dan")
+          expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
           response[:message]['cities'].each do |e|
             expect(e['slug']).not_to eq('unpublished-city-test-dan')
@@ -559,6 +623,8 @@ describe "Frontend Facade" do
 
       context "Check unpublished areas" do
         it "shouldn't be returned", :params => ['london', 'en-gb'] do
+          data = frontend_facade.query_locations_areas(:slug => "london-area-test")
+          expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
           response[:message]['areas'].each do |e|
             expect(e['slug']).not_to eq('london-area-test')
@@ -585,6 +651,8 @@ describe "Frontend Facade" do
 
       context "Check unpublished areas" do
         it "shouldn't return.", :params => ['london', 'en-gb'] do
+          data = frontend_facade.query_locations_areas(:slug => "london-area-test")
+          expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
           response[:message]['areas'].each do |e|
             expect(e['slug']).not_to eq('london-area-test')

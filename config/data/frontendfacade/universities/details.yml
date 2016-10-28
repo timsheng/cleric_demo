@@ -9,6 +9,7 @@ university_of_liverpool_details_en:
   slug: university-of-liverpool
   original_name: University of Liverpool
   gallery_images: []
+  jcr_id: "/mstr/country/united-kingdom/city/liverpool/university/university-of-liverpool"
 
 university_of_liverpool_details_cn:
   hero_image:
@@ -20,3 +21,4 @@ university_of_liverpool_details_cn:
   slug: university-of-liverpool
   original_name: University of Liverpool
   gallery_images: []
+  jcr_id: "/mstr/country/united-kingdom/city/liverpool/university/university-of-liverpool"

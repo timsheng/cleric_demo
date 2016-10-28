@@ -3,7 +3,7 @@ require './api/api'
 class FrontendFacade < API
 
   base_uri http('base_uri')
-
+  
   def create_user payload
     self.class.post('/users', :body => payload.to_json)
   end
@@ -36,7 +36,20 @@ class FrontendFacade < API
   def user_set_password payload, token = false
     add_headers({'Content-Type' => "application/json"})
     add_headers({'Authorization' => "Bearer #{token}"}) if token
-    response = self.class.post('/users/set-password', :body => payload.to_json, :headers => new_headers )
+    response = self.class.post('/users/set-password', :body => payload.to_json, :headers => new_headers)
+    return new_response(response)
+  end
+
+  def user_reset_password token, password = false
+    add_headers({'Content-Type' => "application/json"})
+    payload = {'reset_password_token' => token}
+    payload = payload.merge({'password' => password}) if password
+    response = self.class.post('/users/reset-password', :body => payload.to_json, :headers => new_headers)
+    return new_response(response)
+  end
+
+  def validate_reset_token token
+    response = self.class.get("/users/reset-password/validate?token=#{token}")
     return new_response(response)
   end
 
