@@ -19,11 +19,11 @@ module Cleric
         ssh_key = fetch_ssh_config db_name
         if @ssh_pool[ssh_key].nil?
           @ssh = connect_remote_server ssh_key
-          port = forward_port ssh_key
           @ssh_pool[ssh_key] = @ssh
         else
           @ssh_pool[ssh_key]
         end
+        port = forward_port ssh_key
         @db = connect_database db_name, port
         @db_pool[db_name] = @db
       elsif ssh_name
