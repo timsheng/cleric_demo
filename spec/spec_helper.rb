@@ -1,4 +1,5 @@
 require 'rspec'
+require 'data_magic'
 require 'cleric/pool'
 require './api/wechat'
 require './api/booking'
@@ -9,6 +10,8 @@ require './dbfactory/wechat_dbfactory'
 require './dbfactory/properties_dbfactory'
 
 Dir[File.dirname(__FILE__) + "/support/**/*.rb"].each { |f| require f }
+
+include DataMagic
 
 # class PreJob
 #
