@@ -15,22 +15,25 @@ module Cleric
     def use(params ={})
       ssh_name = params.fetch(:ssh, false)
       db_name = params.fetch(:db, false)
-      if @db_pool[db_name].nil? && db_name
+      if db_pool[db_name].nil? && db_name
         ssh_key = fetch_ssh_config db_name
-        if @ssh_pool[ssh_key].nil?
-          @ssh = connect_remote_server ssh_key
-          @ssh_pool[ssh_key] = @ssh
-        else
-          @ssh_pool[ssh_key]
-        end
-        port = forward_port ssh_key
-        @db = connect_database db_name, port
-        @db_pool[db_name] = @db
+        ssh = create_or_use_ssh ssh_key
+        port = forward_port ssh, ssh_key
+        db = connect_database db_name, port
+        db_pool[db_name] = db
       elsif ssh_name
-        @ssh = connect_remote_server ssh_name
-        @ssh_pool[ssh_name] = @ssh
+        create_or_use_ssh ssh_name
       else
-        @db_pool[db_name]
+        db_pool[db_name]
+      end
+    end
+
+    def create_or_use_ssh name
+      if ssh_pool[name].nil?
+        ssh = connect_remote_server name
+        ssh_pool[name] = ssh
+      else
+        ssh_pool[name]
       end
     end
 
@@ -71,7 +74,7 @@ module Cleric
       end
     end
 
-    def forward_port name
+    def forward_port ssh, name
       ssh_conf = Cleric::YAML.fetch_corresponding_conf_by name
       new_conf = ssh_conf.delete('database')
       host = new_conf.delete('host')
@@ -79,7 +82,7 @@ module Cleric
       local_port = new_conf.delete('local_port')
       # puts "forward remote port #{remote_port} to local port #{local_port}"
       begin
-        @ssh.open(host, remote_port, local_port)
+        ssh.open(host, remote_port, local_port)
       rescue
         fail "fail to forward remote port #{remote_port} to local_port #{local_port}"
       end
