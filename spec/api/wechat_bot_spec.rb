@@ -10,25 +10,22 @@ describe "Wechat" do
   end
 
   before(:each) do
-    wechat.delete_account_binding(:open_id => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo')
-    wechat.delete_lead(:from_user_name => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo')
-    wechat.delete_session(:from_user_name => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo')
+    sleep 10
+    dbfactory.delete_account_binding(:open_id => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo')
+    dbfactory.delete_lead(:from_user_name => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo')
+    dbfactory.delete_session(:from_user_name => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo')
   end
 
-  after(:each) do
-    wechat.close_ssh wechat.port
-  end
+  let(:wechat) { Wechat.new }
+  let(:db) { @pool.use(:db => 'Wechat_db') }
+  let(:dbfactory) { WechatDBFactory.new(db)}
 
-  let(:wechat) { Wechat.new(:ssh => 'Wechat_ssh', :db => 'Wechat_db') }
   let(:key) { key = @key }
 
   context "Check Chatbot workflow." do
     let(:payload) { WechatPayload.payload key}
 
     it "New user send message to wechat will go into chatbot flow.", :key => 'Wechat1' do
-      # sequel raw chained methods
-      # wechat.db[:lead].filter(:from_user_name => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo').delete
-      # wechat.delete_user(:from_user_name => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo')
       response = wechat.send_text_message(payload)
       expect(response.code).to be(200)
       expect(response).to include("请问你的姓名是")
@@ -54,8 +51,8 @@ describe "Wechat" do
         expect(response.code).to be(200)
         expect(response).to include expect_result[index]
       end
-      expect(wechat.db[:enquiry][:email => @enquiry_email]).not_to be nil
-      expect(wechat.db[:session][:from_user_name => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo'][:forward_to]).to eql 2
+      expect(dbfactory.db[:enquiry][:email => @enquiry_email]).not_to be nil
+      expect(dbfactory.db[:session][:from_user_name => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo'][:forward_to]).to eql 2
     end
 
     it "New user scan QRcode on homepage can go to chatbot workflow.", :key => 'Wechat4' do
@@ -134,7 +131,7 @@ describe "Wechat" do
     end
 
     it "Using existing enquiry email 'dolores.zhang+0@student.com' to submit on chatbot in same city 'sidney' won't create new enquiry.", :key => 'Wechat10' do
-      wechat.db[:enquiry].filter(:email => 'dolores.zhang+0@student.com').delete
+      dbfactory.db[:enquiry].filter(:email => 'dolores.zhang+0@student.com').delete
       expect_result = [
         '你的姓名是',
         '你要去哪所学校就读呢',
@@ -150,41 +147,22 @@ describe "Wechat" do
         expect(response.code).to be(200)
         expect(response).to include expect_result[index]
       end
-      expect(wechat.db[:enquiry][:email => 'dolores.zhang+0@student.com'][:enquiry_id]).to eql 93005
+      expect(dbfactory.db[:enquiry][:email => 'dolores.zhang+0@student.com'][:enquiry_id]).to eql 93005
     end
 
     it "User scan QRcode with log in account and with one open enquiry will combine successfully and forward to qiyu.", :key => 'Wechat11' do
       response = wechat.send_text_message(payload)
       expect(response.code).to be(200)
-      expect(wechat.db[:account_binding][:open_id => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo'][:email]).to eql 'dolores.zhang+0@student.com'
-      expect(wechat.db[:session][:from_user_name => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo'][:forward_to]).to eql 2
+      expect(dbfactory.db[:account_binding][:open_id => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo'][:email]).to eql 'dolores.zhang+0@student.com'
+      expect(dbfactory.db[:session][:from_user_name => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo'][:forward_to]).to eql 2
     end
 
     it "User scan QRcode whose account is log in and have no open enquiry will go to chatbot workflow.", :key => 'Wechat12' do
       expect_result = '你的姓名是'
       response = wechat.send_text_message(payload)
       expect(response.code).to be(200)
-      expect(wechat.db[:account_binding][:open_id => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo'][:email]).to eql 'dolores.zhang+00@student.com'
+      expect(dbfactory.db[:account_binding][:open_id => 'oTEVLvySMyYNIGW1iGPJq7ntTDOo'][:email]).to eql 'dolores.zhang+00@student.com'
       expect(response).to include(expect_result)
-    end
-
-  end
-
-  context "Pre-condition sql execution" do
-    it "select lead table before send text message to wechat",:prejob => 'Wechat1', :key => 'Wechat1' do
-      payload = WechatPayload.new
-      response = wechat.send_text_message(payload.to_xml key)
-    end
-  end
-
-end
-
-describe "test demo" do
-  context "cleric methods demo" do
-    it "test example tag if can be fetched", :key => 'Wechat1' do
-      payload = WechatPayload.payload key
-      response = wechat.send_text_message(payload)
-      expect(response.code).to be(200)
     end
   end
 end

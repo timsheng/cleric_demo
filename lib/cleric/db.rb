@@ -1,23 +1,17 @@
-require 'mysql2'
-require 'sequel'
+require 'cleric/accessors'
 
 module Cleric
-  module DB
+  class DBFactory
+    extend Accessors
 
-    def connect_database name, port=false
-      db_conf = Cleric::YAML.fetch_corresponding_conf_by name
-      db_conf = db_conf.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
-      db_conf = db_conf.merge(:port => port) if port
-      # puts "connect #{name} database"
-      @db = get_ready_for_database db_conf
+    attr_accessor :db
+
+    def initialize db
+      @db = db
     end
 
-    def get_ready_for_database conf
-      begin
-        Sequel.connect(conf)
-      rescue
-        fail "database configuration \n #{conf} \n is not correct, please double check"
-      end
+    def query sql
+      db[sql].all
     end
   end
 end
