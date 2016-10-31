@@ -1,0 +1,111 @@
+Wechat_ssh:
+  host: 54.222.195.145
+  user: admin
+  keys: ~/.ssh/infra_stage-id_rsa
+  database:
+    host: stage-mysql-27.cdendvrkytps.rds.cn-north-1.amazonaws.com.cn
+    remote_port: 3306
+    local_port: 3306
+
+Wechat_db:
+  adapter: mysql2
+  host: 127.0.0.1
+  user: root
+  password: tMq2OhtrF3afh1FL
+  database: wechat_db
+
+Wechat_http:
+  base_uri: https://wechat-stage.student.com/wechat
+
+
+Booking_ssh:
+  host: ec2-52-74-166-90.ap-southeast-1.compute.amazonaws.com
+  user: debug
+  keys: ~/.ssh/id_rsa
+  database:
+    host: stage-mysql-1.cgytt8vtm5xx.ap-southeast-1.rds.amazonaws.com
+    remote_port: 3306
+    local_port: 3306
+
+Booking_db:
+  adapter: mysql2
+  host: 127.0.0.1
+  user: booking
+  password: booking
+  database: overseas_booking
+
+Booking_http:
+  base_uri: https://bookings.stage.overseasstudentliving.com
+  basic_auth:
+    user: oslqa
+    password: m2WackNUHbAqHz51
+  headers:
+    Content-type: application/json
+    X-OSL-PKEY: 32489878329jkkkjh3k4j2hjk324k
+  shared_secret: 234kjkj324kjh23jk4h234jkhk23j4
+
+Identity_ssh:
+  host: 54.222.208.99
+  user: debug
+  keys: ~/.ssh/id_rsa
+  database:
+    host: 0.0.0.0
+    remote_port: 13307
+    local_port: 3306
+
+Identity_db:
+  adapter: mysql2
+  host: 127.0.0.1
+  user: identity_rw
+  password: Vi0jahDawahraeghaifu
+  database: identity
+
+Inventory01_ssh:
+  host: 52.18.184.55
+  user: debug
+  keys: ~/.ssh/id_rsa
+  database:
+    host: stage-mysql-16.cnxfyjrdyuj0.eu-west-1.rds.amazonaws.com
+    remote_port: 3306
+    local_port: 3306
+
+Property_db:
+  adapter: mysql2
+  host: 127.0.0.1
+  user: properties_ro
+  password: ra5aiphoocaiYooBuj8F
+  database: properties
+
+Locations_db:
+  adapter: mysql2
+  host: 127.0.0.1
+  user: locations_rw
+  password: byOM01Y3vrXXKiwv
+  database: locations
+
+Universities_db:
+  adapter: mysql2
+  host: 127.0.0.1
+  user: universities_rw
+  password: VQMaJjCx73B3qbT2
+  database: universities
+
+Messages_ssh:
+  host: 54.255.192.164
+  user: debug
+  keys: ~/.ssh/id_rsa
+  database:
+    host: stage-mysql-19.cgytt8vtm5xx.ap-southeast-1.rds.amazonaws.com
+    remote_port: 3306
+    local_port: 3306
+
+Messages_db:
+  adapter: mysql2
+  host: 127.0.0.1
+  user: msg_service_rw
+  password: wshzboMKoV06sJJs
+  database: msg_service
+
+FrontendFacade_http:
+  base_uri: http://10.20.0.147:18084
+  # base_uri: https://storm-frontend.dandythrust.com/api

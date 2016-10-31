@@ -2,12 +2,14 @@ require 'spec_helper'
 
 describe "Frontend Facade" do
 
-  subject(:frontend_facade) { FrontendFacade.new(:ssh => 'Messages_ssh', :db => 'Messages_db') }
+  subject(:frontend_facade) { FrontendFacade.new }
+  let(:db) { @pool.use(:db => 'Messages_db') }
+  let(:dbfactory) { PropertiesDBFactory.new(db)}
   let(:key) { key = @key }
   let(:params) { params = @params }
 
   after(:each) do
-    frontend_facade.close_ssh frontend_facade.port
+    # frontend_facade.close_ssh frontend_facade.port
   end
 
   describe "Enquiries" do
@@ -61,7 +63,10 @@ describe "Frontend Facade" do
       elsif
         reset_token = data.last[:body_text].split("reset-token=")[1]
       end
-      reset_token = reset_token.split(" ")[0]
+
+      data = dbfactory.query(sql)
+      expect(data).not_to be_empty
+      reset_token = data[0][:body_text].split("reset-token=")[1]
       return [reset_token, data.count]
     end
 
@@ -747,43 +752,4 @@ describe "Frontend Facade" do
       end
     end
   end
-end
-
-describe "demo" do
-  after(:each) {frontend_facade.close_ssh frontend_facade.port}
-
-  context "db" do
-    let(:frontend_facade) { FrontendFacade.new(:ssh => 'Property_ssh', :db => 'Property_db')}
-
-    it "arbitrary raw SQL example" do
-      dataset = frontend_facade.db["select id, name from properties limit 10"]
-      # will return the number of records in the result set
-      dataset.count
-      # will return an array containing all values of the id column in the result set
-      dataset.map(:id)
-      dataset.each do |row|
-        p row
-      end
-    end
-
-    it "change database" do
-      frontend_facade.connect_database('Listing_db')
-    end
-
-    it "avg column by" do
-      puts frontend_facade.avg_property_rank(:city_lsg_id => 231004020)
-    end
-
-    it "query specific column by" do
-      # id is unique
-      puts frontend_facade.query_property_rank(:id => 1)
-    end
-
-    it "query columns by" do
-      # city_lsg_id is not unique
-      puts frontend_facade.query_property_rank(:city_lsg_id => 231004020)
-    end
-
-  end
-
 end
