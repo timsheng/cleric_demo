@@ -90,6 +90,7 @@ location_area_wembley_cn:
     <p>周边的自然环境极好，King Edward VII Park有许多体育项目，网球、篮球和室外健身房等可供你选择。当你漫步在巨大的Fryent Park，你会觉得自己更像是到了农村，虽然这里距离伦敦市中心并不远。乘坐高速的Jubilee地铁线，20分钟就能从Wembley到达伦敦市中心。</p>
   headline: 世界级的活动，一流的购物中心和宁静的乡村——距离伦敦市中心都只有20分钟
   slug: wembley
+  jcr_id: "/mstr/country/united-kingdom/city/london/area/wembley"
 
 location_area_wembley_en:
   gallery_images:
@@ -198,3 +199,4 @@ location_area_wembley_en:
   headline: World-class events, superb shopping centres and countryside - all just 20
     minutes from central London
   slug: wembley
+  jcr_id: "/mstr/country/united-kingdom/city/london/area/wembley"

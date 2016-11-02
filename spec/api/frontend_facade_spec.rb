@@ -3,8 +3,6 @@ require 'spec_helper'
 describe "Frontend Facade" do
 
   subject(:frontend_facade) { FrontendFacade.new }
-  let(:db) { @pool.use(:db => 'Messages_db') }
-  let(:dbfactory) { PropertiesDBFactory.new(db)}
   let(:key) { key = @key }
   let(:params) { params = @params }
 
@@ -21,13 +19,17 @@ describe "Frontend Facade" do
       it "success for a new student, check enquiry/user/student is created, email is sent, token is returned and password_set is false.", :key => 'enquiry_full' do
         email = payload['student']['email']
         sql = "select m.body_text from messages m left join recipients r on r.message_id = m.id where r.email = '#{email}'"
+        dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Identity_db'))
         expect(response[:status]).to be(200)
         expect(response[:message]['auth_token']).not_to be_nil
         expect(response[:message]['password_set']).to be false
-        # expect(frontend_facade.query_identity_user(:email => email)).not_to be_empty
-        # expect(frontend_facade.query_booking_student(:email => email)).not_to be_empty
-        # expect(frontend_facade.query_booking_enquiry(:email => email)).not_to be_empty
-        # expect(frontend_facade.query(sql)).not_to be_empty
+        expect(dbfactory.query_identity_user(:email => email)).not_to be_empty
+        dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Booking_db'))
+        expect(dbfactory.query_booking_student(:email => email)).not_to be_empty
+        student_id = dbfactory.query_booking_student(:email => email)[0][:id]
+        expect(dbfactory.query_booking_enquiry(:student_id => student_id)).not_to be_empty
+        dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Messages_db'))
+        expect(dbfactory.query(sql)).not_to be_empty
       end
 
       it "success for an exist student, check enquiry is created, email is sent, token is corrent and password_set is true.", :key => 'enquiry_exist_user' do
@@ -56,17 +58,13 @@ describe "Frontend Facade" do
 
     def get_reset_tokens is_valid = true
       sql = "select m.body_text from messages m left join recipients r on r.message_id = m.id where r.email = '#{payload['email']}' and m.status = 'sent' and m.body_text like '%reset-token%' order by m.created_at desc"
-      data = frontend_facade.query(sql)
-      expect(data).not_to be_empty
-      if is_valid
-        reset_token = data[0][:body_text].split("reset-token=")[1]
-      elsif
-        reset_token = data.last[:body_text].split("reset-token=")[1]
-      end
-
+      dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Messages_db'))
       data = dbfactory.query(sql)
-      expect(data).not_to be_empty
-      reset_token = data[0][:body_text].split("reset-token=")[1]
+      if is_valid
+        reset_token = data[0][:body_text].split("reset-token=")[1].split(" ")[0]
+      elsif
+        reset_token = data.last[:body_text].split("reset-token=")[1].split(" ")[0]
+      end
       return [reset_token, data.count]
     end
 
@@ -77,9 +75,11 @@ describe "Frontend Facade" do
       it "able to sign up for a new user", :key => 'new_user' do
         expect(response[:status]).to be(200)
         expect(response[:message]['auth_token']).not_to be_nil
-        # sleep 1
-        # expect(frontend_facade.query_booking_student(:email => response[:message]['email']).count).to be(1)
-        # expect(frontend_facade.query_identity_user(:email => response[:message]['email'])).not_to be_empty
+        sleep 1
+        dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Booking_db'))
+        expect(dbfactory.query_booking_student(:email => response[:message]['email'])).not_to be_empty
+        dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Identity_db'))
+        expect(dbfactory.query_identity_user(:email => response[:message]['email'])).not_to be_empty
       end
 
       it "unable to sign up for an exist user", :key => 'exist_user' do
@@ -142,7 +142,7 @@ describe "Frontend Facade" do
       it "success if provide real email", :key => 'exist_user', :params => ['zh-cn'] do
         result = get_reset_tokens
         expect(response[:status]).to be(200)
-        sleep 5
+        sleep 10
         expected = get_reset_tokens
         expect(expected[1]).to be(result[1] + 1)
       end
@@ -509,8 +509,9 @@ describe "Frontend Facade" do
       context "Check unpublished university", :params => [nil, 'glasgow', 'en-gb'] do
         it "should not returned." do
           # city-of-glasgow-college is not published.
-          # data = frontend_facade.query_universities(:slug => "city-of-glasgow-college")
-          # expect(data[0][:published]).to be false
+          dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Universities_db'))
+          data = dbfactory.query_universities(:slug => "city-of-glasgow-college")
+          expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
           response[:message]['universities'].each do |e|
             expect(e['slug']).not_to eq('city-of-glasgow-college')
@@ -520,13 +521,18 @@ describe "Frontend Facade" do
 
       context "Check all universities" do
         it "should return if country and city is not specified.", :params => [nil, nil, 'en-gb'] do
+          dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Universities_db'))
+          data = dbfactory.query_universities(:published => 1)
           expect(response[:status]).to be(200)
-          expect(response[:message]['universities'].size).to eq 837
+          expect(response[:message]['universities'].size).to eq data.count
         end
 
         it "can be returned if country and city is specified.", :params => [nil, 'london', 'en-gb'] do
+          sql = "select id from universities where published = 1 and city_id = 412"
+          dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Universities_db'))
+          data = dbfactory.query(sql)
           expect(response[:status]).to be(200)
-          expect(response[:message]['universities'].size).to eq 85
+          expect(response[:message]['universities'].size).to eq data.count
         end
 
         it "can be sorted by name, original_name, slug and rank.", :key => 'given_jp_cn' do
@@ -587,8 +593,9 @@ describe "Frontend Facade" do
       context "Check unpublished country" do
         it "Check unpublished country is not returned." do
           # da is not published.
-          # data = frontend_facade.query_locations_countries(:slug => "da")
-          # expect(data[0][:published]).to be false
+          dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Locations_db'))
+          data = dbfactory.query_locations_countries(:slug => "da")
+          expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
           response[:message]['countries'].each do |e|
             expect(e['slug']).not_to eq('da')
@@ -615,8 +622,9 @@ describe "Frontend Facade" do
 
       context "Check cities" do
         it "unpublished cities shouldn't return for de.", :key => 'location_cities_de_en', :params => ['de', 'en-gb'] do
-          # data = frontend_facade.query_locations_cities(:slug => "unpublished-city-test-dan")
-          # expect(data[0][:published]).to be false
+          dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Locations_db'))
+          data = dbfactory.query_locations_cities(:slug => "unpublished-city-test-dan")
+          expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
           response[:message]['cities'].each do |e|
             expect(e['slug']).not_to eq('unpublished-city-test-dan')
@@ -666,8 +674,9 @@ describe "Frontend Facade" do
 
       context "Check unpublished areas" do
         it "shouldn't be returned", :params => ['london', 'en-gb'] do
-          # data = frontend_facade.query_locations_areas(:slug => "london-area-test")
-          # expect(data[0][:published]).to be false
+          dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Locations_db'))
+          data = dbfactory.query_locations_areas(:slug => "london-area-test")
+          expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
           response[:message]['areas'].each do |e|
             expect(e['slug']).not_to eq('london-area-test')
@@ -694,8 +703,9 @@ describe "Frontend Facade" do
 
       context "Check unpublished areas" do
         it "shouldn't return.", :params => ['london', 'en-gb'] do
-          # data = frontend_facade.query_locations_areas(:slug => "london-area-test")
-          # expect(data[0][:published]).to be false
+          dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Locations_db'))
+          data = dbfactory.query_locations_areas(:slug => "london-area-test")
+          expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
           response[:message]['areas'].each do |e|
             expect(e['slug']).not_to eq('london-area-test')
