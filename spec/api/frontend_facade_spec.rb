@@ -473,6 +473,8 @@ describe "Frontend Facade" do
   end
 
   describe 'Universities' do
+    let(:dbfactory) { PropertiesDBFactory.new(@pool.use(:db => 'Universities_db')) }
+
     context "Get the details of a university." do
       let(:payload) { FrontendFacadePayload::Universities::Details.payload key }
       let(:response) { frontend_facade.get_details_of_a_given_university(*params) }
@@ -509,7 +511,6 @@ describe "Frontend Facade" do
       context "Check unpublished university", :params => [nil, 'glasgow', 'en-gb'] do
         it "should not returned." do
           # city-of-glasgow-college is not published.
-          dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Universities_db'))
           data = dbfactory.query_universities(:slug => "city-of-glasgow-college")
           expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
@@ -521,16 +522,13 @@ describe "Frontend Facade" do
 
       context "Check all universities" do
         it "should return if country and city is not specified.", :params => [nil, nil, 'en-gb'] do
-          dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Universities_db'))
           data = dbfactory.query_universities(:published => 1)
           expect(response[:status]).to be(200)
           expect(response[:message]['universities'].size).to eq data.count
         end
 
         it "can be returned if country and city is specified.", :params => [nil, 'london', 'en-gb'] do
-          sql = "select id from universities where published = 1 and city_id = 412"
-          dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Universities_db'))
-          data = dbfactory.query(sql)
+          data = dbfactory.db[:universities].filter(:published => 1, :city_id => 412).all
           expect(response[:status]).to be(200)
           expect(response[:message]['universities'].size).to eq data.count
         end
@@ -556,6 +554,8 @@ describe "Frontend Facade" do
   end
 
   describe "Locations" do
+    let(:dbfactory) { PropertiesDBFactory.new(@pool.use(:db => 'Locations_db')) }
+
     context "Get the list of countries", :key => 'location_countries_list_en', :params => 'en-gb' do
       let(:payload) { FrontendFacadePayload::Locations::Countries.payload key }
       let(:response) { frontend_facade.get_list_of_countries(*params) }
@@ -593,7 +593,6 @@ describe "Frontend Facade" do
       context "Check unpublished country" do
         it "Check unpublished country is not returned." do
           # da is not published.
-          dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Locations_db'))
           data = dbfactory.query_locations_countries(:slug => "da")
           expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
@@ -622,7 +621,6 @@ describe "Frontend Facade" do
 
       context "Check cities" do
         it "unpublished cities shouldn't return for de.", :key => 'location_cities_de_en', :params => ['de', 'en-gb'] do
-          dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Locations_db'))
           data = dbfactory.query_locations_cities(:slug => "unpublished-city-test-dan")
           expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
@@ -674,7 +672,6 @@ describe "Frontend Facade" do
 
       context "Check unpublished areas" do
         it "shouldn't be returned", :params => ['london', 'en-gb'] do
-          dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Locations_db'))
           data = dbfactory.query_locations_areas(:slug => "london-area-test")
           expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
@@ -703,7 +700,6 @@ describe "Frontend Facade" do
 
       context "Check unpublished areas" do
         it "shouldn't return.", :params => ['london', 'en-gb'] do
-          dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Locations_db'))
           data = dbfactory.query_locations_areas(:slug => "london-area-test")
           expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
