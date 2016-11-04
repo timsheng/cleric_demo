@@ -10,6 +10,10 @@ university_of_liverpool_details_en:
   original_name: University of Liverpool
   gallery_images: []
   jcr_id: "/mstr/country/united-kingdom/city/liverpool/university/university-of-liverpool"
+  latitude: 53.4058
+  longitude: -2.965
+  city_slug: liverpool-test
+  country_slug: uk
 
 university_of_liverpool_details_cn:
   hero_image:
@@ -22,3 +26,7 @@ university_of_liverpool_details_cn:
   original_name: University of Liverpool
   gallery_images: []
   jcr_id: "/mstr/country/united-kingdom/city/liverpool/university/university-of-liverpool"
+  latitude: 53.4058
+  longitude: -2.965
+  city_slug: liverpool-test
+  country_slug: uk

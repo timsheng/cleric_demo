@@ -3,23 +3,68 @@ require 'spec_helper'
 describe "Frontend Facade" do
 
   subject(:frontend_facade) { FrontendFacade.new }
-  let(:db) { @pool.use(:db => 'Messages_db') }
-  let(:dbfactory) { PropertiesDBFactory.new(db)}
   let(:key) { key = @key }
   let(:params) { params = @params }
+
+  after(:each) do
+    # frontend_facade.close_ssh frontend_facade.port
+  end
+
+  describe "Enquiries" do
+
+    context "Create enquiry" do
+      let(:payload) { FrontendFacadePayload::Enquiry::CreateEnquiry.payload key }
+      let(:response) { frontend_facade.create_enquiry(payload, *params) }
+
+      it "success for a new student, check enquiry/user/student is created, email is sent, token is returned and password_set is false.", :key => 'enquiry_full' do
+        email = payload['student']['email']
+        sql = "select m.body_text from messages m left join recipients r on r.message_id = m.id where r.email = '#{email}'"
+        dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Identity_db'))
+        expect(response[:status]).to be(200)
+        expect(response[:message]['auth_token']).not_to be_nil
+        expect(response[:message]['password_set']).to be false
+        expect(dbfactory.query_identity_user(:email => email)).not_to be_empty
+        dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Booking_db'))
+        expect(dbfactory.query_booking_student(:email => email)).not_to be_empty
+        student_id = dbfactory.query_booking_student(:email => email)[0][:id]
+        expect(dbfactory.query_booking_enquiry(:student_id => student_id)).not_to be_empty
+        dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Messages_db'))
+        expect(dbfactory.query(sql)).not_to be_empty
+      end
+
+      it "success for an exist student, check enquiry is created, email is sent, token is corrent and password_set is true.", :key => 'enquiry_exist_user' do
+        token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiRnJlc2giLCJpc3MiOiJhdXRoIiwibGFzdF9uYW1lIjoiTWFuIiwiaWF0IjoxNDc3Mzc2MTYzLCJlbWFpbCI6ImRhbi5wYW4rMjAxNjEwMTgwNkBzdHVkZW50LmNvbSJ9.D5596-G8hEy2x5I-MQccrtCeIew63tCNFmLuaqzL-8c"
+        response = frontend_facade.create_enquiry(payload, token)
+        expect(response[:status]).to be(200)
+        expect(response[:message]['auth_token']).to eq(token)
+        expect(response[:message]['password_set']).to be true
+      end
+
+      it "failed for an exist student without JWT token", :key => 'enquiry_exist_user' do
+        expect(response[:status]).to be(400)
+        expect(response[:message]['error']).to eql("USER_ALREADY_EXISTS")
+      end
+
+      it "failed for an exist student with an incorrect token", :key => 'enquiry_exist_user' do
+        response = frontend_facade.create_enquiry(payload, 'incorrect_token')
+        expect(response[:status]).to be(401)
+        expect(response[:message]['error']).to eql("INVALID_CREDENTIALS")
+        expect(response[:message]['error_description']).to end_with("is invalid.")
+      end
+    end
+  end
 
   describe "Users" do
 
     def get_reset_tokens is_valid = true
-      if is_valid
-        sql = "select m.body_text from messages m left join recipients r on r.message_id = m.id where r.email = '#{payload['email']}' and m.body_text like '%reset-token%' order by m.created_at desc"
-      elsif
-        sql = "select m.body_text from messages m left join recipients r on r.message_id = m.id where r.email = '#{payload['email']}' and m.body_text like '%reset-token%' order by m.created_at"
-      end
+      sql = "select m.body_text from messages m left join recipients r on r.message_id = m.id where r.email = '#{payload['email']}' and m.status = 'sent' and m.body_text like '%reset-token%' order by m.created_at desc"
+      dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Messages_db'))
       data = dbfactory.query(sql)
-      expect(data).not_to be_empty
-      reset_token = data[0][:body_text].split("reset-token=")[1]
-      reset_token = reset_token.split(" ")[0]
+      if is_valid
+        reset_token = data[0][:body_text].split("reset-token=")[1].split(" ")[0]
+      elsif
+        reset_token = data.last[:body_text].split("reset-token=")[1].split(" ")[0]
+      end
       return [reset_token, data.count]
     end
 
@@ -30,9 +75,11 @@ describe "Frontend Facade" do
       it "able to sign up for a new user", :key => 'new_user' do
         expect(response[:status]).to be(200)
         expect(response[:message]['auth_token']).not_to be_nil
-        # sleep 1
-        # expect(frontend_facade.query_booking_student(:email => response[:message]['email']).count).to be(1)
-        # expect(frontend_facade.query_identity_user(:email => response[:message]['email']).count).to be(1)
+        sleep 1
+        dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Booking_db'))
+        expect(dbfactory.query_booking_student(:email => response[:message]['email'])).not_to be_empty
+        dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Identity_db'))
+        expect(dbfactory.query_identity_user(:email => response[:message]['email'])).not_to be_empty
       end
 
       it "unable to sign up for an exist user", :key => 'exist_user' do
@@ -71,7 +118,7 @@ describe "Frontend Facade" do
         end
 
         it "the two token is able to create enquiry" do
-          payload_enquiry = FrontendFacadePayload::Enquiry::CreateEnquiry.payload('enquiry1')
+          payload_enquiry = FrontendFacadePayload::Enquiry::CreateEnquiry.payload('enquiry_exist_user')
           [token_1, token_2].each do |e|
             response = frontend_facade.create_enquiry(payload_enquiry, e)
             expect(response[:status]).to be(200)
@@ -95,7 +142,7 @@ describe "Frontend Facade" do
       it "success if provide real email", :key => 'exist_user', :params => ['zh-cn'] do
         result = get_reset_tokens
         expect(response[:status]).to be(200)
-        sleep 5
+        sleep 10
         expected = get_reset_tokens
         expect(expected[1]).to be(result[1] + 1)
       end
@@ -426,6 +473,8 @@ describe "Frontend Facade" do
   end
 
   describe 'Universities' do
+    let(:dbfactory) { PropertiesDBFactory.new(@pool.use(:db => 'Universities_db')) }
+
     context "Get the details of a university." do
       let(:payload) { FrontendFacadePayload::Universities::Details.payload key }
       let(:response) { frontend_facade.get_details_of_a_given_university(*params) }
@@ -473,13 +522,15 @@ describe "Frontend Facade" do
 
       context "Check all universities" do
         it "should return if country and city is not specified.", :params => [nil, nil, 'en-gb'] do
+          data = dbfactory.query_universities(:published => 1)
           expect(response[:status]).to be(200)
-          expect(response[:message]['universities'].size).to eq 837
+          expect(response[:message]['universities'].size).to eq data.count
         end
 
         it "can be returned if country and city is specified.", :params => [nil, 'london', 'en-gb'] do
+          data = dbfactory.db[:universities].filter(:published => 1, :city_id => 412).all
           expect(response[:status]).to be(200)
-          expect(response[:message]['universities'].size).to eq 85
+          expect(response[:message]['universities'].size).to eq data.count
         end
 
         it "can be sorted by name, original_name, slug and rank.", :key => 'given_jp_cn' do
@@ -503,6 +554,8 @@ describe "Frontend Facade" do
   end
 
   describe "Locations" do
+    let(:dbfactory) { PropertiesDBFactory.new(@pool.use(:db => 'Locations_db')) }
+
     context "Get the list of countries", :key => 'location_countries_list_en', :params => 'en-gb' do
       let(:payload) { FrontendFacadePayload::Locations::Countries.payload key }
       let(:response) { frontend_facade.get_list_of_countries(*params) }

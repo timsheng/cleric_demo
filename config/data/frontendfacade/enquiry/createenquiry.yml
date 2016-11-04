@@ -1,9 +1,47 @@
-enquiry1:
+enquiry_exist_user:
   source: student_www
   enquiry_type: booking_online
   city_slug: london
   my_application_link: my.student.com/applications
+  listing_ids:
+  - 68918
   student:
     first_name: Fresh
     last_name: Man
     email: dan.pan+2016101806@student.com
+
+enquiry_full:
+  source: student_www
+  enquiry_type: book_online
+  city_slug: london
+  listing_ids:
+  - 68918
+  move_in_month: 2017-08
+  move_out_month: 2018-08
+  bathroom_type: shared
+  budget_value: 1000.01
+  budget_currency: GBP
+  budget_frequency: week
+  my_application_link: my.student.com/applications
+  property_id: 2915
+  room_type: entire place
+  ambassador_mbsy:
+  ambassador_campaign_id:
+  student:
+    first_name: Fresh
+    last_name: Man
+    email: ~email_student
+    locale: zh_CN
+    contact_details:
+    - type: source_phone
+      value: "(+86)18101872701"
+  campaign:
+    gclid: gcl_id
+    utm_source: baidu
+    utm_medium: 320banner
+    utm_campaign: bpp
+    utm_term: student
+    utm_content: Student accommodation
+    user_id: '234'
+    session_id: S3sS10n
+    referrer: referrer.student.com
