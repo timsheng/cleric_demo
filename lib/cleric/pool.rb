@@ -83,6 +83,8 @@ module Cleric
       # puts "forward remote port #{remote_port} to local port #{local_port}"
       begin
         ssh.open(host, remote_port, local_port)
+      rescue Errno::EADDRINUSE
+        return local_port
       rescue
         fail "fail to forward remote port #{remote_port} to local_port #{local_port}"
       end
