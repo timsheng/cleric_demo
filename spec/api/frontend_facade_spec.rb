@@ -318,7 +318,7 @@ describe "Frontend Facade" do
         return nil
       end
 
-      it "unpublished property return 404", :params => ['unpublished-property','zh-cn'] do
+      it "unpublished property return 404", :params => ['unpublished-property'] do
         dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Property_db'))
         data = dbfactory.db[:properties].filter(:published => 0, :slug => "unpublished-property").all
         expect(data.count).to be(1)
