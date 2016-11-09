@@ -91,3 +91,119 @@ location_city_sydney_cn:
   jcr_id: "/mstr/country/australia/city/sydney"
   latitude: -33.8679
   longitude: 151.201
+
+location_city_wellington_en:
+  areas: []
+  longitude: 174.768
+  jcr_id: "/mstr/country/new-zealand/city/wellington"
+  quick_facts:
+  - headline: Food & Drink
+    summary: With bars, restaurants and cafés all around, you'll never be bored of the
+      menu.
+    icon: "/mstr/country/new-zealand/city/wellington/area-description/quick-fact/1/image-nvueo3.png"
+  - headline: Outdoor Lifestyle
+    summary: Fresh air isn't hard to find in the city thanks to the sea and surrounding
+      hills.
+    icon: "/mstr/country/new-zealand/city/wellington/area-description/quick-fact/2/image-nvueo3.png"
+  - headline: Arts & Culture
+    summary: An abundance of museums, art galleries and theatres right on your doorstep.
+    icon: "/mstr/country/new-zealand/city/wellington/area-description/quick-fact/3/image-nvueo3.png"
+  latitude: -41.3076
+  name: Wellington
+  original_name: Wellington
+  country:
+    original_name: New Zealand
+    name: New Zealand
+    slug: nz
+  lsg_id: '219001001'
+  hero_image:
+    alt_text:
+    src: "/mstr/country/new-zealand/city/wellington/heroImage/image-nw02sz.jpeg"
+  headline: Jump head-first into this cool waterfront capital and enjoy a buzzing cultural
+    scene, plus all the perks of big city life
+  gallery_images:
+  - alt_text: Day photo of Wellington
+    src: "/mstr/country/new-zealand/city/wellington/gallery/image-2/image-nw0yyd.jpeg"
+  - alt_text: Day photo of Wellington
+    src: "/mstr/country/new-zealand/city/wellington/gallery/image-4/image-nw0yzg.jpeg"
+  - alt_text: Day photo of Wellington
+    src: "/mstr/country/new-zealand/city/wellington/gallery/image-6/image-nw0z0y.jpeg"
+  - alt_text: Day photo of Wellington
+    src: "/mstr/country/new-zealand/city/wellington/gallery/image-1/image-nw0yxa.jpeg"
+  - alt_text: Day photo of Wellington
+    src: "/mstr/country/new-zealand/city/wellington/gallery/image-3/image-nw0yyw.jpeg"
+  - alt_text: Day photo of Wellington
+    src: "/mstr/country/new-zealand/city/wellington/gallery/image-5/image-nw0z0p.jpeg"
+  - alt_text: Day photo of Wellington
+    src: "/mstr/country/new-zealand/city/wellington/gallery/image-7/image-nw0z2z.jpeg"
+  - alt_text: Day photo of Wellington
+    src: "/mstr/country/new-zealand/city/wellington/gallery/image-8/image-nw0z4h.jpeg"
+  - alt_text: Day photo of Wellington
+    src: "/mstr/country/new-zealand/city/wellington/gallery/image-9/image-nw0z4h.jpeg"
+  - alt_text: Day photo of Wellington
+    src: "/mstr/country/new-zealand/city/wellington/gallery/image-10/image-nw0z6h.jpeg"
+  - alt_text: Day photo of Wellington
+    src: "/mstr/country/new-zealand/city/wellington/gallery/image-11/image-nw0z7z.jpeg"
+  - alt_text: Day photo of Wellington
+    src: "/mstr/country/new-zealand/city/wellington/gallery/image-12/image-nw0z8d.jpeg"
+  - alt_text: Day photo of Wellington
+    src: "/mstr/country/new-zealand/city/wellington/gallery/image-13/image-nw0z8v.jpeg"
+  - alt_text: Day photo of Wellington
+    src: "/mstr/country/new-zealand/city/wellington/gallery/image-14/image-nw0z8z.jpeg"
+  rank: 91
+  slug: wellington-changed
+  points_of_interest:
+  - headline: Zealandia
+    image: "/mstr/country/new-zealand/city/wellington/area-description/point-of-interest/point-of-interest-1/image-nw1110.jpeg"
+    url: http://www.visitzealandia.com
+    summary: Like Jurassic Park, but for New Zealand’s rarest flora and fauna. Join
+      a night-time guided tour and hunt the bushy reserve for wild kiwis by torchlight.
+  - headline: Te Papa
+    image: "/mstr/country/new-zealand/city/wellington/area-description/point-of-interest/point-of-interest-2/image-nw111x.jpeg"
+    url: http://www.tepapa.govt.nz
+    summary: New Zealand’s national museum, and not to be skipped. Inside is a treasure
+      trove of Maori artefacts and interactive exhibitions. Don’t miss the colossal
+      squid.
+  - headline: Flight Coffee Hangar
+    image: "/mstr/country/new-zealand/city/wellington/area-description/point-of-interest/point-of-interest-3/image-nw112q.jpeg"
+    url: http://www.flightcoffee.co.nz
+    summary: Home to the 2014 and 2015 NZ Brewer’s Cup Champion. Once you’ve woken up
+      with their award-winning coffee, refuel with your pick from the tasty breakfast
+      menu.
+  - headline: Harbourside Market
+    image: "/mstr/country/new-zealand/city/wellington/area-description/point-of-interest/point-of-interest-4/image-nw1160.jpeg"
+    url: http://www.harboursidemarket.co.nz
+    summary: Open every Sunday, this waterfront market hosts an array of local suppliers
+      stocking everything from fruit and veg to meat and cheese. You’ll bag some fresh
+      bargains.
+  - headline: Ferg’s Kayaks
+    image: "/mstr/country/new-zealand/city/wellington/area-description/point-of-interest/point-of-interest-5/image-nw113c.jpeg"
+    url: http://www.fergskayaks.co.nz
+    summary: Make the city your playground and rent kayaks, paddleboards, bicycles or
+      in-line skates. If the weather’s not on your side, try out their indoor climbing
+      wall.
+  - headline: Golding's Free Dive
+    image: "/mstr/country/new-zealand/city/wellington/area-description/point-of-interest/point-of-interest-8/image-nw1140.jpeg"
+    url: http://www.goldingsfreedive.co.nz
+    summary: Sample some of Wellington’s famous craft beer in this charmingly tacky
+      take on the North American dive bar. Pomodoro, which does great pizza, is conveniently
+      next door.
+  summary: "<p>Sandwiched between a natural harbour and leafy hillsides, New Zealand’s
+    capital offers a vibrant inner-city experience against a gorgeous scenic backdrop.
+    There’s an eclectic urban mix, with national political institutions, museums and
+    world-class universities standing alongside a mish mash of trendy cafés, microbreweries
+    and boutiques. And with more restaurants per capita than New York, you’ll never
+    be short of somewhere to eat.</p>\r\n\r\n<p>Sample this compact city on foot, starting
+    at Lambton Quay business district and catching Wellington’s iconic red cable car.
+    You’ll be rewarded with panoramic views of your new home, followed by a return stroll
+    amidst native bush in the Botanic Garden. Next, head south and immerse yourself
+    in bohemian Cuba Street, home of hip artists, colourful shops and fire-breathing
+    buskers. Feast on a hearty breakfast at Floriditas and end your day in Havana or
+    Laundry – just two of the area’s quirky nightlife hotspots.</p>\r\n\r\n<p>For more
+    shopping and entertainment head to Courtenay Place, stopping at up-and-coming Hannah’s
+    Factory Laneway for a salted caramel cookie on the way. The beach, where you might
+    spot dolphins and whales bobbing their heads through the surf, is also never far.
+    Take a break from your studies on Oriental Bay’s golden shores, browse the Harbourside
+    Market or kick back with ice cream from Kaffee Eis. For a more substantial break,
+    catch the Interislander Ferry to the South Island or head to Wellington Airport
+    and explore even farther.</p>"

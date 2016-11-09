@@ -276,6 +276,13 @@ describe "Frontend Facade" do
           expect(response[:status]).to be(200)
           expect(response[:message]['translated']).to be false
         end
+
+        it "unpublished property return 404", :params => ['unpublished-property','zh-cn'] do
+          dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Property_db'))
+          data = dbfactory.db[:properties].filter(:published => 0, :slug => "unpublished-property").all
+          expect(data.count).to be(1)
+          expect(response[:status]).to be(404)
+        end
       end
     end
 
@@ -309,6 +316,13 @@ describe "Frontend Facade" do
           end
         end
         return nil
+      end
+
+      it "unpublished property return 404", :params => ['unpublished-property','zh-cn'] do
+        dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Property_db'))
+        data = dbfactory.db[:properties].filter(:published => 0, :slug => "unpublished-property").all
+        expect(data.count).to be(1)
+        expect(response[:status]).to be(404)
       end
 
       context "Check unit", :key => 'testing_room_property1', :params => ['testing-room-property-1'] do
@@ -667,6 +681,12 @@ describe "Frontend Facade" do
         it "should be correct based on the given city for zh-cn.", :key => 'location_city_sydney_cn', :params => ['sydney', 'zh-cn'] do
           expect(response[:status]).to be(200)
           expect(response[:message]).to be_deep_equal(payload)
+        end
+
+        it "quick_facts and points_of_interest is returned for non-area city", :key => 'location_city_wellington_en', :params => ['wellington-changed', 'en-gb'] do
+          expect(response[:status]).to be(200)
+          expect(response[:message]['quick_facts']).to be_deep_equal(payload['quick_facts'])
+          expect(response[:message]['points_of_interest']).to be_deep_equal(payload['points_of_interest'])
         end
       end
 
