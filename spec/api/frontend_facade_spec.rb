@@ -349,6 +349,7 @@ describe "Frontend Facade" do
       end
 
       context "Check listing", :key => 'testing_room_property1', :params => ['testing-room-property-1'] do
+        # 69086 has a range price
         it "basic info should including id, availability, price_min, price_max" do
           expect(response[:status]).to be(200)
           listing_expected = get_elements(payload, 'private-room', 'Unit 1', 69086)
@@ -359,6 +360,7 @@ describe "Frontend Facade" do
         end
 
         it "should return correct discount price and discount type" do
+          # 69086 absolute discount, 69084 percentage discount
           expect(response[:status]).to be(200)
           [69086, 69084].each do |e|
             listing_expected = get_elements(payload, 'private-room', 'Unit 1', e)
@@ -402,6 +404,7 @@ describe "Frontend Facade" do
         end
 
         it "should return correct duration max and duration min and l18n_key" do
+          # Listing type: 69084 fixed, 69086 fixed-open-end, 69087 flexible, 69089 flexible-open-end, 68928 placeholder
           expect(response[:status]).to be(200)
           [69084, 69086, 69087, 69089, 68928].each do |e|
             listing_expected = get_elements(payload, 'private-room', 'Unit 1', e)
@@ -413,6 +416,7 @@ describe "Frontend Facade" do
         end
 
         it "should return correct start dates and l18n_key" do
+          # Listing type: 69084 fixed, 69086 fixed-open-end, 69087 flexible, 69089 flexible-open-end, 68928 placeholder
           expect(response[:status]).to be(200)
           [69084, 69086, 69087, 69089, 68928].each do |e|
             listing_expected = get_elements(payload, 'private-room', 'Unit 1', e)
@@ -424,6 +428,7 @@ describe "Frontend Facade" do
         end
 
         it "should return correct listing tenancy_periods", :key => 'testing_room_property1', :params => 'testing-room-property-1' do
+          # Listing type: 69086 fixed-open-end
           expect(response[:status]).to be(200)
           listing_expected = get_elements(payload, 'private-room', 'Unit 1', 69086)
           listing_actual = get_elements(response[:message], 'private-room', 'Unit 1', 69086)
