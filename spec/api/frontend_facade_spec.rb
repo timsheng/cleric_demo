@@ -351,8 +351,8 @@ describe "Frontend Facade" do
       context "Check listing", :key => 'testing_room_property1', :params => ['testing-room-property-1'] do
         it "basic info should including id, availability, price_min, price_max" do
           expect(response[:status]).to be(200)
-          listing_expected = get_elements(payload, 'private-room', 'Unit 1', 68918)
-          listing_actual = get_elements(response[:message], 'private-room', 'Unit 1', 68918)
+          listing_expected = get_elements(payload, 'private-room', 'Unit 1', 69086)
+          listing_actual = get_elements(response[:message], 'private-room', 'Unit 1', 69086)
           ['availability', 'price_min', 'price_max'].each do |e|
             expect(listing_actual[e]).to eq(listing_expected[e])
           end
@@ -360,7 +360,7 @@ describe "Frontend Facade" do
 
         it "should return correct discount price and discount type" do
           expect(response[:status]).to be(200)
-          [68918, 68917].each do |e|
+          [69086, 69084].each do |e|
             listing_expected = get_elements(payload, 'private-room', 'Unit 1', e)
             listing_actual = get_elements(response[:message], 'private-room', 'Unit 1', e)
             expect(listing_actual['discount']['type']).to  eq(listing_expected['discount']['type'])
@@ -391,19 +391,19 @@ describe "Frontend Facade" do
         end
 
         it "inactive listing shouldn't be returned from api." do
-          # Check listing 68925, 68926, 68927, 68928 of Unit 1 is not returned because there're inactive.
+          # Check listing 69085, 69082 of Unit 1 is not returned because there're inactive.
           expect(response[:status]).to be(200)
           unit_actual = get_elements(response[:message], 'private-room', 'Unit 1')
           listing_ids = []
           unit_actual['listings'].each do |e|
             listing_ids << e['id']
           end
-          expect(listing_ids).to be_deep_equal(listing_ids - [68925, 68926, 68927, 68928])
+          expect(listing_ids).to be_deep_equal(listing_ids - [69085, 69082])
         end
 
         it "should return correct duration max and duration min and l18n_key" do
           expect(response[:status]).to be(200)
-          [68918, 68924, 68922, 68917, 68920].each do |e|
+          [69084, 69086, 69087, 69089, 68928].each do |e|
             listing_expected = get_elements(payload, 'private-room', 'Unit 1', e)
             listing_actual = get_elements(response[:message], 'private-room', 'Unit 1', e)
             ['duration_min', 'duration_max', 'i18n_key'].each do |e1|
@@ -414,7 +414,7 @@ describe "Frontend Facade" do
 
         it "should return correct start dates and l18n_key" do
           expect(response[:status]).to be(200)
-          [68918, 68924, 68922, 68919, 68920].each do |e|
+          [69084, 69086, 69087, 69089, 68928].each do |e|
             listing_expected = get_elements(payload, 'private-room', 'Unit 1', e)
             listing_actual = get_elements(response[:message], 'private-room', 'Unit 1', e)
             ['start_date_min', 'start_date_max', 'i18n_key'].each do |e1|
@@ -423,10 +423,10 @@ describe "Frontend Facade" do
           end
         end
 
-        it "should return correct listing tenancy_periods", :key => 'testing_room_property4', :params => 'testing-room-property-4' do
+        it "should return correct listing tenancy_periods", :key => 'testing_room_property1', :params => 'testing-room-property-1' do
           expect(response[:status]).to be(200)
-          listing_expected = get_elements(payload, 'private-room', 'Unit 1', 68937)
-          listing_actual = get_elements(response[:message], 'private-room', 'Unit 1', 68937)
+          listing_expected = get_elements(payload, 'private-room', 'Unit 1', 69086)
+          listing_actual = get_elements(response[:message], 'private-room', 'Unit 1', 69086)
           expect(listing_actual['tenancy_periods']).to be_deep_equal(listing_expected['tenancy_periods'])
         end
       end
