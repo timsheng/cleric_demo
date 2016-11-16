@@ -7,7 +7,7 @@ describe "Frontend Facade" do
   let(:params) { params = @params }
 
   before(:all) do
-    
+
   end
 
   after(:each) do
@@ -695,12 +695,12 @@ describe "Frontend Facade" do
       end
 
       context "Check unpublished areas" do
-        it "shouldn't be returned", :params => ['london', 'en-gb'] do
-          data = dbfactory.query_locations_areas(:slug => "central-london")
+        it "shouldn't be returned", :params => ['nottingham', 'en-gb'] do
+          data = dbfactory.query_locations_areas(:slug => "rushcliffe")
           expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
           response[:message]['areas'].each do |e|
-            expect(e['slug']).not_to eq('central-london')
+            expect(e['slug']).not_to eq('rushcliffe')
           end
         end
       end
@@ -723,12 +723,12 @@ describe "Frontend Facade" do
       end
 
       context "Check unpublished areas" do
-        it "shouldn't return.", :params => ['london', 'en-gb'] do
-          data = dbfactory.query_locations_areas(:slug => "central-london")
+        it "shouldn't return.", :params => ['nottingham', 'en-gb'] do
+          data = dbfactory.query_locations_areas(:slug => "rushcliffe")
           expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
           response[:message]['areas'].each do |e|
-            expect(e['slug']).not_to eq('central-london')
+            expect(e['slug']).not_to eq('rushcliffe')
           end
         end
       end

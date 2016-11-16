@@ -13,5 +13,9 @@ module Cleric
     def query sql
       db[sql].all
     end
+
+    def insert sql
+      db[sql]
+    end
   end
 end

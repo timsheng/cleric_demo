@@ -3,7 +3,7 @@ require 'psych'
 module Cleric
   module YAML
 
-    CONFIGURE_PATH = "config/environments/#{ENV['PLATFORM']}.yml"
+    CONFIGURE_PATH = "../config/environments/#{ENV['PLATFORM']}.yml"
 
     def self.fetch_corresponding_conf_by name
       all_hash_values = load_yml(CONFIGURE_PATH)
