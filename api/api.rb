@@ -10,7 +10,7 @@ class API
   attr_accessor :new_headers
   # debug_output $stdout
 
-  def self.http key, subkey = false
+  def self.http key, subkey=nil
     http_conf = Cleric::YAML.fetch_corresponding_conf_by "#{self}_http"
     return http_conf[key][subkey] if subkey
     return http_conf[key] if key
