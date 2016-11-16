@@ -1,8 +1,23 @@
 require 'rspec/core/rake_task'
 
-RSpec::Core::RakeTask.new(:stage) do |t|
+RSpec::Core::RakeTask.new(:stage_eu) do |t|
   t.ruby_opts = "-I lib:spec"
   ENV['PLATFORM']='stage'
+  ENV['REGION']= 'eu'
+  t.pattern = 'spec/api/*_spec.rb'
+end
+
+RSpec::Core::RakeTask.new(:stage_ap) do |t|
+  t.ruby_opts = "-I lib:spec"
+  ENV['PLATFORM']='stage'
+  ENV['REGION']= 'ap'
+  t.pattern = 'spec/api/*_spec.rb'
+end
+
+RSpec::Core::RakeTask.new(:stage_cn) do |t|
+  t.ruby_opts = "-I lib:spec"
+  ENV['PLATFORM']='stage'
+  ENV['REGION']= 'cn'
   t.pattern = 'spec/api/*_spec.rb'
 end
 
@@ -20,4 +35,4 @@ namespace :features do
   end
 end
 
-task :default => :stage
+task :default => :stage_eu
