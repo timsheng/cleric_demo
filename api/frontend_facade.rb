@@ -2,7 +2,7 @@ require './api/api'
 
 class FrontendFacade < API
 
-  base_uri http('base_uri',ENV['REGION'])
+  base_uri http('base_uri', ENV['REGION'])
 
   def create_user payload
     self.class.post('/users', :body => payload.to_json)
