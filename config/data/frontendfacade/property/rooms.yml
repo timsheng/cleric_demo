@@ -1,4 +1,4 @@
-testing_room_property1:
+testing_room_property11:
   categories:
   - units: []
     state:
@@ -9,7 +9,7 @@ testing_room_property1:
   - units:
     - state: available_with_price
       name: Unit 1
-      id: 21235
+      id: 9999004
       distinctions:
       - value: size_standard
         count:
@@ -31,7 +31,7 @@ testing_room_property1:
       listings:
       - price_max: 80
         price_min: 80
-        id: 69083
+        id: 999999005
         start_dates:
           start_date_min: '2017-11-01'
           start_date_max: '2017-11-01'
@@ -50,7 +50,7 @@ testing_room_property1:
         availability: 0
       - price_max: 200
         price_min: 100
-        id: 69086
+        id: 999999008
         start_dates:
           start_date_min: '2017-11-01'
           start_date_max: '2017-11-01'
@@ -85,7 +85,7 @@ testing_room_property1:
         availability: 9
       - price_max: 100
         price_min: 100
-        id: 69084
+        id: 999999006
         start_dates:
           start_date_min: '2017-11-01'
           start_date_max: '2017-11-01'
@@ -106,7 +106,7 @@ testing_room_property1:
         availability: 999
       - price_max:
         price_min: 90
-        id: 69089
+        id: 999999011
         start_dates:
           start_date_min: '2016-10-01'
           start_date_max:
@@ -576,7 +576,7 @@ testing_room_property1:
         availability: 9
       - price_max: 80
         price_min:
-        id: 68922
+        id: 999999001
         start_dates:
           start_date_min: '2017-10-01'
           start_date_max:
@@ -745,7 +745,7 @@ testing_room_property1:
         availability: 9
       - price_max:
         price_min:
-        id: 68928
+        id: 999999002
         start_dates:
           start_date_min:
           start_date_max:
@@ -1321,7 +1321,7 @@ testing_room_property1:
         availability: 0
       - price_max:
         price_min:
-        id: 69081
+        id: 999999003
         start_dates:
           start_date_min: '2016-11-11'
           start_date_max: '2016-11-11'
@@ -1340,7 +1340,7 @@ testing_room_property1:
         availability: 999
       - price_max:
         price_min:
-        id: 69087
+        id: 999999009
         start_dates:
           start_date_min: '2016-10-01'
           start_date_max: '2017-06-24'
@@ -1366,15 +1366,7 @@ testing_room_property1:
           - 2017-08
           - 2017-11
           2017-06:
-          - 2018-04
           - 2017-10
-          - 2018-06
-          - 2018-03
-          - 2018-02
-          - 2018-07
-          - 2018-01
-          - 2017-12
-          - 2018-05
           - 2017-11
           2016-11:
           - 2017-10
@@ -1456,7 +1448,7 @@ testing_room_property1:
         availability: 999
       - price_max:
         price_min:
-        id: 69088
+        id: 999999010
         start_dates:
           start_date_min: '2016-11-11'
           start_date_max: '2016-10-13'
@@ -1479,7 +1471,7 @@ testing_room_property1:
   - units:
     - state: available
       name: Unit 2
-      id: 21236
+      id: 9999005
       distinctions:
       - value: size_large
         count:
@@ -1498,7 +1490,7 @@ testing_room_property1:
       listings:
       - price_max: 30
         price_min: 20
-        id: 69163
+        id: 999999012
         start_dates:
           start_date_min: '2017-11-02'
           start_date_max: '2017-11-02'
@@ -1517,7 +1509,7 @@ testing_room_property1:
         availability: 0
       - price_max:
         price_min:
-        id: 69164
+        id: 999999013
         start_dates:
           start_date_min: '2017-11-02'
           start_date_max: '2017-11-02'
@@ -1536,7 +1528,7 @@ testing_room_property1:
         availability: 9
       - price_max:
         price_min:
-        id: 69165
+        id: 999999014
         start_dates:
           start_date_min:
           start_date_max:
@@ -2112,7 +2104,7 @@ testing_room_property1:
         availability: 9
     - state: coming_soon
       name: unit 3
-      id: 21239
+      id: 9999006
       distinctions:
       - value: size_large
         count:
@@ -2128,7 +2120,7 @@ testing_room_property1:
       listings:
       - price_max: 50
         price_min: 40
-        id: 69167
+        id: 999999016
         start_dates:
           start_date_min:
           start_date_max:
@@ -2704,7 +2696,7 @@ testing_room_property1:
         availability: 999
       - price_max: 70
         price_min: 60
-        id: 69166
+        id: 999999015
         start_dates:
           start_date_min: '2017-11-02'
           start_date_max: '2017-11-02'
@@ -2723,7 +2715,7 @@ testing_room_property1:
         availability: 0
     - state: sold_out
       name: Unit 4
-      id: 21240
+      id: 9999007
       distinctions:
       - value: bathroom_private
         count:
@@ -2736,7 +2728,7 @@ testing_room_property1:
       listings:
       - price_max: 80
         price_min: 70
-        id: 69168
+        id: 999999017
         start_dates:
           start_date_min: '2017-11-02'
           start_date_max: '2017-11-02'
@@ -4444,7 +4436,7 @@ testing_room_property1:
   state: available_with_price
   discounted_from_price: 80
 
-testing_room_property2:
+testing_room_property12:
   discounted_from_price:
   categories:
   - price:
@@ -4454,7 +4446,7 @@ testing_room_property2:
     units:
     - bathroom_type: private
       max_occupancy:
-      id: 21234
+      id: 9999003
       name: Unit 3
       listings:
       - discounted_price_min:
@@ -4494,7 +4486,7 @@ testing_room_property2:
     units:
     - bathroom_type: private
       max_occupancy:
-      id: 21232
+      id: 9999001
       name: Unit 1
       listings:
       - discounted_price_min:
@@ -4551,7 +4543,7 @@ testing_room_property2:
     units:
     - bathroom_type: private
       max_occupancy:
-      id: 21233
+      id: 9999002
       name: Unit 2
       listings:
       - discounted_price_min:
@@ -4603,7 +4595,7 @@ testing_room_property2:
 
 
 
-testing_room_property3:
+testing_room_property13:
   discounted_from_price:
   categories:
   - price:
@@ -4619,7 +4611,7 @@ testing_room_property3:
     units:
     - bathroom_type: private
       max_occupancy:
-      id: 21237
+      id: 9999011
       name: Unit 1
       listings:
       - discounted_price_min:
@@ -4686,7 +4678,7 @@ testing_room_property3:
   from_price:
   state: coming_soon
 
-testing_room_property4:
+testing_room_property14:
   tenancy_periods:
     bathroom_type:
       private:
@@ -4724,7 +4716,7 @@ testing_room_property4:
       - count:
         value: arrangement_apartment
         label: ''
-      id: 21241
+      id: 9999013
       state: sold_out
       max_occupancy:
       name: Unit 1

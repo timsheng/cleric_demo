@@ -3,19 +3,17 @@ enquiry_exist_user:
   enquiry_type: booking_online
   city_slug: london
   my_application_link: my.student.com/applications
-  listing_ids:
-  - 68918
   student:
     first_name: Fresh
     last_name: Man
-    email: dan.pan+2016101806@student.com
+    email: dan.pan+2016111601@student.com
 
 enquiry_full:
   source: student_www
   enquiry_type: book_online
   city_slug: london
   listing_ids:
-  - 69084
+  - 999999008
   move_in_month: 2017-08
   move_out_month: 2018-08
   bathroom_type: shared
@@ -23,7 +21,7 @@ enquiry_full:
   budget_currency: GBP
   budget_frequency: week
   my_application_link: my.student.com/applications
-  property_id: 2915
+  property_id: 999001
   room_type: entire place
   ambassador_mbsy:
   ambassador_campaign_id:
