@@ -1,4 +1,5 @@
 require 'spec_helper'
+require './tools/db_data'
 
 describe "Frontend Facade" do
 
@@ -6,13 +7,14 @@ describe "Frontend Facade" do
   let(:key) { key = @key }
   let(:params) { params = @params }
 
-  after(:each) do
-    # frontend_facade.close_ssh frontend_facade.port
+  before(:all) do
+    initialize_frontend_facade_data
   end
 
   describe "Enquiries" do
 
     context "Create enquiry" do
+
       let(:payload) { FrontendFacadePayload::Enquiry::CreateEnquiry.payload key }
       let(:response) { frontend_facade.create_enquiry(payload, *params) }
 
@@ -30,14 +32,6 @@ describe "Frontend Facade" do
         expect(dbfactory.query_booking_enquiry(:student_id => student_id)).not_to be_empty
         dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Messages_db'))
         expect(dbfactory.query(sql)).not_to be_empty
-      end
-
-      it "success for an exist student, check enquiry is created, email is sent, token is corrent and password_set is true.", :key => 'enquiry_exist_user' do
-        token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiRnJlc2giLCJpc3MiOiJhdXRoIiwibGFzdF9uYW1lIjoiTWFuIiwiaWF0IjoxNDc3Mzc2MTYzLCJlbWFpbCI6ImRhbi5wYW4rMjAxNjEwMTgwNkBzdHVkZW50LmNvbSJ9.D5596-G8hEy2x5I-MQccrtCeIew63tCNFmLuaqzL-8c"
-        response = frontend_facade.create_enquiry(payload, token)
-        expect(response[:status]).to be(200)
-        expect(response[:message]['auth_token']).to eq(token)
-        expect(response[:message]['password_set']).to be true
       end
 
       it "failed for an exist student without JWT token", :key => 'enquiry_exist_user' do
@@ -117,11 +111,13 @@ describe "Frontend Facade" do
           expect(token_1).not_to eql(token_2)
         end
 
-        it "the two token is able to create enquiry" do
+        it "the two token is able to create enquiry for exist user" do
           payload_enquiry = FrontendFacadePayload::Enquiry::CreateEnquiry.payload('enquiry_exist_user')
           [token_1, token_2].each do |e|
             response = frontend_facade.create_enquiry(payload_enquiry, e)
             expect(response[:status]).to be(200)
+            expect(response[:message]['auth_token']).to eq(e)
+            expect(response[:message]['password_set']).to be true
           end
         end
 
@@ -169,7 +165,7 @@ describe "Frontend Facade" do
       end
 
       it "fail to reset password with incorrect reset_password_token." do
-        response = frontend_facade.user_reset_password("incorrect_token", "password123")
+        response = frontend_facade.user_reset_password("incorrect_token", "Password12")
         expect(response[:status]).to be(401)
         expect(response[:message]['error']).to eq("INVALID_CREDENTIALS")
         expect(response[:message]['error_description']).to end_with("is invalid.")
@@ -177,7 +173,7 @@ describe "Frontend Facade" do
 
       it "fail to reset password if token is expired(more than 24 hours)." do
         reset_token = get_reset_tokens false
-        response = frontend_facade.user_reset_password(reset_token[0], "password123")
+        response = frontend_facade.user_reset_password(reset_token[0], "Password12")
         expect(response[:status]).to be(401)
         expect(response[:message]['error']).to eq("INVALID_CREDENTIALS")
         expect(response[:message]['error_description']).to end_with("is invalid.")
@@ -272,14 +268,14 @@ describe "Frontend Facade" do
           expect(response[:message]).to be_deep_equal(payload)
         end
 
-        it "translated is false if property is not translated", :params => ['testing-room-property-5','zh-cn'] do
+        it "translated is false if property is not translated", :params => ['testing-room-property-11','zh-cn'] do
           expect(response[:status]).to be(200)
           expect(response[:message]['translated']).to be false
         end
 
-        it "unpublished property return 404", :params => ['unpublished-property','zh-cn'] do
+        it "unpublished property return 404", :params => ['1-penta-house','zh-cn'] do
           dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Property_db'))
-          data = dbfactory.db[:properties].filter(:published => 0, :slug => "unpublished-property").all
+          data = dbfactory.db[:properties].filter(:published => 0, :slug => "1-penta-house").all
           expect(data.count).to be(1)
           expect(response[:status]).to be(404)
         end
@@ -318,14 +314,14 @@ describe "Frontend Facade" do
         return nil
       end
 
-      it "unpublished property return 404", :params => ['unpublished-property'] do
+      it "unpublished property return 404", :params => ['1-penta-house'] do
         dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Property_db'))
-        data = dbfactory.db[:properties].filter(:published => 0, :slug => "unpublished-property").all
+        data = dbfactory.db[:properties].filter(:published => 0, :slug => "1-penta-house").all
         expect(data.count).to be(1)
         expect(response[:status]).to be(404)
       end
 
-      context "Check unit", :key => 'testing_room_property1', :params => ['testing-room-property-1'] do
+      context "Check unit", :key => 'testing_room_property11', :params => ['testing-room-property-11'] do
         it "basic info should including bathroom_type, max_occupancy, id, name, distinctions" do
           expect(response[:status]).to be(200)
           unit_expected = get_elements(payload, 'private-room', 'Unit 1')
@@ -348,21 +344,21 @@ describe "Frontend Facade" do
         end
       end
 
-      context "Check listing", :key => 'testing_room_property1', :params => ['testing-room-property-1'] do
-        # 69086 has a range price
+      context "Check listing", :key => 'testing_room_property11', :params => ['testing-room-property-11'] do
+        # 999999008 has a range price
         it "basic info should including id, availability, price_min, price_max" do
           expect(response[:status]).to be(200)
-          listing_expected = get_elements(payload, 'private-room', 'Unit 1', 69086)
-          listing_actual = get_elements(response[:message], 'private-room', 'Unit 1', 69086)
+          listing_expected = get_elements(payload, 'private-room', 'Unit 1', 999999008)
+          listing_actual = get_elements(response[:message], 'private-room', 'Unit 1', 999999008)
           ['availability', 'price_min', 'price_max'].each do |e|
             expect(listing_actual[e]).to eq(listing_expected[e])
           end
         end
 
         it "should return correct discount price and discount type" do
-          # 69086 absolute discount, 69084 percentage discount
+          # 999999008 absolute discount, 999999006 percentage discount
           expect(response[:status]).to be(200)
-          [69086, 69084].each do |e|
+          [999999008, 999999006].each do |e|
             listing_expected = get_elements(payload, 'private-room', 'Unit 1', e)
             listing_actual = get_elements(response[:message], 'private-room', 'Unit 1', e)
             expect(listing_actual['discount']['type']).to  eq(listing_expected['discount']['type'])
@@ -393,20 +389,20 @@ describe "Frontend Facade" do
         end
 
         it "inactive listing shouldn't be returned from api." do
-          # Check listing 69085, 69082 of Unit 1 is not returned because there're inactive.
+          # Check listing 999999007, 999999004 of Unit 1 is not returned because there're inactive.
           expect(response[:status]).to be(200)
           unit_actual = get_elements(response[:message], 'private-room', 'Unit 1')
           listing_ids = []
           unit_actual['listings'].each do |e|
             listing_ids << e['id']
           end
-          expect(listing_ids).to be_deep_equal(listing_ids - [69085, 69082])
+          expect(listing_ids).to be_deep_equal(listing_ids - [999999007, 999999004])
         end
 
         it "should return correct duration max and duration min and l18n_key" do
-          # Listing type: 69084 fixed, 69086 fixed-open-end, 69087 flexible, 69089 flexible-open-end, 68928 placeholder
+          # Listing type: 999999006 fixed, 999999008 fixed-open-end, 999999009 flexible, 999999011 flexible-open-end, 999999002 placeholder
           expect(response[:status]).to be(200)
-          [69084, 69086, 69087, 69089, 68928].each do |e|
+          [999999006, 999999008, 999999009, 999999011, 999999002].each do |e|
             listing_expected = get_elements(payload, 'private-room', 'Unit 1', e)
             listing_actual = get_elements(response[:message], 'private-room', 'Unit 1', e)
             ['duration_min', 'duration_max', 'i18n_key'].each do |e1|
@@ -416,9 +412,9 @@ describe "Frontend Facade" do
         end
 
         it "should return correct start dates and l18n_key" do
-          # Listing type: 69084 fixed, 69086 fixed-open-end, 69087 flexible, 69089 flexible-open-end, 68928 placeholder
+          # Listing type: 999999006 fixed, 999999008 fixed-open-end, 999999009 flexible, 999999011 flexible-open-end, 999999002 placeholder
           expect(response[:status]).to be(200)
-          [69084, 69086, 69087, 69089, 68928].each do |e|
+          [999999006, 999999008, 999999009, 999999011, 999999002].each do |e|
             listing_expected = get_elements(payload, 'private-room', 'Unit 1', e)
             listing_actual = get_elements(response[:message], 'private-room', 'Unit 1', e)
             ['start_date_min', 'start_date_max', 'i18n_key'].each do |e1|
@@ -427,16 +423,16 @@ describe "Frontend Facade" do
           end
         end
 
-        it "should return correct listing tenancy_periods", :key => 'testing_room_property1', :params => 'testing-room-property-1' do
-          # Listing type: 69086 fixed-open-end
+        it "should return correct listing tenancy_periods", :key => 'testing_room_property11', :params => 'testing-room-property-11' do
+          # Listing type: 999999009 flexible
           expect(response[:status]).to be(200)
-          listing_expected = get_elements(payload, 'private-room', 'Unit 1', 69086)
-          listing_actual = get_elements(response[:message], 'private-room', 'Unit 1', 69086)
+          listing_expected = get_elements(payload, 'private-room', 'Unit 1', 999999009)
+          listing_actual = get_elements(response[:message], 'private-room', 'Unit 1', 999999009)
           expect(listing_actual['tenancy_periods']).to be_deep_equal(listing_expected['tenancy_periods'])
         end
       end
 
-      context "Check category", :key => 'testing_room_property2', :params => 'testing-room-property-2' do
+      context "Check category", :key => 'testing_room_property12', :params => 'testing-room-property-12' do
         it "basic info should including name." do
           expect(response[:status]).to be(200)
           categories = response[:message]['categories']
@@ -457,7 +453,7 @@ describe "Frontend Facade" do
           end
         end
 
-        it "state should be available_with_price or inactive", :key => 'testing_room_property1', :params => 'testing-room-property-1' do
+        it "state should be available_with_price or inactive", :key => 'testing_room_property11', :params => 'testing-room-property-11' do
           expect(response[:status]).to be(200)
           ['private-room', 'shared-room'].each do |e|
             category_expected = get_elements(payload, e)
@@ -468,22 +464,22 @@ describe "Frontend Facade" do
       end
 
       context "Check property state" do
-        it "should be available_with_price if there have available_with_price, available, coming_soon category.", :key => 'testing_room_property1', :params => 'testing-room-property-1' do
+        it "should be available_with_price if there have available_with_price, available, coming_soon category.", :key => 'testing_room_property11', :params => 'testing-room-property-11' do
           expect(response[:status]).to be(200)
           expect(response[:message]['state']).to eq(payload['state'])
         end
 
-        it "should be available if there have available, coming_soon, sold_out category.", :key => 'testing_room_property2', :params => 'testing-room-property-2' do
+        it "should be available if there have available, coming_soon, sold_out category.", :key => 'testing_room_property12', :params => 'testing-room-property-12' do
           expect(response[:status]).to be(200)
           expect(response[:message]['state']).to eq(payload['state'])
         end
 
-        it "should be coming_soon if there have coming_soon, sold_out category at least.", :key => 'testing_room_property3', :params => 'testing-room-property-3' do
+        it "should be coming_soon if there have coming_soon, sold_out category at least.", :key => 'testing_room_property13', :params => 'testing-room-property-13' do
           expect(response[:status]).to be(200)
           expect(response[:message]['state']).to eq(payload['state'])
         end
 
-        it "should be sold_out if all categories are sold_out or state = null.", :key => 'testing_room_property4', :params => 'testing-room-property-4' do
+        it "should be sold_out if all categories are sold_out or state = null.", :key => 'testing_room_property14', :params => 'testing-room-property-14' do
           expect(response[:status]).to be(200)
           expect(response[:message]['state']).to eq(payload['state'])
         end
@@ -554,7 +550,7 @@ describe "Frontend Facade" do
 
         it "can be sorted by name, original_name, slug and rank.", :key => 'given_jp_cn' do
           ["name", "original_name", "slug", "rank"].each do |e|
-            response = frontend_facade.get_list_of_universities('jp', nil, 'zh-cn',e)
+            response = frontend_facade.get_list_of_universities('jp', nil, 'zh-cn', e)
             expect(response[:status]).to be(200)
             if e == 'rank'
               expected_array = payload['universities'].sort_by{|x| x[e] * -1}
@@ -639,12 +635,12 @@ describe "Frontend Facade" do
       end
 
       context "Check cities" do
-        it "unpublished cities shouldn't return for de.", :key => 'location_cities_de_en', :params => ['de', 'en-gb'] do
-          data = dbfactory.query_locations_cities(:slug => "unpublished-city-test-dan")
+        it "unpublished cities shouldn't return.", :params => ['us', 'en-gb'] do
+          data = dbfactory.query_locations_cities(:slug => "north-miami-fl")
           expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
           response[:message]['cities'].each do |e|
-            expect(e['slug']).not_to eq('unpublished-city-test-dan')
+            expect(e['slug']).not_to eq('north-miami-fl')
           end
         end
 
@@ -696,12 +692,12 @@ describe "Frontend Facade" do
       end
 
       context "Check unpublished areas" do
-        it "shouldn't be returned", :params => ['london', 'en-gb'] do
-          data = dbfactory.query_locations_areas(:slug => "london-area-test")
+        it "shouldn't be returned", :params => ['nottingham', 'en-gb'] do
+          data = dbfactory.query_locations_areas(:slug => "rushcliffe")
           expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
           response[:message]['areas'].each do |e|
-            expect(e['slug']).not_to eq('london-area-test')
+            expect(e['slug']).not_to eq('rushcliffe')
           end
         end
       end
@@ -724,12 +720,12 @@ describe "Frontend Facade" do
       end
 
       context "Check unpublished areas" do
-        it "shouldn't return.", :params => ['london', 'en-gb'] do
-          data = dbfactory.query_locations_areas(:slug => "london-area-test")
+        it "shouldn't return.", :params => ['nottingham', 'en-gb'] do
+          data = dbfactory.query_locations_areas(:slug => "rushcliffe")
           expect(data[0][:published]).to be false
           expect(response[:status]).to be(200)
           response[:message]['areas'].each do |e|
-            expect(e['slug']).not_to eq('london-area-test')
+            expect(e['slug']).not_to eq('rushcliffe')
           end
         end
       end

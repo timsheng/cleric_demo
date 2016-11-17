@@ -11,7 +11,8 @@ mkdir ~/.ssh && cp /app/config/id_rsa ~/.ssh
 # Decrypt yml
 echo "Decrypt environment yml"
 cd /app/bin
-ruby decrypt.rb
+ruby decrypt.rb prod
+ruby decrypt.rb stage
 
 # Run the command
 cd /app

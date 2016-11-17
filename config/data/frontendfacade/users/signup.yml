@@ -9,7 +9,7 @@ new_user:
 
 exist_user:
   email: dan.pan+2016101806@student.com
-  password: student.com1
+  password: Password12
   first_name: Dan
   last_name: Pan
   phone: (+86)18101872701
@@ -18,7 +18,7 @@ exist_user:
 
 invalid_email_user:
   email: dan.pan+2016101806student.com
-  password: student.com1
+  password: Password12
   first_name: Dan
   last_name: Pan
   phone: (+86)18101872701

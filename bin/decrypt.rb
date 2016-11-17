@@ -2,7 +2,13 @@ require '../lib/cleric/box'
 
 include Cleric::BOX
 
-box = get_box
-ciphertext = File.read(get_file_enc)
+if ARGV.empty?
+  puts "Please add a file name."
+  exit
+end
+
+box = get_box ARGV[0]
+ciphertext = File.read(get_file_enc ARGV[0])
 plaintext = box.decrypt(Base64.decode64(ciphertext))
-File.write(get_file, plaintext)
+plain_file = get_file ARGV[0]
+File.write(plain_file, plaintext)
