@@ -4,7 +4,9 @@ class Booking < API
 
   base_uri http('base_uri')
 
-  basic_auth http('basic_auth','user'), http('basic_auth','password')
+  if ENV['PLATFORM'] != 'prod'
+    basic_auth http('basic_auth','user'), http('basic_auth','password')
+  end
 
   headers http('headers')
 

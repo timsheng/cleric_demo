@@ -1,7 +1,7 @@
 require './api/api'
 
 class FrontendFacade < API
-  ENV['REGION']='eu' unless ENV['REGION']
+  ENV['REGION']='cn' unless ENV['REGION']
   base_uri http('base_uri', ENV['REGION'])
 
   def create_user payload

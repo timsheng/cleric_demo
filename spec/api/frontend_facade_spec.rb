@@ -1,4 +1,5 @@
 require 'spec_helper'
+require './tools/db_data'
 
 describe "Frontend Facade" do
 
@@ -7,11 +8,7 @@ describe "Frontend Facade" do
   let(:params) { params = @params }
 
   before(:all) do
-
-  end
-
-  after(:each) do
-    # frontend_facade.close_ssh frontend_facade.port
+    initialize_frontend_facade_data
   end
 
   describe "Enquiries" do
@@ -553,7 +550,7 @@ describe "Frontend Facade" do
 
         it "can be sorted by name, original_name, slug and rank.", :key => 'given_jp_cn' do
           ["name", "original_name", "slug", "rank"].each do |e|
-            response = frontend_facade.get_list_of_universities('jp', nil, 'zh-cn',e)
+            response = frontend_facade.get_list_of_universities('jp', nil, 'zh-cn', e)
             expect(response[:status]).to be(200)
             if e == 'rank'
               expected_array = payload['universities'].sort_by{|x| x[e] * -1}
