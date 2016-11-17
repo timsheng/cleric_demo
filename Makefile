@@ -9,21 +9,47 @@ upload-image:
 test-booking-contract-testing:
 	mvn test -Denvironment=Stage -DxmlFileName=booking.xml
 
-test-frontendfacade-contract-testing:
-	PLATFORM=stage rspec spec/api/frontend_facade_spec.rb
+test-frontendfacade-stage-cn:
+	PLATFORM=stage REGION=cn rspec spec/api/frontend_facade_spec.rb
 
-run-test-container-booking:
+test-frontendfacade-stage-ap:
+	PLATFORM=stage REGION=ap rspec spec/api/frontend_facade_spec.rb
+
+test-frontendfacade-stage-eu:
+	PLATFORM=stage REGION=eu rspec spec/api/frontend_facade_spec.rb
+
+test-frontendfacade-prod-cn:
+	PLATFORM=prod REGION=cn rspec spec/api/frontend_facade_spec.rb
+
+
+run-frontendfacade-stage-cn:
 	docker run \
 		--rm \
 		-e CLERIC_ENCRYPT="${CLERIC_ENCRYPT}" \
 		-e CLERIC_PRIVATEKEY="${CLERIC_PRIVATEKEY}" \
 		${DOCKER_IMAGE_NAME} \
-		bash
+		bash -c "make test-frontendfacade-stage-cn"
 
-run-test-container-frontendfacade:
+run-frontendfacade-stage-ap:
 	docker run \
 		--rm \
 		-e CLERIC_ENCRYPT="${CLERIC_ENCRYPT}" \
 		-e CLERIC_PRIVATEKEY="${CLERIC_PRIVATEKEY}" \
 		${DOCKER_IMAGE_NAME} \
-		bash -c "make test-frontendfacade-contract-testing"
+		bash -c "make test-frontendfacade-stage-ap"
+
+run-frontendfacade-stage-eu:
+	docker run \
+		--rm \
+		-e CLERIC_ENCRYPT="${CLERIC_ENCRYPT}" \
+		-e CLERIC_PRIVATEKEY="${CLERIC_PRIVATEKEY}" \
+		${DOCKER_IMAGE_NAME} \
+		bash -c "make test-frontendfacade-stage-eu"
+
+run-frontendfacade-prod-cn:
+	docker run \
+		--rm \
+		-e CLERIC_ENCRYPT="${CLERIC_ENCRYPT}" \
+		-e CLERIC_PRIVATEKEY="${CLERIC_PRIVATEKEY}" \
+		${DOCKER_IMAGE_NAME} \
+		bash -c "make test-frontendfacade-prod-cn"
