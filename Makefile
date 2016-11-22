@@ -22,6 +22,12 @@ test-frontendfacade-prod-cn:
 	PLATFORM=prod REGION=cn rspec spec/api/frontend_facade_spec.rb
 
 
+test-frontendfacade-prod-ap:
+	PLATFORM=prod REGION=ap rspec spec/api/frontend_facade_spec.rb
+
+test-frontendfacade-prod-eu:
+	PLATFORM=prod REGION=eu rspec spec/api/frontend_facade_spec.rb
+
 run-frontendfacade-stage-cn:
 	docker run \
 		--rm \
@@ -53,3 +59,19 @@ run-frontendfacade-prod-cn:
 		-e CLERIC_PRIVATEKEY="${CLERIC_PRIVATEKEY}" \
 		${DOCKER_IMAGE_NAME} \
 		bash -c "make test-frontendfacade-prod-cn"
+
+run-frontendfacade-prod-ap:
+	docker run \
+		--rm \
+		-e CLERIC_ENCRYPT="${CLERIC_ENCRYPT}" \
+		-e CLERIC_PRIVATEKEY="${CLERIC_PRIVATEKEY}" \
+		${DOCKER_IMAGE_NAME} \
+		bash -c "make test-frontendfacade-prod-ap"
+
+run-frontendfacade-prod-eu:
+	docker run \
+		--rm \
+		-e CLERIC_ENCRYPT="${CLERIC_ENCRYPT}" \
+		-e CLERIC_PRIVATEKEY="${CLERIC_PRIVATEKEY}" \
+		${DOCKER_IMAGE_NAME} \
+		bash -c "make test-frontendfacade-prod-eu"

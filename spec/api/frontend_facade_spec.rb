@@ -25,6 +25,7 @@ describe "Frontend Facade" do
         expect(response[:status]).to be(200)
         expect(response[:message]['auth_token']).not_to be_nil
         expect(response[:message]['password_set']).to be false
+        sleep 3
         expect(dbfactory.query_identity_user(:email => email)).not_to be_empty
         dbfactory = PropertiesDBFactory.new(@pool.use(:db => 'Booking_db'))
         expect(dbfactory.query_booking_student(:email => email)).not_to be_empty
