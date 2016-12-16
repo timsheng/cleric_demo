@@ -5,3 +5,7 @@ user_correct_password:
 user_incorrect_password:
   email: dan.pan+2016101806@student.com
   password: IncorrectPassword
+
+user_2016121601:
+  email: dan.pan+2016121601@student.com
+  password: student.com

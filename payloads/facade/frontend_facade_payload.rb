@@ -55,4 +55,12 @@ module FrontendFacadePayload
     class CreateEnquiry < Payload
     end
   end
+
+  module Students
+    class StudentInfo < Payload
+    end
+
+    class StudentRecords < Payload
+    end
+  end
 end

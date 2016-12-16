@@ -11,6 +11,125 @@ describe "Frontend Facade" do
     initialize_frontend_facade_data
   end
 
+  describe "Students" do
+
+    let(:payload_login) { FrontendFacadePayload::Users::Login.payload 'user_2016121601' }
+    let(:payload_signup) { FrontendFacadePayload::Users::Signup.payload 'new_user' }
+    let(:response_signup) { frontend_facade.user_signup(payload_signup) }
+    let(:response_login) { frontend_facade.user_login(payload_login) }
+
+    context "Get student info" do
+      let(:payload) { FrontendFacadePayload::Students::StudentInfo.payload key }
+
+      it "Check basic info is correct.", :key => 'student_2016121601' do
+        token = response_login[:message]['auth_token']
+        response = frontend_facade.get_student_info(payload_login['email'], token)
+        expect(response[:status]).to be(200)
+        expect(response[:message]).to be_deep_equal(payload)
+      end
+
+      it "Check error message if provide an invalid token." do
+        response = frontend_facade.get_student_info(payload_login['email'], "incorrecttoken")
+        expect(response[:status]).to be(401)
+        expect(response[:message]['error']).to eq('INVALID_CREDENTIALS')
+        expect(response[:message]['error_description']).to include('token is invalid.')
+      end
+
+      it "Check error message if token is not provide." do
+        response = frontend_facade.get_student_info(payload_login['email'])
+        expect(response[:status]).to be(401)
+        expect(response[:message]['error']).to eq('INVALID_CREDENTIALS')
+        expect(response[:message]['error_description']).to include('Token not found.')
+      end
+
+      it "Check error message if token does not match email.", :key => 'student_2016121601' do
+        token = response_login[:message]['auth_token']
+        response = frontend_facade.get_student_info('dan.pan@student.com', token)
+        expect(response[:status]).to be(401)
+        expect(response[:message]['error']).to eq('INVALID_CREDENTIALS')
+        expect(response[:message]['error_description']).to include('Unauthorised user.')
+      end
+    end
+
+    context "Update student info" do
+      let(:payload) { FrontendFacadePayload::Students::StudentInfo.payload key }
+
+      it "Check all basic info is able to update.", :key => 'student_2016121601' do
+        token = response_signup[:message]['auth_token']
+        email = response_signup[:message]['email']
+        payload['email'] = email
+        response = frontend_facade.update_student_info(payload, email, token);
+        expect(response[:status]).to be(200)
+        response = frontend_facade.get_student_info(email, token);
+        expect(response[:status]).to be(200)
+        expect(response[:message]).to be_deep_equal(payload)
+      end
+
+      it "Check error message if provide an invalid token.", :key => 'student_2016121601' do
+        response = frontend_facade.update_student_info(payload, payload['email'], "incorrecttoken")
+        expect(response[:status]).to be(401)
+        expect(response[:message]['error']).to eq('INVALID_CREDENTIALS')
+        expect(response[:message]['error_description']).to include('token is invalid.')
+      end
+
+      it "Check error message if token is not provide.", :key => 'student_2016121601' do
+        response = frontend_facade.update_student_info(payload, payload['email'])
+        expect(response[:status]).to be(401)
+        expect(response[:message]['error']).to eq('INVALID_CREDENTIALS')
+        expect(response[:message]['error_description']).to include('Token not found.')
+      end
+
+      it "Check error message if token does not match email.", :key => 'student_2016121601' do
+        token = response_login[:message]['auth_token']
+        response = frontend_facade.update_student_info(payload, 'dan.pan@student.com', token)
+        expect(response[:status]).to be(401)
+        expect(response[:message]['error']).to eq('INVALID_CREDENTIALS')
+        expect(response[:message]['error_description']).to include('Unauthorised user.')
+      end
+
+      it "Check error message if email of url is different from body.", :key => 'student_2016121601' do
+        token = response_signup[:message]['auth_token']
+        email = response_signup[:message]['email']
+        payload['email'] = "dan.pan+321121@student.com"
+        response = frontend_facade.update_student_info(payload, email, token);
+        expect(response[:status]).to be(400)
+      end
+    end
+
+    context "Get student records" do
+      let(:payload) { FrontendFacadePayload::Students::StudentRecords.payload key }
+
+      it "Check basic info is correct.", :key => 'student_2016121601' do
+        token = response_login[:message]['auth_token']
+        response = frontend_facade.get_student_records(payload_login['email'], 'zh-cn', token)
+        expect(response[:status]).to be(200)
+        expect(response[:message]).to be_deep_equal(payload)
+      end
+
+      it "Check error message if provide an invalid token." do
+        response = frontend_facade.get_student_records(payload_login['email'], "zh-cn", "incorrecttoken")
+        expect(response[:status]).to be(401)
+        expect(response[:message]['error']).to eq('INVALID_CREDENTIALS')
+        expect(response[:message]['error_description']).to include('token is invalid.')
+      end
+
+      it "Check error message if token is not provide." do
+        response = frontend_facade.get_student_records(payload_login['email'], "en-gb")
+        expect(response[:status]).to be(401)
+        expect(response[:message]['error']).to eq('INVALID_CREDENTIALS')
+        expect(response[:message]['error_description']).to include('Token not found.')
+      end
+
+      it "Check error message if token does not match email.", :key => 'student_2016121601' do
+        token = response_login[:message]['auth_token']
+        response = frontend_facade.get_student_records('dan.pan@student.com', "en-gb", token)
+        expect(response[:status]).to be(401)
+        expect(response[:message]['error']).to eq('INVALID_CREDENTIALS')
+        expect(response[:message]['error_description']).to include('Unauthorised user.')
+      end
+    end
+  end
+
   describe "Enquiries" do
 
     context "Create enquiry" do

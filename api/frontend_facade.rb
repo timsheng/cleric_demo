@@ -8,6 +8,26 @@ class FrontendFacade < API
     self.class.post('/users', :body => payload.to_json)
   end
 
+  def get_student_info email, token = false
+    add_headers({'Authorization' => "Bearer #{token}"}) if token
+    response = self.class.get("/students/#{email}", :headers => new_headers)
+    return new_response(response)
+  end
+
+  def update_student_info payload, email, token = false
+    add_headers({'Content-Type' => "application/json"})
+    add_headers({'Authorization' => "Bearer #{token}"}) if token
+    response = self.class.put("/students/#{email}", :body => payload.to_json, :headers => new_headers)
+    return new_response(response)
+  end
+
+  def get_student_records email, language, token = false
+    add_headers({'Accept-Language' => language})
+    add_headers({'Authorization' => "Bearer #{token}"}) if token
+    response = self.class.get("/students/#{email}/records", :headers => new_headers)
+    return new_response(response)
+  end
+
   def user_signup payload
     add_headers({'Content-Type' => "application/json"})
     response = self.class.post('/users/sign-up', :body => payload.to_json, :headers => new_headers)
