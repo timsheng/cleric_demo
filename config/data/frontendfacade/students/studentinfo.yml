@@ -1,0 +1,40 @@
+student_2016121601:
+  last_name: Pan
+  gender: male
+  study_major: 生物工程
+  email: dan.pan+2016121601@student.com
+  address_line_2: 昌平路112号
+  country: China
+  state: 上海
+  locale: en-us
+  preferences:
+    smoking: false
+    vegetarian: true
+    flatgender: mixed
+  how_did_you_hear_about_us: friend
+  address_line_1: 昌平路111号
+  date_of_birth: '1986-07-11T00:00:00+0000'
+  study_abroad_date: '2018-01-23T00:00:00+0000'
+  study_destination_uni: BPP University in Birmingham
+  academic_year: 3.0
+  first_name: Dan
+  zip_code: '100111'
+  study_current_uni: sit
+  nationality: Chinese
+  city: 上海
+  other_preferences: 采光好
+  phone_number: "(+86) 18101872701"
+  potential_guarantor:
+    last_name: pan
+    email: dan.pan@student.com
+    phone: "(+86) 18101872701"
+    address_line_2: 昌平路114号
+    country: China
+    relationship_with_student: friend
+    state: 上海
+    first_name: dan
+    address_line_3:
+    city: 上海
+    date_of_birth: '1970-02-23T00:00:00+0000'
+    address_line_1: 昌平路113号
+    zip_code: '100222'
