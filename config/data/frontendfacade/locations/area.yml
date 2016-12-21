@@ -53,6 +53,7 @@ location_area_wembley_cn:
     summary: 不用去附近的球场，这里就有一流的购物中心、自然风光和绝美的印度寺庙。我们为你精选了Wembley值得去的地方，方便你更好地体验这里的生活。祝你玩得愉快！
     headline: 除了英国最重要的体育场馆外，Wembley还有更多值得你去探索的地方。
   country:
+    currency_code: GBP
     original_name: United Kingdom
     name: 英国
     slug: uk
@@ -151,6 +152,7 @@ location_area_wembley_en:
     headline: More than just home to Britain’s premier sports stadium, Wembley has some
       often overlooked charms
   country:
+    currency_code: GBP
     original_name: United Kingdom
     name: United Kingdom
     slug: uk
