@@ -1,5 +1,6 @@
 location_city_sydney_en:
   country:
+    currency_code: AUD
     original_name: Australia
     name: Australia
     slug: au
@@ -85,6 +86,7 @@ location_city_sydney_cn:
     name: 悉尼市中心
   slug: sydney
   country:
+    currency_code: AUD
     slug: au
     original_name: Australia
     name: 澳大利亚
@@ -116,6 +118,7 @@ location_city_wellington_en:
   name: Wellington
   original_name: Wellington
   country:
+    currency_code: GBP
     original_name: New Zealand
     name: New Zealand
     slug: nz

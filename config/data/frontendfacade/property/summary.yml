@@ -155,6 +155,7 @@ student_village_summary_en:
     original_name: Melbourne City Centre
     slug: melbourne-city-centre
   country:
+    currency_code: AUD
     name: Australia
     original_name: Australia
     slug: au
@@ -181,6 +182,7 @@ te_puni_village_summary_cn:
   id: 390
   currency: NZD
   country:
+    currency_code: NZD
     original_name: New Zealand
     name: 新西兰
     slug: nz
