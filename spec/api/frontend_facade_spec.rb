@@ -87,7 +87,7 @@ describe "Frontend Facade" do
         expect(response[:message]['error_description']).to include('Unauthorised user.')
       end
 
-      it "Check error message if email of url is different from body.", :key => 'student_2016121601' do
+      it "Check error message if email of url is different from body. It's a known issue.[FIRE-1260]", :key => 'student_2016121601' do
         token = response_signup[:message]['auth_token']
         email = response_signup[:message]['email']
         payload['email'] = "dan.pan+321121@student.com"
@@ -99,7 +99,7 @@ describe "Frontend Facade" do
     context "Get student records" do
       let(:payload) { FrontendFacadePayload::Students::StudentRecords.payload key }
 
-      it "Check basic info is correct.", :key => 'student_2016121601' do
+      it "Check basic info is correct. It's a known issue.[FIRE-1319]", :key => 'student_2016121601' do
         token = response_login[:message]['auth_token']
         response = frontend_facade.get_student_records(payload_login['email'], 'zh-cn', token)
         expect(response[:status]).to be(200)
@@ -543,7 +543,7 @@ describe "Frontend Facade" do
           end
         end
 
-        it "should return correct listing tenancy_periods", :key => 'testing_room_property11', :params => 'testing-room-property-11' do
+        it "should return correct listing tenancy_periods. It's a known issue.[FIRE-1020]", :key => 'testing_room_property11', :params => 'testing-room-property-11' do
           # Listing type: 999999009 flexible
           expect(response[:status]).to be(200)
           listing_expected = get_elements(payload, 'private-room', 'Unit 1', 999999009)
