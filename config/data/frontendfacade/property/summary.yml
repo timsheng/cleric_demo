@@ -159,6 +159,7 @@ student_village_summary_en:
     name: Australia
     original_name: Australia
     slug: au
+    billing_cycle: weekly
   meta_description: Book rooms at Student Village. We make booking student accommodation easy. Our experts will find you the best room and manage everything else for you.
   slug: student-village
 
@@ -186,6 +187,7 @@ te_puni_village_summary_cn:
     original_name: New Zealand
     name: 新西兰
     slug: nz
+    billing_cycle: weekly
   gallery_images:
   - alt_text:
     src: "/mstr/country/new-zealand/city/wellington/property/te-puni-village/gallery/image-1/image-nygy6j.jpeg"

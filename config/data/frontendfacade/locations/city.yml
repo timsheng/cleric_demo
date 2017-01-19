@@ -4,6 +4,7 @@ location_city_sydney_en:
     original_name: Australia
     name: Australia
     slug: au
+    billing_cycle: weekly
   gallery_images: []
   name: Sydney
   lsg_id: 019008003
@@ -90,6 +91,7 @@ location_city_sydney_cn:
     slug: au
     original_name: Australia
     name: 澳大利亚
+    billing_cycle: weekly
   summary: "<p>Eastern Suburbs区有着美丽迷人的海滩，值得探索一番。位于中心商务区的悉尼港的著名地标值得细细参观品味。业余时间，你可以去划皮艇、冲浪或者海上航行，也可以去咖啡馆喝喝咖啡，看看过往的人群。逛逛设计师商店，你可以买到许多时尚潮品。在复古集市，你同样可以淘到许多宝贝。新鲜的海鲜食物千万不要错过。Parramatta区有着当地最好的餐馆，你可以去那儿度过美好的夜晚时光。你还可以在那儿一边喝鸡尾酒，一边欣赏美丽的夜景。看看世界一流的戏剧和表演，你一定会赞不绝口，绝佳的画廊和街头艺术则会让你的灵感喷涌而出。友情提醒：你一定会舍不得离开。</p>"
   headline: 在悉尼这座美丽的澳大利亚城市安家，你可以尽情享受优秀的文化、精致的食物和令人羡慕的户外生活
   points_of_interest: []
@@ -122,6 +124,7 @@ location_city_wellington_en:
     original_name: New Zealand
     name: New Zealand
     slug: nz
+    billing_cycle: weekly
   lsg_id: '219001001'
   hero_image:
     alt_text:

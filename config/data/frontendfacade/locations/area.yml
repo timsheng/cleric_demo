@@ -57,6 +57,7 @@ location_area_wembley_cn:
     original_name: United Kingdom
     name: 英国
     slug: uk
+    billing_cycle: weekly
   name: Wembley街区
   points_of_interest:
   - url: http://www.londondesigneroutlet.com
@@ -156,6 +157,7 @@ location_area_wembley_en:
     original_name: United Kingdom
     name: United Kingdom
     slug: uk
+    billing_cycle: weekly
   name: Wembley
   points_of_interest:
   - url: http://www.londondesigneroutlet.com
