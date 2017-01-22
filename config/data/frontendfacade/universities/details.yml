@@ -14,6 +14,7 @@ university_of_liverpool_details_en:
   longitude: -2.965
   city_slug: liverpool-test
   country_slug: uk
+  address: Merseyside
 
 university_of_liverpool_details_cn:
   hero_image:
@@ -30,3 +31,4 @@ university_of_liverpool_details_cn:
   longitude: -2.965
   city_slug: liverpool-test
   country_slug: uk
+  address: Merseyside

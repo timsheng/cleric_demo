@@ -1,165 +1,205 @@
 location_countries_list_en:
   countries:
-  - currency_code: AUD
+  - slug: au
+    billing_cycle: weekly
     name: Australia
-    slug: au
     original_name: Australia
-  - currency_code: EUR
+    currency_code: AUD
+  - slug: at
+    billing_cycle: monthly
     name: Austria
-    slug: at
     original_name: Austria
-  - currency_code: CAD
+    currency_code: EUR
+  - slug: ca
+    billing_cycle: monthly
     name: Canada
-    slug: ca
     original_name: Canada
-  - currency_code: DKK
+    currency_code: CAD
+  - slug: dm
+    billing_cycle: weekly
     name: Denmark
-    slug: dm
     original_name: Denmark
-  - currency_code: EUR
+    currency_code: DKK
+  - slug: fr
+    billing_cycle: monthly
     name: France
-    slug: fr
     original_name: France
-  - currency_code: EUR
+    currency_code: EUR
+  - slug: de
+    billing_cycle: monthly
     name: Germany
-    slug: de
     original_name: Germany
-  - currency_code: HUF
+    currency_code: EUR
+  - slug: hu
+    billing_cycle: weekly
     name: Hungary
-    slug: hu
     original_name: Hungary
-  - currency_code: EUR
+    currency_code: HUF
+  - slug: ie
+    billing_cycle: weekly
     name: Ireland
-    slug: ie
     original_name: Ireland
-  - currency_code: EUR
+    currency_code: EUR
+  - slug: it
+    billing_cycle: monthly
     name: Italy
-    slug: it
     original_name: Italy
-  - currency_code: JPY
+    currency_code: EUR
+  - slug: jp
+    billing_cycle: monthly
     name: Japan - TEST
-    slug: jp
     original_name: Japan - TEST
-  - currency_code: EUR
+    currency_code: JPY
+  - slug: nl
+    billing_cycle: weekly
     name: Netherlands
-    slug: nl
     original_name: Netherlands
-  - currency_code: NZD
+    currency_code: EUR
+  - slug: nz
+    billing_cycle: weekly
     name: New Zealand
-    slug: nz
     original_name: New Zealand
-  - currency_code: EUR
+    currency_code: NZD
+  - slug: ao
+    billing_cycle: weekly
     name: New country
-    slug: ao
     original_name: New country
-  - currency_code: PLN
+    currency_code: EUR
+  - slug: pl
+    billing_cycle: monthly
     name: Poland
-    slug: pl
     original_name: Poland
-  - currency_code: ZAR
+    currency_code: PLN
+  - slug: za
+    billing_cycle: monthly
     name: South Africa
-    slug: za
     original_name: South Africa
-  - currency_code: EUR
+    currency_code: ZAR
+  - slug: es
+    billing_cycle: monthly
     name: Spain
-    slug: es
     original_name: Spain
-  - currency_code: CHE
+    currency_code: EUR
+  - slug: ch
+    billing_cycle: monthly
     name: Switzerland
-    slug: ch
     original_name: Switzerland
-  - currency_code: AED
+    currency_code: CHE
+  - slug: ae
+    billing_cycle: monthly
     name: United Arab Emirates
-    slug: ae
     original_name: United Arab Emirates - TEST
-  - currency_code: GBP
+    currency_code: AED
+  - slug: uk
+    billing_cycle: weekly
     name: United Kingdom
-    slug: uk
     original_name: United Kingdom
-  - currency_code: USD
+    currency_code: GBP
+  - slug: us
+    billing_cycle: monthly
     name: United States
-    slug: us
     original_name: United States
+    currency_code: USD
 
 location_countries_list_cn:
   countries:
-  - currency_code: AUD
-    name: 澳大利亚
+  - original_name: Australia
     slug: au
-    original_name: Australia
-  - currency_code: EUR
-    name: 奥地利
+    currency_code: AUD
+    name: 澳大利亚
+    billing_cycle: weekly
+  - original_name: Austria
     slug: at
-    original_name: Austria
-  - currency_code: CAD
-    name: 加拿大
+    currency_code: EUR
+    name: 奥地利
+    billing_cycle: monthly
+  - original_name: Canada
     slug: ca
-    original_name: Canada
-  - currency_code: DKK
-    name: 丹麦
+    currency_code: CAD
+    name: 加拿大
+    billing_cycle: monthly
+  - original_name: Denmark
     slug: dm
-    original_name: Denmark
-  - currency_code: EUR
-    name: 法国
+    currency_code: DKK
+    name: 丹麦
+    billing_cycle: weekly
+  - original_name: France
     slug: fr
-    original_name: France
-  - currency_code: EUR
-    name: 德国
+    currency_code: EUR
+    name: 法国
+    billing_cycle: monthly
+  - original_name: Germany
     slug: de
-    original_name: Germany
-  - currency_code: HUF
-    name: 匈牙利
+    currency_code: EUR
+    name: 德国
+    billing_cycle: monthly
+  - original_name: Hungary
     slug: hu
-    original_name: Hungary
-  - currency_code: EUR
-    name: 爱尔兰
+    currency_code: HUF
+    name: 匈牙利
+    billing_cycle: weekly
+  - original_name: Ireland
     slug: ie
-    original_name: Ireland
-  - currency_code: EUR
-    name: 意大利
+    currency_code: EUR
+    name: 爱尔兰
+    billing_cycle: weekly
+  - original_name: Italy
     slug: it
-    original_name: Italy
-  - currency_code: JPY
-    name: 日本
+    currency_code: EUR
+    name: 意大利
+    billing_cycle: monthly
+  - original_name: Japan - TEST
     slug: jp
-    original_name: Japan - TEST
-  - currency_code: EUR
-    name: 荷兰
+    currency_code: JPY
+    name: 日本
+    billing_cycle: monthly
+  - original_name: Netherlands
     slug: nl
-    original_name: Netherlands
-  - currency_code: NZD
-    name: 新西兰
+    currency_code: EUR
+    name: 荷兰
+    billing_cycle: weekly
+  - original_name: New Zealand
     slug: nz
-    original_name: New Zealand
-  - currency_code: EUR
-    name: New country
+    currency_code: NZD
+    name: 新西兰
+    billing_cycle: weekly
+  - original_name: New country
     slug: ao
-    original_name: New country
-  - currency_code: PLN
-    name: 波兰
+    currency_code: EUR
+    name: New country
+    billing_cycle: weekly
+  - original_name: Poland
     slug: pl
-    original_name: Poland
-  - currency_code: ZAR
-    name: 南非
+    currency_code: PLN
+    name: 波兰
+    billing_cycle: monthly
+  - original_name: South Africa
     slug: za
-    original_name: South Africa
-  - currency_code: EUR
-    name: 西班牙
+    currency_code: ZAR
+    name: 南非
+    billing_cycle: monthly
+  - original_name: Spain
     slug: es
-    original_name: Spain
-  - currency_code: CHE
-    name: 瑞士
+    currency_code: EUR
+    name: 西班牙
+    billing_cycle: monthly
+  - original_name: Switzerland
     slug: ch
-    original_name: Switzerland
-  - currency_code: AED
-    name: 阿拉伯联合酋长国
+    currency_code: CHE
+    name: 瑞士
+    billing_cycle: monthly
+  - original_name: United Arab Emirates - TEST
     slug: ae
-    original_name: United Arab Emirates - TEST
-  - currency_code: GBP
-    name: 英国
+    currency_code: AED
+    name: 阿拉伯联合酋长国
+    billing_cycle: monthly
+  - original_name: United Kingdom
     slug: uk
-    original_name: United Kingdom
-  - currency_code: USD
-    name: 美国
+    currency_code: GBP
+    name: 英国
+    billing_cycle: weekly
+  - original_name: United States
     slug: us
-    original_name: United States
+    currency_code: USD
+    name: 美国
+    billing_cycle: monthly

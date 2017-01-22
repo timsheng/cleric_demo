@@ -543,7 +543,7 @@ describe "Frontend Facade" do
           end
         end
 
-        it "should return correct listing tenancy_periods. It's a known issue.[FIRE-1020]", :key => 'testing_room_property11', :params => 'testing-room-property-11' do
+        it "should return correct listing tenancy_periods. It's a known issue.", :key => 'testing_room_property11', :params => 'testing-room-property-11' do
           # Listing type: 999999009 flexible
           expect(response[:status]).to be(200)
           listing_expected = get_elements(payload, 'private-room', 'Unit 1', 999999009)
