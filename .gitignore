@@ -7,3 +7,7 @@
 .DS_Store
 config/.DS_Store
 config/environments/*.yml
+config/data/frontendfacade
+config/sql/
+spec/api/frontend_facade_spec.rb
+tools/
