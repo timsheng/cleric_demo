@@ -1,1 +1,0 @@
-INSERT INTO `countries` (`id`, `slug`, `published`, `name`, `country_code`, `currency_code`, `billing_cycle`, `path`, `created_at`, `updated_at`, `deleted_at`) VALUES ('100','da','0','unpublished country test dan','ABW','ADP','weekly','/mstr/country/country-test-dan','2016-10-04 08:33:30','2016-10-09 04:46:15','NULL');
